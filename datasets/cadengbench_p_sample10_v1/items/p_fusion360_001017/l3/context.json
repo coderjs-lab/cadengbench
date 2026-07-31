@@ -1,0 +1,193 @@
+{
+  "authority": {
+    "llm_output_authority": "candidate_only",
+    "promotion_requires_deterministic_and_solver_validation": true,
+    "source_intent_claimed": false
+  },
+  "geometry": {
+    "all_opposed_region_pairs": [
+      {
+        "axis": "z",
+        "eligible": true,
+        "maximum_region": {
+          "area_fraction": 0.06,
+          "area_mm2": 176.71458676,
+          "axis": "z",
+          "region_id": "axis:z:max",
+          "side": "max",
+          "surface_count": 1,
+          "surfaces": [
+            {
+              "area_mm2": 176.71458676,
+              "centroid_mm": [
+                -100.0,
+                30.0,
+                100.0
+              ],
+              "face_index_diagnostic_only": 2,
+              "normal": [
+                0.0,
+                0.0,
+                1.0
+              ]
+            }
+          ]
+        },
+        "minimum_region": {
+          "area_fraction": 0.06,
+          "area_mm2": 176.71458676,
+          "axis": "z",
+          "region_id": "axis:z:min",
+          "side": "min",
+          "surface_count": 1,
+          "surfaces": [
+            {
+              "area_mm2": 176.71458676,
+              "centroid_mm": [
+                -100.0,
+                30.0,
+                45.0
+              ],
+              "face_index_diagnostic_only": 1,
+              "normal": [
+                -0.0,
+                -0.0,
+                -1.0
+              ]
+            }
+          ]
+        },
+        "pair_id": "opposed:z",
+        "span_length_mm": 55.0
+      }
+    ],
+    "bbox_mm": {
+      "diagonal": 58.94913061,
+      "lengths": [
+        15.0,
+        15.0,
+        55.0
+      ],
+      "maximum": [
+        -92.5,
+        37.5,
+        100.0
+      ],
+      "minimum": [
+        -107.5,
+        22.5,
+        45.0
+      ]
+    },
+    "deterministic_eligibility": {
+      "eligible": true,
+      "policy": {
+        "expected_solid_count": 1,
+        "maximum_region_surface_count": 64,
+        "minimum_region_area_fraction": 0.002,
+        "normal_alignment_min": 0.98,
+        "plane_tolerance_relative": 1e-06
+      },
+      "reason_codes": []
+    },
+    "eligible_opposed_region_pairs": [
+      {
+        "axis": "z",
+        "eligible": true,
+        "maximum_region": {
+          "area_fraction": 0.06,
+          "area_mm2": 176.71458676,
+          "axis": "z",
+          "region_id": "axis:z:max",
+          "side": "max",
+          "surface_count": 1,
+          "surfaces": [
+            {
+              "area_mm2": 176.71458676,
+              "centroid_mm": [
+                -100.0,
+                30.0,
+                100.0
+              ],
+              "face_index_diagnostic_only": 2,
+              "normal": [
+                0.0,
+                0.0,
+                1.0
+              ]
+            }
+          ]
+        },
+        "minimum_region": {
+          "area_fraction": 0.06,
+          "area_mm2": 176.71458676,
+          "axis": "z",
+          "region_id": "axis:z:min",
+          "side": "min",
+          "surface_count": 1,
+          "surfaces": [
+            {
+              "area_mm2": 176.71458676,
+              "centroid_mm": [
+                -100.0,
+                30.0,
+                45.0
+              ],
+              "face_index_diagnostic_only": 1,
+              "normal": [
+                -0.0,
+                -0.0,
+                -1.0
+              ]
+            }
+          ]
+        },
+        "pair_id": "opposed:z",
+        "span_length_mm": 55.0
+      }
+    ],
+    "face_count": 3,
+    "solid_count": 1,
+    "step_sha256": "2b21b017623ea05ef37157ceceb24acb316b38f84aee8972fed12b1fcd76f84f",
+    "total_surface_area_mm2": 2945.24311274
+  },
+  "item_id": "p_fusion360_001017",
+  "schema_version": "cadengbench-p.l3-annotation-context.v1",
+  "selection": {
+    "complexity": {
+      "aggregate_for_stratification_only": 0.2673287095418243,
+      "axes": {
+        "construction_topology": 0.37040773434216057,
+        "history": 0.34892812105926857,
+        "parametric": 0.13329129886506935,
+        "sketch": 0.21668768390079865
+      },
+      "method": "within_source_multiaxis_percentile_v1",
+      "single_scalar_is_not_benchmark_truth": true,
+      "tier": "easy"
+    },
+    "selection_stratum": "single_new_body",
+    "source_key": "fusion360",
+    "split": "frozen_evaluation"
+  },
+  "semantic_context": {
+    "application_context": "industrial machinery mounting bracket",
+    "authority_warning": "LLM/VLM-authored context may be semantically wrong and is not selector or source-intent authority.",
+    "category": "mechanical component",
+    "global_form": "Solid right circular cylinder with flat parallel end faces and smooth continuous lateral surface.",
+    "interfaces": [
+      {
+        "description": "four threaded holes for bolt attachment",
+        "kind": "mounting"
+      }
+    ],
+    "status": "candidate_context_only",
+    "title": "cylindrical support housing"
+  },
+  "source_family": "fusion360_reconstruction",
+  "visual": {
+    "bytes": 29299,
+    "path": "data/derived/cadengbench_p_300_l3_probe_v1/items/p_fusion360_001017/input_image.png",
+    "sha256": "f3697fe622c96b5a9874694d6e0ea001e177ca6b53af9dbb1d79f825aec7024b"
+  }
+}

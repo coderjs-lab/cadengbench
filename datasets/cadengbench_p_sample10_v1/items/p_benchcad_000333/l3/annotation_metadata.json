@@ -1,0 +1,43 @@
+{
+  "candidate_sha256": "19d6c6e8181dce5cc2d9ed4bdf93a425c1c93b4e0774c8828e0e4853f87eb9d8",
+  "created_at": "2026-07-22T01:34:58.398Z",
+  "decoding": {
+    "max_output_tokens": 650,
+    "temperature": 0.0,
+    "top_p": 1.0
+  },
+  "endpoint": {
+    "base_url": "http://127.0.0.1:8001/v1",
+    "model_id": "Qwen/Qwen3.6-27B-FP8",
+    "revision": "e89b16ebf1988b3d6befa7de50abc2d76f26eb09",
+    "served_model_name": "cadengbench-qwen3.6-27b-vlm"
+  },
+  "guidance_schema_projection": {
+    "removed_keywords": [
+      "#/properties/risk_flags/uniqueItems"
+    ],
+    "sha256": "8152ce0f5f946505444d1f913fd5c9af3e19315654ddd0af925485f49a46c6a8"
+  },
+  "item_id": "p_benchcad_000333",
+  "provider_response_path": "data/derived/cadengbench_p_300_l3_probe_v1/items/p_benchcad_000333/provider_response.json",
+  "provider_response_sha256": "ae2cf17434fb9dc1477aac711362c0168e9d8ad5cbbf828f5ae2350c2bbede3b",
+  "request_identity": {
+    "bundle_sha256": "3c3d6b301d61a2203d06b5eb67efd2a9c6e47ee217ee55448298e3ff83bf1643",
+    "guidance_schema_sha256": "8152ce0f5f946505444d1f913fd5c9af3e19315654ddd0af925485f49a46c6a8",
+    "image_sha256": "870fde456f04af3e6efb70a5d617e8469955d9f148399766b9cc8b4b0ce0b5d9",
+    "model_id": "Qwen/Qwen3.6-27B-FP8",
+    "profile_sha256": "b846095ad27b8f2222406dc8125fce19ca7a2337e40bcfdb2697a0fcc486f3c2",
+    "prompt_sha256": "c7678656759c5ea366f3fe914efb9aa0a504391dd2123b4a6d966591843696bd",
+    "revision": "e89b16ebf1988b3d6befa7de50abc2d76f26eb09",
+    "schema_sha256": "b07d0663314aa0ad993adda59d9064957a167983d334eee55fe7c6365bb137a2"
+  },
+  "schema_version": "cadengbench-p.l3-annotation-metadata.v1",
+  "transport_retries": {
+    "completion": 0,
+    "tokenize": 0
+  },
+  "usage": {
+    "input_tokens": 2132,
+    "output_tokens": 268
+  }
+}

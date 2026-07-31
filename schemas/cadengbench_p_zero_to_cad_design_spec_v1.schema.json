@@ -1,0 +1,77 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cadengbench.org/schemas/cadengbench_p_zero_to_cad_design_spec_v1.schema.json",
+  "title": "CADEngBench-P canonical zero-to-CAD design specification",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version", "spec_id", "item_id", "spec_version", "task_kind",
+    "canonical_public_spec", "public_requirement_ledger", "public_input_profiles",
+    "public_visual_manifest", "frozen_prompt_rendering", "model_environment_contract",
+    "annotation_provenance", "hidden_acceptance", "spec_quality"
+  ],
+  "properties": {
+    "schema_version": {"const": "cadengbench-p.zero-to-cad-design-spec.v1"},
+    "spec_id": {"type": "string", "minLength": 1},
+    "item_id": {"type": "string", "minLength": 1},
+    "spec_version": {"const": "1.0.0"},
+    "task_kind": {"const": "zero_to_cad"},
+    "canonical_public_spec": {
+      "type": "object", "additionalProperties": false,
+      "required": ["title", "object_category", "design_goal", "application_context", "units", "reference_frame", "solid_contract", "overall_envelope", "required_features", "functional_interfaces", "public_parameters", "public_constraint_relations", "material_process_context", "allowed_design_freedom", "explicit_non_requirements"],
+      "properties": {
+        "title": {"type": "string", "minLength": 1},
+        "object_category": {"type": "string", "minLength": 1},
+        "design_goal": {"type": "string", "minLength": 1},
+        "application_context": {"type": "string", "minLength": 1},
+        "units": {"const": "mm"},
+        "reference_frame": {"type": "object", "required": ["origin_description", "axes_description", "datum_refs"], "additionalProperties": false, "properties": {"origin_description": {"type": "string"}, "axes_description": {"type": "string"}, "datum_refs": {"type": "array", "items": {"type": "string"}}}},
+        "solid_contract": {"type": "object", "required": ["required_body_count", "connectivity"], "additionalProperties": false, "properties": {"required_body_count": {"type": "integer", "minimum": 1}, "connectivity": {"enum": ["one_connected_solid", "multiple_solids"]}}},
+        "overall_envelope": {"type": "object", "required": ["x", "y", "z"], "additionalProperties": false, "properties": {"x": {"$ref": "#/$defs/measure"}, "y": {"$ref": "#/$defs/measure"}, "z": {"$ref": "#/$defs/measure"}}},
+        "required_features": {"type": "array", "items": {"type": "object"}},
+        "functional_interfaces": {"type": "array", "items": {"type": "object"}},
+        "public_parameters": {"type": "array", "items": {"type": "object"}},
+        "public_constraint_relations": {"type": "array", "items": {"type": "object"}},
+        "material_process_context": {"type": "object"},
+        "allowed_design_freedom": {"type": "object"},
+        "explicit_non_requirements": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "public_requirement_ledger": {"type": "array", "minItems": 2, "items": {"$ref": "#/$defs/requirement"}},
+    "public_input_profiles": {"type": "array", "minItems": 3, "maxItems": 3, "prefixItems": [{"$ref": "#/$defs/textProfile"}, {"$ref": "#/$defs/isometricProfile"}, {"$ref": "#/$defs/engineeringViewsProfile"}], "items": false},
+    "public_visual_manifest": {"type": "array", "items": {"type": "object"}},
+    "frozen_prompt_rendering": {"type": "object", "required": ["renderer_id", "profile_renderings"], "properties": {"renderer_id": {"const": "cadengbench-p.zero-to-cad-prompt-renderer.v1"}, "profile_renderings": {"type": "object", "additionalProperties": false, "required": ["zero_to_cad.text.v1", "zero_to_cad.text_iso.v1", "zero_to_cad.text_engineering_views.v1"], "properties": {"zero_to_cad.text.v1": {"$ref": "#/$defs/promptRendering"}, "zero_to_cad.text_iso.v1": {"$ref": "#/$defs/promptRendering"}, "zero_to_cad.text_engineering_views.v1": {"$ref": "#/$defs/promptRendering"}}}}},
+    "model_environment_contract": {"type": "object", "required": ["execution_division", "permitted_languages_and_libraries", "network_access", "deliverables", "response_instructions"]},
+    "annotation_provenance": {"type": "object", "required": ["fact_packet_sha256", "source_artifact_refs", "prompt_policy_sha256", "annotation_run_refs", "deterministic_validation_refs", "review_status"]},
+    "hidden_acceptance": {"type": "object", "required": ["visibility", "requirement_to_check_refs", "reference_geometry_refs", "reference_history_refs", "source_parameter_binding_refs", "tolerance_implementation_refs", "leakage_sensitive_literals"]},
+    "spec_quality": {"type": "object", "required": ["deterministic_checks", "critic_advisory", "llm_judge_used", "known_underdetermination"]}
+  },
+  "$defs": {
+    "textProfile": {"type": "object", "additionalProperties": false, "required": ["profile_id", "exposed_artifact_ids"], "properties": {"profile_id": {"const": "zero_to_cad.text.v1"}, "exposed_artifact_ids": {"const": []}}},
+    "isometricProfile": {"type": "object", "additionalProperties": false, "required": ["profile_id", "exposed_artifact_ids"], "properties": {"profile_id": {"const": "zero_to_cad.text_iso.v1"}, "exposed_artifact_ids": {"type": "array", "minItems": 1, "maxItems": 1, "uniqueItems": true, "items": {"type": "string", "minLength": 1}}}},
+    "engineeringViewsProfile": {"type": "object", "additionalProperties": false, "required": ["profile_id", "exposed_artifact_ids"], "properties": {"profile_id": {"const": "zero_to_cad.text_engineering_views.v1"}, "exposed_artifact_ids": {"type": "array", "minItems": 1, "maxItems": 1, "uniqueItems": true, "items": {"type": "string", "minLength": 1}}}},
+    "promptRendering": {"type": "object", "additionalProperties": false, "required": ["system_prompt_path", "user_prompt_path", "system_prompt_sha256", "user_prompt_sha256"], "properties": {"system_prompt_path": {"type": "string", "minLength": 1}, "user_prompt_path": {"type": "string", "minLength": 1}, "system_prompt_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"}, "user_prompt_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"}}},
+    "measure": {
+      "type": "object", "additionalProperties": false,
+      "required": ["value", "unit", "tolerance", "requirement_id", "tolerance_status"],
+      "properties": {
+        "value": {"type": "number"}, "unit": {"const": "mm"}, "tolerance": {"type": "number", "exclusiveMinimum": 0},
+        "requirement_id": {"type": "string", "pattern": "^R-[0-9]{3}$"},
+        "tolerance_status": {"const": "benchmark_measurement_tolerance_not_manufacturing_tolerance"}
+      }
+    },
+    "requirement": {
+      "type": "object", "additionalProperties": false,
+      "required": ["requirement_id", "category", "model_visible_statement", "criticality", "value_and_tolerance", "provenance_class", "evidence_refs"],
+      "properties": {
+        "requirement_id": {"type": "string", "pattern": "^R-[0-9]{3}$"},
+        "category": {"enum": ["geometry", "topology", "dimension", "relation", "parametricity", "function", "material", "process", "dfm", "standard"]},
+        "model_visible_statement": {"type": "string", "minLength": 1},
+        "criticality": {"enum": ["required", "conditional"]},
+        "value_and_tolerance": {},
+        "provenance_class": {"enum": ["source_explicit", "deterministic_geometry", "verified_replay", "authoritative_external", "benchmark_authored_scenario"]},
+        "evidence_refs": {"type": "array", "minItems": 1, "items": {"type": "string"}}
+      }
+    }
+  }
+}

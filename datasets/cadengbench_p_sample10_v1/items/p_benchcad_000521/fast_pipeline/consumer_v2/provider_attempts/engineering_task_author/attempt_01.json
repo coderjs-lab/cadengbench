@@ -1,0 +1,14 @@
+{
+  "attempt": 1,
+  "finish_reason": "stop",
+  "http_status": 200,
+  "native_schema_guidance_used": true,
+  "outcome": "accepted",
+  "parse_recovery": "exact",
+  "raw_content": "{\"schema_version\": \"cadengbench-p.engineering-task-annotation.v3\", \"item_id\": \"p_benchcad_000521\", \"role_id\": \"engineering_task_author\", \"output_status\": \"complete\", \"payload\": {\"part_identity\": {\"title\": \"parallel key\", \"category\": \"transmission component\"}, \"design\": {\"goal\": \"increase key length for torque capacity\", \"application_context\": \"transmission shaft coupling\", \"design_freedom\": [\"length adjustment\"]}, \"function\": {\"functional_interpretation\": \"transmit torque between shaft and hub\", \"interfaces\": [{\"interface_id\": \"interface_1\", \"interface_kind\": \"mating\", \"description\": \"interlock with shaft groove\"}, {\"interface_id\": \"interface_2\", \"interface_kind\": \"mating\", \"description\": \"interlock with hub groove\"}], \"non_requirements\": [\"no surface finish requirement\"]}, \"material_process\": {\"material_family\": \"unspecified\", \"material_specification\": \"unspecified\", \"process_family\": \"unspecified\", \"process_variant\": \"unspecified\"}, \"standards\": [{\"standard_id\": \"DIN 6885\", \"requirement_category\": \"material\"}, {\"standard_id\": \"ISO 14\", \"requirement_category\": \"fit\"}], \"load_case\": {\"load_type\": \"torque\", \"magnitude\": 50, \"unit\": \"N_mm\", \"direction\": \"tangential\", \"application_region\": \"key interface\", \"constraint_region\": \"full length\", \"duty\": \"static\"}, \"functional_edit\": {\"operating_condition\": \"static torque transmission\", \"engineering_objective\": \"increase key length for torque capacity\"}}}",
+  "usage": {
+    "input_tokens": 991,
+    "output_tokens": 379,
+    "total_tokens": 1370
+  }
+}

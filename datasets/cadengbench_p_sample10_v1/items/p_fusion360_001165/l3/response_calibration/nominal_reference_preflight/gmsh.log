@@ -1,0 +1,314 @@
+Info:  - Label 'Shapes/Open CASCADE STEP translator 7.8 1' (3D)
+Info: Meshing 1D...
+Info: Meshing curve 1 (Line)
+Progress: Meshing 1D...
+Info: Meshing curve 2 (Line)
+Info: Meshing curve 3 (Line)
+Info: Meshing curve 4 (Line)
+Info: Meshing curve 5 (Line)
+Info: Meshing curve 6 (Line)
+Info: Meshing curve 7 (Line)
+Info: Meshing curve 8 (Line)
+Progress: Meshing 1D...
+Info: Meshing curve 9 (Line)
+Info: Meshing curve 10 (Line)
+Info: Meshing curve 11 (Line)
+Info: Meshing curve 12 (Line)
+Info: Meshing curve 13 (Line)
+Info: Meshing curve 14 (Line)
+Info: Meshing curve 15 (Line)
+Info: Meshing curve 16 (Line)
+Progress: Meshing 1D...
+Info: Meshing curve 17 (Line)
+Info: Meshing curve 18 (Line)
+Info: Meshing curve 19 (Line)
+Info: Meshing curve 20 (Line)
+Info: Meshing curve 21 (Line)
+Info: Meshing curve 22 (Line)
+Info: Meshing curve 23 (Line)
+Info: Meshing curve 24 (Line)
+Progress: Meshing 1D...
+Info: Meshing curve 25 (Line)
+Info: Meshing curve 26 (Line)
+Info: Meshing curve 27 (Line)
+Info: Meshing curve 28 (Line)
+Info: Meshing curve 29 (Line)
+Info: Meshing curve 30 (Line)
+Info: Meshing curve 31 (Line)
+Info: Meshing curve 32 (Line)
+Progress: Meshing 1D...
+Info: Meshing curve 33 (Line)
+Info: Meshing curve 34 (Line)
+Info: Meshing curve 35 (Line)
+Info: Meshing curve 36 (Line)
+Info: Meshing curve 37 (Line)
+Info: Meshing curve 38 (Line)
+Info: Meshing curve 39 (Line)
+Progress: Meshing 1D...
+Info: Meshing curve 40 (Line)
+Info: Meshing curve 41 (Line)
+Info: Meshing curve 42 (Line)
+Info: Meshing curve 43 (Line)
+Info: Meshing curve 44 (Line)
+Info: Meshing curve 45 (Line)
+Info: Meshing curve 46 (Line)
+Info: Meshing curve 47 (Line)
+Progress: Meshing 1D...
+Info: Meshing curve 48 (Line)
+Info: Meshing curve 49 (Line)
+Info: Meshing curve 50 (Line)
+Info: Meshing curve 51 (Line)
+Info: Meshing curve 52 (Line)
+Info: Meshing curve 53 (Line)
+Info: Meshing curve 54 (Line)
+Info: Meshing curve 55 (Line)
+Progress: Meshing 1D...
+Info: Meshing curve 56 (Line)
+Info: Meshing curve 57 (Line)
+Info: Meshing curve 58 (Line)
+Info: Meshing curve 59 (Line)
+Info: Meshing curve 60 (Line)
+Info: Meshing curve 61 (Line)
+Info: Meshing curve 62 (Line)
+Info: Meshing curve 63 (Line)
+Progress: Meshing 1D...
+Info: Meshing curve 64 (Line)
+Info: Meshing curve 65 (Line)
+Info: Meshing curve 66 (Line)
+Info: Meshing curve 67 (Line)
+Info: Meshing curve 68 (Line)
+Info: Meshing curve 69 (Line)
+Info: Meshing curve 70 (Line)
+Info: Meshing curve 71 (Line)
+Progress: Meshing 1D...
+Info: Meshing curve 72 (Line)
+Info: Meshing curve 73 (Line)
+Info: Meshing curve 74 (Line)
+Info: Meshing curve 75 (Line)
+Info: Meshing curve 76 (Line)
+Info: Meshing curve 77 (Line)
+Info: Meshing curve 78 (Line)
+Progress: Meshing 1D...
+Info: Done meshing 1D (Wall 0.0309538s, CPU 0.030955s)
+Info: Meshing 2D...
+Info: Meshing surface 1 (Plane, Frontal-Delaunay)
+Progress: Meshing 2D...
+Info: Meshing surface 2 (Plane, Frontal-Delaunay)
+Info: Meshing surface 3 (Plane, Frontal-Delaunay)
+Progress: Meshing 2D...
+Info: Meshing surface 4 (Plane, Frontal-Delaunay)
+Info: Meshing surface 5 (Plane, Frontal-Delaunay)
+Info: Meshing surface 6 (Plane, Frontal-Delaunay)
+Progress: Meshing 2D...
+Info: Meshing surface 7 (Plane, Frontal-Delaunay)
+Info: Meshing surface 8 (Plane, Frontal-Delaunay)
+Info: Meshing surface 9 (Plane, Frontal-Delaunay)
+Progress: Meshing 2D...
+Info: Meshing surface 10 (Plane, Frontal-Delaunay)
+Info: Meshing surface 11 (Plane, Frontal-Delaunay)
+Info: Meshing surface 12 (Plane, Frontal-Delaunay)
+Progress: Meshing 2D...
+Info: Meshing surface 13 (Plane, Frontal-Delaunay)
+Info: Meshing surface 14 (Plane, Frontal-Delaunay)
+Progress: Meshing 2D...
+Info: Meshing surface 15 (Plane, Frontal-Delaunay)
+Info: Meshing surface 16 (Plane, Frontal-Delaunay)
+Info: Meshing surface 17 (Plane, Frontal-Delaunay)
+Progress: Meshing 2D...
+Info: Meshing surface 18 (Plane, Frontal-Delaunay)
+Info: Meshing surface 19 (Plane, Frontal-Delaunay)
+Info: Meshing surface 20 (Plane, Frontal-Delaunay)
+Progress: Meshing 2D...
+Info: Meshing surface 21 (Plane, Frontal-Delaunay)
+Info: Meshing surface 22 (Plane, Frontal-Delaunay)
+Info: Meshing surface 23 (Plane, Frontal-Delaunay)
+Progress: Meshing 2D...
+Info: Meshing surface 24 (Plane, Frontal-Delaunay)
+Info: Meshing surface 25 (Plane, Frontal-Delaunay)
+Info: Meshing surface 26 (Plane, Frontal-Delaunay)
+Progress: Meshing 2D...
+Info: Meshing surface 27 (Plane, Frontal-Delaunay)
+Info: Meshing surface 28 (Plane, Frontal-Delaunay)
+Progress: Meshing 2D...
+Info: Done meshing 2D (Wall 0.583038s, CPU 0.57445s)
+Info: Meshing 3D...
+Progress: Meshing 3D...
+Info: 3D Meshing 1 volume with 1 connected component
+Info: Input mesh hash c0bce3486bf9c65d
+Info: Creating an empty mesh with 20951 vertices
+Info: Initialization of tet. mesh
+Info: Delaunay of      20947 points on   1 threads - mesh.nvert: 4         
+Info: All volumes of the BRep were found and colorized accordingly
+Info: Computing interpolated mesh sizes...
+Info: Done computing interpolated mesh sizes
+Info: Delaunay of      44918 points on   1 threads - mesh.nvert: 20951     
+Info:           -      39235 points filtered
+Info:           =       5683 points added
+Info: Computing interpolated mesh sizes...
+Info: Done computing interpolated mesh sizes
+Info: Delaunay of      33349 points on   1 threads - mesh.nvert: 26634     
+Info:           -      26430 points filtered
+Info:           =       6919 points added
+Info: Computing interpolated mesh sizes...
+Info: Done computing interpolated mesh sizes
+Info: Delaunay of       4637 points on   1 threads - mesh.nvert: 33553     
+Info:           -       2349 points filtered
+Info:           =       2288 points added
+Info: Computing interpolated mesh sizes...
+Info: Done computing interpolated mesh sizes
+Info: Delaunay of        415 points on   1 threads - mesh.nvert: 35841     
+Info:           -        115 points filtered
+Info:           =        300 points added
+Info: Computing interpolated mesh sizes...
+Info: Done computing interpolated mesh sizes
+Info: Delaunay of         22 points on   1 threads - mesh.nvert: 36141     
+Info:           -          4 points filtered
+Info:           =         18 points added
+Info: Computing interpolated mesh sizes...
+Info: Done computing interpolated mesh sizes
+Info: Delaunay of          3 points on   1 threads - mesh.nvert: 36159     
+Info: Computing interpolated mesh sizes...
+Info: Done computing interpolated mesh sizes
+Info: Improving       5989 tet. on   1 thrd (S & ER)
+Info: Improving        271 tet. on   1 thrd (S & ER)
+Info: Improving         51 tet. on   1 thrd (S & ER)
+Info: Improving         32 tet. on   1 thrd (S & ER)
+Info: Improving         32 tet. on   1 thrd (GSC)
+Info: Improving          2 tet. on   1 thrd (S & ER)
+Info: Improving          1 tet. on   1 thrd (S & ER)
+Info: Improving          1 tet. on   1 thrd (GSC)
+Info:  	Final tet. mesh contains 204605 tetrahedra
+Info:  	Final tet. mesh contains 36162 vertices
+Info: tEmptyMesh  	 = 	    0.075
+Info: tVerifyBnd  	 = 	    0.015
+Info: tBndRecovery	 = 	    0.000 (boundary not altered)
+Info: tConvertMesh	 = 	    0.000 (nothing to convert)
+Info: tRefine     	 = 	    0.151
+Info: tOptimize   	 = 	    0.025
+Progress: Meshing 3D...
+Info: Done meshing 3D (Wall 0.32301s, CPU 0.322934s)
+Info: 36162 nodes 200202 elements
+Info: Meshing order 2 (curvilinear on)...
+Info: Meshing curve 1 order 2
+Progress: Meshing order 2 (curvilinear on)...
+Info: Meshing curve 2 order 2
+Info: Meshing curve 3 order 2
+Info: Meshing curve 4 order 2
+Info: Meshing curve 5 order 2
+Info: Meshing curve 6 order 2
+Info: Meshing curve 7 order 2
+Info: Meshing curve 8 order 2
+Info: Meshing curve 9 order 2
+Info: Meshing curve 10 order 2
+Info: Meshing curve 11 order 2
+Progress: Meshing order 2 (curvilinear on)...
+Info: Meshing curve 12 order 2
+Info: Meshing curve 13 order 2
+Info: Meshing curve 14 order 2
+Info: Meshing curve 15 order 2
+Info: Meshing curve 16 order 2
+Info: Meshing curve 17 order 2
+Info: Meshing curve 18 order 2
+Info: Meshing curve 19 order 2
+Info: Meshing curve 20 order 2
+Info: Meshing curve 21 order 2
+Info: Meshing curve 22 order 2
+Progress: Meshing order 2 (curvilinear on)...
+Info: Meshing curve 23 order 2
+Info: Meshing curve 24 order 2
+Info: Meshing curve 25 order 2
+Info: Meshing curve 26 order 2
+Info: Meshing curve 27 order 2
+Info: Meshing curve 28 order 2
+Info: Meshing curve 29 order 2
+Info: Meshing curve 30 order 2
+Info: Meshing curve 31 order 2
+Info: Meshing curve 32 order 2
+Info: Meshing curve 33 order 2
+Progress: Meshing order 2 (curvilinear on)...
+Info: Meshing curve 34 order 2
+Info: Meshing curve 35 order 2
+Info: Meshing curve 36 order 2
+Info: Meshing curve 37 order 2
+Info: Meshing curve 38 order 2
+Info: Meshing curve 39 order 2
+Info: Meshing curve 40 order 2
+Info: Meshing curve 41 order 2
+Info: Meshing curve 42 order 2
+Info: Meshing curve 43 order 2
+Progress: Meshing order 2 (curvilinear on)...
+Info: Meshing curve 44 order 2
+Info: Meshing curve 45 order 2
+Info: Meshing curve 46 order 2
+Info: Meshing curve 47 order 2
+Info: Meshing curve 48 order 2
+Info: Meshing curve 49 order 2
+Info: Meshing curve 50 order 2
+Info: Meshing curve 51 order 2
+Info: Meshing curve 52 order 2
+Info: Meshing curve 53 order 2
+Info: Meshing curve 54 order 2
+Progress: Meshing order 2 (curvilinear on)...
+Info: Meshing curve 55 order 2
+Info: Meshing curve 56 order 2
+Info: Meshing curve 57 order 2
+Info: Meshing curve 58 order 2
+Info: Meshing curve 59 order 2
+Info: Meshing curve 60 order 2
+Info: Meshing curve 61 order 2
+Info: Meshing curve 62 order 2
+Info: Meshing curve 63 order 2
+Info: Meshing curve 64 order 2
+Info: Meshing curve 65 order 2
+Progress: Meshing order 2 (curvilinear on)...
+Info: Meshing curve 66 order 2
+Info: Meshing curve 67 order 2
+Info: Meshing curve 68 order 2
+Info: Meshing curve 69 order 2
+Info: Meshing curve 70 order 2
+Info: Meshing curve 71 order 2
+Info: Meshing curve 72 order 2
+Info: Meshing curve 73 order 2
+Info: Meshing curve 74 order 2
+Info: Meshing curve 75 order 2
+Progress: Meshing order 2 (curvilinear on)...
+Info: Meshing curve 76 order 2
+Info: Meshing curve 77 order 2
+Info: Meshing curve 78 order 2
+Info: Meshing surface 1 order 2
+Info: Meshing surface 2 order 2
+Info: Meshing surface 3 order 2
+Info: Meshing surface 4 order 2
+Info: Meshing surface 5 order 2
+Info: Meshing surface 6 order 2
+Info: Meshing surface 7 order 2
+Info: Meshing surface 8 order 2
+Progress: Meshing order 2 (curvilinear on)...
+Info: Meshing surface 9 order 2
+Info: Meshing surface 10 order 2
+Info: Meshing surface 11 order 2
+Info: Meshing surface 12 order 2
+Info: Meshing surface 13 order 2
+Info: Meshing surface 14 order 2
+Info: Meshing surface 15 order 2
+Info: Meshing surface 16 order 2
+Info: Meshing surface 17 order 2
+Info: Meshing surface 18 order 2
+Info: Meshing surface 19 order 2
+Progress: Meshing order 2 (curvilinear on)...
+Info: Meshing surface 20 order 2
+Info: Meshing surface 21 order 2
+Info: Meshing surface 22 order 2
+Info: Meshing surface 23 order 2
+Info: Meshing surface 24 order 2
+Info: Meshing surface 25 order 2
+Info: Meshing surface 26 order 2
+Info: Meshing surface 27 order 2
+Info: Meshing surface 28 order 2
+Info: Meshing volume 1 order 2
+Progress: Meshing order 2 (curvilinear on)...
+Info: Surface mesh: worst distortion = 1 (0 elements in ]0, 0.2]); worst gamma = 0.682369
+Info: Volume mesh: worst distortion = 1 (0 elements in ]0, 0.2])
+Info: Done meshing order 2 (Wall 0.936417s, CPU 0.926629s)
+Info: Writing './output/cadengbench_p_l3_response_contracts_v4/items/p_fusion360_001165/nominal_reference_preflight/mesh.msh'...
+Info: Done writing './output/cadengbench_p_l3_response_contracts_v4/items/p_fusion360_001165/nominal_reference_preflight/mesh.msh'

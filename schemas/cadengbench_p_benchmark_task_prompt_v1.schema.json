@@ -1,0 +1,327 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cadengbench.org/schemas/cadengbench_p_benchmark_task_prompt_v1.schema.json",
+  "title": "CADEngBench-P benchmark-facing functional edit task prompt v1",
+  "description": "Frozen model-under-evaluation prompts and public execution inputs, with benchmark-internal acceptance references in a separate non-interpolable envelope.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "record_type",
+    "task_prompt_id",
+    "task_prompt_version",
+    "execution_division",
+    "source_scenario",
+    "prompt_template",
+    "public_task",
+    "hidden_acceptance",
+    "integrity",
+    "leakage_audit"
+  ],
+  "properties": {
+    "schema_version": {"const": "cadengbench-p.benchmark-task-prompt.v1"},
+    "record_type": {"const": "benchmark_task_prompt"},
+    "task_prompt_id": {"$ref": "#/$defs/nonEmpty"},
+    "task_prompt_version": {"type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"},
+    "execution_division": {"enum": ["code_only", "agentic_python_cad"]},
+    "source_scenario": {"$ref": "#/$defs/sourceScenario"},
+    "prompt_template": {"$ref": "#/$defs/promptTemplate"},
+    "public_task": {"$ref": "#/$defs/publicTask"},
+    "hidden_acceptance": {"$ref": "#/$defs/hiddenAcceptance"},
+    "integrity": {"$ref": "#/$defs/integrity"},
+    "leakage_audit": {"$ref": "#/$defs/leakageAudit"}
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"execution_division": {"const": "code_only"}}},
+      "then": {
+        "properties": {
+          "public_task": {
+            "properties": {
+              "tool_environment_profile": {
+                "properties": {"execution_division": {"const": "code_only"}}
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {"properties": {"execution_division": {"const": "agentic_python_cad"}}},
+      "then": {
+        "properties": {
+          "public_task": {
+            "properties": {
+              "tool_environment_profile": {
+                "properties": {"execution_division": {"const": "agentic_python_cad"}}
+              }
+            }
+          }
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "nonEmpty": {"type": "string", "minLength": 1},
+    "sha256": {"type": "string", "pattern": "^sha256:[a-f0-9]{64}$"},
+    "stringArray": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {"$ref": "#/$defs/nonEmpty"}
+    },
+    "provenanceEntry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["provenance_id", "kind", "uri", "sha256"],
+      "properties": {
+        "provenance_id": {"$ref": "#/$defs/nonEmpty"},
+        "kind": {
+          "enum": [
+            "source_record",
+            "engineering_scenario",
+            "human_review",
+            "multiagent_review",
+            "deterministic_validation",
+            "publication_freeze"
+          ]
+        },
+        "uri": {"$ref": "#/$defs/nonEmpty"},
+        "version": {"$ref": "#/$defs/nonEmpty"},
+        "sha256": {"$ref": "#/$defs/sha256"}
+      }
+    },
+    "publication": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "phrasing_origin", "review_record_refs"],
+      "properties": {
+        "status": {"const": "validated_frozen"},
+        "phrasing_origin": {
+          "enum": [
+            "source_authored",
+            "human_authored",
+            "llm_candidate_human_reviewed",
+            "llm_candidate_multiagent_reviewed"
+          ]
+        },
+        "review_record_refs": {"$ref": "#/$defs/stringArray"}
+      }
+    },
+    "sourceScenario": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "scenario_id",
+        "scenario_version",
+        "source_key",
+        "publication",
+        "provenance"
+      ],
+      "properties": {
+        "scenario_id": {"$ref": "#/$defs/nonEmpty"},
+        "scenario_version": {"$ref": "#/$defs/nonEmpty"},
+        "source_key": {"enum": ["benchcad", "fusion360"]},
+        "publication": {"$ref": "#/$defs/publication"},
+        "provenance": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"$ref": "#/$defs/provenanceEntry"}
+        }
+      }
+    },
+    "promptTemplate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["template_id", "template_version", "template_sha256"],
+      "properties": {
+        "template_id": {"$ref": "#/$defs/nonEmpty"},
+        "template_version": {"$ref": "#/$defs/nonEmpty"},
+        "template_sha256": {"$ref": "#/$defs/sha256"}
+      }
+    },
+    "engineeringIntent": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["task_title", "application_context", "edit_need", "engineering_outcome"],
+      "properties": {
+        "task_title": {"$ref": "#/$defs/nonEmpty"},
+        "application_context": {"$ref": "#/$defs/nonEmpty"},
+        "edit_need": {"$ref": "#/$defs/nonEmpty"},
+        "engineering_outcome": {"$ref": "#/$defs/nonEmpty"}
+      }
+    },
+    "modelPrompts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["system_prompt", "user_task_prompt"],
+      "properties": {
+        "system_prompt": {"$ref": "#/$defs/nonEmpty"},
+        "user_task_prompt": {"$ref": "#/$defs/nonEmpty"}
+      }
+    },
+    "artifact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "artifact_id",
+        "role",
+        "filename",
+        "media_type",
+        "sha256",
+        "description"
+      ],
+      "properties": {
+        "artifact_id": {"$ref": "#/$defs/nonEmpty"},
+        "role": {
+          "enum": ["base_cad", "reference_render", "engineering_drawing", "supporting_data"]
+        },
+        "filename": {"type": "string", "pattern": "^[^/\\\\]+$"},
+        "media_type": {"$ref": "#/$defs/nonEmpty"},
+        "sha256": {"$ref": "#/$defs/sha256"},
+        "description": {"$ref": "#/$defs/nonEmpty"}
+      }
+    },
+    "toolEnvironment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "profile_id",
+        "execution_division",
+        "interaction_model",
+        "runtime",
+        "capabilities",
+        "network_access"
+      ],
+      "properties": {
+        "profile_id": {"$ref": "#/$defs/nonEmpty"},
+        "execution_division": {"enum": ["code_only", "agentic_python_cad"]},
+        "interaction_model": {"enum": ["single_response", "bounded_workspace_agent"]},
+        "runtime": {"$ref": "#/$defs/nonEmpty"},
+        "capabilities": {"$ref": "#/$defs/stringArray"},
+        "network_access": {"const": false}
+      }
+    },
+    "deliverable": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["deliverable_id", "filename", "media_type", "required", "description"],
+      "properties": {
+        "deliverable_id": {"$ref": "#/$defs/nonEmpty"},
+        "filename": {"type": "string", "pattern": "^[^/\\\\]+$"},
+        "media_type": {"$ref": "#/$defs/nonEmpty"},
+        "required": {"const": true},
+        "description": {"$ref": "#/$defs/nonEmpty"}
+      }
+    },
+    "submissionContract": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["contract_id", "submission_mode", "entrypoint", "deliverables", "response_instructions"],
+      "properties": {
+        "contract_id": {"$ref": "#/$defs/nonEmpty"},
+        "submission_mode": {"enum": ["single_code_response", "single_json_response", "workspace_files"]},
+        "entrypoint": {"$ref": "#/$defs/nonEmpty"},
+        "deliverables": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"$ref": "#/$defs/deliverable"}
+        },
+        "response_instructions": {"$ref": "#/$defs/stringArray"}
+      }
+    },
+    "publicTask": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "visibility",
+        "engineering_intent",
+        "model_under_evaluation_prompts",
+        "provided_artifact_manifest",
+        "tool_environment_profile",
+        "expected_submission_contract",
+        "public_constraints"
+      ],
+      "properties": {
+        "visibility": {"const": "model_visible"},
+        "engineering_intent": {"$ref": "#/$defs/engineeringIntent"},
+        "model_under_evaluation_prompts": {"$ref": "#/$defs/modelPrompts"},
+        "provided_artifact_manifest": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"$ref": "#/$defs/artifact"},
+          "contains": {"properties": {"role": {"const": "base_cad"}}, "required": ["role"]}
+        },
+        "tool_environment_profile": {"$ref": "#/$defs/toolEnvironment"},
+        "expected_submission_contract": {"$ref": "#/$defs/submissionContract"},
+        "public_constraints": {"$ref": "#/$defs/stringArray"}
+      }
+    },
+    "hiddenAcceptance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["visibility", "contract_refs", "interpolation_allowed"],
+      "properties": {
+        "visibility": {"const": "benchmark_internal"},
+        "contract_refs": {"$ref": "#/$defs/stringArray"},
+        "interpolation_allowed": {"const": false}
+      }
+    },
+    "integrity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "normalization",
+        "source_scenario_sha256",
+        "engineering_intent_sha256",
+        "system_prompt_sha256",
+        "user_task_prompt_sha256",
+        "public_task_sha256",
+        "hidden_acceptance_sha256",
+        "record_sha256"
+      ],
+      "properties": {
+        "normalization": {"const": "unicode_nfkc_lf_trim_v1"},
+        "source_scenario_sha256": {"$ref": "#/$defs/sha256"},
+        "engineering_intent_sha256": {"$ref": "#/$defs/sha256"},
+        "system_prompt_sha256": {"$ref": "#/$defs/sha256"},
+        "user_task_prompt_sha256": {"$ref": "#/$defs/sha256"},
+        "public_task_sha256": {"$ref": "#/$defs/sha256"},
+        "hidden_acceptance_sha256": {"$ref": "#/$defs/sha256"},
+        "record_sha256": {"$ref": "#/$defs/sha256"}
+      }
+    },
+    "leakageAudit": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "audited_surface",
+        "sensitive_literal_count",
+        "sensitive_literal_set_sha256",
+        "matched_hidden_literal_count",
+        "prohibited_pattern_match_count",
+        "unresolved_placeholder_count"
+      ],
+      "properties": {
+        "status": {"const": "passed"},
+        "audited_surface": {
+          "type": "array",
+          "const": [
+            "engineering_intent",
+            "model_under_evaluation_prompts",
+            "provided_artifact_manifest",
+            "tool_environment_profile",
+            "expected_submission_contract",
+            "public_constraints"
+          ]
+        },
+        "sensitive_literal_count": {"type": "integer", "minimum": 1},
+        "sensitive_literal_set_sha256": {"$ref": "#/$defs/sha256"},
+        "matched_hidden_literal_count": {"const": 0},
+        "prohibited_pattern_match_count": {"const": 0},
+        "unresolved_placeholder_count": {"const": 0}
+      }
+    }
+  }
+}

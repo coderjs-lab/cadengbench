@@ -1,0 +1,122 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cadengbench.org/schemas/cadengbench_p_functional_edit_candidate_ledger_v2.schema.json",
+  "title": "CADEngBench-P functional engineering-edit candidate and deterministic-publication ledger v2",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "item_id", "records", "summary"],
+  "properties": {
+    "schema_version": {"const": "cadengbench-p.functional-edit-candidate-ledger.v2"},
+    "item_id": {"$ref": "#/$defs/itemId"},
+    "records": {"type": "array", "items": {"$ref": "#/$defs/record"}},
+    "summary": {"$ref": "#/$defs/summary"}
+  },
+  "$defs": {
+    "itemId": {"type": "string", "pattern": "^p_(benchcad|fusion360|futurecad)_[0-9]{3,}$"},
+    "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "sourceOutput": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "sha256", "json_pointer"],
+      "properties": {
+        "path": {"type": "string", "pattern": "^[^/].+"},
+        "sha256": {"$ref": "#/$defs/sha256"},
+        "json_pointer": {"type": "string", "pattern": "^/"}
+      }
+    },
+    "finding": {
+      "type": "object",
+      "required": ["finding_id", "severity", "issue_code"],
+      "properties": {
+        "finding_id": {"type": "string", "minLength": 1},
+        "severity": {"enum": ["low", "medium", "high", "critical"]},
+        "issue_code": {"type": "string", "minLength": 1}
+      }
+    },
+    "review": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["role_id", "run_id", "audit_id", "source_output", "output_status", "findings"],
+      "properties": {
+        "role_id": {"const": "functional_edit_critic"},
+        "run_id": {"type": "string", "minLength": 1},
+        "audit_id": {"type": "string", "minLength": 1},
+        "source_output": {"$ref": "#/$defs/sourceOutput"},
+        "output_status": {"enum": ["complete", "partial", "abstained", "escalation_requested"]},
+        "findings": {"type": "array", "items": {"$ref": "#/$defs/finding"}}
+      }
+    },
+    "record": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "candidate_id", "candidate_class", "candidate_status", "role_id",
+        "generated_by_run_id", "source_output", "scenario_provenance",
+        "source_author_intent_claimed", "requires_independent_multiagent_review",
+        "must_be_deterministically_promoted", "evaluator_uses_llm_judge",
+        "independent_multiagent_reviews", "multiagent_review_completed",
+        "blocking_finding_count", "deterministic_promotion_status"
+      ],
+      "properties": {
+        "candidate_id": {"type": "string", "pattern": "^fe2_[A-Za-z0-9][A-Za-z0-9._-]*$"},
+        "candidate_class": {"const": "benchmark_authored_functional_edit"},
+        "candidate_status": {"const": "candidate_only"},
+        "role_id": {"const": "functional_edit_synthesizer"},
+        "generated_by_run_id": {"type": "string", "minLength": 1},
+        "source_output": {"$ref": "#/$defs/sourceOutput"},
+        "scenario_provenance": {"const": "benchmark_authored"},
+        "source_author_intent_claimed": {"const": false},
+        "requires_independent_multiagent_review": {"const": true},
+        "must_be_deterministically_promoted": {"const": true},
+        "evaluator_uses_llm_judge": {"const": false},
+        "independent_multiagent_reviews": {"type": "array", "items": {"$ref": "#/$defs/review"}},
+        "multiagent_review_completed": {"type": "boolean"},
+        "blocking_finding_count": {"type": "integer", "minimum": 0},
+        "deterministic_promotion_status": {
+          "enum": ["not_run", "blocked", "verified_compiled"]
+        },
+        "prompt_materialization": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["status", "scoreable", "blocking_reasons", "status_artifact"],
+          "properties": {
+            "status": {"enum": ["blocked", "materialized"]},
+            "scoreable": {"type": "boolean"},
+            "blocking_reasons": {"type": "array", "items": {"type": "string"}},
+            "status_artifact": {"$ref": "#/$defs/artifact"},
+            "candidate_prompt_artifact": {"$ref": "#/$defs/artifact"},
+            "deterministic_acceptance_artifact": {"$ref": "#/$defs/artifact"}
+          }
+        }
+      }
+    },
+    "artifact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "sha256", "bytes"],
+      "properties": {
+        "path": {"type": "string", "pattern": "^[^/].+"},
+        "sha256": {"$ref": "#/$defs/sha256"},
+        "bytes": {"type": "integer", "minimum": 0}
+      }
+    },
+    "summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "candidate_count", "benchmark_authored_count", "independent_multiagent_audit_count",
+        "blocking_finding_count", "deterministically_promoted_count", "evaluator_uses_llm_judge"
+      ],
+      "properties": {
+        "candidate_count": {"type": "integer", "minimum": 0},
+        "benchmark_authored_count": {"type": "integer", "minimum": 0},
+        "independent_multiagent_audit_count": {"type": "integer", "minimum": 0},
+        "blocking_finding_count": {"type": "integer", "minimum": 0},
+        "deterministically_promoted_count": {"type": "integer", "minimum": 0},
+        "model_facing_candidate_prompt_count": {"type": "integer", "minimum": 0},
+        "scoreable_prompt_count": {"type": "integer", "minimum": 0},
+        "evaluator_uses_llm_judge": {"const": false}
+      }
+    }
+  }
+}

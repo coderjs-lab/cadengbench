@@ -1,0 +1,271 @@
+{
+  "card_id": "p_benchcad_000757:linear-static-probe:v1",
+  "checks": {
+    "force_equilibrium": {
+      "limit": 1e-05,
+      "observed": 7.04160516622373e-09,
+      "passed": true
+    },
+    "normalized_compliance": {
+      "diagnostic_only": true,
+      "observed": 0.01995581611739829,
+      "passed": true
+    },
+    "regularized_von_mises": {
+      "diagnostic_only": true,
+      "observed": {
+        "p95": 0.09873443827786811,
+        "p99": 0.10694057528824664
+      },
+      "passed": true
+    },
+    "small_deformation": {
+      "limit": 0.02,
+      "observed": 2.0816769752208388e-06,
+      "passed": true
+    }
+  },
+  "evaluator_build_hash": "eb0ffb44f0b47c1fcfaa598e95a1a6ffdae963dd37ab0b64f988794c3398bb92",
+  "final_status": "probe_pass",
+  "item_id": "p_benchcad_000757",
+  "metrics": {
+    "applied_force_n": [
+      0.0,
+      0.0,
+      256.6373871997666
+    ],
+    "compliance_n_mm": 0.002370751921060599,
+    "fixed_reaction_force_n": [
+      -5.413619009030785e-07,
+      2.7817601291023342e-08,
+      -256.63738547584506
+    ],
+    "force_equilibrium_relative_error": 7.04160516622373e-09,
+    "max_displacement_mm": 1.648688206008444e-05,
+    "max_displacement_node": 2,
+    "normalized_compliance": 0.01995581611739829,
+    "normalized_max_displacement": 2.0816769752208388e-06,
+    "raw_max_nodal_von_mises_mpa": 0.27806137368797595,
+    "raw_max_nodal_von_mises_node": 10,
+    "regularized_stress_node_count": 6735,
+    "regularized_von_mises_mpa": {
+      "p95": 0.09873443827786811,
+      "p99": 0.10694057528824664
+    },
+    "stress_concentration_p95": 0.9873443827786811,
+    "stress_regularization": "exclude_fixed_and_loaded_plane_neighborhoods"
+  },
+  "runtime_lock_sha256": "5cd587bf0f862ab1bc60c988f151d4424c217ad236f8845c49bd488d5bd21820",
+  "runtime_seconds": 8.729430274004699,
+  "schema_version": "cadengbench-p.l3-calculix-result.v2",
+  "scoreable": true,
+  "source_intent_claimed": false,
+  "stages": {
+    "card": {
+      "card_sha256": "bc2f4e51a4bb1f0cf18ffd8fdc588a806cdd2d999794455407042fa95cb2523a",
+      "status": "passed"
+    },
+    "deck": {
+      "deck_sha256": "b71296efb085a9ec71c2aed61595b6c070c807796d6a0a24fde30dde7c6bd1da",
+      "status": "passed",
+      "template": "linear_static_structural_probe_v3"
+    },
+    "geometry": {
+      "expected_solid_count": 1,
+      "status": "passed",
+      "step_sha256": "261dd9eca438a802edc9421b2723d6fdc413d8dc466a54b7600ff87f18983ee0"
+    },
+    "mesh": {
+      "applied_force_n": [
+        0.0,
+        0.0,
+        256.6373871997666
+      ],
+      "characteristic_length_mm": 1.58400004,
+      "connectivity_mapping": "gmsh_tetra10_to_calculix_c3d10_swap_nodes_9_10_v1",
+      "element_count": 25533,
+      "element_type": "C3D10",
+      "fixed_node_count": 5373,
+      "fixed_selector": [
+        {
+          "area_fraction": 0.33449220438077487,
+          "area_mm2": 2566.373871997671,
+          "axis_intercept_mm": 0.0,
+          "bbox_mm": [
+            -50.69000010000655,
+            -50.69000010000655,
+            -1e-07,
+            50.69000010000655,
+            50.69000010000655,
+            1e-07
+          ],
+          "normal": [
+            -0.0,
+            0.0,
+            -1.0
+          ],
+          "normal_source": "gmsh_parametric_surface_normal",
+          "selection_method": "extreme_axis_intercept_of_aligned_planar_surfaces_v1",
+          "surface_tag": 9,
+          "surface_type": "Plane",
+          "target_coordinate_mm": 0.0
+        }
+      ],
+      "geometry_bbox_mm": [
+        -50.69000010000655,
+        -50.69000010000655,
+        -1e-07,
+        50.69000010000655,
+        50.69000010000655,
+        7.9200001
+      ],
+      "gmsh_threads": 1,
+      "gmsh_version": "4.15.2",
+      "high_order_optimization": "none",
+      "loaded_area_mm2": 2566.373871997671,
+      "loaded_area_relative_discrepancy": 9.093622056449349e-13,
+      "loaded_boundary_triangle_area_mm2": 2566.3738720000047,
+      "loaded_node_count": 3977,
+      "loaded_selector": [
+        {
+          "area_fraction": 0.33449220438077487,
+          "area_mm2": 2566.373871997671,
+          "axis_intercept_mm": 7.92,
+          "bbox_mm": [
+            -50.69000010000655,
+            -50.69000010000655,
+            7.9199999,
+            50.69000010000655,
+            50.69000010000655,
+            7.9200001
+          ],
+          "normal": [
+            0.0,
+            -0.0,
+            1.0
+          ],
+          "normal_source": "gmsh_parametric_surface_normal",
+          "selection_method": "extreme_axis_intercept_of_aligned_planar_surfaces_v1",
+          "surface_tag": 10,
+          "surface_type": "Plane",
+          "target_coordinate_mm": 7.92
+        }
+      ],
+      "mean_quality": 0.8016883874635387,
+      "mesh_path": "./output/cadengbench_p_l3_response_contracts_v4/items/p_benchcad_000757/nominal_reference_preflight/mesh.msh",
+      "mesh_runtime_seconds": 0.3219558779965155,
+      "mesh_sha256": "850b79dedfa1ae08a90889ec2a2d162414d4bebfd32a5507811606dd74805982",
+      "minimum_quality": 0.35158950090303026,
+      "node_count": 41768,
+      "quality_metric": "minSICN",
+      "status": "passed",
+      "traction_force_area_normalization": "exact_occ_planar_region_area_v1",
+      "volume_entity_count": 1
+    },
+    "requirements": {
+      "checks": {
+        "force_equilibrium": {
+          "limit": 1e-05,
+          "observed": 7.04160516622373e-09,
+          "passed": true
+        },
+        "normalized_compliance": {
+          "diagnostic_only": true,
+          "observed": 0.01995581611739829,
+          "passed": true
+        },
+        "regularized_von_mises": {
+          "diagnostic_only": true,
+          "observed": {
+            "p95": 0.09873443827786811,
+            "p99": 0.10694057528824664
+          },
+          "passed": true
+        },
+        "small_deformation": {
+          "limit": 0.02,
+          "observed": 2.0816769752208388e-06,
+          "passed": true
+        }
+      },
+      "status": "passed"
+    },
+    "result_sanity": {
+      "status": "passed"
+    },
+    "runtime": {
+      "runtime_lock_sha256": "5cd587bf0f862ab1bc60c988f151d4424c217ad236f8845c49bd488d5bd21820",
+      "status": "passed"
+    },
+    "selectors": {
+      "fixed": [
+        {
+          "area_fraction": 0.33449220438077487,
+          "area_mm2": 2566.373871997671,
+          "axis_intercept_mm": 0.0,
+          "bbox_mm": [
+            -50.69000010000655,
+            -50.69000010000655,
+            -1e-07,
+            50.69000010000655,
+            50.69000010000655,
+            1e-07
+          ],
+          "normal": [
+            -0.0,
+            0.0,
+            -1.0
+          ],
+          "normal_source": "gmsh_parametric_surface_normal",
+          "selection_method": "extreme_axis_intercept_of_aligned_planar_surfaces_v1",
+          "surface_tag": 9,
+          "surface_type": "Plane",
+          "target_coordinate_mm": 0.0
+        }
+      ],
+      "loaded": [
+        {
+          "area_fraction": 0.33449220438077487,
+          "area_mm2": 2566.373871997671,
+          "axis_intercept_mm": 7.92,
+          "bbox_mm": [
+            -50.69000010000655,
+            -50.69000010000655,
+            7.9199999,
+            50.69000010000655,
+            50.69000010000655,
+            7.9200001
+          ],
+          "normal": [
+            0.0,
+            -0.0,
+            1.0
+          ],
+          "normal_source": "gmsh_parametric_surface_normal",
+          "selection_method": "extreme_axis_intercept_of_aligned_planar_surfaces_v1",
+          "surface_tag": 10,
+          "surface_type": "Plane",
+          "target_coordinate_mm": 7.92
+        }
+      ],
+      "status": "passed"
+    },
+    "solver": {
+      "calculix_sha256": "0e5645e5ede2105dc816034fab6721d362ae2978885c2432f37d73c9fbbd863c",
+      "calculix_threads": 1,
+      "calculix_version": "2.21",
+      "frd_exists": true,
+      "job_finished_marker": true,
+      "return_code": 0,
+      "runtime_seconds": 7.3651439219975146,
+      "sta_exists": true,
+      "status": "passed",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "48fb76072b1c4883eb1009fac9781c05bb11c0c379586d4925ba87d80c4fd666"
+    },
+    "visualization": {
+      "required": false,
+      "status": "not_requested"
+    }
+  }
+}

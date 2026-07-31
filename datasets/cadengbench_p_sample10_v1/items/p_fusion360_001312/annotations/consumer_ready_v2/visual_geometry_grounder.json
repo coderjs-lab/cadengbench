@@ -1,0 +1,59 @@
+{
+  "item_id": "p_fusion360_001312",
+  "output_status": "complete",
+  "payload": {
+    "affordances": [
+      {
+        "affordance_kind": "mounting",
+        "description": "Cylindrical surface for press fit or bearing support",
+        "view_ids": [
+          "orbit_045",
+          "orbit_270"
+        ],
+        "visibility": "visible"
+      },
+      {
+        "affordance_kind": "locating",
+        "description": "Flat end face for axial positioning",
+        "view_ids": [
+          "orbit_090",
+          "orbit_270"
+        ],
+        "visibility": "visible"
+      }
+    ],
+    "features": [
+      {
+        "description": "Continuous cylindrical outer surface",
+        "feature_kind": "recess_or_pocket",
+        "view_ids": [
+          "orbit_045",
+          "orbit_270"
+        ],
+        "visibility": "visible"
+      },
+      {
+        "description": "Flat circular end face",
+        "feature_kind": "recess_or_pocket",
+        "view_ids": [
+          "orbit_090",
+          "orbit_270"
+        ],
+        "visibility": "visible"
+      },
+      {
+        "description": "Opposite flat circular end face",
+        "feature_kind": "recess_or_pocket",
+        "view_ids": [
+          "orbit_090",
+          "orbit_270"
+        ],
+        "visibility": "visible"
+      }
+    ],
+    "global_form": "Solid right circular cylinder with uniform diameter and flat ends",
+    "recommended_prompt_profile": "text_only"
+  },
+  "role_id": "visual_geometry_grounder",
+  "schema_version": "cadengbench-p.visual-grounding-annotation.v2"
+}

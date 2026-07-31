@@ -1,0 +1,21 @@
+{
+  "card_sha256": "00c9b68322c82236b7e807f15ce9c97a9a95317352c47a456f27c146f562ee90",
+  "evaluator_build_hash": "70f240931ada307aa2f99e03cbd11a2a68b1d5f23cbb0a14b54752e655b106c4",
+  "item_id": "p_benchcad_000338",
+  "promoted": true,
+  "promoted_card_path": "./data/derived/cadengbench_p_300_l3_probe_v1/items/p_benchcad_000338/physics_card.solver_qualified.json",
+  "promoted_card_sha256": "fcbec0f0ffb77e1b773954d3e3ca953e412be55147525d710f61e102a064ce09",
+  "reference_step_sha256": "5966396bba993c5aaff23d5ebfccacb3ad0cf359fed38e93c721dfeac85e4e0a",
+  "result_sha256": "b39472c705b05a49c3c4cfd795ff12fdb2e404ba5eef11baccae1cc951fc4e2f",
+  "result_status": "probe_pass",
+  "runtime_lock_sha256": "233a960dbf73c99b63642ca4d89aba0438b8428494f5f6b74a271893aeb34efd",
+  "schema_version": "cadengbench-p.l3-card-qualification.v1",
+  "source_probe_metrics": {
+    "force_equilibrium_relative_error": 1.1862856045736661e-07,
+    "normalized_compliance": 15.712715980384594,
+    "normalized_max_displacement": 6.090954865840982e-07,
+    "regularized_von_mises_p95_mpa": 0.048042572495674486,
+    "regularized_von_mises_p99_mpa": 0.06486069488534153,
+    "stress_concentration_p95": 0.48042572495674485
+  }
+}

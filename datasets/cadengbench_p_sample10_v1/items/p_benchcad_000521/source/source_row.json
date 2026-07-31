@@ -1,0 +1,1 @@
+{"base_plane":"YZ","code":"import cadquery as cq\n\nresult = (\n    cq.Workplane(\"YZ\")\n    .box(30.03, 3.22, 3.22)\n)\n\n# Export\nshow_object(result)","difficulty":"easy","family":"parallel_key","standard":"DIN 6885","stem":"parallel_key_011960_s20260505","variant":"standard"}

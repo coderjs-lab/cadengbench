@@ -1,0 +1,691 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cadengbench.org/schemas/cadengbench_p_run_records_v1.schema.json",
+  "title": "CADEngBench-P v1 Annotation Run Records",
+  "description": "Strict provenance for frozen, role-isolated annotation attempts. Unknown provider metadata remains null with an explicit availability status.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "item_id",
+    "runs"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "cadengbench-p.run-records.v1"
+    },
+    "item_id": {
+      "$ref": "#/$defs/itemId"
+    },
+    "runs": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/runRecord"
+      }
+    }
+  },
+  "$defs": {
+    "itemId": {
+      "type": "string",
+      "pattern": "^p_(benchcad|fusion360|futurecad)_[0-9]{3,}$"
+    },
+    "sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "nullableSha256": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/sha256"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "nullableString": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "metadataStatus": {
+      "enum": [
+        "recorded",
+        "unavailable_not_recorded"
+      ]
+    },
+    "dateTime": {
+      "type": "string",
+      "format": "date-time",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(\\.[0-9]+)?(Z|[+-][0-9]{2}:[0-9]{2})$"
+    },
+    "runRecord": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "run_id",
+        "parent_run_id",
+        "item_id",
+        "role_id",
+        "independence_class",
+        "status",
+        "prompt_id",
+        "prompt_version",
+        "prompt_sha256",
+        "schema_id",
+        "schema_sha256",
+        "bundle_id",
+        "bundle_sha256",
+        "input_bundle_sha256",
+        "input_payload_sha256",
+        "model_provider",
+        "model_id",
+        "model_revision",
+        "model_identity_status",
+        "decoding_parameters",
+        "decoding_parameters_status",
+        "seed",
+        "seed_status",
+        "max_output_tokens",
+        "max_output_tokens_status",
+        "retrieval_used",
+        "retrieval_snapshot_sha256",
+        "retrieval_status",
+        "raw_request_artifact_type",
+        "raw_request_sha256",
+        "raw_response_sha256",
+        "parsed_output_sha256",
+        "attempt_record_path",
+        "immutable_raw_response_path",
+        "provenance_complete",
+        "environment_digest",
+        "environment_digest_status",
+        "attempt",
+        "started_at",
+        "started_at_status",
+        "completed_at",
+        "completed_at_status",
+        "parse_status",
+        "validation_errors"
+      ],
+      "properties": {
+        "run_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "parent_run_id": {
+          "$ref": "#/$defs/nullableString"
+        },
+        "item_id": {
+          "$ref": "#/$defs/itemId"
+        },
+        "role_id": {
+          "type": "string",
+          "pattern": "^[a-z0-9][a-z0-9._-]*$"
+        },
+        "independence_class": {
+          "enum": [
+            "same_model_isolated",
+            "heterogeneous_model",
+            "deterministic_tool"
+          ]
+        },
+        "status": {
+          "enum": [
+            "completed",
+            "output_missing"
+          ]
+        },
+        "prompt_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "prompt_version": {
+          "type": "string",
+          "minLength": 1
+        },
+        "prompt_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "schema_id": {
+          "type": "string",
+          "pattern": "^[^/].+"
+        },
+        "schema_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "bundle_id": {
+          "type": "string",
+          "pattern": "^sha256:[a-f0-9]{64}$"
+        },
+        "bundle_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "input_bundle_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "input_payload_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "model_provider": {
+          "$ref": "#/$defs/nullableString"
+        },
+        "model_id": {
+          "$ref": "#/$defs/nullableString"
+        },
+        "model_revision": {
+          "$ref": "#/$defs/nullableString"
+        },
+        "model_identity_status": {
+          "$ref": "#/$defs/metadataStatus"
+        },
+        "decoding_parameters": {
+          "type": [
+            "object",
+            "null"
+          ]
+        },
+        "decoding_parameters_status": {
+          "$ref": "#/$defs/metadataStatus"
+        },
+        "seed": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "seed_status": {
+          "$ref": "#/$defs/metadataStatus"
+        },
+        "max_output_tokens": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 1
+        },
+        "max_output_tokens_status": {
+          "$ref": "#/$defs/metadataStatus"
+        },
+        "retrieval_used": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "retrieval_snapshot_sha256": {
+          "$ref": "#/$defs/nullableSha256"
+        },
+        "retrieval_status": {
+          "enum": [
+            "recorded",
+            "not_used",
+            "unavailable_not_recorded"
+          ]
+        },
+        "raw_request_artifact_type": {
+          "const": "frozen_annotation_bundle"
+        },
+        "raw_request_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "raw_response_sha256": {
+          "$ref": "#/$defs/nullableSha256"
+        },
+        "parsed_output_sha256": {
+          "$ref": "#/$defs/nullableSha256"
+        },
+        "attempt_record_path": {
+          "$ref": "#/$defs/nullableString"
+        },
+        "immutable_raw_response_path": {
+          "$ref": "#/$defs/nullableString"
+        },
+        "provenance_complete": {
+          "type": "boolean"
+        },
+        "environment_digest": {
+          "$ref": "#/$defs/nullableSha256"
+        },
+        "environment_digest_status": {
+          "$ref": "#/$defs/metadataStatus"
+        },
+        "attempt": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "started_at": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/dateTime"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "started_at_status": {
+          "$ref": "#/$defs/metadataStatus"
+        },
+        "completed_at": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/dateTime"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "completed_at_status": {
+          "$ref": "#/$defs/metadataStatus"
+        },
+        "parse_status": {
+          "enum": [
+            "valid",
+            "invalid",
+            "output_missing"
+          ]
+        },
+        "validation_errors": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "model_identity_status": {
+                "const": "recorded"
+              }
+            },
+            "required": [
+              "model_identity_status"
+            ]
+          },
+          "then": {
+            "properties": {
+              "model_provider": {
+                "type": "string",
+                "minLength": 1
+              },
+              "model_id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "model_revision": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "model_provider": {
+                "const": null
+              },
+              "model_id": {
+                "const": null
+              },
+              "model_revision": {
+                "const": null
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "decoding_parameters_status": {
+                "const": "recorded"
+              }
+            },
+            "required": [
+              "decoding_parameters_status"
+            ]
+          },
+          "then": {
+            "properties": {
+              "decoding_parameters": {
+                "type": "object"
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "decoding_parameters": {
+                "const": null
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "seed_status": {
+                "const": "recorded"
+              }
+            },
+            "required": [
+              "seed_status"
+            ]
+          },
+          "then": {
+            "properties": {
+              "seed": {
+                "type": "integer"
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "seed": {
+                "const": null
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "max_output_tokens_status": {
+                "const": "recorded"
+              }
+            },
+            "required": [
+              "max_output_tokens_status"
+            ]
+          },
+          "then": {
+            "properties": {
+              "max_output_tokens": {
+                "type": "integer",
+                "minimum": 1
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "max_output_tokens": {
+                "const": null
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "retrieval_status": {
+                "const": "unavailable_not_recorded"
+              }
+            },
+            "required": [
+              "retrieval_status"
+            ]
+          },
+          "then": {
+            "properties": {
+              "retrieval_used": {
+                "const": null
+              },
+              "retrieval_snapshot_sha256": {
+                "const": null
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "retrieval_status": {
+                "const": "not_used"
+              }
+            },
+            "required": [
+              "retrieval_status"
+            ]
+          },
+          "then": {
+            "properties": {
+              "retrieval_used": {
+                "const": false
+              },
+              "retrieval_snapshot_sha256": {
+                "const": null
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "retrieval_status": {
+                "const": "recorded"
+              }
+            },
+            "required": [
+              "retrieval_status"
+            ]
+          },
+          "then": {
+            "properties": {
+              "retrieval_used": {
+                "type": "boolean"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "retrieval_status": {
+                "const": "recorded"
+              },
+              "retrieval_used": {
+                "const": true
+              }
+            },
+            "required": [
+              "retrieval_status",
+              "retrieval_used"
+            ]
+          },
+          "then": {
+            "properties": {
+              "retrieval_snapshot_sha256": {
+                "$ref": "#/$defs/sha256"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "retrieval_status": {
+                "const": "recorded"
+              },
+              "retrieval_used": {
+                "const": false
+              }
+            },
+            "required": [
+              "retrieval_status",
+              "retrieval_used"
+            ]
+          },
+          "then": {
+            "properties": {
+              "retrieval_snapshot_sha256": {
+                "const": null
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "environment_digest_status": {
+                "const": "recorded"
+              }
+            },
+            "required": [
+              "environment_digest_status"
+            ]
+          },
+          "then": {
+            "properties": {
+              "environment_digest": {
+                "$ref": "#/$defs/sha256"
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "environment_digest": {
+                "const": null
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "started_at_status": {
+                "const": "recorded"
+              }
+            },
+            "required": [
+              "started_at_status"
+            ]
+          },
+          "then": {
+            "properties": {
+              "started_at": {
+                "$ref": "#/$defs/dateTime"
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "started_at": {
+                "const": null
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "completed_at_status": {
+                "const": "recorded"
+              }
+            },
+            "required": [
+              "completed_at_status"
+            ]
+          },
+          "then": {
+            "properties": {
+              "completed_at": {
+                "$ref": "#/$defs/dateTime"
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "completed_at": {
+                "const": null
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "const": "output_missing"
+              }
+            },
+            "required": [
+              "status"
+            ]
+          },
+          "then": {
+            "properties": {
+              "parse_status": {
+                "const": "output_missing"
+              },
+              "raw_response_sha256": {
+                "const": null
+              },
+              "parsed_output_sha256": {
+                "const": null
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "parse_status": {
+                "enum": [
+                  "valid",
+                  "invalid"
+                ]
+              },
+              "raw_response_sha256": {
+                "$ref": "#/$defs/sha256"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "parse_status": {
+                "const": "valid"
+              }
+            },
+            "required": [
+              "parse_status"
+            ]
+          },
+          "then": {
+            "properties": {
+              "parsed_output_sha256": {
+                "$ref": "#/$defs/sha256"
+              },
+              "validation_errors": {
+                "maxItems": 0
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "parse_status": {
+                "const": "invalid"
+              }
+            },
+            "required": [
+              "parse_status"
+            ]
+          },
+          "then": {
+            "properties": {
+              "validation_errors": {
+                "minItems": 1
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

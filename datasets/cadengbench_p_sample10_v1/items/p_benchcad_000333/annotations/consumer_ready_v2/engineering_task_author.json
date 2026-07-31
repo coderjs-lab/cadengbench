@@ -1,0 +1,66 @@
+{
+  "item_id": "p_benchcad_000333",
+  "output_status": "complete",
+  "payload": {
+    "design": {
+      "application_context": "electrical enclosure assembly",
+      "design_freedom": [
+        "hole diameter"
+      ],
+      "goal": "provide threaded interface for securing components"
+    },
+    "function": {
+      "functional_interpretation": "transmit axial load through threaded bore",
+      "interfaces": [
+        {
+          "description": "hexagonal flange for torque transmission",
+          "interface_id": "interface_1",
+          "interface_kind": "mounting"
+        },
+        {
+          "description": "internal threaded bore for screw engagement",
+          "interface_id": "interface_2",
+          "interface_kind": "fastening"
+        }
+      ],
+      "non_requirements": [
+        "no surface finish requirement"
+      ]
+    },
+    "functional_edit": {
+      "engineering_objective": "increase clearance for specified fastener screw while retaining location",
+      "operating_condition": "standard specified fastener screw engagement"
+    },
+    "load_case": {
+      "application_region": "threaded bore",
+      "constraint_region": "hex flange",
+      "direction": "axial",
+      "duty": "static",
+      "load_type": "torque",
+      "magnitude": 15.0,
+      "unit": "N_mm"
+    },
+    "material_process": {
+      "material_family": "aluminum_alloy",
+      "material_specification": "6061 T6",
+      "process_family": "casting",
+      "process_variant": "sand casting"
+    },
+    "part_identity": {
+      "category": "mounting hardware",
+      "title": "hex standoff"
+    },
+    "standards": [
+      {
+        "requirement_category": "thread",
+        "standard_id": "ISO 272"
+      },
+      {
+        "requirement_category": "safety",
+        "standard_id": "ISO 4762"
+      }
+    ]
+  },
+  "role_id": "engineering_task_author",
+  "schema_version": "cadengbench-p.engineering-task-annotation.v3"
+}

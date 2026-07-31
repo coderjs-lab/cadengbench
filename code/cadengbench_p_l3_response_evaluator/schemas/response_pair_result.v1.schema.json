@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cadengbench.org/schemas/l3-response-pair-result.v1.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version", "item_id", "variant_id", "contract_sha256", "source_intent_claimed",
+    "scoreable", "stages", "final_verdict", "response_fidelity", "engineering_requirements",
+    "margins", "runtime_seconds", "evaluator"
+  ],
+  "properties": {
+    "schema_version": {"const": "cadengbench-p.l3-response-pair-result.v1"},
+    "item_id": {"type": "string"},
+    "variant_id": {"type": "string", "minLength": 1},
+    "contract_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "source_intent_claimed": {"const": false},
+    "scoreable": {"type": "boolean"},
+    "stages": {
+      "type": "object", "additionalProperties": false,
+      "required": ["rebuild", "selectors", "mesh", "solve", "numerical_validity", "response_fidelity", "engineering_requirements"],
+      "properties": {
+        "rebuild": {"type": "string"}, "selectors": {"type": "string"},
+        "mesh": {"type": "string"}, "solve": {"type": "string"},
+        "numerical_validity": {"type": "string"}, "response_fidelity": {"type": "string"},
+        "engineering_requirements": {"type": "string"}
+      }
+    },
+    "final_verdict": {"enum": ["pass", "skipped_upstream", "reference_not_scoreable", "rebuild_fail", "selector_fail", "mesh_fail", "solver_fail", "numerical_validity_fail", "response_fidelity_fail", "requirement_fail", "evaluator_error"]},
+    "reference": {"type": "object"},
+    "candidate": {"type": "object"},
+    "numerical_validity": {"type": "object"},
+    "response_fidelity": {"type": "object"},
+    "engineering_requirements": {"type": "object"},
+    "margins": {"type": "object"},
+    "runtime_seconds": {"type": "number", "minimum": 0},
+    "evaluator": {"type": "object"},
+    "failure": {"type": "object"}
+  }
+}

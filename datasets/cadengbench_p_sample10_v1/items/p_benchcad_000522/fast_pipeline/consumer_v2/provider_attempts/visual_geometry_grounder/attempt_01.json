@@ -1,0 +1,14 @@
+{
+  "attempt": 1,
+  "finish_reason": "stop",
+  "http_status": 200,
+  "native_schema_guidance_used": true,
+  "outcome": "accepted",
+  "parse_recovery": "exact",
+  "raw_content": "{\"schema_version\": \"cadengbench-p.visual-grounding-annotation.v2\", \"item_id\": \"p_benchcad_000522\", \"role_id\": \"visual_geometry_grounder\", \"output_status\": \"complete\", \"payload\": {\"global_form\": \"Elongated rectangular prism with chamfered ends and a longitudinal groove on one face.\", \"features\": [{\"feature_kind\": \"base_form\", \"description\": \"Elongated rectangular prism with chamfered ends.\", \"view_ids\": [\"orbit_000\", \"orbit_045\"], \"visibility\": \"visible\"}, {\"feature_kind\": \"recess_or_pocket\", \"description\": \"Longitudinal groove running along the top face.\", \"view_ids\": [\"orbit_045\", \"orbit_135\"], \"visibility\": \"visible\"}, {\"feature_kind\": \"fillet_or_chamfer\", \"description\": \"Chamfered edges at both ends of the prism.\", \"view_ids\": [\"orbit_000\", \"orbit_180\"], \"visibility\": \"visible\"}, {\"feature_kind\": \"base_form\", \"description\": \"Flat bottom face for stable placement.\", \"view_ids\": [\"orbit_bottom\"], \"visibility\": \"visible\"}, {\"feature_kind\": \"base_form\", \"description\": \"Flat side faces perpendicular to the groove.\", \"view_ids\": [\"orbit_090\", \"orbit_270\"], \"visibility\": \"visible\"}, {\"feature_kind\": \"base_form\", \"description\": \"Uniform cross-section along the length.\", \"view_ids\": [\"orbit_000\", \"orbit_180\"], \"visibility\": \"visible\"}], \"affordances\": [{\"affordance_kind\": \"locating\", \"description\": \"Groove allows alignment or sliding fit with a mating pin or rail.\", \"view_ids\": [\"orbit_045\", \"orbit_135\"], \"visibility\": \"visible\"}, {\"affordance_kind\": \"mounting\", \"description\": \"Flat faces provide surfaces for adhesion or clamping.\", \"view_ids\": [\"orbit_top\", \"orbit_bottom\"], \"visibility\": \"visible\"}, {\"affordance_kind\": \"load_transfer\", \"description\": \"Rigid prismatic shape supports compressive or bending loads.\", \"view_ids\": [\"orbit_000\", \"orbit_045\"], \"visibility\": \"visible\"}], \"recommended_prompt_profile\": \"text_only\"}}",
+  "usage": {
+    "input_tokens": 2230,
+    "output_tokens": 524,
+    "total_tokens": 2754
+  }
+}

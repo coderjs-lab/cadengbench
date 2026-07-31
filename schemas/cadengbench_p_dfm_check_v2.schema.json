@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cadengbench.org/schemas/cadengbench_p_dfm_check_v2.schema.json",
+  "title": "CADEngBench-P v2 deterministic DFM check contract",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "record_type", "check"],
+  "properties": {
+    "schema_version": {"const": "cadengbench-p.dfm-check.v2"},
+    "record_type": {"const": "dfm_check"},
+    "check": {"$ref": "#/$defs/check"}
+  },
+  "$defs": {
+    "nonEmpty": {"type": "string", "minLength": 1},
+    "evidenceRef": {"type": "string", "minLength": 1},
+    "measurement": {"type": "object", "additionalProperties": false, "required": ["measurement_id", "method", "value_type"], "properties": {"measurement_id": {"$ref": "#/$defs/nonEmpty"}, "method": {"$ref": "#/$defs/nonEmpty"}, "value_type": {"enum": ["numeric", "boolean", "count", "distance", "angle", "ratio", "categorical"]}, "unit": {"anyOf": [{"$ref": "#/$defs/nonEmpty"}, {"type": "null"}]}}},
+    "threshold": {
+      "type": "object", "additionalProperties": false, "required": ["basis", "value", "unit", "comparison"],
+      "properties": {"basis": {"enum": ["source_evidence", "benchmark_requirement", "none"]}, "value": {"anyOf": [{"type": "number"}, {"type": "boolean"}, {"type": "null"}]}, "unit": {"anyOf": [{"$ref": "#/$defs/nonEmpty"}, {"type": "null"}]}, "comparison": {"enum": ["minimum", "maximum", "equal", "boolean_true", "boolean_false", "not_applicable"]}, "evidence_ref": {"anyOf": [{"$ref": "#/$defs/evidenceRef"}, {"type": "null"}]}, "conditions": {"type": "object", "patternProperties": {"^[A-Za-z0-9_.-]+$": {"type": ["string", "number", "boolean", "null", "array"]}}, "additionalProperties": false}}
+    },
+    "predicate": {"type": "object", "additionalProperties": false, "required": ["expression", "deterministic", "llm_judge_used"], "properties": {"expression": {"$ref": "#/$defs/nonEmpty"}, "deterministic": {"const": true}, "llm_judge_used": {"const": false}}},
+    "check": {
+      "type": "object", "additionalProperties": false,
+      "required": ["check_id", "scenario_id", "process_profile_id", "requirement", "applicability", "affected_feature_ids", "measurements", "threshold", "pass_predicate", "severity", "repair_operator_ids", "scorer_version", "promotion_status", "scorer_allowed"],
+      "properties": {
+        "check_id": {"$ref": "#/$defs/nonEmpty"}, "scenario_id": {"$ref": "#/$defs/nonEmpty"}, "process_profile_id": {"$ref": "#/$defs/nonEmpty"}, "requirement": {"$ref": "#/$defs/nonEmpty"},
+        "applicability": {"type": "object", "additionalProperties": false, "required": ["status", "predicate"], "properties": {"status": {"enum": ["applicable", "not_applicable", "unsupported"]}, "predicate": {"$ref": "#/$defs/predicate"}, "reason": {"type": "string"}}},
+        "affected_feature_ids": {"type": "array", "uniqueItems": true, "items": {"$ref": "#/$defs/nonEmpty"}},
+        "measurements": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/measurement"}},
+        "threshold": {"$ref": "#/$defs/threshold"}, "pass_predicate": {"$ref": "#/$defs/predicate"},
+        "severity": {"enum": ["fatal", "major", "advisory"]}, "tolerance": {"type": "number", "minimum": 0}, "repair_operator_ids": {"type": "array", "uniqueItems": true, "items": {"$ref": "#/$defs/nonEmpty"}}, "scorer_version": {"$ref": "#/$defs/nonEmpty"}, "promotion_status": {"enum": ["promoted", "measurement_only", "candidate_only", "needs_validation", "rejected"]}, "scorer_allowed": {"type": "boolean"},
+        "result": {"type": "object", "additionalProperties": false, "required": ["status", "applicability", "measurements", "reason", "method"], "properties": {"status": {"enum": ["pass", "fail", "not_applicable", "unsupported", "not_evaluated"]}, "applicability": {"enum": ["applicable_threshold_resolved", "applicable_requirement_resolved", "applicable_measurement_only", "not_applicable", "unsupported"]}, "measurements": {"type": "object", "patternProperties": {"^[A-Za-z0-9_.-]+$": {"type": ["string", "number", "boolean", "null", "array", "object"]}}, "additionalProperties": false}, "reason": {"$ref": "#/$defs/nonEmpty"}, "method": {"$ref": "#/$defs/nonEmpty"}, "evidence_refs": {"type": "array", "items": {"$ref": "#/$defs/evidenceRef"}}, "limitations": {"type": "array", "items": {"$ref": "#/$defs/nonEmpty"}}}}
+      },
+      "allOf": [
+        {"if": {"properties": {"promotion_status": {"const": "promoted"}}}, "then": {"required": ["result"], "properties": {"threshold": {"properties": {"basis": {"enum": ["source_evidence", "benchmark_requirement"]}}}, "scorer_allowed": {"const": true}}}},
+        {"if": {"properties": {"threshold": {"properties": {"basis": {"const": "none"}}}}}, "then": {"properties": {"promotion_status": {"not": {"const": "promoted"}}, "scorer_allowed": {"const": false}}}},
+        {"if": {"properties": {"promotion_status": {"enum": ["measurement_only", "candidate_only", "needs_validation", "rejected"]}}}, "then": {"properties": {"scorer_allowed": {"const": false}}}}
+      ]
+    }
+  }
+}

@@ -1,0 +1,1013 @@
+{
+  "bodies": [
+    {
+      "file_exists": {
+        "graph_json": true,
+        "obj": true,
+        "smt": true,
+        "step": true
+      },
+      "geometry_quality": {
+        "bounding_box": {
+          "extents": [
+            5.587999999999999,
+            1.5240002822737946,
+            9.652000530497338
+          ],
+          "max": [
+            -1.016000162124631,
+            3.3020001774957306,
+            -1.5239998982915761
+          ],
+          "min": [
+            -6.60400016212463,
+            1.777999895221936,
+            -11.176000428788914
+          ]
+        },
+        "missing_files": [],
+        "thin_ratio": 0.15789475740893558,
+        "warnings": []
+      },
+      "id": "23295_ff4a25eb_0017_1",
+      "physical_properties": {
+        "area": 34.224262514343195,
+        "center_of_mass": {
+          "type": "Point3D",
+          "x": -3.809999794432475,
+          "y": 2.583035747560425,
+          "z": -6.737321365638086
+        },
+        "density": 0.00785,
+        "mass": 0.021466842866025473,
+        "volume": 2.734629664461844
+      },
+      "source_files": {
+        "graph_json": "source://fusion360-gallery/joint/23295_ff4a25eb_0017_1.json",
+        "obj": "source://fusion360-gallery/joint/23295_ff4a25eb_0017_1.obj",
+        "smt": "source://fusion360-gallery/joint/23295_ff4a25eb_0017_1.smt",
+        "step": "source://fusion360-gallery/joint/23295_ff4a25eb_0017_1.step"
+      },
+      "topology": {
+        "body_count": 1,
+        "edge_count": 38,
+        "face_count": 23,
+        "shell_count": 1,
+        "vertex_count": 30
+      }
+    },
+    {
+      "file_exists": {
+        "graph_json": true,
+        "obj": true,
+        "smt": true,
+        "step": true
+      },
+      "geometry_quality": {
+        "bounding_box": {
+          "extents": [
+            0.254,
+            0.7620000162124634,
+            12.232630836071692
+          ],
+          "max": [
+            -1.0160001621246308,
+            3.5560001053810115,
+            -0.2540000081062317
+          ],
+          "min": [
+            -1.2700001621246308,
+            2.794000089168548,
+            -12.486630844177924
+          ]
+        },
+        "missing_files": [],
+        "thin_ratio": 0.02076413515651944,
+        "warnings": []
+      },
+      "id": "23295_ff4a25eb_0017_2",
+      "physical_properties": {
+        "area": 25.446485302196066,
+        "center_of_mass": {
+          "type": "Point3D",
+          "x": -1.143000162124631,
+          "y": 3.2105109206651115,
+          "z": -6.200034578248887
+        },
+        "density": 0.00785,
+        "mass": 0.014524451857289743,
+        "volume": 1.8502486442407318
+      },
+      "source_files": {
+        "graph_json": "source://fusion360-gallery/joint/23295_ff4a25eb_0017_2.json",
+        "obj": "source://fusion360-gallery/joint/23295_ff4a25eb_0017_2.obj",
+        "smt": "source://fusion360-gallery/joint/23295_ff4a25eb_0017_2.smt",
+        "step": "source://fusion360-gallery/joint/23295_ff4a25eb_0017_2.step"
+      },
+      "topology": {
+        "body_count": 1,
+        "edge_count": 26,
+        "face_count": 11,
+        "shell_count": 1,
+        "vertex_count": 18
+      }
+    }
+  ],
+  "contacts_count": 8,
+  "holes_count": 3,
+  "joint_set_id": "joint_set_15485",
+  "joints": [
+    {
+      "angle": 0.0,
+      "axis": {
+        "direction": [
+          -1.0,
+          -3.275556814949731e-17,
+          6.571533060801505e-17
+        ],
+        "origin": [
+          -1.2700001621246324,
+          3.047999963164329,
+          -10.921999868005514
+        ]
+      },
+      "body_a": "23295_ff4a25eb_0017_1",
+      "body_b": "23295_ff4a25eb_0017_2",
+      "fusion_joint_type": "PinSlotJointType",
+      "geometry_or_origin_one": {
+        "axis_line": {
+          "direction": [
+            -1.0,
+            -3.275556814949731e-17,
+            6.571533060801505e-17
+          ],
+          "origin": [
+            -1.2700001621246324,
+            3.047999963164329,
+            -10.921999868005514
+          ]
+        },
+        "entity_one": {
+          "body": "23295_ff4a25eb_0017_1",
+          "curve_type": "Circle3DCurveType",
+          "index": 1,
+          "surface_type": null,
+          "type": "BRepEdge"
+        },
+        "entity_one_equivalents": [
+          {
+            "curve_type": null,
+            "index": 0,
+            "surface_type": "CylinderSurfaceType",
+            "type": "BRepFace"
+          },
+          {
+            "curve_type": null,
+            "index": 1,
+            "surface_type": "PlaneSurfaceType",
+            "type": "BRepFace"
+          },
+          {
+            "curve_type": null,
+            "index": 2,
+            "surface_type": "CylinderSurfaceType",
+            "type": "BRepFace"
+          },
+          {
+            "curve_type": null,
+            "index": 3,
+            "surface_type": "PlaneSurfaceType",
+            "type": "BRepFace"
+          },
+          {
+            "curve_type": null,
+            "index": 11,
+            "surface_type": "CylinderSurfaceType",
+            "type": "BRepFace"
+          },
+          {
+            "curve_type": null,
+            "index": 14,
+            "surface_type": "CylinderSurfaceType",
+            "type": "BRepFace"
+          },
+          {
+            "curve_type": null,
+            "index": 17,
+            "surface_type": "CylinderSurfaceType",
+            "type": "BRepFace"
+          },
+          {
+            "curve_type": "Circle3DCurveType",
+            "index": 0,
+            "surface_type": null,
+            "type": "BRepEdge"
+          },
+          {
+            "curve_type": "Circle3DCurveType",
+            "index": 2,
+            "surface_type": null,
+            "type": "BRepEdge"
+          },
+          {
+            "curve_type": "Circle3DCurveType",
+            "index": 3,
+            "surface_type": null,
+            "type": "BRepEdge"
+          },
+          {
+            "curve_type": "Arc3DCurveType",
+            "index": 8,
+            "surface_type": null,
+            "type": "BRepEdge"
+          },
+          {
+            "curve_type": "Circle3DCurveType",
+            "index": 12,
+            "surface_type": null,
+            "type": "BRepEdge"
+          },
+          {
+            "curve_type": "Arc3DCurveType",
+            "index": 20,
+            "surface_type": null,
+            "type": "BRepEdge"
+          },
+          {
+            "curve_type": "Circle3DCurveType",
+            "index": 23,
+            "surface_type": null,
+            "type": "BRepEdge"
+          },
+          {
+            "curve_type": "Arc3DCurveType",
+            "index": 26,
+            "surface_type": null,
+            "type": "BRepEdge"
+          },
+          {
+            "curve_type": "Arc3DCurveType",
+            "index": 32,
+            "surface_type": null,
+            "type": "BRepEdge"
+          }
+        ],
+        "geometry_type": "JointBRepEdgeGeometry",
+        "key_point_type": "CenterKeyPoint",
+        "transform": {
+          "origin": {
+            "type": "Point3D",
+            "x": 5.334000000000002,
+            "y": -1.3411045118871812e-07,
+            "z": 4.805624502779438e-07
+          },
+          "x_axis": {
+            "length": 1.0,
+            "type": "Vector3D",
+            "x": 1.0,
+            "y": -1.5753104692968338e-63,
+            "z": -2.8778985377272946e-16
+          },
+          "y_axis": {
+            "length": 1.0,
+            "type": "Vector3D",
+            "x": 0.0,
+            "y": 1.0,
+            "z": -5.902607420726341e-32
+          },
+          "z_axis": {
+            "length": 1.0,
+            "type": "Vector3D",
+            "x": 2.8778985377272946e-16,
+            "y": 5.902607420726341e-32,
+            "z": 1.0
+          }
+        },
+        "transform_matrix": [
+          [
+            1.0,
+            0.0,
+            2.8778985377272946e-16,
+            5.334000000000002
+          ],
+          [
+            -1.5753104692968338e-63,
+            1.0,
+            5.902607420726341e-32,
+            -1.3411045118871812e-07
+          ],
+          [
+            -2.8778985377272946e-16,
+            -5.902607420726341e-32,
+            1.0,
+            4.805624502779438e-07
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      },
+      "geometry_or_origin_two": {
+        "axis_line": {
+          "direction": [
+            -1.0,
+            -2.0510130372378207e-16,
+            6.571533060801505e-17
+          ],
+          "origin": [
+            -1.2700001621246315,
+            3.047999963164329,
+            -10.921999868005514
+          ]
+        },
+        "entity_one": {
+          "body": "23295_ff4a25eb_0017_2",
+          "curve_type": "Arc3DCurveType",
+          "index": 12,
+          "surface_type": null,
+          "type": "BRepEdge"
+        },
+        "entity_one_equivalents": [
+          {
+            "curve_type": null,
+            "index": 4,
+            "surface_type": "CylinderSurfaceType",
+            "type": "BRepFace"
+          },
+          {
+            "curve_type": "Arc3DCurveType",
+            "index": 13,
+            "surface_type": null,
+            "type": "BRepEdge"
+          }
+        ],
+        "geometry_type": "JointBRepEdgeGeometry",
+        "key_point_type": "CenterKeyPoint",
+        "transform": {
+          "origin": {
+            "type": "Point3D",
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "x_axis": {
+            "length": 1.0,
+            "type": "Vector3D",
+            "x": 1.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "y_axis": {
+            "length": 1.0,
+            "type": "Vector3D",
+            "x": 0.0,
+            "y": 1.0,
+            "z": 0.0
+          },
+          "z_axis": {
+            "length": 1.0,
+            "type": "Vector3D",
+            "x": 0.0,
+            "y": 0.0,
+            "z": 1.0
+          }
+        },
+        "transform_matrix": [
+          [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      },
+      "id": "joint_set_15485_joint_0",
+      "is_flipped": false,
+      "joint_equivalence_signature": {
+        "axis_direction_canonical_rounded": [
+          1.0,
+          0.0,
+          -0.0
+        ],
+        "axis_origin_rounded": [
+          -1.27,
+          3.048,
+          -10.922
+        ],
+        "body_pair": [
+          "23295_ff4a25eb_0017_1",
+          "23295_ff4a25eb_0017_2"
+        ],
+        "entity": {
+          "curve_type": "Circle3DCurveType",
+          "index": 1,
+          "surface_type": null,
+          "type": "BRepEdge"
+        },
+        "joint_type": "PinSlotJointType"
+      },
+      "limits": {
+        "lower": 0.0,
+        "lower_enabled": false,
+        "rest": 0.0,
+        "rest_enabled": false,
+        "source_key": "rotation_limits",
+        "upper": 0.0,
+        "upper_enabled": false
+      },
+      "mating_coordinate_frames": {
+        "body_a": {
+          "body": "23295_ff4a25eb_0017_1",
+          "orientation_reference_entity": {
+            "body": "23295_ff4a25eb_0017_1",
+            "curve_type": "Circle3DCurveType",
+            "index": 1,
+            "surface_type": null,
+            "type": "BRepEdge"
+          },
+          "origin": [
+            -1.2700001621246324,
+            3.047999963164329,
+            -10.921999868005514
+          ],
+          "origin_reference_entity": {
+            "body": "23295_ff4a25eb_0017_1",
+            "curve_type": "Circle3DCurveType",
+            "index": 1,
+            "surface_type": null,
+            "type": "BRepEdge"
+          },
+          "origin_type": "center",
+          "source": "fusion_joint_geometry",
+          "x_axis": [
+            -3.275556814949731e-17,
+            1.0,
+            2.1525429901975835e-33
+          ],
+          "y_axis": [
+            -6.571533060801505e-17,
+            0.0,
+            -1.0
+          ],
+          "z_axis": [
+            -1.0,
+            -3.275556814949731e-17,
+            6.571533060801505e-17
+          ]
+        },
+        "body_b": {
+          "body": "23295_ff4a25eb_0017_2",
+          "orientation_reference_entity": {
+            "body": "23295_ff4a25eb_0017_2",
+            "curve_type": "Arc3DCurveType",
+            "index": 12,
+            "surface_type": null,
+            "type": "BRepEdge"
+          },
+          "origin": [
+            -1.2700001621246315,
+            3.047999963164329,
+            -10.921999868005514
+          ],
+          "origin_reference_entity": {
+            "body": "23295_ff4a25eb_0017_2",
+            "curve_type": "Arc3DCurveType",
+            "index": 12,
+            "surface_type": null,
+            "type": "BRepEdge"
+          },
+          "origin_type": "centroid_or_center",
+          "source": "fusion_joint_geometry",
+          "x_axis": [
+            -2.0510130372378207e-16,
+            1.0,
+            1.3478299982343247e-32
+          ],
+          "y_axis": [
+            -6.571533060801505e-17,
+            0.0,
+            -1.0
+          ],
+          "z_axis": [
+            -1.0,
+            -2.0510130372378207e-16,
+            6.571533060801505e-17
+          ]
+        }
+      },
+      "motion_semantics": {
+        "direction_labels": {
+          "rotation_axis": "ZAxisJointDirection",
+          "slide_direction": "XAxisJointDirection"
+        },
+        "joint_frame_source": "body_a_fusion_joint_geometry",
+        "joint_type": "PinSlotJointType",
+        "limit_groups": {
+          "rotation": {
+            "lower": 0.0,
+            "lower_enabled": false,
+            "rest": 0.0,
+            "rest_enabled": false,
+            "upper": 0.0,
+            "upper_enabled": false
+          },
+          "slide": {
+            "lower": 0.0,
+            "lower_enabled": false,
+            "rest": 0.0,
+            "rest_enabled": false,
+            "upper": 0.0,
+            "upper_enabled": false
+          }
+        },
+        "resolved_directions": {
+          "rotation_axis": [
+            -1.0,
+            -3.275556814949731e-17,
+            6.571533060801505e-17
+          ],
+          "slide_direction": [
+            -3.275556814949731e-17,
+            1.0,
+            2.1525429901975835e-33
+          ]
+        },
+        "unresolved_direction_labels": {}
+      },
+      "name": "PinSlot29",
+      "offset": 0.0,
+      "source_index": 0,
+      "source_type": "Joint",
+      "urdf_joint_type": "prismatic",
+      "urdf_mapping_note": "approximation: URDF cannot represent pin-slot as one portable joint"
+    },
+    {
+      "angle": 0.0,
+      "axis": {
+        "direction": [
+          1.0,
+          6.101584990892802e-17,
+          2.2207452316471437e-16
+        ],
+        "origin": [
+          -1.0160001621246313,
+          3.0480000972747803,
+          -10.922000348567963
+        ]
+      },
+      "body_a": "23295_ff4a25eb_0017_1",
+      "body_b": "23295_ff4a25eb_0017_2",
+      "fusion_joint_type": "PinSlotJointType",
+      "geometry_or_origin_one": {
+        "axis_line": {
+          "direction": [
+            1.0,
+            6.101584990892802e-17,
+            2.2207452316471437e-16
+          ],
+          "origin": [
+            -1.0160001621246313,
+            3.0480000972747803,
+            -10.922000348567963
+          ]
+        },
+        "entity_one": {
+          "body": "23295_ff4a25eb_0017_1",
+          "curve_type": "Circle3DCurveType",
+          "index": 3,
+          "surface_type": null,
+          "type": "BRepEdge"
+        },
+        "entity_one_equivalents": [
+          {
+            "curve_type": null,
+            "index": 0,
+            "surface_type": "CylinderSurfaceType",
+            "type": "BRepFace"
+          },
+          {
+            "curve_type": null,
+            "index": 1,
+            "surface_type": "PlaneSurfaceType",
+            "type": "BRepFace"
+          },
+          {
+            "curve_type": null,
+            "index": 2,
+            "surface_type": "CylinderSurfaceType",
+            "type": "BRepFace"
+          },
+          {
+            "curve_type": null,
+            "index": 3,
+            "surface_type": "PlaneSurfaceType",
+            "type": "BRepFace"
+          },
+          {
+            "curve_type": null,
+            "index": 11,
+            "surface_type": "CylinderSurfaceType",
+            "type": "BRepFace"
+          },
+          {
+            "curve_type": null,
+            "index": 14,
+            "surface_type": "CylinderSurfaceType",
+            "type": "BRepFace"
+          },
+          {
+            "curve_type": null,
+            "index": 17,
+            "surface_type": "CylinderSurfaceType",
+            "type": "BRepFace"
+          },
+          {
+            "curve_type": "Circle3DCurveType",
+            "index": 0,
+            "surface_type": null,
+            "type": "BRepEdge"
+          },
+          {
+            "curve_type": "Circle3DCurveType",
+            "index": 1,
+            "surface_type": null,
+            "type": "BRepEdge"
+          },
+          {
+            "curve_type": "Circle3DCurveType",
+            "index": 2,
+            "surface_type": null,
+            "type": "BRepEdge"
+          },
+          {
+            "curve_type": "Arc3DCurveType",
+            "index": 8,
+            "surface_type": null,
+            "type": "BRepEdge"
+          },
+          {
+            "curve_type": "Circle3DCurveType",
+            "index": 12,
+            "surface_type": null,
+            "type": "BRepEdge"
+          },
+          {
+            "curve_type": "Arc3DCurveType",
+            "index": 20,
+            "surface_type": null,
+            "type": "BRepEdge"
+          },
+          {
+            "curve_type": "Circle3DCurveType",
+            "index": 23,
+            "surface_type": null,
+            "type": "BRepEdge"
+          },
+          {
+            "curve_type": "Arc3DCurveType",
+            "index": 26,
+            "surface_type": null,
+            "type": "BRepEdge"
+          },
+          {
+            "curve_type": "Arc3DCurveType",
+            "index": 32,
+            "surface_type": null,
+            "type": "BRepEdge"
+          }
+        ],
+        "geometry_type": "JointBRepEdgeGeometry",
+        "key_point_type": "CenterKeyPoint",
+        "transform": {
+          "origin": {
+            "type": "Point3D",
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "x_axis": {
+            "length": 1.0,
+            "type": "Vector3D",
+            "x": 1.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "y_axis": {
+            "length": 1.0,
+            "type": "Vector3D",
+            "x": 0.0,
+            "y": 1.0,
+            "z": 0.0
+          },
+          "z_axis": {
+            "length": 1.0,
+            "type": "Vector3D",
+            "x": 0.0,
+            "y": 0.0,
+            "z": 1.0
+          }
+        },
+        "transform_matrix": [
+          [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      },
+      "geometry_or_origin_two": {
+        "axis_line": {
+          "direction": [
+            -1.0,
+            -2.0510130372378207e-16,
+            6.571533060801505e-17
+          ],
+          "origin": [
+            -1.0160001621246315,
+            3.047999963164329,
+            -10.921999868005514
+          ]
+        },
+        "entity_one": {
+          "body": "23295_ff4a25eb_0017_2",
+          "curve_type": "Arc3DCurveType",
+          "index": 13,
+          "surface_type": null,
+          "type": "BRepEdge"
+        },
+        "entity_one_equivalents": [
+          {
+            "curve_type": null,
+            "index": 4,
+            "surface_type": "CylinderSurfaceType",
+            "type": "BRepFace"
+          },
+          {
+            "curve_type": "Arc3DCurveType",
+            "index": 12,
+            "surface_type": null,
+            "type": "BRepEdge"
+          }
+        ],
+        "geometry_type": "JointBRepEdgeGeometry",
+        "key_point_type": "CenterKeyPoint",
+        "transform": {
+          "origin": {
+            "type": "Point3D",
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "x_axis": {
+            "length": 1.0,
+            "type": "Vector3D",
+            "x": 1.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "y_axis": {
+            "length": 1.0,
+            "type": "Vector3D",
+            "x": 0.0,
+            "y": 1.0,
+            "z": 0.0
+          },
+          "z_axis": {
+            "length": 1.0,
+            "type": "Vector3D",
+            "x": 0.0,
+            "y": 0.0,
+            "z": 1.0
+          }
+        },
+        "transform_matrix": [
+          [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      },
+      "id": "joint_set_15485_joint_1",
+      "is_flipped": true,
+      "joint_equivalence_signature": {
+        "axis_direction_canonical_rounded": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "axis_origin_rounded": [
+          -1.016,
+          3.048,
+          -10.922
+        ],
+        "body_pair": [
+          "23295_ff4a25eb_0017_1",
+          "23295_ff4a25eb_0017_2"
+        ],
+        "entity": {
+          "curve_type": "Circle3DCurveType",
+          "index": 3,
+          "surface_type": null,
+          "type": "BRepEdge"
+        },
+        "joint_type": "PinSlotJointType"
+      },
+      "limits": {
+        "lower": 0.0,
+        "lower_enabled": false,
+        "rest": 0.0,
+        "rest_enabled": false,
+        "source_key": "rotation_limits",
+        "upper": 0.0,
+        "upper_enabled": false
+      },
+      "mating_coordinate_frames": {
+        "body_a": {
+          "body": "23295_ff4a25eb_0017_1",
+          "orientation_reference_entity": {
+            "body": "23295_ff4a25eb_0017_1",
+            "curve_type": "Circle3DCurveType",
+            "index": 3,
+            "surface_type": null,
+            "type": "BRepEdge"
+          },
+          "origin": [
+            -1.0160001621246313,
+            3.0480000972747803,
+            -10.922000348567963
+          ],
+          "origin_reference_entity": {
+            "body": "23295_ff4a25eb_0017_1",
+            "curve_type": "Circle3DCurveType",
+            "index": 3,
+            "surface_type": null,
+            "type": "BRepEdge"
+          },
+          "origin_type": "center",
+          "source": "fusion_joint_geometry",
+          "x_axis": [
+            -6.101584990892802e-17,
+            1.0,
+            -1.355006577401497e-32
+          ],
+          "y_axis": [
+            -2.2207452316471437e-16,
+            0.0,
+            1.0
+          ],
+          "z_axis": [
+            1.0,
+            6.101584990892802e-17,
+            2.2207452316471437e-16
+          ]
+        },
+        "body_b": {
+          "body": "23295_ff4a25eb_0017_2",
+          "orientation_reference_entity": {
+            "body": "23295_ff4a25eb_0017_2",
+            "curve_type": "Arc3DCurveType",
+            "index": 13,
+            "surface_type": null,
+            "type": "BRepEdge"
+          },
+          "origin": [
+            -1.0160001621246315,
+            3.047999963164329,
+            -10.921999868005514
+          ],
+          "origin_reference_entity": {
+            "body": "23295_ff4a25eb_0017_2",
+            "curve_type": "Arc3DCurveType",
+            "index": 13,
+            "surface_type": null,
+            "type": "BRepEdge"
+          },
+          "origin_type": "centroid_or_center",
+          "source": "fusion_joint_geometry",
+          "x_axis": [
+            -2.0510130372378207e-16,
+            1.0,
+            1.3478299982343247e-32
+          ],
+          "y_axis": [
+            -6.571533060801505e-17,
+            0.0,
+            -1.0
+          ],
+          "z_axis": [
+            -1.0,
+            -2.0510130372378207e-16,
+            6.571533060801505e-17
+          ]
+        }
+      },
+      "motion_semantics": {
+        "direction_labels": {
+          "rotation_axis": "ZAxisJointDirection",
+          "slide_direction": "XAxisJointDirection"
+        },
+        "joint_frame_source": "body_a_fusion_joint_geometry",
+        "joint_type": "PinSlotJointType",
+        "limit_groups": {
+          "rotation": {
+            "lower": 0.0,
+            "lower_enabled": false,
+            "rest": 0.0,
+            "rest_enabled": false,
+            "upper": 0.0,
+            "upper_enabled": false
+          },
+          "slide": {
+            "lower": 0.0,
+            "lower_enabled": false,
+            "rest": 0.0,
+            "rest_enabled": false,
+            "upper": 0.0,
+            "upper_enabled": false
+          }
+        },
+        "resolved_directions": {
+          "rotation_axis": [
+            1.0,
+            6.101584990892802e-17,
+            2.2207452316471437e-16
+          ],
+          "slide_direction": [
+            -6.101584990892802e-17,
+            1.0,
+            -1.355006577401497e-32
+          ]
+        },
+        "unresolved_direction_labels": {}
+      },
+      "name": "PinSlot28",
+      "offset": 0.0,
+      "source_index": 1,
+      "source_type": "Joint",
+      "urdf_joint_type": "prismatic",
+      "urdf_mapping_note": "approximation: URDF cannot represent pin-slot as one portable joint"
+    }
+  ],
+  "schema": "cadengbench_a_master_v1",
+  "source_joint_set": "source://fusion360-gallery/joint/joint_set_15485.json"
+}

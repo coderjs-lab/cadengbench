@@ -1,0 +1,88 @@
+{
+  "analysis": {
+    "max_equilibrium_relative_error": 1e-05,
+    "max_normalized_displacement": 0.02,
+    "regularized_stress_percentiles": [
+      95.0,
+      99.0
+    ],
+    "small_deformation": true,
+    "stress_exclusion_mesh_lengths": 2.0,
+    "type": "linear_static"
+  },
+  "card_id": "p_benchcad_000522:linear-static-probe:v1",
+  "checks": [
+    "mesh_quality",
+    "selector_stability",
+    "solver_completion",
+    "force_equilibrium",
+    "finite_response",
+    "small_deformation",
+    "regularized_von_mises",
+    "normalized_compliance"
+  ],
+  "geometry": {
+    "expected_solid_count": 1,
+    "units": "mm"
+  },
+  "item_id": "p_benchcad_000522",
+  "load": {
+    "distribution": "boundary_triangle_consistent_nodal_v1",
+    "kind": "surface_traction_probe",
+    "traction_vector_mpa": [
+      0.1,
+      0.0,
+      0.0
+    ]
+  },
+  "material": {
+    "model": "linear_elastic_isotropic",
+    "poisson_ratio": 0.33,
+    "profile_id": "probe-isotropic-70gpa-v1",
+    "youngs_modulus_mpa": 70000.0
+  },
+  "mesh": {
+    "algorithm_3d": 10,
+    "element_type": "C3D10",
+    "high_order_optimization": "none",
+    "maximum_elements": 250000,
+    "minimum_sicn": 0.02,
+    "target_long_axis_divisions": 24,
+    "target_short_axis_divisions": 5
+  },
+  "provenance": {
+    "annotation_candidate_sha256": "b9105a84d93cd2aa3f354c4f11362bf5373aa645c9053fa8bb7b56f12130c17a",
+    "annotator_model": "Qwen/Qwen3.6-27B-FP8",
+    "annotator_revision": "e89b16ebf1988b3d6befa7de50abc2d76f26eb09",
+    "context_sha256": "32c67c45d63836ba7ce05d46f385fffd594d1827cb1c5aa44ffbb41616b13e5d",
+    "profile_sha256": "c45dd1b7bfa6d47d38d92e16e7898ce7573805d5969a91741c02cbc924290f88"
+  },
+  "scenario_family": "axial_tension",
+  "schema_version": "cadengbench-p.l3-physics-card.v2",
+  "selectors": {
+    "fixed": {
+      "axis": "x",
+      "kind": "axis_extreme_planar_surfaces_v2",
+      "maximum_count": 64,
+      "minimum_area_fraction": 0.002,
+      "minimum_count": 1,
+      "normal_alignment_min": 0.98,
+      "plane_tolerance_relative": 1e-06,
+      "region_id": "axis:x:min",
+      "side": "min"
+    },
+    "loaded": {
+      "axis": "x",
+      "kind": "axis_extreme_planar_surfaces_v2",
+      "maximum_count": 64,
+      "minimum_area_fraction": 0.002,
+      "minimum_count": 1,
+      "normal_alignment_min": 0.98,
+      "plane_tolerance_relative": 1e-06,
+      "region_id": "axis:x:max",
+      "side": "max"
+    }
+  },
+  "source_intent_claimed": false,
+  "status": "geometry_qualified"
+}

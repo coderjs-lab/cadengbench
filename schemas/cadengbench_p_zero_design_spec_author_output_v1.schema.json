@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cadengbench.org/schemas/cadengbench_p_zero_design_spec_author_output_v1.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "bundle_id", "item_id", "role_id", "output_status", "payload", "abstentions"],
+  "properties": {
+    "schema_version": {"const": "cadengbench-p.zero-to-cad-role-output.v1"},
+    "bundle_id": {"type": "string", "minLength": 1},
+    "item_id": {"type": "string", "minLength": 1},
+    "role_id": {"const": "zero_design_spec_author"},
+    "output_status": {"enum": ["complete", "partial", "abstained"]},
+    "payload": {
+      "type": "object", "additionalProperties": false,
+      "required": ["title", "object_category", "design_goal", "application_context", "global_form", "requirement_intents", "design_freedom"],
+      "properties": {
+        "title": {"$ref": "#/$defs/prose"},
+        "object_category": {"$ref": "#/$defs/prose"},
+        "design_goal": {"$ref": "#/$defs/prose"},
+        "application_context": {"$ref": "#/$defs/prose"},
+        "global_form": {"$ref": "#/$defs/prose"},
+        "requirement_intents": {"type": "array", "maxItems": 16, "items": {"$ref": "#/$defs/intent"}},
+        "design_freedom": {"type": "array", "maxItems": 8, "items": {"$ref": "#/$defs/prose"}}
+      }
+    },
+    "abstentions": {"type": "array", "maxItems": 12, "items": {"$ref": "#/$defs/prose"}}
+  },
+  "$defs": {
+    "prose": {"type": "string", "minLength": 1, "maxLength": 600, "pattern": "^[^0-9]*$"},
+    "factRef": {"type": "string", "pattern": "^FACT-[A-Z0-9_-]+$"},
+    "intent": {
+      "type": "object", "additionalProperties": false,
+      "required": ["category", "semantic_name", "purpose", "fact_refs", "criticality"],
+      "properties": {
+        "category": {"enum": ["geometry", "topology", "feature", "interface", "parametricity", "function", "material_process"]},
+        "semantic_name": {"$ref": "#/$defs/prose"},
+        "purpose": {"$ref": "#/$defs/prose"},
+        "fact_refs": {"type": "array", "minItems": 1, "maxItems": 12, "uniqueItems": true, "items": {"$ref": "#/$defs/factRef"}},
+        "criticality": {"enum": ["required", "conditional"]}
+      }
+    }
+  }
+}

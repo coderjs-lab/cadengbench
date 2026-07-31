@@ -1,0 +1,95 @@
+{
+  "item_id": "p_fusion360_001017",
+  "output_status": "complete",
+  "payload": {
+    "affordances": [
+      {
+        "affordance_kind": "locating",
+        "description": "Cylindrical geometry allows precise coaxial alignment within a mating bore.",
+        "view_ids": [
+          "iso_front_right_top",
+          "iso_rear_left_top"
+        ],
+        "visibility": "visible"
+      },
+      {
+        "affordance_kind": "load_transfer",
+        "description": "Flat parallel end faces provide stable bearing surfaces for axial compression.",
+        "view_ids": [
+          "iso_front_right_top",
+          "iso_rear_left_top"
+        ],
+        "visibility": "visible"
+      },
+      {
+        "affordance_kind": "grip",
+        "description": "Smooth continuous lateral surface enables friction-based handling or clamping.",
+        "view_ids": [
+          "iso_front_right_top",
+          "iso_rear_left_top"
+        ],
+        "visibility": "visible"
+      }
+    ],
+    "features": [
+      {
+        "description": "Uniform cylindrical body with constant cross-section along vertical axis.",
+        "feature_kind": "base_form",
+        "view_ids": [
+          "iso_front_right_top",
+          "iso_rear_left_top"
+        ],
+        "visibility": "visible"
+      },
+      {
+        "description": "Flat circular top face perpendicular to the central axis.",
+        "feature_kind": "base_form",
+        "view_ids": [
+          "iso_front_right_top",
+          "iso_rear_left_top"
+        ],
+        "visibility": "visible"
+      },
+      {
+        "description": "Flat circular bottom face parallel to the top face.",
+        "feature_kind": "base_form",
+        "view_ids": [
+          "iso_front_right_top",
+          "iso_rear_left_top"
+        ],
+        "visibility": "visible"
+      },
+      {
+        "description": "Smooth continuous curved lateral surface connecting top and bottom faces.",
+        "feature_kind": "base_form",
+        "view_ids": [
+          "iso_front_right_top",
+          "iso_rear_left_top"
+        ],
+        "visibility": "visible"
+      },
+      {
+        "description": "Sharp circular edge at the intersection of the top face and lateral surface.",
+        "feature_kind": "base_form",
+        "view_ids": [
+          "iso_front_right_top",
+          "iso_rear_left_top"
+        ],
+        "visibility": "visible"
+      },
+      {
+        "description": "Sharp circular edge at the intersection of the bottom face and lateral surface.",
+        "feature_kind": "base_form",
+        "view_ids": [
+          "iso_front_right_top",
+          "iso_rear_left_top"
+        ],
+        "visibility": "visible"
+      }
+    ],
+    "global_form": "Solid right circular cylinder with flat parallel end faces and smooth continuous lateral surface.",
+    "recommended_prompt_profile": "text_only"
+  },
+  "role_id": "visual_geometry_grounder",
+  "schema_version": "cadengbench-p.visual-grounding-annotation.v2"
+}

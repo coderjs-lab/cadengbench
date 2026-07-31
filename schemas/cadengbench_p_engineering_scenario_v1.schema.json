@@ -1,0 +1,645 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cadengbench.org/schemas/cadengbench_p_engineering_scenario_v1.schema.json",
+  "title": "CADEngBench-P benchmark-authored engineering scenario catalog v1",
+  "description": "Synthetic engineering edit scenarios grounded to source bindings. These records do not assert source-author intent and are not scoreable until deterministic validation is complete.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "catalog_id",
+    "dataset_version",
+    "source_pilot_ref",
+    "catalog_status",
+    "scenarios"
+  ],
+  "properties": {
+    "schema_version": {"const": "cadengbench-p.engineering-scenario.v1"},
+    "catalog_id": {"$ref": "#/$defs/nonEmpty"},
+    "dataset_version": {"$ref": "#/$defs/nonEmpty"},
+    "source_pilot_ref": {"$ref": "#/$defs/artifactRef"},
+    "catalog_status": {"const": "unsealed_scenario_seeds"},
+    "scenarios": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"$ref": "#/$defs/scenario"}
+    }
+  },
+  "$defs": {
+    "nonEmpty": {"type": "string", "minLength": 1},
+    "artifactRef": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^[^/].+"
+    },
+    "quantity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["value", "unit"],
+      "properties": {
+        "value": {"type": "number"},
+        "unit": {"$ref": "#/$defs/nonEmpty"}
+      }
+    },
+    "artifactEvidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["artifact_ref", "scope"],
+      "properties": {
+        "artifact_ref": {"$ref": "#/$defs/artifactRef"},
+        "scope": {"$ref": "#/$defs/nonEmpty"}
+      }
+    },
+    "scenarioProvenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "origin",
+        "authored_by",
+        "source_author_intent_claimed",
+        "source_author_reviewed",
+        "inspiration_refs",
+        "item_evidence_refs",
+        "synthetic_assumption_ids",
+        "provenance_note"
+      ],
+      "properties": {
+        "origin": {"const": "benchmark_authored_synthetic"},
+        "authored_by": {"const": "cadengbench_multiagent_annotation_pipeline_v1"},
+        "source_author_intent_claimed": {"const": false},
+        "source_author_reviewed": {"const": false},
+        "inspiration_refs": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"$ref": "#/$defs/artifactEvidence"}
+        },
+        "item_evidence_refs": {
+          "type": "array",
+          "minItems": 5,
+          "uniqueItems": true,
+          "items": {"$ref": "#/$defs/artifactRef"}
+        },
+        "synthetic_assumption_ids": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {"$ref": "#/$defs/nonEmpty"}
+        },
+        "provenance_note": {"$ref": "#/$defs/nonEmpty"}
+      }
+    },
+    "componentRole": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["component_name", "system_role", "critical_interfaces", "semantic_status"],
+      "properties": {
+        "component_name": {"$ref": "#/$defs/nonEmpty"},
+        "system_role": {"$ref": "#/$defs/nonEmpty"},
+        "critical_interfaces": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"$ref": "#/$defs/nonEmpty"}
+        },
+        "semantic_status": {"const": "benchmark_authored_synthetic"}
+      }
+    },
+    "application": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["use_case", "installation_context", "lifecycle_context", "context_status"],
+      "properties": {
+        "use_case": {"$ref": "#/$defs/nonEmpty"},
+        "installation_context": {"$ref": "#/$defs/nonEmpty"},
+        "lifecycle_context": {"$ref": "#/$defs/nonEmpty"},
+        "context_status": {"const": "benchmark_authored_synthetic"}
+      }
+    },
+    "operatingCondition": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["condition_id", "description", "quantities", "assumption_ids"],
+      "properties": {
+        "condition_id": {"$ref": "#/$defs/nonEmpty"},
+        "description": {"$ref": "#/$defs/nonEmpty"},
+        "quantities": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["name", "quantity"],
+            "properties": {
+              "name": {"$ref": "#/$defs/nonEmpty"},
+              "quantity": {"$ref": "#/$defs/quantity"}
+            }
+          }
+        },
+        "assumption_ids": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {"$ref": "#/$defs/nonEmpty"}
+        }
+      }
+    },
+    "operatingConditions": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["environment", "duty_cycle", "conditions", "context_status"],
+      "properties": {
+        "environment": {"$ref": "#/$defs/nonEmpty"},
+        "duty_cycle": {"$ref": "#/$defs/nonEmpty"},
+        "conditions": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"$ref": "#/$defs/operatingCondition"}
+        },
+        "context_status": {"const": "benchmark_authored_synthetic"}
+      }
+    },
+    "material": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["material_name", "material_card_ref", "selection_rationale", "status"],
+      "properties": {
+        "material_name": {"$ref": "#/$defs/nonEmpty"},
+        "material_card_ref": {"$ref": "#/$defs/artifactRef"},
+        "selection_rationale": {"$ref": "#/$defs/nonEmpty"},
+        "status": {"const": "benchmark_authored_assumption"}
+      }
+    },
+    "process": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["process_family", "process_profile_ref", "route", "selection_rationale", "status"],
+      "properties": {
+        "process_family": {"enum": ["cnc_milling", "cnc_turning", "additive_fdm"]},
+        "process_profile_ref": {"$ref": "#/$defs/artifactRef"},
+        "route": {"$ref": "#/$defs/nonEmpty"},
+        "selection_rationale": {"$ref": "#/$defs/nonEmpty"},
+        "status": {"const": "benchmark_authored_assumption"}
+      }
+    },
+    "materialProcess": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["material", "process", "manufacturing_scope"],
+      "properties": {
+        "material": {"$ref": "#/$defs/material"},
+        "process": {"$ref": "#/$defs/process"},
+        "manufacturing_scope": {"$ref": "#/$defs/nonEmpty"}
+      }
+    },
+    "designProblem": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["problem_statement", "causal_mechanism", "evidence_boundary"],
+      "properties": {
+        "problem_statement": {"$ref": "#/$defs/nonEmpty"},
+        "causal_mechanism": {"$ref": "#/$defs/nonEmpty"},
+        "evidence_boundary": {"$ref": "#/$defs/nonEmpty"}
+      }
+    },
+    "functionalObjective": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["objective", "success_effect_ids"],
+      "properties": {
+        "objective": {"$ref": "#/$defs/nonEmpty"},
+        "success_effect_ids": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {"$ref": "#/$defs/nonEmpty"}
+        }
+      }
+    },
+    "requestedChange": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "instruction",
+        "change_kind",
+        "target_binding_ids",
+        "target_state",
+        "allowed_adaptations",
+        "forbidden_changes"
+      ],
+      "properties": {
+        "instruction": {"$ref": "#/$defs/nonEmpty"},
+        "change_kind": {
+          "enum": [
+            "interface_clearance_update",
+            "recess_capacity_update",
+            "bearing_area_update",
+            "edge_relief_update",
+            "wall_thickness_update"
+          ]
+        },
+        "target_binding_ids": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {"$ref": "#/$defs/nonEmpty"}
+        },
+        "target_state": {"$ref": "#/$defs/nonEmpty"},
+        "allowed_adaptations": {
+          "type": "array",
+          "items": {"$ref": "#/$defs/nonEmpty"}
+        },
+        "forbidden_changes": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"$ref": "#/$defs/nonEmpty"}
+        }
+      }
+    },
+    "sourceBinding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "binding_id",
+        "binding_role",
+        "binding_kind",
+        "artifact_ref",
+        "source_pointer",
+        "semantic_name",
+        "authority"
+      ],
+      "properties": {
+        "binding_id": {"$ref": "#/$defs/nonEmpty"},
+        "binding_role": {
+          "enum": ["edit_target", "preservation", "effect_input", "feature_identity", "oracle"]
+        },
+        "binding_kind": {
+          "enum": [
+            "cadquery_parameter",
+            "fusion_parameter",
+            "futurecad_parameter",
+            "source_feature",
+            "source_operation",
+            "deterministic_geometry",
+            "artifact"
+          ]
+        },
+        "artifact_ref": {"$ref": "#/$defs/artifactRef"},
+        "source_pointer": {"$ref": "#/$defs/nonEmpty"},
+        "parameter_id": {"$ref": "#/$defs/nonEmpty"},
+        "feature_id": {"$ref": "#/$defs/nonEmpty"},
+        "operation_id": {"$ref": "#/$defs/nonEmpty"},
+        "semantic_name": {"$ref": "#/$defs/nonEmpty"},
+        "base_value": {"$ref": "#/$defs/quantity"},
+        "target_value": {"$ref": "#/$defs/quantity"},
+        "authority": {
+          "enum": ["source_explicit", "deterministic_geometry", "verified_replay", "generated_proxy"]
+        }
+      },
+      "allOf": [
+        {
+          "if": {"properties": {"binding_role": {"const": "edit_target"}}},
+          "then": {
+            "required": ["base_value", "target_value"],
+            "anyOf": [
+              {"required": ["parameter_id"]},
+              {"required": ["feature_id"]}
+            ]
+          }
+        }
+      ]
+    },
+    "preservationConstraint": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "constraint_id",
+        "constraint_kind",
+        "description",
+        "binding_ids",
+        "reference_state",
+        "acceptance_predicate_ids"
+      ],
+      "properties": {
+        "constraint_id": {"$ref": "#/$defs/nonEmpty"},
+        "constraint_kind": {
+          "enum": ["fixed_parameter", "geometry_invariant", "feature_identity", "topology", "operation_sequence", "derived_margin"]
+        },
+        "description": {"$ref": "#/$defs/nonEmpty"},
+        "binding_ids": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {"$ref": "#/$defs/nonEmpty"}
+        },
+        "reference_state": {"const": "baseline"},
+        "tolerance": {"$ref": "#/$defs/quantity"},
+        "acceptance_predicate_ids": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {"$ref": "#/$defs/nonEmpty"}
+        }
+      }
+    },
+    "effectTarget": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["operator", "value", "unit"],
+      "properties": {
+        "operator": {"enum": ["equal", "less_equal", "greater_equal"]},
+        "value": {"type": "number"},
+        "unit": {"$ref": "#/$defs/nonEmpty"}
+      }
+    },
+    "effect": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "effect_id",
+        "effect_type",
+        "metric_name",
+        "claim_scope",
+        "baseline",
+        "target",
+        "derivation",
+        "engineering_interpretation",
+        "limitations",
+        "acceptance_predicate_ids"
+      ],
+      "properties": {
+        "effect_id": {"$ref": "#/$defs/nonEmpty"},
+        "effect_type": {
+          "enum": [
+            "interface_clearance_proxy",
+            "recess_capacity_proxy",
+            "bearing_pressure_proxy",
+            "edge_relief_proxy",
+            "fdm_wall_line_proxy",
+            "dfm_threshold"
+          ]
+        },
+        "metric_name": {"$ref": "#/$defs/nonEmpty"},
+        "claim_scope": {"enum": ["deterministic_geometry", "closed_form_proxy", "deterministic_dfm_proxy"]},
+        "baseline": {"$ref": "#/$defs/quantity"},
+        "target": {"$ref": "#/$defs/effectTarget"},
+        "derivation": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["method", "expression", "input_refs"],
+          "properties": {
+            "method": {"enum": ["geometry_measurement", "closed_form", "dfm_rule", "source_parameter_relation"]},
+            "expression": {"$ref": "#/$defs/nonEmpty"},
+            "input_refs": {
+              "type": "array",
+              "minItems": 1,
+              "uniqueItems": true,
+              "items": {"$ref": "#/$defs/nonEmpty"}
+            }
+          }
+        },
+        "engineering_interpretation": {"$ref": "#/$defs/nonEmpty"},
+        "limitations": {"$ref": "#/$defs/nonEmpty"},
+        "acceptance_predicate_ids": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {"$ref": "#/$defs/nonEmpty"}
+        }
+      }
+    },
+    "predicateExpected": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["operator", "value", "unit"],
+      "properties": {
+        "operator": {"enum": ["equal", "less_equal", "greater_equal", "boolean_true"]},
+        "value": {"type": ["number", "boolean"]},
+        "unit": {"$ref": "#/$defs/nonEmpty"}
+      }
+    },
+    "validator": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kind",
+        "implementation_status",
+        "implementation_ref",
+        "deterministic",
+        "uses_llm"
+      ],
+      "properties": {
+        "kind": {
+          "enum": [
+            "source_parameter_read",
+            "native_replay",
+            "geometry_measurement",
+            "closed_form_solver",
+            "smt_solver",
+            "dfm_check",
+            "brep_validity",
+            "feature_identity",
+            "source_diff"
+          ]
+        },
+        "implementation_status": {"enum": ["available", "specified_not_run", "blocked_by_native_replay", "proxy_only"]},
+        "implementation_ref": {"$ref": "#/$defs/nonEmpty"},
+        "deterministic": {"const": true},
+        "uses_llm": {"const": false}
+      }
+    },
+    "acceptancePredicate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "predicate_id",
+        "category",
+        "description",
+        "expression",
+        "input_binding_ids",
+        "expected",
+        "validator",
+        "required"
+      ],
+      "properties": {
+        "predicate_id": {"$ref": "#/$defs/nonEmpty"},
+        "category": {
+          "enum": ["target", "effect", "preservation", "topology", "validity", "manufacturing"]
+        },
+        "description": {"$ref": "#/$defs/nonEmpty"},
+        "expression": {"$ref": "#/$defs/nonEmpty"},
+        "input_binding_ids": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {"$ref": "#/$defs/nonEmpty"}
+        },
+        "expected": {"$ref": "#/$defs/predicateExpected"},
+        "tolerance": {"$ref": "#/$defs/quantity"},
+        "validator": {"$ref": "#/$defs/validator"},
+        "required": {"const": true}
+      }
+    },
+    "assumption": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "assumption_id",
+        "category",
+        "statement",
+        "provenance",
+        "validation_need",
+        "impact_if_false"
+      ],
+      "properties": {
+        "assumption_id": {"$ref": "#/$defs/nonEmpty"},
+        "category": {
+          "enum": ["application", "operating_condition", "material", "process", "interface", "load", "manufacturing_threshold"]
+        },
+        "statement": {"$ref": "#/$defs/nonEmpty"},
+        "provenance": {"const": "benchmark_authored_synthetic"},
+        "quantity": {"$ref": "#/$defs/quantity"},
+        "validation_need": {"$ref": "#/$defs/nonEmpty"},
+        "impact_if_false": {"$ref": "#/$defs/nonEmpty"}
+      }
+    },
+    "uncertainty": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["uncertainty_id", "statement", "consequence", "resolution"],
+      "properties": {
+        "uncertainty_id": {"$ref": "#/$defs/nonEmpty"},
+        "statement": {"$ref": "#/$defs/nonEmpty"},
+        "consequence": {"$ref": "#/$defs/nonEmpty"},
+        "resolution": {"$ref": "#/$defs/nonEmpty"}
+      }
+    },
+    "uncertaintyAndAssumptions": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["assumptions", "uncertainties", "physics_evidence_status", "source_semantics_status"],
+      "properties": {
+        "assumptions": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"$ref": "#/$defs/assumption"}
+        },
+        "uncertainties": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"$ref": "#/$defs/uncertainty"}
+        },
+        "physics_evidence_status": {"enum": ["proxy_only", "not_applicable"]},
+        "source_semantics_status": {"const": "absent_or_incomplete"}
+      }
+    },
+    "causalChain": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "application_need",
+        "operating_driver",
+        "design_problem",
+        "change_mechanism",
+        "expected_effect",
+        "verification_path"
+      ],
+      "properties": {
+        "application_need": {"$ref": "#/$defs/nonEmpty"},
+        "operating_driver": {"$ref": "#/$defs/nonEmpty"},
+        "design_problem": {"$ref": "#/$defs/nonEmpty"},
+        "change_mechanism": {"$ref": "#/$defs/nonEmpty"},
+        "expected_effect": {"$ref": "#/$defs/nonEmpty"},
+        "verification_path": {"$ref": "#/$defs/nonEmpty"}
+      }
+    },
+    "reviewStatus": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "independent_multiagent_review_required",
+        "deterministic_validation_status",
+        "scoring_eligible",
+        "source_author_verified",
+        "evaluator_uses_llm_judge",
+        "known_blockers"
+      ],
+      "properties": {
+        "status": {"const": "draft_seed"},
+        "independent_multiagent_review_required": {"const": true},
+        "deterministic_validation_status": {"enum": ["partial", "pending", "blocked_by_native_replay"]},
+        "scoring_eligible": {"const": false},
+        "source_author_verified": {"const": false},
+        "evaluator_uses_llm_judge": {"const": false},
+        "known_blockers": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"$ref": "#/$defs/nonEmpty"}
+        }
+      }
+    },
+    "scenario": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "scenario_id",
+        "item_id",
+        "title",
+        "scenario_provenance",
+        "component_role",
+        "application",
+        "operating_conditions",
+        "assumed_material_process",
+        "design_problem",
+        "functional_objective",
+        "requested_change",
+        "source_bindings",
+        "preservation_constraints",
+        "expected_effects",
+        "acceptance_predicates",
+        "uncertainty_and_assumptions",
+        "causal_chain",
+        "review_status"
+      ],
+      "properties": {
+        "scenario_id": {"type": "string", "pattern": "^p_(benchcad|fusion360|futurecad)_[0-9]{3,}:[A-Za-z0-9._-]+:v1$"},
+        "item_id": {"type": "string", "pattern": "^p_(benchcad|fusion360|futurecad)_[0-9]{3,}$"},
+        "title": {"$ref": "#/$defs/nonEmpty"},
+        "scenario_provenance": {"$ref": "#/$defs/scenarioProvenance"},
+        "component_role": {"$ref": "#/$defs/componentRole"},
+        "application": {"$ref": "#/$defs/application"},
+        "operating_conditions": {"$ref": "#/$defs/operatingConditions"},
+        "assumed_material_process": {"$ref": "#/$defs/materialProcess"},
+        "design_problem": {"$ref": "#/$defs/designProblem"},
+        "functional_objective": {"$ref": "#/$defs/functionalObjective"},
+        "requested_change": {"$ref": "#/$defs/requestedChange"},
+        "source_bindings": {
+          "type": "array",
+          "minItems": 2,
+          "items": {"$ref": "#/$defs/sourceBinding"},
+          "allOf": [
+            {"contains": {"properties": {"binding_role": {"const": "edit_target"}}}},
+            {"contains": {"properties": {"binding_role": {"enum": ["preservation", "feature_identity"]}}}}
+          ]
+        },
+        "preservation_constraints": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"$ref": "#/$defs/preservationConstraint"}
+        },
+        "expected_effects": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"$ref": "#/$defs/effect"}
+        },
+        "acceptance_predicates": {
+          "type": "array",
+          "minItems": 3,
+          "items": {"$ref": "#/$defs/acceptancePredicate"}
+        },
+        "uncertainty_and_assumptions": {"$ref": "#/$defs/uncertaintyAndAssumptions"},
+        "causal_chain": {"$ref": "#/$defs/causalChain"},
+        "review_status": {"$ref": "#/$defs/reviewStatus"}
+      }
+    }
+  }
+}

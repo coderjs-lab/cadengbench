@@ -1,0 +1,14 @@
+{
+  "attempt": 1,
+  "finish_reason": "stop",
+  "http_status": 200,
+  "native_schema_guidance_used": true,
+  "outcome": "accepted",
+  "parse_recovery": "exact",
+  "raw_content": "{\"schema_version\": \"cadengbench-p.visual-grounding-annotation.v2\", \"item_id\": \"p_benchcad_000333\", \"role_id\": \"visual_geometry_grounder\", \"output_status\": \"complete\", \"payload\": {\"global_form\": \"Hexagonal block with central through-hole and cylindrical end protrusion\", \"features\": [{\"feature_kind\": \"base_form\", \"description\": \"Hexagonal prism body with flat parallel faces\", \"view_ids\": [\"orbit_090\", \"orbit_270\"], \"visibility\": \"visible\"}, {\"feature_kind\": \"opening\", \"description\": \"Central cylindrical through-hole passing through hexagonal body\", \"view_ids\": [\"orbit_090\", \"orbit_270\"], \"visibility\": \"visible\"}, {\"feature_kind\": \"boss_or_protrusion\", \"description\": \"Cylindrical protrusion extending from one hexagonal end face\", \"view_ids\": [\"orbit_000\", \"orbit_180\"], \"visibility\": \"visible\"}, {\"feature_kind\": \"fillet_or_chamfer\", \"description\": \"Chamfered edges on the hexagonal body perimeter\", \"view_ids\": [\"orbit_045\", \"orbit_135\"], \"visibility\": \"visible\"}, {\"feature_kind\": \"boss_or_protrusion\", \"description\": \"Raised cylindrical collar on the protrusion end\", \"view_ids\": [\"orbit_top\", \"orbit_bottom\"], \"visibility\": \"visible\"}, {\"feature_kind\": \"opening\", \"description\": \"Circular opening at the base of the protrusion\", \"view_ids\": [\"orbit_000\", \"orbit_180\"], \"visibility\": \"visible\"}], \"affordances\": [{\"affordance_kind\": \"locating\", \"description\": \"Hexagonal body allows wrench engagement for torque application\", \"view_ids\": [\"orbit_090\", \"orbit_270\"], \"visibility\": \"visible\"}, {\"affordance_kind\": \"mounting\", \"description\": \"Central through-hole enables shaft or bolt passage\", \"view_ids\": [\"orbit_090\", \"orbit_270\"], \"visibility\": \"visible\"}, {\"affordance_kind\": \"locating\", \"description\": \"Cylindrical protrusion provides alignment or bearing surface\", \"view_ids\": [\"orbit_000\", \"orbit_180\"], \"visibility\": \"visible\"}], \"recommended_prompt_profile\": \"text_only\"}}",
+  "usage": {
+    "input_tokens": 2334,
+    "output_tokens": 526,
+    "total_tokens": 2860
+  }
+}

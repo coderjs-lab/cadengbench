@@ -1,0 +1,36 @@
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "annotations": null,
+        "audio": null,
+        "content": "{\"schema_version\": \"cadengbench-p.l3-annotation-candidate.v1\", \"bundle_id\": \"sha256:30d8f43566be5784fa68a3534da71b9b511e12197b1d85c88626ace10aaab0ac\", \"item_id\": \"p_fusion360_001017\", \"role_id\": \"l3_physics_probe_annotator\", \"output_status\": \"complete\", \"applicability\": \"proposed\", \"scenario_family\": \"axial_tension\", \"fixed_region_id\": \"axis:z:min\", \"loaded_region_id\": \"axis:z:max\", \"load_direction\": {\"axis\": \"z\", \"sign\": 1}, \"reason_code\": \"clear_axial_load_path\", \"risk_flags\": [], \"confidence\": 0.95, \"concise_rationale\": \"The geometry is a solid right circular cylinder with a clear axial load path along the Z-axis. The opposed regions axis:z:min and axis:z:max are flat, parallel end faces suitable for fixed and loaded boundary conditions in an axial tension/\", \"source_intent_claimed\": false}",
+        "function_call": null,
+        "reasoning": null,
+        "refusal": null,
+        "role": "assistant",
+        "tool_calls": []
+      },
+      "stop_reason": null,
+      "token_ids": null
+    }
+  ],
+  "created": 1784686246,
+  "id": "chatcmpl-80d89d8b11eb35cf",
+  "kv_transfer_params": null,
+  "model": "cadengbench-qwen3.6-27b-vlm",
+  "object": "chat.completion",
+  "prompt_logprobs": null,
+  "prompt_token_ids": null,
+  "service_tier": null,
+  "system_fingerprint": null,
+  "usage": {
+    "completion_tokens": 273,
+    "prompt_tokens": 1981,
+    "prompt_tokens_details": null,
+    "total_tokens": 2254
+  }
+}

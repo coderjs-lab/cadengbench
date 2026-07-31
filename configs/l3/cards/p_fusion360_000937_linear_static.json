@@ -1,0 +1,82 @@
+{
+  "schema_version": "cadengbench-p.l3-physics-card.v1",
+  "card_id": "l3-p-fusion360-000937-linear-static-pilot-v1",
+  "item_id": "p_fusion360_000937",
+  "variant_id": "nominal_source_step",
+  "status": "pilot_candidate",
+  "geometry": {
+    "step_path": "data/interim/cadengbench_p_v2_zero_to_cad_hpc_canary_30/dataset/items/p_fusion360_000937/source/34770_6bba5bd4_0003.step",
+    "authority": "source_step",
+    "units": "mm",
+    "expected_solid_count": 1
+  },
+  "analysis": {
+    "type": "linear_static",
+    "small_deformation": true,
+    "max_equilibrium_relative_error": 0.001
+  },
+  "material": {
+    "name": "benchmark_steel_linear_elastic_candidate",
+    "model": "linear_elastic_isotropic",
+    "youngs_modulus_mpa": 210000.0,
+    "poisson_ratio": 0.3,
+    "yield_strength_mpa": 250.0,
+    "authority": "benchmark_assigned_candidate",
+    "source": "Pilot assumption only; the Fusion source does not provide material intent."
+  },
+  "selectors": {
+    "fixed": {
+      "kind": "axis_extreme_planar_surfaces",
+      "axis": "x",
+      "side": "min",
+      "minimum_count": 1,
+      "maximum_count": 2,
+      "plane_tolerance_mm": 0.0001
+    },
+    "loaded": {
+      "kind": "axis_extreme_planar_surfaces",
+      "axis": "x",
+      "side": "max",
+      "minimum_count": 1,
+      "maximum_count": 2,
+      "plane_tolerance_mm": 0.0001
+    }
+  },
+  "load": {
+    "kind": "total_force_equal_nodal_pilot",
+    "vector_n": [1000.0, 0.0, 0.0],
+    "authority": "benchmark_assigned_candidate"
+  },
+  "mesh": {
+    "element_type": "C3D4",
+    "characteristic_length_mm": 3.0,
+    "algorithm_3d": 1,
+    "minimum_sicn": 0.01
+  },
+  "requirements": [
+    {
+      "requirement_id": "displacement-screen",
+      "metric": "max_displacement_mm",
+      "operator": "<=",
+      "limit": 0.5,
+      "unit": "mm",
+      "evidence_status": "pilot_candidate"
+    },
+    {
+      "requirement_id": "raw-stress-screen",
+      "metric": "max_nodal_von_mises_mpa",
+      "operator": "<=",
+      "limit": 166.6666667,
+      "unit": "MPa",
+      "evidence_status": "diagnostic_only"
+    }
+  ],
+  "provenance": {
+    "scenario_authority": "benchmark_authored_pilot",
+    "source_intent_claimed": false,
+    "notes": [
+      "Axial loading is assigned only to test the L3 pipeline.",
+      "Torsion and buckling are deliberately excluded from this first smoke run."
+    ]
+  }
+}

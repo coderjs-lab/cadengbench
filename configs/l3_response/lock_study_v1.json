@@ -1,0 +1,44 @@
+{
+  "study_id": "cadengbench-p-l3-response-lock-study-v1",
+  "profile": "configs/l3_response/cadengbench_p_l3_response_dev_v2.json",
+  "variants": [
+    {"variant_id": "equivalent_reexport", "scale": 1.0, "role": "equivalent"},
+    {"variant_id": "uniform_scale_0p95", "scale": 0.95, "role": "mild"},
+    {"variant_id": "uniform_scale_0p90", "scale": 0.9, "role": "boundary_diagnostic"},
+    {"variant_id": "uniform_scale_0p85", "scale": 0.85, "role": "moderate"},
+    {"variant_id": "uniform_scale_0p75", "scale": 0.75, "role": "strong"}
+  ],
+  "items": [
+    {"item_id": "p_benchcad_000333", "study_split": "calibration", "source": "benchcad", "scenario": "axial_tension", "complexity": "hard"},
+    {"item_id": "p_benchcad_000338", "study_split": "calibration", "source": "benchcad", "scenario": "axial_tension", "complexity": "medium"},
+    {"item_id": "p_benchcad_000413", "study_split": "calibration", "source": "benchcad", "scenario": "cantilever_transverse", "complexity": "easy"},
+    {"item_id": "p_benchcad_000518", "study_split": "calibration", "source": "benchcad", "scenario": "axial_tension", "complexity": "medium"},
+    {"item_id": "p_benchcad_000521", "study_split": "calibration", "source": "benchcad", "scenario": "axial_tension", "complexity": "easy"},
+    {"item_id": "p_benchcad_000522", "study_split": "calibration", "source": "benchcad", "scenario": "axial_tension", "complexity": "hard"},
+    {"item_id": "p_benchcad_000610", "study_split": "calibration", "source": "benchcad", "scenario": "axial_tension", "complexity": "easy"},
+    {"item_id": "p_benchcad_000727", "study_split": "calibration", "source": "benchcad", "scenario": "axial_tension", "complexity": "hard"},
+    {"item_id": "p_benchcad_000730", "study_split": "calibration", "source": "benchcad", "scenario": "axial_tension", "complexity": "medium"},
+    {"item_id": "p_benchcad_000757", "study_split": "calibration", "source": "benchcad", "scenario": "axial_tension", "complexity": "easy"},
+    {"item_id": "p_fusion360_001216", "study_split": "calibration", "source": "fusion360", "scenario": "axial_tension", "complexity": "easy"},
+    {"item_id": "p_fusion360_001293", "study_split": "calibration", "source": "fusion360", "scenario": "axial_tension", "complexity": "medium"},
+    {"item_id": "p_fusion360_001312", "study_split": "calibration", "source": "fusion360", "scenario": "axial_tension", "complexity": "easy"},
+    {"item_id": "p_fusion360_001442", "study_split": "calibration", "source": "fusion360", "scenario": "axial_tension", "complexity": "easy"},
+    {"item_id": "p_fusion360_001498", "study_split": "calibration", "source": "fusion360", "scenario": "axial_tension", "complexity": "easy"},
+
+    {"item_id": "p_benchcad_000061", "study_split": "held_out", "source": "benchcad", "scenario": "axial_tension", "complexity": "easy"},
+    {"item_id": "p_benchcad_000020", "study_split": "held_out", "source": "benchcad", "scenario": "axial_tension", "complexity": "medium"},
+    {"item_id": "p_benchcad_000191", "study_split": "held_out", "source": "benchcad", "scenario": "axial_tension", "complexity": "hard"},
+    {"item_id": "p_benchcad_000226", "study_split": "held_out", "source": "benchcad", "scenario": "cantilever_transverse", "complexity": "easy"},
+    {"item_id": "p_benchcad_000016", "study_split": "held_out", "source": "benchcad", "scenario": "cantilever_transverse", "complexity": "medium"},
+    {"item_id": "p_benchcad_000286", "study_split": "held_out", "source": "benchcad", "scenario": "cantilever_transverse", "complexity": "hard"},
+    {"item_id": "p_fusion360_000964", "study_split": "held_out", "source": "fusion360", "scenario": "axial_tension", "complexity": "easy"},
+    {"item_id": "p_fusion360_001018", "study_split": "held_out", "source": "fusion360", "scenario": "axial_tension", "complexity": "medium"},
+    {"item_id": "p_fusion360_001142", "study_split": "held_out", "source": "fusion360", "scenario": "axial_tension", "complexity": "hard"},
+    {"item_id": "p_fusion360_001471", "study_split": "held_out", "source": "fusion360", "scenario": "cantilever_transverse", "complexity": "easy"},
+    {"item_id": "p_fusion360_001229", "study_split": "held_out", "source": "fusion360", "scenario": "cantilever_transverse", "complexity": "medium"},
+    {"item_id": "p_fusion360_000986", "study_split": "held_out", "source": "fusion360", "scenario": "cantilever_transverse", "complexity": "hard"},
+    {"item_id": "p_benchcad_000080", "study_split": "held_out", "source": "benchcad", "scenario": "axial_tension", "complexity": "easy"},
+    {"item_id": "p_benchcad_000017", "study_split": "held_out", "source": "benchcad", "scenario": "cantilever_transverse", "complexity": "medium"},
+    {"item_id": "p_fusion360_001339", "study_split": "held_out", "source": "fusion360", "scenario": "cantilever_transverse", "complexity": "hard"}
+  ]
+}

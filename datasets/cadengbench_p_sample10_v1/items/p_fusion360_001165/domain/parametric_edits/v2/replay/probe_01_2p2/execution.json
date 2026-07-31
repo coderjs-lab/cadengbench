@@ -1,0 +1,266 @@
+{
+  "artifact_authority": {
+    "fusion_history_json": "edited_source_assignment_evidence",
+    "reconstruction_step": "derived_non_scoring_proxy"
+  },
+  "artifact_sha256": {
+    "fusion_history_json": "e4fbe77b24a895ce1ccc0fb3edd9c630e6c41fe0223c2f9f80f2f5337804a5b1",
+    "reconstruction_step": "09dbb940951cba65db067ed642d67aea39bef64920c5619e7d9c0ebfc7a3809f"
+  },
+  "autodesk_fusion_execution_used": false,
+  "bbox": {
+    "xmax": 2.2,
+    "xmin": 0.0,
+    "ymax": 25.827061840150716,
+    "ymin": -2.8395789264841076,
+    "zmax": 35.506029580856065,
+    "zmin": -35.369256237276744
+  },
+  "cadquery_source_translation_used": false,
+  "edge_count": 78,
+  "edited_variant_evidence": {
+    "deterministic_feature_measurements_available": true,
+    "deterministic_named_target_measurement_present": false,
+    "edit_replay_contract": "qualified_source_bound_profile_or_extrusion_edit_replay_v4",
+    "native_fusion_execution_used": false,
+    "scoring_authority": false,
+    "source_assignment_verified_by_caller": null,
+    "state": "edited_variant_source_bound_occ_reconstructed"
+  },
+  "face_count": 29,
+  "fidelity": {
+    "geometry_qualified": null,
+    "meaning": "The edited variant is an independent OCC reconstruction. Solid validity is observed, but no target geometry equivalence is claimed.",
+    "qualification_status": "edited_variant_not_compared_to_source_step",
+    "solid_set_equivalent_within_tolerance": null
+  },
+  "history_path": "./data/production/cadengbench_p_1800_v2_two_source_r25/materialization/.materializing/p_fusion360_001165.2738163/native/edit_binding_qualification_artifacts/candidate_01/probe_01.json",
+  "isolation": {
+    "mode": "python_subprocess_resource_limits",
+    "purpose": "contain OpenCascade process crashes and item-local failures"
+  },
+  "operation_trace": [
+    {
+      "distance_mm": 2.2,
+      "effective_span_mm": 2.2,
+      "entity_id": "ee35e5b5-e2b4-11ea-a35b-54bf646e7e1f",
+      "extent_type": "OneSideFeatureExtentType",
+      "face_count": 24,
+      "feature_name": "Extrude1",
+      "operation": "NewBodyFeatureOperation",
+      "profile_diagnostics": {
+        "distance_mm": 2.2,
+        "effective_span_mm": 2.2,
+        "extent_type": "OneSideFeatureExtentType",
+        "invalid_individual_profile_ids": [],
+        "invalid_individual_profile_solid_count": 0,
+        "profile_count": 1,
+        "source_distance_unit": "cm",
+        "source_distance_value": 0.22000000000000003,
+        "tool_solid_count": 1,
+        "tool_valid": true,
+        "tool_volume_mm3": 3105.6131262945964,
+        "validity_policy": "individual_profile_prisms_are_diagnostic;_the_aggregate_feature_solid_and_source_equivalence_gate_are_required"
+      },
+      "solid_count": 1,
+      "source_distance_unit": "cm",
+      "source_distance_value": 0.22000000000000003,
+      "timeline_index": 1,
+      "tool_solid_count": 1,
+      "tool_valid": true,
+      "tool_volume_mm3": 3105.6131262945964
+    },
+    {
+      "distance_mm": -5.0,
+      "effective_span_mm": 5.0,
+      "entity_id": "ee5812e6-e2b4-11ea-8813-54bf646e7e1f",
+      "extent_type": "OneSideFeatureExtentType",
+      "face_count": 29,
+      "feature_name": "Extrude2",
+      "operation": "CutFeatureOperation",
+      "profile_diagnostics": {
+        "distance_mm": -5.0,
+        "effective_span_mm": 5.0,
+        "extent_type": "OneSideFeatureExtentType",
+        "invalid_individual_profile_ids": [],
+        "invalid_individual_profile_solid_count": 0,
+        "profile_count": 1,
+        "source_distance_unit": "cm",
+        "source_distance_value": -0.5,
+        "tool_solid_count": 1,
+        "tool_valid": true,
+        "tool_volume_mm3": 1697.4098230342215,
+        "validity_policy": "individual_profile_prisms_are_diagnostic;_the_aggregate_feature_solid_and_source_equivalence_gate_are_required"
+      },
+      "solid_count": 1,
+      "source_distance_unit": "cm",
+      "source_distance_value": -0.5,
+      "timeline_index": 3,
+      "tool_solid_count": 1,
+      "tool_valid": true,
+      "tool_volume_mm3": 1697.4098230342215
+    }
+  ],
+  "output_units": "mm",
+  "reconstruction_contract": "independent_occ_reconstruction_proxy",
+  "reconstruction_engine": "deterministic_direct_fusion_history_json_to_occ_v1",
+  "reconstruction_step_path": "./data/production/cadengbench_p_1800_v2_two_source_r25/materialization/.materializing/p_fusion360_001165.2738163/native/edit_binding_qualification_artifacts/candidate_01/probe_01.step",
+  "returncode": 0,
+  "schema_version": "cadengbench-p.fusion360-occ-reconstruction-report.v7",
+  "scoring_readiness": {
+    "blocking_reasons": [
+      "deterministic_named_target_measurement_missing",
+      "native_fusion_execution_not_performed"
+    ],
+    "ready": false
+  },
+  "solid_count": 1,
+  "solid_valid": true,
+  "source_units": "cm",
+  "status": "success",
+  "stderr": "",
+  "stdout": "",
+  "support": {
+    "curve_types": {
+      "Line3D": 52
+    },
+    "edit_scoring_reasons": [],
+    "edit_scoring_supported": true,
+    "editable_bindings": [
+      {
+        "base_value": 0.22000000000000003,
+        "binding_id": "fusion360:ee35e5b5-e2b4-11ea-a35b-54bf646e7e1f:distance",
+        "canonical_unit": "mm",
+        "direct_brep_parameter_readback": false,
+        "edit_family": "extrusion_distance",
+        "extent_multiplier": 1.0,
+        "extent_type": "OneSideFeatureExtentType",
+        "extrusion_axis": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "feature_id": "ee35e5b5-e2b4-11ea-a35b-54bf646e7e1f",
+        "feature_name": "Extrude1",
+        "json_pointer": "/entities/ee35e5b5-e2b4-11ea-a35b-54bf646e7e1f/extent_one/distance/value",
+        "operation": "NewBodyFeatureOperation",
+        "parameter_role": "extrude_distance",
+        "reconstruction_support": "deterministic_evaluated_profile_extrusion",
+        "scale_to_canonical": 10.0,
+        "source_unit": "cm",
+        "timeline_index": 1
+      },
+      {
+        "base_value": -0.5,
+        "binding_id": "fusion360:ee5812e6-e2b4-11ea-8813-54bf646e7e1f:distance",
+        "canonical_unit": "mm",
+        "direct_brep_parameter_readback": false,
+        "edit_family": "extrusion_distance",
+        "extent_multiplier": 1.0,
+        "extent_type": "OneSideFeatureExtentType",
+        "extrusion_axis": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "feature_id": "ee5812e6-e2b4-11ea-8813-54bf646e7e1f",
+        "feature_name": "Extrude2",
+        "json_pointer": "/entities/ee5812e6-e2b4-11ea-8813-54bf646e7e1f/extent_one/distance/value",
+        "operation": "CutFeatureOperation",
+        "parameter_role": "extrude_distance",
+        "reconstruction_support": "deterministic_evaluated_profile_extrusion",
+        "scale_to_canonical": 10.0,
+        "source_unit": "cm",
+        "timeline_index": 3
+      }
+    ],
+    "extent_types": {
+      "OneSideFeatureExtentType": 2
+    },
+    "interpretation_contract": "fusion360_evaluated_profile_extrusion_v5",
+    "operation_types": {
+      "CutFeatureOperation": 1,
+      "NewBodyFeatureOperation": 1
+    },
+    "preferred_edit_binding": {
+      "base_value": -0.5,
+      "binding_id": "fusion360:ee5812e6-e2b4-11ea-8813-54bf646e7e1f:distance",
+      "canonical_unit": "mm",
+      "direct_brep_parameter_readback": false,
+      "edit_family": "extrusion_distance",
+      "extent_multiplier": 1.0,
+      "extent_type": "OneSideFeatureExtentType",
+      "extrusion_axis": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "feature_id": "ee5812e6-e2b4-11ea-8813-54bf646e7e1f",
+      "feature_name": "Extrude2",
+      "json_pointer": "/entities/ee5812e6-e2b4-11ea-8813-54bf646e7e1f/extent_one/distance/value",
+      "operation": "CutFeatureOperation",
+      "parameter_role": "extrude_distance",
+      "reconstruction_support": "deterministic_evaluated_profile_extrusion",
+      "scale_to_canonical": 10.0,
+      "source_unit": "cm",
+      "timeline_index": 3
+    },
+    "reasons": [],
+    "reconstruction_contract": "independent_occ_reconstruction_proxy",
+    "scoreable_edit_bindings": [
+      {
+        "base_value": -0.5,
+        "binding_id": "fusion360:ee5812e6-e2b4-11ea-8813-54bf646e7e1f:distance",
+        "canonical_unit": "mm",
+        "direct_brep_parameter_readback": false,
+        "edit_family": "extrusion_distance",
+        "extent_multiplier": 1.0,
+        "extent_type": "OneSideFeatureExtentType",
+        "extrusion_axis": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "feature_id": "ee5812e6-e2b4-11ea-8813-54bf646e7e1f",
+        "feature_name": "Extrude2",
+        "json_pointer": "/entities/ee5812e6-e2b4-11ea-8813-54bf646e7e1f/extent_one/distance/value",
+        "operation": "CutFeatureOperation",
+        "parameter_role": "extrude_distance",
+        "reconstruction_support": "deterministic_evaluated_profile_extrusion",
+        "scale_to_canonical": 10.0,
+        "source_unit": "cm",
+        "timeline_index": 3
+      },
+      {
+        "base_value": 0.22000000000000003,
+        "binding_id": "fusion360:ee35e5b5-e2b4-11ea-a35b-54bf646e7e1f:distance",
+        "canonical_unit": "mm",
+        "direct_brep_parameter_readback": false,
+        "edit_family": "extrusion_distance",
+        "extent_multiplier": 1.0,
+        "extent_type": "OneSideFeatureExtentType",
+        "extrusion_axis": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "feature_id": "ee35e5b5-e2b4-11ea-a35b-54bf646e7e1f",
+        "feature_name": "Extrude1",
+        "json_pointer": "/entities/ee35e5b5-e2b4-11ea-a35b-54bf646e7e1f/extent_one/distance/value",
+        "operation": "NewBodyFeatureOperation",
+        "parameter_role": "extrude_distance",
+        "reconstruction_support": "deterministic_evaluated_profile_extrusion",
+        "scale_to_canonical": 10.0,
+        "source_unit": "cm",
+        "timeline_index": 1
+      }
+    ],
+    "start_extent_types": {
+      "ProfilePlaneStartDefinition": 2
+    },
+    "supported": true
+  },
+  "surface_area": 3455.2065345680057,
+  "volume": 2426.6491970809066,
+  "worker_report_status": "success"
+}

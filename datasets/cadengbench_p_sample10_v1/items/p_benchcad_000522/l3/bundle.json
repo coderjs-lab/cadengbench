@@ -1,0 +1,131 @@
+{
+  "bundle_id": "sha256:cc7a21805c45b97a7a30f5a5d7bccf67018261bf8d1e2512119aa57d78f68d5a",
+  "inputs": {
+    "authority": {
+      "llm_output_authority": "candidate_only",
+      "promotion_requires_deterministic_and_solver_validation": true,
+      "source_intent_claimed": false
+    },
+    "geometry": {
+      "bbox_lengths_mm": [
+        23.55,
+        2.36,
+        2.36
+      ],
+      "deterministic_eligibility": {
+        "eligible": true,
+        "policy": {
+          "expected_solid_count": 1,
+          "maximum_region_surface_count": 64,
+          "minimum_region_area_fraction": 0.002,
+          "normal_alignment_min": 0.98,
+          "plane_tolerance_relative": 1e-06
+        },
+        "reason_codes": []
+      },
+      "eligible_opposed_region_pairs": [
+        {
+          "axis": "x",
+          "maximum_region": {
+            "area_fraction": 0.0229767733,
+            "area_mm2": 5.3246,
+            "axis": "x",
+            "region_id": "axis:x:max",
+            "side": "max",
+            "surface_count": 1
+          },
+          "minimum_region": {
+            "area_fraction": 0.0229767733,
+            "area_mm2": 5.3246,
+            "axis": "x",
+            "region_id": "axis:x:min",
+            "side": "min",
+            "surface_count": 1
+          },
+          "pair_id": "opposed:x",
+          "span_length_mm": 23.55
+        },
+        {
+          "axis": "y",
+          "maximum_region": {
+            "area_fraction": 0.1114393819,
+            "area_mm2": 25.82478079,
+            "axis": "y",
+            "region_id": "axis:y:max",
+            "side": "max",
+            "surface_count": 1
+          },
+          "minimum_region": {
+            "area_fraction": 0.1686945494,
+            "area_mm2": 39.093,
+            "axis": "y",
+            "region_id": "axis:y:min",
+            "side": "min",
+            "surface_count": 1
+          },
+          "pair_id": "opposed:y",
+          "span_length_mm": 2.36
+        },
+        {
+          "axis": "z",
+          "maximum_region": {
+            "area_fraction": 0.1686945494,
+            "area_mm2": 39.093,
+            "axis": "z",
+            "region_id": "axis:z:max",
+            "side": "max",
+            "surface_count": 1
+          },
+          "minimum_region": {
+            "area_fraction": 0.1686945494,
+            "area_mm2": 39.093,
+            "axis": "z",
+            "region_id": "axis:z:min",
+            "side": "min",
+            "surface_count": 1
+          },
+          "pair_id": "opposed:z",
+          "span_length_mm": 2.36
+        }
+      ],
+      "face_count": 15,
+      "solid_count": 1
+    },
+    "item_id": "p_benchcad_000522",
+    "selection": {
+      "complexity": {
+        "aggregate_for_stratification_only": 0.27838022665103557,
+        "axes": {
+          "construction_topology": 0.3710433763188746,
+          "history": 0.331249185879901,
+          "parametric": 0.09808518952715904,
+          "sketch": 0.3131431548782076
+        },
+        "method": "source_explicit_benchcad_difficulty",
+        "single_scalar_is_not_benchmark_truth": true,
+        "tier": "hard"
+      },
+      "selection_stratum": "family:parallel_key",
+      "source_key": "benchcad",
+      "split": "development"
+    },
+    "semantic_context": {
+      "application_context": "transmission shaft interface",
+      "authority_warning": "LLM/VLM-authored context may be semantically wrong and is not selector or source-intent authority.",
+      "category": "transmission component",
+      "global_form": "Elongated rectangular prism with chamfered ends and a longitudinal groove on one face.",
+      "interfaces": [
+        {
+          "description": "fits into shaft keyway",
+          "kind": "mounting"
+        }
+      ],
+      "status": "candidate_context_only",
+      "title": "Parallel key"
+    },
+    "source_family": "benchcad"
+  },
+  "item_id": "p_benchcad_000522",
+  "role_id": "l3_physics_probe_annotator",
+  "schema_version": "cadengbench-p.l3-annotation-bundle.v1"
+}

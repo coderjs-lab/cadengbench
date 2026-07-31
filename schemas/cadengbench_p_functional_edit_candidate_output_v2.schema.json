@@ -1,0 +1,968 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cadengbench.org/schemas/cadengbench_p_functional_edit_candidate_output_v2.schema.json",
+  "title": "CADEngBench-P multi-role functional engineering-edit candidate output v2",
+  "description": "Quarantined role output for benchmark-authored functional-edit construction. No output is benchmark truth, a score, or an evaluator judgment.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "protocol_version",
+    "bundle_id",
+    "item_id",
+    "role_id",
+    "prompt_id",
+    "prompt_version",
+    "record_authority",
+    "payload",
+    "abstentions",
+    "escalation",
+    "self_check",
+    "output_status"
+  ],
+  "properties": {
+    "schema_version": {"const": "cadengbench-p-functional-edit-candidate-output-v2"},
+    "protocol_version": {"const": "functional_edit_intent.v2"},
+    "bundle_id": {"type": "string", "pattern": "^sha256:[a-f0-9]{64}$"},
+    "item_id": {"$ref": "#/$defs/itemId"},
+    "role_id": {
+      "enum": [
+        "engineering_scenario_author",
+        "engineering_effect_analyst",
+        "edit_binding_engineer",
+        "functional_edit_synthesizer",
+        "functional_edit_critic"
+      ]
+    },
+    "prompt_id": {"type": "string", "minLength": 1},
+    "prompt_version": {"type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"},
+    "record_authority": {"const": "M5_model_candidate"},
+    "payload": {
+      "oneOf": [
+        {"$ref": "#/$defs/scenarioAuthorPayload"},
+        {"$ref": "#/$defs/effectAnalystPayload"},
+        {"$ref": "#/$defs/bindingEngineerPayload"},
+        {"$ref": "#/$defs/synthesizerPayload"},
+        {"$ref": "#/$defs/criticPayload"},
+        {"type": "null"}
+      ]
+    },
+    "abstentions": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/abstention"}
+    },
+    "escalation": {"$ref": "#/$defs/escalation"},
+    "self_check": {"$ref": "#/$defs/selfCheck"},
+    "output_status": {
+      "enum": ["complete", "partial", "abstained", "escalation_requested"]
+    }
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"output_status": {"const": "abstained"}}},
+      "then": {
+        "properties": {
+          "payload": {"type": "null"},
+          "abstentions": {"minItems": 1}
+        }
+      }
+    },
+    {
+      "if": {"properties": {"output_status": {"const": "escalation_requested"}}},
+      "then": {"properties": {"escalation": {"properties": {"required": {"const": true}}}}}
+    },
+    {
+      "if": {"properties": {"role_id": {"const": "engineering_scenario_author"}}},
+      "then": {
+        "properties": {
+          "prompt_id": {"const": "cadengbench-p.functional-edit.engineering-scenario-author.v2"}
+        },
+        "allOf": [
+          {
+            "if": {"properties": {"output_status": {"not": {"const": "abstained"}}}},
+            "then": {"properties": {"payload": {"$ref": "#/$defs/scenarioAuthorPayload"}}}
+          }
+        ]
+      }
+    },
+    {
+      "if": {"properties": {"role_id": {"const": "engineering_effect_analyst"}}},
+      "then": {
+        "properties": {
+          "prompt_id": {"const": "cadengbench-p.functional-edit.engineering-effect-analyst.v2"}
+        },
+        "allOf": [
+          {
+            "if": {"properties": {"output_status": {"not": {"const": "abstained"}}}},
+            "then": {"properties": {"payload": {"$ref": "#/$defs/effectAnalystPayload"}}}
+          }
+        ]
+      }
+    },
+    {
+      "if": {"properties": {"role_id": {"const": "edit_binding_engineer"}}},
+      "then": {
+        "properties": {
+          "prompt_id": {"const": "cadengbench-p.functional-edit.edit-binding-engineer.v2"}
+        },
+        "allOf": [
+          {
+            "if": {"properties": {"output_status": {"not": {"const": "abstained"}}}},
+            "then": {"properties": {"payload": {"$ref": "#/$defs/bindingEngineerPayload"}}}
+          }
+        ]
+      }
+    },
+    {
+      "if": {"properties": {"role_id": {"const": "functional_edit_synthesizer"}}},
+      "then": {
+        "properties": {
+          "prompt_id": {"const": "cadengbench-p.functional-edit.synthesizer.v2"}
+        },
+        "allOf": [
+          {
+            "if": {"properties": {"output_status": {"not": {"const": "abstained"}}}},
+            "then": {"properties": {"payload": {"$ref": "#/$defs/synthesizerPayload"}}}
+          }
+        ]
+      }
+    },
+    {
+      "if": {"properties": {"role_id": {"const": "functional_edit_critic"}}},
+      "then": {
+        "properties": {
+          "prompt_id": {"const": "cadengbench-p.functional-edit.critic.v2"}
+        },
+        "allOf": [
+          {
+            "if": {"properties": {"output_status": {"not": {"const": "abstained"}}}},
+            "then": {"properties": {"payload": {"$ref": "#/$defs/criticPayload"}}}
+          }
+        ]
+      }
+    }
+  ],
+  "$defs": {
+    "itemId": {
+      "type": "string",
+      "pattern": "^p_(benchcad|fusion360|futurecad)_[0-9]{3,}$"
+    },
+    "nonEmpty": {"type": "string", "minLength": 1},
+    "nullableString": {"oneOf": [{"type": "string", "minLength": 1}, {"type": "null"}]},
+    "nullableNumber": {"oneOf": [{"type": "number"}, {"type": "null"}]},
+    "stringArray": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {"$ref": "#/$defs/nonEmpty"}
+    },
+    "sourceRefArray": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {"$ref": "#/$defs/nonEmpty"}
+    },
+    "groundingRecord": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["element_id", "evidence_class", "description", "evidence_refs"],
+      "properties": {
+        "element_id": {"$ref": "#/$defs/nonEmpty"},
+        "evidence_class": {
+          "enum": [
+            "source_explicit",
+            "deterministic_geometry",
+            "verified_replay",
+            "conversion_proxy"
+          ]
+        },
+        "description": {"$ref": "#/$defs/nonEmpty"},
+        "evidence_refs": {"$ref": "#/$defs/sourceRefArray"}
+      }
+    },
+    "provenancedStatement": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "statement_id",
+        "text",
+        "provenance",
+        "grounding_refs",
+        "source_intent_evidence_refs"
+      ],
+      "properties": {
+        "statement_id": {"$ref": "#/$defs/nonEmpty"},
+        "text": {"$ref": "#/$defs/nonEmpty"},
+        "provenance": {"const": "benchmark_authored"},
+        "grounding_refs": {"$ref": "#/$defs/sourceRefArray"},
+        "source_intent_evidence_refs": {"type": "array", "maxItems": 0}
+      }
+    },
+    "inventionRecord": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["field_path", "provenance", "description", "grounding_refs"],
+      "properties": {
+        "field_path": {"type": "string", "pattern": "^/payload/"},
+        "provenance": {"const": "benchmark_authored"},
+        "description": {"$ref": "#/$defs/nonEmpty"},
+        "grounding_refs": {"$ref": "#/$defs/sourceRefArray"}
+      }
+    },
+    "operatingCondition": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "condition_id",
+        "description",
+        "quantity_name",
+        "operator",
+        "value",
+        "lower_bound",
+        "upper_bound",
+        "unit",
+        "provenance",
+        "grounding_refs",
+        "source_intent_evidence_refs"
+      ],
+      "properties": {
+        "condition_id": {"$ref": "#/$defs/nonEmpty"},
+        "description": {"$ref": "#/$defs/nonEmpty"},
+        "quantity_name": {"$ref": "#/$defs/nonEmpty"},
+        "operator": {"enum": ["eq", "gt", "ge", "lt", "le", "range"]},
+        "value": {"type": ["number", "null"]},
+        "lower_bound": {"type": ["number", "null"]},
+        "upper_bound": {"type": ["number", "null"]},
+        "unit": {"$ref": "#/$defs/nonEmpty"},
+        "provenance": {"const": "benchmark_authored"},
+        "grounding_refs": {"$ref": "#/$defs/sourceRefArray"},
+        "source_intent_evidence_refs": {"type": "array", "maxItems": 0}
+      }
+    },
+    "materialProcessRationale": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "rationale_id",
+        "material_family",
+        "process_family",
+        "rationale",
+        "provenance",
+        "grounding_refs",
+        "source_intent_evidence_refs",
+        "authoritative_external_evidence_refs",
+        "standard_or_grade_claims"
+      ],
+      "properties": {
+        "rationale_id": {"$ref": "#/$defs/nonEmpty"},
+        "material_family": {"$ref": "#/$defs/nonEmpty"},
+        "process_family": {"$ref": "#/$defs/nonEmpty"},
+        "rationale": {"$ref": "#/$defs/nonEmpty"},
+        "provenance": {"const": "benchmark_authored"},
+        "grounding_refs": {"$ref": "#/$defs/sourceRefArray"},
+        "source_intent_evidence_refs": {"type": "array", "maxItems": 0},
+        "authoritative_external_evidence_refs": {"$ref": "#/$defs/stringArray"},
+        "standard_or_grade_claims": {"type": "array", "maxItems": 0}
+      }
+    },
+    "engineeringRequirement": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "requirement_id",
+        "description",
+        "metric_name",
+        "comparator",
+        "target_value",
+        "unit",
+        "provenance",
+        "grounding_refs",
+        "source_intent_evidence_refs"
+      ],
+      "properties": {
+        "requirement_id": {"$ref": "#/$defs/nonEmpty"},
+        "description": {"$ref": "#/$defs/nonEmpty"},
+        "metric_name": {"$ref": "#/$defs/nonEmpty"},
+        "comparator": {"enum": ["eq", "gt", "ge", "lt", "le", "within_abs"]},
+        "target_value": {"type": "number"},
+        "unit": {"$ref": "#/$defs/nonEmpty"},
+        "provenance": {"const": "benchmark_authored"},
+        "grounding_refs": {"$ref": "#/$defs/sourceRefArray"},
+        "source_intent_evidence_refs": {"type": "array", "maxItems": 0}
+      }
+    },
+    "targetConcept": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["concept_id", "candidate_target_refs", "change_type", "requested_change"],
+      "properties": {
+        "concept_id": {"$ref": "#/$defs/nonEmpty"},
+        "candidate_target_refs": {"$ref": "#/$defs/sourceRefArray"},
+        "change_type": {
+          "enum": [
+            "dimension_change",
+            "feature_addition",
+            "feature_removal",
+            "feature_pattern_change",
+            "profile_change",
+            "material_thickness_change",
+            "other_bound_change"
+          ]
+        },
+        "requested_change": {"$ref": "#/$defs/nonEmpty"}
+      }
+    },
+    "causalLink": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "link_id",
+        "cause_ref",
+        "mechanism",
+        "effect_ref",
+        "assumptions",
+        "review_status",
+        "evidence_refs"
+      ],
+      "properties": {
+        "link_id": {"$ref": "#/$defs/nonEmpty"},
+        "cause_ref": {"$ref": "#/$defs/nonEmpty"},
+        "mechanism": {"$ref": "#/$defs/nonEmpty"},
+        "effect_ref": {"$ref": "#/$defs/nonEmpty"},
+        "assumptions": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/nonEmpty"}},
+        "review_status": {
+          "enum": [
+            "unreviewed",
+            "plausible_with_assumptions",
+            "revision_requested",
+            "contradicted_by_supplied_evidence",
+            "expert_review_required"
+          ]
+        },
+        "evidence_refs": {"$ref": "#/$defs/sourceRefArray"}
+      }
+    },
+    "measurableEffect": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "effect_id",
+        "description",
+        "proxy_name",
+        "baseline_measurement_ref",
+        "expected_direction",
+        "comparator",
+        "target_value",
+        "unit",
+        "measurement_method",
+        "deterministic_check_id",
+        "limitation"
+      ],
+      "properties": {
+        "effect_id": {"$ref": "#/$defs/nonEmpty"},
+        "description": {"$ref": "#/$defs/nonEmpty"},
+        "proxy_name": {"$ref": "#/$defs/nonEmpty"},
+        "baseline_measurement_ref": {"$ref": "#/$defs/nullableString"},
+        "expected_direction": {
+          "enum": ["increase", "decrease", "remain_within", "become_equal", "become_nonzero", "become_zero"]
+        },
+        "comparator": {"enum": ["eq", "gt", "ge", "lt", "le", "within_abs"]},
+        "target_value": {"type": "number"},
+        "unit": {"$ref": "#/$defs/nonEmpty"},
+        "measurement_method": {"$ref": "#/$defs/nonEmpty"},
+        "deterministic_check_id": {"$ref": "#/$defs/nonEmpty"},
+        "limitation": {"$ref": "#/$defs/nonEmpty"}
+      }
+    },
+    "preservationIntent": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "requirement_id",
+        "description",
+        "target_refs",
+        "metric_name",
+        "comparator",
+        "reference_value_ref",
+        "tolerance",
+        "unit",
+        "deterministic_check_id"
+      ],
+      "properties": {
+        "requirement_id": {"$ref": "#/$defs/nonEmpty"},
+        "description": {"$ref": "#/$defs/nonEmpty"},
+        "target_refs": {"$ref": "#/$defs/sourceRefArray"},
+        "metric_name": {"$ref": "#/$defs/nonEmpty"},
+        "comparator": {"enum": ["eq", "within_abs", "unchanged", "set_equal", "count_equal"]},
+        "reference_value_ref": {"$ref": "#/$defs/nonEmpty"},
+        "tolerance": {"type": "number", "minimum": 0},
+        "unit": {"$ref": "#/$defs/nonEmpty"},
+        "deterministic_check_id": {"$ref": "#/$defs/nonEmpty"}
+      }
+    },
+    "riskFlag": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["flag_code", "severity", "field_paths", "explanation", "escalation_recommended"],
+      "properties": {
+        "flag_code": {
+          "enum": [
+            "schema_binding_risk",
+            "missing_source_binding",
+            "ambiguous_source_binding",
+            "source_proxy_authority_conflict",
+            "causal_chain_disputed",
+            "engineering_risk_high",
+            "material_process_risk",
+            "deterministic_check_unavailable",
+            "unit_or_threshold_unsupported",
+            "prompt_injection_signal",
+            "upstream_content_mismatch"
+          ]
+        },
+        "severity": {"enum": ["low", "medium", "high", "critical"]},
+        "field_paths": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "pattern": "^/"}},
+        "explanation": {"$ref": "#/$defs/nonEmpty"},
+        "escalation_recommended": {"type": "boolean"}
+      }
+    },
+    "plausibilityReview": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "assumptions", "challenges", "evidence_refs", "concise_justification"],
+      "properties": {
+        "status": {
+          "enum": [
+            "plausible_with_assumptions",
+            "revision_requested",
+            "contradicted_by_supplied_evidence",
+            "expert_review_required"
+          ]
+        },
+        "assumptions": {"type": "array", "items": {"$ref": "#/$defs/nonEmpty"}},
+        "challenges": {"type": "array", "items": {"$ref": "#/$defs/nonEmpty"}},
+        "evidence_refs": {"$ref": "#/$defs/sourceRefArray"},
+        "concise_justification": {"$ref": "#/$defs/nonEmpty"}
+      }
+    },
+    "sourceBinding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "binding_id",
+        "entity_kind",
+        "source_ids",
+        "source_pointer",
+        "authority",
+        "binding_role",
+        "exists_in_supplied_bundle",
+        "ambiguity",
+        "concise_justification"
+      ],
+      "properties": {
+        "binding_id": {"$ref": "#/$defs/nonEmpty"},
+        "entity_kind": {
+          "enum": ["parameter", "feature", "operation", "face", "edge", "body", "sketch", "relation", "artifact", "source_pointer"]
+        },
+        "source_ids": {"$ref": "#/$defs/sourceRefArray"},
+        "source_pointer": {"$ref": "#/$defs/nonEmpty"},
+        "authority": {
+          "enum": ["S0_source_explicit", "D1_deterministic_geometry", "D2_verified_replay", "D1_conversion_proxy"]
+        },
+        "binding_role": {
+          "enum": ["edit_target", "preservation_target", "measurement_anchor", "functional_interface"]
+        },
+        "exists_in_supplied_bundle": {"const": true},
+        "ambiguity": {"enum": ["none", "multiple_candidates", "proxy_only"]},
+        "concise_justification": {"$ref": "#/$defs/nonEmpty"}
+      }
+    },
+    "requestedChange": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "change_id",
+        "binding_ids",
+        "change_type",
+        "operation",
+        "from_value_ref",
+        "to_value",
+        "unit",
+        "change_rule",
+        "rationale_ref"
+      ],
+      "properties": {
+        "change_id": {"$ref": "#/$defs/nonEmpty"},
+        "binding_ids": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"$ref": "#/$defs/nonEmpty"}},
+        "change_type": {
+          "enum": [
+            "dimension_change",
+            "feature_addition",
+            "feature_removal",
+            "feature_pattern_change",
+            "profile_change",
+            "material_thickness_change",
+            "other_bound_change"
+          ]
+        },
+        "operation": {"enum": ["set", "increase", "decrease", "add", "remove", "replace", "coupled_update"]},
+        "from_value_ref": {"$ref": "#/$defs/nullableString"},
+        "to_value": {"$ref": "#/$defs/nullableNumber"},
+        "unit": {"$ref": "#/$defs/nullableString"},
+        "change_rule": {"$ref": "#/$defs/nonEmpty"},
+        "rationale_ref": {"$ref": "#/$defs/nonEmpty"}
+      }
+    },
+    "deterministicCheck": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "check_id",
+        "check_kind",
+        "purpose",
+        "binding_refs",
+        "measurement_name",
+        "comparator",
+        "expected_value",
+        "expected_reference_ref",
+        "tolerance",
+        "unit",
+        "implementation_status",
+        "executable_requirement",
+        "deterministic_only",
+        "llm_judge_allowed",
+        "failure_code"
+      ],
+      "properties": {
+        "check_id": {"$ref": "#/$defs/nonEmpty"},
+        "check_kind": {
+          "enum": [
+            "schema_validation",
+            "source_id_referential_integrity",
+            "native_replay",
+            "geometry_measurement",
+            "relation_check",
+            "smt_solver",
+            "solid_validity",
+            "feature_identity",
+            "topology_invariant",
+            "mass_property_proxy",
+            "interference_clearance",
+            "dfm_geometry_check",
+            "closed_form_engineering_proxy",
+            "unit_consistency",
+            "provenance_consistency"
+          ]
+        },
+        "purpose": {"$ref": "#/$defs/nonEmpty"},
+        "binding_refs": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"$ref": "#/$defs/nonEmpty"}},
+        "measurement_name": {"$ref": "#/$defs/nonEmpty"},
+        "comparator": {"enum": ["eq", "ne", "gt", "ge", "lt", "le", "within_abs", "within_rel", "unchanged", "set_equal", "count_equal"]},
+        "expected_value": {
+          "oneOf": [
+            {"type": "number"},
+            {"type": "string", "minLength": 1},
+            {"type": "boolean"},
+            {"type": "null"}
+          ]
+        },
+        "expected_reference_ref": {"$ref": "#/$defs/nullableString"},
+        "tolerance": {"$ref": "#/$defs/nullableNumber"},
+        "unit": {"$ref": "#/$defs/nullableString"},
+        "implementation_status": {"enum": ["available", "needs_implementation", "unavailable_for_source"]},
+        "executable_requirement": {"$ref": "#/$defs/nonEmpty"},
+        "deterministic_only": {"const": true},
+        "llm_judge_allowed": {"const": false},
+        "failure_code": {"type": "string", "pattern": "^[a-z0-9_]+$"}
+      }
+    },
+    "scenario": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "scenario_id",
+        "scenario_provenance",
+        "source_author_intent_claimed",
+        "grounding_summary",
+        "application_context",
+        "functional_interface",
+        "operating_conditions",
+        "material_process_rationale",
+        "engineering_requirement",
+        "target_concepts",
+        "causal_chain",
+        "measurable_effects",
+        "preservation_intents",
+        "invention_register",
+        "risk_flags",
+        "concise_justification"
+      ],
+      "properties": {
+        "scenario_id": {"type": "string", "pattern": "^scenario_[A-Za-z0-9][A-Za-z0-9._-]*$"},
+        "scenario_provenance": {"const": "benchmark_authored"},
+        "source_author_intent_claimed": {"const": false},
+        "grounding_summary": {"type": "array", "minItems": 2, "items": {"$ref": "#/$defs/groundingRecord"}},
+        "application_context": {"$ref": "#/$defs/provenancedStatement"},
+        "functional_interface": {"$ref": "#/$defs/provenancedStatement"},
+        "operating_conditions": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/operatingCondition"}},
+        "material_process_rationale": {"$ref": "#/$defs/materialProcessRationale"},
+        "engineering_requirement": {"$ref": "#/$defs/engineeringRequirement"},
+        "target_concepts": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/targetConcept"}},
+        "causal_chain": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/causalLink"}},
+        "measurable_effects": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/measurableEffect"}},
+        "preservation_intents": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/preservationIntent"}},
+        "invention_register": {"type": "array", "minItems": 6, "items": {"$ref": "#/$defs/inventionRecord"}},
+        "risk_flags": {"type": "array", "items": {"$ref": "#/$defs/riskFlag"}},
+        "concise_justification": {"$ref": "#/$defs/nonEmpty"}
+      }
+    },
+    "effectAnalysis": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "analysis_id",
+        "scenario_id",
+        "mechanical_plausibility",
+        "manufacturing_plausibility",
+        "causal_chain_review",
+        "measurable_effects",
+        "required_revisions",
+        "risk_flags",
+        "handoff_status",
+        "concise_justification"
+      ],
+      "properties": {
+        "analysis_id": {"type": "string", "pattern": "^effect_analysis_[A-Za-z0-9][A-Za-z0-9._-]*$"},
+        "scenario_id": {"$ref": "#/$defs/nonEmpty"},
+        "mechanical_plausibility": {"$ref": "#/$defs/plausibilityReview"},
+        "manufacturing_plausibility": {"$ref": "#/$defs/plausibilityReview"},
+        "causal_chain_review": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/causalLink"}},
+        "measurable_effects": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/measurableEffect"}},
+        "required_revisions": {"type": "array", "items": {"$ref": "#/$defs/nonEmpty"}},
+        "risk_flags": {"type": "array", "items": {"$ref": "#/$defs/riskFlag"}},
+        "handoff_status": {"enum": ["ready_for_binding", "revision_requested", "expert_escalation_requested", "abstained"]},
+        "concise_justification": {"$ref": "#/$defs/nonEmpty"}
+      }
+    },
+    "bindingPlan": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "binding_plan_id",
+        "scenario_id",
+        "analysis_id",
+        "target_bindings",
+        "preservation_bindings",
+        "deterministic_checks",
+        "unbound_requirements",
+        "risk_flags",
+        "handoff_status",
+        "concise_justification"
+      ],
+      "properties": {
+        "binding_plan_id": {"type": "string", "pattern": "^binding_plan_[A-Za-z0-9][A-Za-z0-9._-]*$"},
+        "scenario_id": {"$ref": "#/$defs/nonEmpty"},
+        "analysis_id": {"$ref": "#/$defs/nonEmpty"},
+        "target_bindings": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/sourceBinding"}},
+        "preservation_bindings": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/sourceBinding"}},
+        "deterministic_checks": {"type": "array", "minItems": 3, "items": {"$ref": "#/$defs/deterministicCheck"}},
+        "unbound_requirements": {"type": "array", "items": {"$ref": "#/$defs/nonEmpty"}},
+        "risk_flags": {"type": "array", "items": {"$ref": "#/$defs/riskFlag"}},
+        "handoff_status": {"enum": ["ready_for_synthesis", "revision_requested", "expert_escalation_requested", "abstained"]},
+        "concise_justification": {"$ref": "#/$defs/nonEmpty"}
+      }
+    },
+    "functionalEditCandidate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "candidate_id",
+        "candidate_class",
+        "candidate_status",
+        "scenario_provenance",
+        "source_author_intent_claimed",
+        "source_intent_evidence_refs",
+        "benchmark_authored_fields",
+        "upstream_record_refs",
+        "application_context",
+        "functional_interface",
+        "operating_conditions",
+        "material_process_rationale",
+        "engineering_requirement",
+        "candidate_instruction",
+        "target_bindings",
+        "preservation_bindings",
+        "requested_changes",
+        "causal_chain",
+        "measurable_effects",
+        "preservation_requirements",
+        "deterministic_acceptance",
+        "unresolved_risks",
+        "requires_independent_multiagent_review",
+        "must_be_deterministically_promoted",
+        "evaluator_uses_llm_judge",
+        "concise_justification"
+      ],
+      "properties": {
+        "candidate_id": {"type": "string", "pattern": "^fe2_[A-Za-z0-9][A-Za-z0-9._-]*$"},
+        "candidate_class": {"const": "benchmark_authored_functional_edit"},
+        "candidate_status": {"const": "candidate_only"},
+        "scenario_provenance": {"const": "benchmark_authored"},
+        "source_author_intent_claimed": {"const": false},
+        "source_intent_evidence_refs": {"type": "array", "maxItems": 0},
+        "benchmark_authored_fields": {"type": "array", "minItems": 6, "uniqueItems": true, "items": {"type": "string", "pattern": "^/payload/functional_edit_candidate/"}},
+        "upstream_record_refs": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["scenario_id", "analysis_id", "binding_plan_id"],
+          "properties": {
+            "scenario_id": {"$ref": "#/$defs/nonEmpty"},
+            "analysis_id": {"$ref": "#/$defs/nonEmpty"},
+            "binding_plan_id": {"$ref": "#/$defs/nonEmpty"}
+          }
+        },
+        "application_context": {"$ref": "#/$defs/provenancedStatement"},
+        "functional_interface": {"$ref": "#/$defs/provenancedStatement"},
+        "operating_conditions": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/operatingCondition"}},
+        "material_process_rationale": {"$ref": "#/$defs/materialProcessRationale"},
+        "engineering_requirement": {"$ref": "#/$defs/engineeringRequirement"},
+        "candidate_instruction": {"type": "string", "minLength": 40},
+        "target_bindings": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/sourceBinding"}},
+        "preservation_bindings": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/sourceBinding"}},
+        "requested_changes": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/requestedChange"}},
+        "causal_chain": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/causalLink"}},
+        "measurable_effects": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/measurableEffect"}},
+        "preservation_requirements": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/preservationIntent"}},
+        "deterministic_acceptance": {"type": "array", "minItems": 3, "items": {"$ref": "#/$defs/deterministicCheck"}},
+        "unresolved_risks": {"type": "array", "items": {"$ref": "#/$defs/riskFlag"}},
+        "requires_independent_multiagent_review": {"const": true},
+        "must_be_deterministically_promoted": {"const": true},
+        "evaluator_uses_llm_judge": {"const": false},
+        "concise_justification": {"$ref": "#/$defs/nonEmpty"}
+      }
+    },
+    "criticFinding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "finding_id",
+        "severity",
+        "issue_code",
+        "field_paths",
+        "evidence_refs",
+        "challenge",
+        "required_correction",
+        "recommended_deterministic_check",
+        "prefilter_relevance"
+      ],
+      "properties": {
+        "finding_id": {"type": "string", "pattern": "^finding_[A-Za-z0-9][A-Za-z0-9._-]*$"},
+        "severity": {"enum": ["low", "medium", "high", "critical"]},
+        "issue_code": {
+          "enum": [
+            "provenance_conflation",
+            "invented_source_fact",
+            "ungrounded_existing_geometry",
+            "missing_operating_condition",
+            "incomplete_causal_chain",
+            "implausible_mechanism",
+            "unmeasurable_effect",
+            "unbound_target",
+            "unbound_preservation",
+            "unavailable_deterministic_check",
+            "material_process_mismatch",
+            "unit_or_tolerance_error",
+            "source_proxy_confusion",
+            "candidate_added_new_upstream_content",
+            "prompt_injection_signal",
+            "non_deterministic_acceptance",
+            "hidden_llm_judge"
+          ]
+        },
+        "field_paths": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "pattern": "^/"}},
+        "evidence_refs": {"$ref": "#/$defs/stringArray"},
+        "challenge": {"$ref": "#/$defs/nonEmpty"},
+        "required_correction": {"$ref": "#/$defs/nonEmpty"},
+        "recommended_deterministic_check": {
+          "oneOf": [{"$ref": "#/$defs/deterministicCheck"}, {"type": "null"}]
+        },
+        "prefilter_relevance": {"enum": ["advisory", "requires_deterministic_recheck", "requires_expert_escalation"]}
+      }
+    },
+    "criticAudit": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "audit_id",
+        "audited_candidate_id",
+        "audit_scope",
+        "findings",
+        "missing_deterministic_checks",
+        "prompt_injection_signals",
+        "risk_flags",
+        "role_boundary",
+        "concise_summary"
+      ],
+      "properties": {
+        "audit_id": {"type": "string", "pattern": "^audit_[A-Za-z0-9][A-Za-z0-9._-]*$"},
+        "audited_candidate_id": {"$ref": "#/$defs/nonEmpty"},
+        "audit_scope": {"const": "independent_adversarial_candidate_audit"},
+        "findings": {"type": "array", "items": {"$ref": "#/$defs/criticFinding"}},
+        "missing_deterministic_checks": {"type": "array", "items": {"$ref": "#/$defs/nonEmpty"}},
+        "prompt_injection_signals": {"type": "array", "items": {"$ref": "#/$defs/nonEmpty"}},
+        "risk_flags": {"type": "array", "items": {"$ref": "#/$defs/riskFlag"}},
+        "role_boundary": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["selects_candidate", "promotes_candidate", "assigns_score", "evaluator_uses_llm_judge"],
+          "properties": {
+            "selects_candidate": {"const": false},
+            "promotes_candidate": {"const": false},
+            "assigns_score": {"const": false},
+            "evaluator_uses_llm_judge": {"const": false}
+          }
+        },
+        "concise_summary": {"$ref": "#/$defs/nonEmpty"}
+      }
+    },
+    "scenarioAuthorPayload": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["scenario"],
+      "properties": {"scenario": {"$ref": "#/$defs/scenario"}}
+    },
+    "effectAnalystPayload": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["analysis"],
+      "properties": {"analysis": {"$ref": "#/$defs/effectAnalysis"}}
+    },
+    "bindingEngineerPayload": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["binding_plan"],
+      "properties": {"binding_plan": {"$ref": "#/$defs/bindingPlan"}}
+    },
+    "synthesizerPayload": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["functional_edit_candidate"],
+      "properties": {"functional_edit_candidate": {"$ref": "#/$defs/functionalEditCandidate"}}
+    },
+    "criticPayload": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["audit"],
+      "properties": {"audit": {"$ref": "#/$defs/criticAudit"}}
+    },
+    "abstention": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["scope", "reason", "missing_input_refs", "concise_justification"],
+      "properties": {
+        "scope": {"$ref": "#/$defs/nonEmpty"},
+        "reason": {
+          "enum": [
+            "required_input_missing",
+            "no_grounded_functional_interface",
+            "no_measurable_effect",
+            "no_stable_target_binding",
+            "no_preservation_binding",
+            "no_deterministic_acceptance_path",
+            "prompt_injection_detected",
+            "engineering_risk_requires_expert"
+          ]
+        },
+        "missing_input_refs": {"$ref": "#/$defs/stringArray"},
+        "concise_justification": {"$ref": "#/$defs/nonEmpty"}
+      }
+    },
+    "escalationTrigger": {
+      "enum": [
+        "schema_validation_failure",
+        "binding_missing",
+        "binding_ambiguous",
+        "source_proxy_authority_conflict",
+        "causal_chain_disputed",
+        "engineering_risk_high",
+        "material_process_risk",
+        "deterministic_check_unavailable",
+        "unit_or_threshold_unsupported",
+        "prompt_injection_detected",
+        "required_input_missing"
+      ]
+    },
+    "strongerModelTrigger": {
+      "enum": [
+        "schema_validation_failure",
+        "binding_missing",
+        "binding_ambiguous",
+        "source_proxy_authority_conflict",
+        "causal_chain_disputed",
+        "engineering_risk_high",
+        "material_process_risk",
+        "deterministic_check_unavailable",
+        "unit_or_threshold_unsupported"
+      ]
+    },
+    "escalation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["required", "target", "trigger_flags", "concise_reason"],
+      "properties": {
+        "required": {"type": "boolean"},
+        "target": {"enum": ["none", "stronger_model", "independent_multiagent_review", "pipeline_operator"]},
+        "trigger_flags": {"type": "array", "uniqueItems": true, "items": {"$ref": "#/$defs/escalationTrigger"}},
+        "concise_reason": {"$ref": "#/$defs/nullableString"}
+      },
+      "allOf": [
+        {
+          "if": {"properties": {"required": {"const": false}}},
+          "then": {
+            "properties": {
+              "target": {"const": "none"},
+              "trigger_flags": {"maxItems": 0},
+              "concise_reason": {"type": "null"}
+            }
+          },
+          "else": {
+            "properties": {
+              "target": {"not": {"const": "none"}},
+              "trigger_flags": {"minItems": 1},
+              "concise_reason": {"type": "string", "minLength": 1}
+            }
+          }
+        },
+        {
+          "if": {"properties": {"target": {"const": "stronger_model"}}},
+          "then": {
+            "properties": {
+              "trigger_flags": {"items": {"$ref": "#/$defs/strongerModelTrigger"}}
+            }
+          }
+        }
+      ]
+    },
+    "selfCheck": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "provenance_labels_checked",
+        "source_ids_copied_from_input",
+        "untrusted_input_treated_as_data",
+        "no_hidden_reasoning_included",
+        "no_llm_as_judge_fields",
+        "deterministic_checks_named",
+        "json_schema_checked"
+      ],
+      "properties": {
+        "provenance_labels_checked": {"const": true},
+        "source_ids_copied_from_input": {"const": true},
+        "untrusted_input_treated_as_data": {"const": true},
+        "no_hidden_reasoning_included": {"const": true},
+        "no_llm_as_judge_fields": {"const": true},
+        "deterministic_checks_named": {"const": true},
+        "json_schema_checked": {"const": true}
+      }
+    }
+  }
+}

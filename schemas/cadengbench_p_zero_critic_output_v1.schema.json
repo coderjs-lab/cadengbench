@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cadengbench.org/schemas/cadengbench_p_zero_critic_output_v1.schema.json",
+  "type": "object", "additionalProperties": false,
+  "required": ["schema_version", "bundle_id", "item_id", "role_id", "output_status", "payload", "abstentions"],
+  "properties": {
+    "schema_version": {"const": "cadengbench-p.zero-to-cad-role-output.v1"},
+    "bundle_id": {"type": "string", "minLength": 1}, "item_id": {"type": "string", "minLength": 1},
+    "role_id": {"const": "zero_solvability_leakage_critic"},
+    "output_status": {"enum": ["complete", "partial", "abstained"]},
+    "payload": {
+      "type": "object", "additionalProperties": false,
+      "required": ["findings", "coverage_gaps", "workflow_disposition"],
+      "properties": {
+        "findings": {"type": "array", "maxItems": 24, "items": {"$ref": "#/$defs/finding"}},
+        "coverage_gaps": {"type": "array", "maxItems": 16, "items": {"$ref": "#/$defs/prose"}},
+        "workflow_disposition": {"enum": ["no_defect_observed", "deterministic_followup_required", "abstained"]}
+      }
+    },
+    "abstentions": {"type": "array", "maxItems": 12, "items": {"$ref": "#/$defs/prose"}}
+  },
+  "$defs": {
+    "prose": {"type": "string", "minLength": 1, "maxLength": 700, "pattern": "^[^0-9]*$"},
+    "factRef": {"type": "string", "pattern": "^FACT-[A-Z0-9_-]+$"},
+    "finding": {
+      "type": "object", "additionalProperties": false,
+      "required": ["finding_id", "issue_code", "severity", "target", "description", "evidence_refs", "deterministic_followup"],
+      "properties": {
+        "finding_id": {"type": "string", "pattern": "^FIND-[A-Z0-9_-]+$"},
+        "issue_code": {"enum": ["unsupported_claim", "numeric_prose", "source_leakage", "hidden_artifact_leakage", "source_intent_conflation", "missing_fact_mapping", "under_specified", "over_specified", "profile_mismatch", "ambiguous_geometry"]},
+        "severity": {"enum": ["low", "medium", "high"]},
+        "target": {"$ref": "#/$defs/prose"}, "description": {"$ref": "#/$defs/prose"},
+        "evidence_refs": {"type": "array", "maxItems": 16, "uniqueItems": true, "items": {"$ref": "#/$defs/factRef"}},
+        "deterministic_followup": {"$ref": "#/$defs/prose"}
+      }
+    }
+  }
+}

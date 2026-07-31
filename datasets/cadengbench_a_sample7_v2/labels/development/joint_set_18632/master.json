@@ -1,0 +1,476 @@
+{
+  "bodies": [
+    {
+      "file_exists": {
+        "graph_json": true,
+        "obj": true,
+        "smt": true,
+        "step": true
+      },
+      "geometry_quality": {
+        "bounding_box": {
+          "extents": [
+            5.600000083446503,
+            5.6,
+            0.625
+          ],
+          "max": [
+            -43.16029418916334,
+            8.816965424432457,
+            70.50189436529243
+          ],
+          "min": [
+            -48.76029427260984,
+            3.2169654244324573,
+            69.87689436529243
+          ]
+        },
+        "missing_files": [],
+        "thin_ratio": 0.11160714119406685,
+        "warnings": []
+      },
+      "id": "51872_765c2fb4_0016_2",
+      "physical_properties": {
+        "area": 73.18942398468796,
+        "center_of_mass": {
+          "type": "Point3D",
+          "x": -45.96029423106909,
+          "y": 6.014621671104914,
+          "z": 70.0282156089515
+        },
+        "density": 0.00785,
+        "mass": 0.07350823077950987,
+        "volume": 9.364105831784697
+      },
+      "source_files": {
+        "graph_json": "source://fusion360-gallery/joint/51872_765c2fb4_0016_2.json",
+        "obj": "source://fusion360-gallery/joint/51872_765c2fb4_0016_2.obj",
+        "smt": "source://fusion360-gallery/joint/51872_765c2fb4_0016_2.smt",
+        "step": "source://fusion360-gallery/joint/51872_765c2fb4_0016_2.step"
+      },
+      "topology": {
+        "body_count": 1,
+        "edge_count": 40,
+        "face_count": 22,
+        "shell_count": 1,
+        "vertex_count": 28
+      }
+    },
+    {
+      "file_exists": {
+        "graph_json": true,
+        "obj": true,
+        "smt": true,
+        "step": true
+      },
+      "geometry_quality": {
+        "bounding_box": {
+          "extents": [
+            0.15000000000000568,
+            0.2999999999999998,
+            0.15000000000000568
+          ],
+          "max": [
+            -45.91249999888241,
+            3.5000000357627865,
+            70.0966506350946
+          ],
+          "min": [
+            -46.062499998882416,
+            3.2000000357627867,
+            69.9466506350946
+          ]
+        },
+        "missing_files": [],
+        "thin_ratio": 0.5000000000000192,
+        "warnings": []
+      },
+      "id": "51872_765c2fb4_0031_2",
+      "physical_properties": {
+        "area": 0.17671458676442584,
+        "center_of_mass": {
+          "type": "Point3D",
+          "x": -45.98749999887613,
+          "y": 3.3500000357629,
+          "z": 70.02165063509698
+        },
+        "density": 0.00785,
+        "mass": 4.161628518302242e-05,
+        "volume": 0.005301437602932793
+      },
+      "source_files": {
+        "graph_json": "source://fusion360-gallery/joint/51872_765c2fb4_0031_2.json",
+        "obj": "source://fusion360-gallery/joint/51872_765c2fb4_0031_2.obj",
+        "smt": "source://fusion360-gallery/joint/51872_765c2fb4_0031_2.smt",
+        "step": "source://fusion360-gallery/joint/51872_765c2fb4_0031_2.step"
+      },
+      "topology": {
+        "body_count": 1,
+        "edge_count": 2,
+        "face_count": 3,
+        "shell_count": 1,
+        "vertex_count": 2
+      }
+    }
+  ],
+  "contacts_count": 0,
+  "holes_count": 4,
+  "joint_set_id": "joint_set_18632",
+  "joints": [
+    {
+      "angle": 0.0,
+      "axis": {
+        "direction": [
+          0.0,
+          -1.0,
+          0.0
+        ],
+        "origin": [
+          -45.98749999888241,
+          3.2000000357627867,
+          70.0216506350946
+        ]
+      },
+      "body_a": "51872_765c2fb4_0016_2",
+      "body_b": "51872_765c2fb4_0031_2",
+      "fusion_joint_type": "SliderJointType",
+      "geometry_or_origin_one": {
+        "axis_line": {
+          "direction": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "origin": [
+            -45.98749999888241,
+            3.2000000357627867,
+            70.0216506350946
+          ]
+        },
+        "entity_one": {
+          "body": "51872_765c2fb4_0016_2",
+          "curve_type": null,
+          "index": 8,
+          "surface_type": "PlaneSurfaceType",
+          "type": "BRepFace"
+        },
+        "entity_one_equivalents": [
+          {
+            "curve_type": null,
+            "index": 10,
+            "surface_type": "PlaneSurfaceType",
+            "type": "BRepFace"
+          }
+        ],
+        "geometry_type": "JointPlanarBRepFaceGeometry",
+        "key_point_type": "CenterKeyPoint",
+        "transform": {
+          "origin": {
+            "type": "Point3D",
+            "x": -0.02720576799582375,
+            "y": -0.016965388669670567,
+            "z": -0.005243730197832974
+          },
+          "x_axis": {
+            "length": 1.0,
+            "type": "Vector3D",
+            "x": 1.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "y_axis": {
+            "length": 1.0,
+            "type": "Vector3D",
+            "x": 0.0,
+            "y": 1.0,
+            "z": 0.0
+          },
+          "z_axis": {
+            "length": 1.0,
+            "type": "Vector3D",
+            "x": 0.0,
+            "y": 0.0,
+            "z": 1.0
+          }
+        },
+        "transform_matrix": [
+          [
+            1.0,
+            0.0,
+            0.0,
+            -0.02720576799582375
+          ],
+          [
+            0.0,
+            1.0,
+            0.0,
+            -0.016965388669670567
+          ],
+          [
+            0.0,
+            0.0,
+            1.0,
+            -0.005243730197832974
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      },
+      "geometry_or_origin_two": {
+        "axis_line": {
+          "direction": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "origin": [
+            -45.98749999888241,
+            3.5000000357627865,
+            70.0216506350946
+          ]
+        },
+        "entity_one": {
+          "body": "51872_765c2fb4_0031_2",
+          "curve_type": null,
+          "index": 1,
+          "surface_type": "PlaneSurfaceType",
+          "type": "BRepFace"
+        },
+        "entity_one_equivalents": [
+          {
+            "curve_type": null,
+            "index": 0,
+            "surface_type": "CylinderSurfaceType",
+            "type": "BRepFace"
+          },
+          {
+            "curve_type": null,
+            "index": 2,
+            "surface_type": "PlaneSurfaceType",
+            "type": "BRepFace"
+          },
+          {
+            "curve_type": "Circle3DCurveType",
+            "index": 0,
+            "surface_type": null,
+            "type": "BRepEdge"
+          },
+          {
+            "curve_type": "Circle3DCurveType",
+            "index": 1,
+            "surface_type": null,
+            "type": "BRepEdge"
+          }
+        ],
+        "geometry_type": "JointPlanarBRepFaceGeometry",
+        "key_point_type": "CenterKeyPoint",
+        "transform": {
+          "origin": {
+            "type": "Point3D",
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "x_axis": {
+            "length": 1.0,
+            "type": "Vector3D",
+            "x": 1.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "y_axis": {
+            "length": 1.0,
+            "type": "Vector3D",
+            "x": 0.0,
+            "y": 1.0,
+            "z": 0.0
+          },
+          "z_axis": {
+            "length": 1.0,
+            "type": "Vector3D",
+            "x": 0.0,
+            "y": 0.0,
+            "z": 1.0
+          }
+        },
+        "transform_matrix": [
+          [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      },
+      "id": "joint_set_18632_joint_0",
+      "is_flipped": true,
+      "joint_equivalence_signature": {
+        "axis_direction_canonical_rounded": [
+          -0.0,
+          1.0,
+          -0.0
+        ],
+        "axis_origin_rounded": [
+          -45.9875,
+          3.2,
+          70.021651
+        ],
+        "body_pair": [
+          "51872_765c2fb4_0016_2",
+          "51872_765c2fb4_0031_2"
+        ],
+        "entity": {
+          "curve_type": null,
+          "index": 8,
+          "surface_type": "PlaneSurfaceType",
+          "type": "BRepFace"
+        },
+        "joint_type": "SliderJointType"
+      },
+      "limits": {
+        "lower": 0.0,
+        "lower_enabled": false,
+        "rest": 0.0,
+        "rest_enabled": false,
+        "source_key": "slide_limits",
+        "upper": 0.0,
+        "upper_enabled": false
+      },
+      "mating_coordinate_frames": {
+        "body_a": {
+          "body": "51872_765c2fb4_0016_2",
+          "orientation_reference_entity": {
+            "body": "51872_765c2fb4_0016_2",
+            "curve_type": null,
+            "index": 8,
+            "surface_type": "PlaneSurfaceType",
+            "type": "BRepFace"
+          },
+          "origin": [
+            -45.98749999888241,
+            3.2000000357627867,
+            70.0216506350946
+          ],
+          "origin_reference_entity": {
+            "body": "51872_765c2fb4_0016_2",
+            "curve_type": null,
+            "index": 8,
+            "surface_type": "PlaneSurfaceType",
+            "type": "BRepFace"
+          },
+          "origin_type": "centroid_or_center",
+          "source": "fusion_joint_geometry",
+          "x_axis": [
+            1.0,
+            0.0,
+            0.0
+          ],
+          "y_axis": [
+            -0.0,
+            0.0,
+            1.0
+          ],
+          "z_axis": [
+            0.0,
+            -1.0,
+            0.0
+          ]
+        },
+        "body_b": {
+          "body": "51872_765c2fb4_0031_2",
+          "orientation_reference_entity": {
+            "body": "51872_765c2fb4_0031_2",
+            "curve_type": null,
+            "index": 1,
+            "surface_type": "PlaneSurfaceType",
+            "type": "BRepFace"
+          },
+          "origin": [
+            -45.98749999888241,
+            3.5000000357627865,
+            70.0216506350946
+          ],
+          "origin_reference_entity": {
+            "body": "51872_765c2fb4_0031_2",
+            "curve_type": null,
+            "index": 1,
+            "surface_type": "PlaneSurfaceType",
+            "type": "BRepFace"
+          },
+          "origin_type": "centroid_or_center",
+          "source": "fusion_joint_geometry",
+          "x_axis": [
+            1.0,
+            -0.0,
+            0.0
+          ],
+          "y_axis": [
+            0.0,
+            0.0,
+            -1.0
+          ],
+          "z_axis": [
+            0.0,
+            1.0,
+            0.0
+          ]
+        }
+      },
+      "motion_semantics": {
+        "direction_labels": {
+          "slide_direction": "ZAxisJointDirection"
+        },
+        "joint_frame_source": "body_a_fusion_joint_geometry",
+        "joint_type": "SliderJointType",
+        "limit_groups": {
+          "slide": {
+            "lower": 0.0,
+            "lower_enabled": false,
+            "rest": 0.0,
+            "rest_enabled": false,
+            "upper": 0.0,
+            "upper_enabled": false
+          }
+        },
+        "resolved_directions": {
+          "slide_direction": [
+            0.0,
+            -1.0,
+            0.0
+          ]
+        },
+        "unresolved_direction_labels": {}
+      },
+      "name": "Slider1",
+      "offset": -0.3,
+      "source_index": 0,
+      "source_type": "Joint",
+      "urdf_joint_type": "prismatic",
+      "urdf_mapping_note": "direct"
+    }
+  ],
+  "schema": "cadengbench_a_master_v1",
+  "source_joint_set": "source://fusion360-gallery/joint/joint_set_18632.json"
+}

@@ -1,0 +1,456 @@
+{
+  "artifact_authority": {
+    "fusion_history_json": "edited_source_assignment_evidence",
+    "reconstruction_step": "derived_non_scoring_proxy"
+  },
+  "artifact_sha256": {
+    "fusion_history_json": "8852543c3cb1afe1ed77302426a444f5281860f1ffab225bfd1004aa09caa716",
+    "reconstruction_step": "ed19910a887af8576980d40cbee8e6bad81f087de1822d949193660824bf70b6"
+  },
+  "autodesk_fusion_execution_used": false,
+  "bbox": {
+    "xmax": 540.0,
+    "xmin": 510.0,
+    "ymax": 270.0,
+    "ymin": 0.0,
+    "zmax": 15.0,
+    "zmin": -15.0
+  },
+  "cadquery_source_translation_used": false,
+  "edge_count": 3,
+  "edited_variant_evidence": {
+    "deterministic_feature_measurements_available": true,
+    "deterministic_named_target_measurement_present": false,
+    "edit_replay_contract": "qualified_source_bound_profile_or_extrusion_edit_replay_v4",
+    "native_fusion_execution_used": false,
+    "scoring_authority": false,
+    "source_assignment_verified_by_caller": null,
+    "state": "edited_variant_source_bound_occ_reconstructed"
+  },
+  "face_count": 3,
+  "fidelity": {
+    "geometry_qualified": null,
+    "meaning": "The edited variant is an independent OCC reconstruction. Solid validity is observed, but no target geometry equivalence is claimed.",
+    "qualification_status": "edited_variant_not_compared_to_source_step",
+    "solid_set_equivalent_within_tolerance": null
+  },
+  "history_path": "source://cadengbench-build/data/production/cadengbench_p_1800_v2_two_source_r25/materialization/.materializing/p_fusion360_001312.2738163/native/edit_binding_qualification_artifacts/candidate_03/probe_00.json",
+  "isolation": {
+    "mode": "python_subprocess_resource_limits",
+    "purpose": "contain OpenCascade process crashes and item-local failures"
+  },
+  "operation_trace": [
+    {
+      "distance_mm": 270.0,
+      "effective_span_mm": 270.0,
+      "entity_id": "00ede09a-e2d7-11ea-a512-54bf646e7e1f",
+      "extent_type": "OneSideFeatureExtentType",
+      "face_count": 5,
+      "feature_name": "Extrude1",
+      "operation": "NewBodyFeatureOperation",
+      "profile_diagnostics": {
+        "distance_mm": 270.0,
+        "effective_span_mm": 270.0,
+        "extent_type": "OneSideFeatureExtentType",
+        "invalid_individual_profile_ids": [],
+        "invalid_individual_profile_solid_count": 0,
+        "profile_count": 2,
+        "source_distance_unit": "cm",
+        "source_distance_value": 27.0,
+        "tool_solid_count": 1,
+        "tool_valid": true,
+        "tool_volume_mm3": 1039081.7701748244,
+        "validity_policy": "individual_profile_prisms_are_diagnostic;_the_aggregate_feature_solid_and_source_equivalence_gate_are_required"
+      },
+      "solid_count": 1,
+      "source_distance_unit": "cm",
+      "source_distance_value": 27.0,
+      "timeline_index": 1,
+      "tool_solid_count": 1,
+      "tool_valid": true,
+      "tool_volume_mm3": 1039081.7701748244
+    },
+    {
+      "distance_mm": 330.0,
+      "effective_span_mm": 330.0,
+      "entity_id": "00eef27a-e2d7-11ea-abee-54bf646e7e1f",
+      "extent_type": "OneSideFeatureExtentType",
+      "face_count": 3,
+      "feature_name": "Extrude2",
+      "operation": "CutFeatureOperation",
+      "profile_diagnostics": {
+        "distance_mm": 330.0,
+        "effective_span_mm": 330.0,
+        "extent_type": "OneSideFeatureExtentType",
+        "invalid_individual_profile_ids": [],
+        "invalid_individual_profile_solid_count": 0,
+        "profile_count": 1,
+        "source_distance_unit": "cm",
+        "source_distance_value": 33.0,
+        "tool_solid_count": 1,
+        "tool_valid": true,
+        "tool_volume_mm3": 1036725.5756846316,
+        "validity_policy": "individual_profile_prisms_are_diagnostic;_the_aggregate_feature_solid_and_source_equivalence_gate_are_required"
+      },
+      "solid_count": 1,
+      "source_distance_unit": "cm",
+      "source_distance_value": 33.0,
+      "timeline_index": 2,
+      "tool_solid_count": 1,
+      "tool_valid": true,
+      "tool_volume_mm3": 1036725.5756846316
+    }
+  ],
+  "output_units": "mm",
+  "reconstruction_contract": "independent_occ_reconstruction_proxy",
+  "reconstruction_engine": "deterministic_direct_fusion_history_json_to_occ_v1",
+  "reconstruction_step_path": "source://cadengbench-build/data/production/cadengbench_p_1800_v2_two_source_r25/materialization/.materializing/p_fusion360_001312.2738163/native/edit_binding_qualification_artifacts/candidate_03/probe_00.step",
+  "returncode": 0,
+  "schema_version": "cadengbench-p.fusion360-occ-reconstruction-report.v7",
+  "scoring_readiness": {
+    "blocking_reasons": [
+      "deterministic_named_target_measurement_missing",
+      "native_fusion_execution_not_performed"
+    ],
+    "ready": false
+  },
+  "solid_count": 1,
+  "solid_valid": true,
+  "source_units": "cm",
+  "status": "success",
+  "stderr": "",
+  "stdout": "",
+  "support": {
+    "curve_types": {
+      "Circle3D": 3
+    },
+    "edit_scoring_reasons": [],
+    "edit_scoring_supported": true,
+    "editable_bindings": [
+      {
+        "base_value": 1.5,
+        "binding_id": "fusion360:00e41914-e2d7-11ea-aef9-54bf646e7e1f:09617150-87d1-3341-9616-69388c8c89cd:loop-0:curve-0:radius",
+        "canonical_unit": "mm",
+        "consumer_features": [
+          {
+            "extent_type": "OneSideFeatureExtentType",
+            "feature_id": "00ede09a-e2d7-11ea-a512-54bf646e7e1f",
+            "feature_name": "Extrude1",
+            "operation": "NewBodyFeatureOperation",
+            "timeline_index": 1
+          }
+        ],
+        "curve_type": "Circle3D",
+        "direct_brep_parameter_readback": false,
+        "edit_family": "evaluated_profile_radius",
+        "feature_id": "00e41914-e2d7-11ea-aef9-54bf646e7e1f",
+        "feature_name": "Sketch1",
+        "json_pointer": "/entities/00e41914-e2d7-11ea-aef9-54bf646e7e1f/profiles/09617150-87d1-3341-9616-69388c8c89cd/loops/0/profile_curves/0/radius",
+        "parameter_role": "sketch_circle_radius",
+        "profile_id": "09617150-87d1-3341-9616-69388c8c89cd",
+        "profile_role": "outer",
+        "reconstruction_support": "deterministic_consumed_single_curve_profile",
+        "scale_to_canonical": 10.0,
+        "source_unit": "cm",
+        "timeline_index": 0
+      },
+      {
+        "base_value": 3.5,
+        "binding_id": "fusion360:00e41914-e2d7-11ea-aef9-54bf646e7e1f:dbb0a6bb-1262-39e8-9c57-29cb66a957ab:loop-0:curve-0:radius",
+        "canonical_unit": "mm",
+        "consumer_features": [
+          {
+            "extent_type": "OneSideFeatureExtentType",
+            "feature_id": "00ede09a-e2d7-11ea-a512-54bf646e7e1f",
+            "feature_name": "Extrude1",
+            "operation": "NewBodyFeatureOperation",
+            "timeline_index": 1
+          },
+          {
+            "extent_type": "OneSideFeatureExtentType",
+            "feature_id": "00eef27a-e2d7-11ea-abee-54bf646e7e1f",
+            "feature_name": "Extrude2",
+            "operation": "CutFeatureOperation",
+            "timeline_index": 2
+          }
+        ],
+        "curve_type": "Circle3D",
+        "direct_brep_parameter_readback": false,
+        "edit_family": "evaluated_profile_radius",
+        "feature_id": "00e41914-e2d7-11ea-aef9-54bf646e7e1f",
+        "feature_name": "Sketch1",
+        "json_pointer": "/entities/00e41914-e2d7-11ea-aef9-54bf646e7e1f/profiles/dbb0a6bb-1262-39e8-9c57-29cb66a957ab/loops/0/profile_curves/0/radius",
+        "parameter_role": "sketch_circle_radius",
+        "profile_id": "dbb0a6bb-1262-39e8-9c57-29cb66a957ab",
+        "profile_role": "outer",
+        "reconstruction_support": "deterministic_consumed_single_curve_profile",
+        "scale_to_canonical": 10.0,
+        "source_unit": "cm",
+        "timeline_index": 0
+      },
+      {
+        "base_value": 1.5,
+        "binding_id": "fusion360:00e41914-e2d7-11ea-aef9-54bf646e7e1f:dbb0a6bb-1262-39e8-9c57-29cb66a957ab:loop-1:curve-0:radius",
+        "canonical_unit": "mm",
+        "consumer_features": [
+          {
+            "extent_type": "OneSideFeatureExtentType",
+            "feature_id": "00ede09a-e2d7-11ea-a512-54bf646e7e1f",
+            "feature_name": "Extrude1",
+            "operation": "NewBodyFeatureOperation",
+            "timeline_index": 1
+          },
+          {
+            "extent_type": "OneSideFeatureExtentType",
+            "feature_id": "00eef27a-e2d7-11ea-abee-54bf646e7e1f",
+            "feature_name": "Extrude2",
+            "operation": "CutFeatureOperation",
+            "timeline_index": 2
+          }
+        ],
+        "curve_type": "Circle3D",
+        "direct_brep_parameter_readback": false,
+        "edit_family": "evaluated_profile_radius",
+        "feature_id": "00e41914-e2d7-11ea-aef9-54bf646e7e1f",
+        "feature_name": "Sketch1",
+        "json_pointer": "/entities/00e41914-e2d7-11ea-aef9-54bf646e7e1f/profiles/dbb0a6bb-1262-39e8-9c57-29cb66a957ab/loops/1/profile_curves/0/radius",
+        "parameter_role": "sketch_circle_radius",
+        "profile_id": "dbb0a6bb-1262-39e8-9c57-29cb66a957ab",
+        "profile_role": "inner",
+        "reconstruction_support": "deterministic_consumed_single_curve_profile",
+        "scale_to_canonical": 10.0,
+        "source_unit": "cm",
+        "timeline_index": 0
+      },
+      {
+        "base_value": 27.0,
+        "binding_id": "fusion360:00ede09a-e2d7-11ea-a512-54bf646e7e1f:distance",
+        "canonical_unit": "mm",
+        "direct_brep_parameter_readback": false,
+        "edit_family": "extrusion_distance",
+        "extent_multiplier": 1.0,
+        "extent_type": "OneSideFeatureExtentType",
+        "extrusion_axis": [
+          0.0,
+          1.0,
+          0.0
+        ],
+        "feature_id": "00ede09a-e2d7-11ea-a512-54bf646e7e1f",
+        "feature_name": "Extrude1",
+        "json_pointer": "/entities/00ede09a-e2d7-11ea-a512-54bf646e7e1f/extent_one/distance/value",
+        "operation": "NewBodyFeatureOperation",
+        "parameter_role": "extrude_distance",
+        "reconstruction_support": "deterministic_evaluated_profile_extrusion",
+        "scale_to_canonical": 10.0,
+        "source_unit": "cm",
+        "timeline_index": 1
+      },
+      {
+        "base_value": 33.0,
+        "binding_id": "fusion360:00eef27a-e2d7-11ea-abee-54bf646e7e1f:distance",
+        "canonical_unit": "mm",
+        "direct_brep_parameter_readback": false,
+        "edit_family": "extrusion_distance",
+        "extent_multiplier": 1.0,
+        "extent_type": "OneSideFeatureExtentType",
+        "extrusion_axis": [
+          0.0,
+          1.0,
+          0.0
+        ],
+        "feature_id": "00eef27a-e2d7-11ea-abee-54bf646e7e1f",
+        "feature_name": "Extrude2",
+        "json_pointer": "/entities/00eef27a-e2d7-11ea-abee-54bf646e7e1f/extent_one/distance/value",
+        "operation": "CutFeatureOperation",
+        "parameter_role": "extrude_distance",
+        "reconstruction_support": "deterministic_evaluated_profile_extrusion",
+        "scale_to_canonical": 10.0,
+        "source_unit": "cm",
+        "timeline_index": 2
+      }
+    ],
+    "extent_types": {
+      "OneSideFeatureExtentType": 2
+    },
+    "interpretation_contract": "fusion360_evaluated_profile_extrusion_v5",
+    "operation_types": {
+      "CutFeatureOperation": 1,
+      "NewBodyFeatureOperation": 1
+    },
+    "preferred_edit_binding": {
+      "base_value": 33.0,
+      "binding_id": "fusion360:00eef27a-e2d7-11ea-abee-54bf646e7e1f:distance",
+      "canonical_unit": "mm",
+      "direct_brep_parameter_readback": false,
+      "edit_family": "extrusion_distance",
+      "extent_multiplier": 1.0,
+      "extent_type": "OneSideFeatureExtentType",
+      "extrusion_axis": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "feature_id": "00eef27a-e2d7-11ea-abee-54bf646e7e1f",
+      "feature_name": "Extrude2",
+      "json_pointer": "/entities/00eef27a-e2d7-11ea-abee-54bf646e7e1f/extent_one/distance/value",
+      "operation": "CutFeatureOperation",
+      "parameter_role": "extrude_distance",
+      "reconstruction_support": "deterministic_evaluated_profile_extrusion",
+      "scale_to_canonical": 10.0,
+      "source_unit": "cm",
+      "timeline_index": 2
+    },
+    "reasons": [],
+    "reconstruction_contract": "independent_occ_reconstruction_proxy",
+    "scoreable_edit_bindings": [
+      {
+        "base_value": 33.0,
+        "binding_id": "fusion360:00eef27a-e2d7-11ea-abee-54bf646e7e1f:distance",
+        "canonical_unit": "mm",
+        "direct_brep_parameter_readback": false,
+        "edit_family": "extrusion_distance",
+        "extent_multiplier": 1.0,
+        "extent_type": "OneSideFeatureExtentType",
+        "extrusion_axis": [
+          0.0,
+          1.0,
+          0.0
+        ],
+        "feature_id": "00eef27a-e2d7-11ea-abee-54bf646e7e1f",
+        "feature_name": "Extrude2",
+        "json_pointer": "/entities/00eef27a-e2d7-11ea-abee-54bf646e7e1f/extent_one/distance/value",
+        "operation": "CutFeatureOperation",
+        "parameter_role": "extrude_distance",
+        "reconstruction_support": "deterministic_evaluated_profile_extrusion",
+        "scale_to_canonical": 10.0,
+        "source_unit": "cm",
+        "timeline_index": 2
+      },
+      {
+        "base_value": 3.5,
+        "binding_id": "fusion360:00e41914-e2d7-11ea-aef9-54bf646e7e1f:dbb0a6bb-1262-39e8-9c57-29cb66a957ab:loop-0:curve-0:radius",
+        "canonical_unit": "mm",
+        "consumer_features": [
+          {
+            "extent_type": "OneSideFeatureExtentType",
+            "feature_id": "00ede09a-e2d7-11ea-a512-54bf646e7e1f",
+            "feature_name": "Extrude1",
+            "operation": "NewBodyFeatureOperation",
+            "timeline_index": 1
+          },
+          {
+            "extent_type": "OneSideFeatureExtentType",
+            "feature_id": "00eef27a-e2d7-11ea-abee-54bf646e7e1f",
+            "feature_name": "Extrude2",
+            "operation": "CutFeatureOperation",
+            "timeline_index": 2
+          }
+        ],
+        "curve_type": "Circle3D",
+        "direct_brep_parameter_readback": false,
+        "edit_family": "evaluated_profile_radius",
+        "feature_id": "00e41914-e2d7-11ea-aef9-54bf646e7e1f",
+        "feature_name": "Sketch1",
+        "json_pointer": "/entities/00e41914-e2d7-11ea-aef9-54bf646e7e1f/profiles/dbb0a6bb-1262-39e8-9c57-29cb66a957ab/loops/0/profile_curves/0/radius",
+        "parameter_role": "sketch_circle_radius",
+        "profile_id": "dbb0a6bb-1262-39e8-9c57-29cb66a957ab",
+        "profile_role": "outer",
+        "reconstruction_support": "deterministic_consumed_single_curve_profile",
+        "scale_to_canonical": 10.0,
+        "source_unit": "cm",
+        "timeline_index": 0
+      },
+      {
+        "base_value": 1.5,
+        "binding_id": "fusion360:00e41914-e2d7-11ea-aef9-54bf646e7e1f:dbb0a6bb-1262-39e8-9c57-29cb66a957ab:loop-1:curve-0:radius",
+        "canonical_unit": "mm",
+        "consumer_features": [
+          {
+            "extent_type": "OneSideFeatureExtentType",
+            "feature_id": "00ede09a-e2d7-11ea-a512-54bf646e7e1f",
+            "feature_name": "Extrude1",
+            "operation": "NewBodyFeatureOperation",
+            "timeline_index": 1
+          },
+          {
+            "extent_type": "OneSideFeatureExtentType",
+            "feature_id": "00eef27a-e2d7-11ea-abee-54bf646e7e1f",
+            "feature_name": "Extrude2",
+            "operation": "CutFeatureOperation",
+            "timeline_index": 2
+          }
+        ],
+        "curve_type": "Circle3D",
+        "direct_brep_parameter_readback": false,
+        "edit_family": "evaluated_profile_radius",
+        "feature_id": "00e41914-e2d7-11ea-aef9-54bf646e7e1f",
+        "feature_name": "Sketch1",
+        "json_pointer": "/entities/00e41914-e2d7-11ea-aef9-54bf646e7e1f/profiles/dbb0a6bb-1262-39e8-9c57-29cb66a957ab/loops/1/profile_curves/0/radius",
+        "parameter_role": "sketch_circle_radius",
+        "profile_id": "dbb0a6bb-1262-39e8-9c57-29cb66a957ab",
+        "profile_role": "inner",
+        "reconstruction_support": "deterministic_consumed_single_curve_profile",
+        "scale_to_canonical": 10.0,
+        "source_unit": "cm",
+        "timeline_index": 0
+      },
+      {
+        "base_value": 27.0,
+        "binding_id": "fusion360:00ede09a-e2d7-11ea-a512-54bf646e7e1f:distance",
+        "canonical_unit": "mm",
+        "direct_brep_parameter_readback": false,
+        "edit_family": "extrusion_distance",
+        "extent_multiplier": 1.0,
+        "extent_type": "OneSideFeatureExtentType",
+        "extrusion_axis": [
+          0.0,
+          1.0,
+          0.0
+        ],
+        "feature_id": "00ede09a-e2d7-11ea-a512-54bf646e7e1f",
+        "feature_name": "Extrude1",
+        "json_pointer": "/entities/00ede09a-e2d7-11ea-a512-54bf646e7e1f/extent_one/distance/value",
+        "operation": "NewBodyFeatureOperation",
+        "parameter_role": "extrude_distance",
+        "reconstruction_support": "deterministic_evaluated_profile_extrusion",
+        "scale_to_canonical": 10.0,
+        "source_unit": "cm",
+        "timeline_index": 1
+      },
+      {
+        "base_value": 1.5,
+        "binding_id": "fusion360:00e41914-e2d7-11ea-aef9-54bf646e7e1f:09617150-87d1-3341-9616-69388c8c89cd:loop-0:curve-0:radius",
+        "canonical_unit": "mm",
+        "consumer_features": [
+          {
+            "extent_type": "OneSideFeatureExtentType",
+            "feature_id": "00ede09a-e2d7-11ea-a512-54bf646e7e1f",
+            "feature_name": "Extrude1",
+            "operation": "NewBodyFeatureOperation",
+            "timeline_index": 1
+          }
+        ],
+        "curve_type": "Circle3D",
+        "direct_brep_parameter_readback": false,
+        "edit_family": "evaluated_profile_radius",
+        "feature_id": "00e41914-e2d7-11ea-aef9-54bf646e7e1f",
+        "feature_name": "Sketch1",
+        "json_pointer": "/entities/00e41914-e2d7-11ea-aef9-54bf646e7e1f/profiles/09617150-87d1-3341-9616-69388c8c89cd/loops/0/profile_curves/0/radius",
+        "parameter_role": "sketch_circle_radius",
+        "profile_id": "09617150-87d1-3341-9616-69388c8c89cd",
+        "profile_role": "outer",
+        "reconstruction_support": "deterministic_consumed_single_curve_profile",
+        "scale_to_canonical": 10.0,
+        "source_unit": "cm",
+        "timeline_index": 0
+      }
+    ],
+    "start_extent_types": {
+      "ProfilePlaneStartDefinition": 2
+    },
+    "supported": true
+  },
+  "surface_area": 26860.617188192733,
+  "volume": 190851.75370557996,
+  "worker_report_status": "success"
+}

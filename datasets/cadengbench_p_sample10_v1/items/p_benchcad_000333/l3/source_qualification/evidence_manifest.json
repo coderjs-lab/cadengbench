@@ -1,0 +1,82 @@
+{
+  "file_count": 15,
+  "files": [
+    {
+      "path": "analysis.12d",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "analysis.cvg",
+      "sha256": "65086dedb4572132b815ace04b294909c7f6f337111f9704fc310b02320f67f7",
+      "size_bytes": 274
+    },
+    {
+      "path": "analysis.dat",
+      "sha256": "a8fe8681de695b72d60d7008ea234f0c4bcb3bfa59c08cdf062bdd432de0b367",
+      "size_bytes": 47381
+    },
+    {
+      "path": "analysis.frd",
+      "sha256": "dd615093293de58edc0c276fab258f05b5c7c3b4895c65b9ea2aa0a1dc0cf4ec",
+      "size_bytes": 10344170
+    },
+    {
+      "path": "analysis.inp",
+      "sha256": "da2c8d4d387d319f337aee36920c0bc90061b40ff62056306faac1d23e1b3309",
+      "size_bytes": 2314554
+    },
+    {
+      "path": "analysis.sta",
+      "sha256": "01e324ec0ea28f4d1fd7f5e2da1277af53812b873e218be1604c17a4c8e4990d",
+      "size_bytes": 170
+    },
+    {
+      "path": "calculix.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "calculix.stdout.txt",
+      "sha256": "25354b9953e5d99dedb7296a812ee1f680f69959d4bfb7e9daa43cf9995f0973",
+      "size_bytes": 2677
+    },
+    {
+      "path": "gmsh.log",
+      "sha256": "4477a38fe0207ccb8a5c8aae99ffe5674fa14c1c95739f0fa429eac240400e56",
+      "size_bytes": 6927
+    },
+    {
+      "path": "mesh.msh",
+      "sha256": "a47f1327e3336b01409889f3e3c8acf84928f9e96b6e2f1aaec277d50645342a",
+      "size_bytes": 2390271
+    },
+    {
+      "path": "mesh_report.json",
+      "sha256": "bb1341884d0acfddd4c3767acfe474de9bfecffea433dcfcbc70a8d075f1a2c6",
+      "size_bytes": 2272
+    },
+    {
+      "path": "physics_card.json",
+      "sha256": "47f839c8ba24c6e340483ee2af1c39771fb6f307619de8feecbe2e8d6f10997d",
+      "size_bytes": 2484
+    },
+    {
+      "path": "qualification.json",
+      "sha256": "684a41a46177852080075c0e5542e9b0d66be5ad4a2889c78b5d916d6515c7b6",
+      "size_bytes": 1236
+    },
+    {
+      "path": "result_target.txt",
+      "sha256": "7b6348e83f6de4b8de833fdb41811b096d3e7b05cbac06022d87aaca50d9ad7c",
+      "size_bytes": 12
+    },
+    {
+      "path": "spooles.out",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    }
+  ],
+  "manifest_hash": "f4727426bb1033b75fbbcde608255a60957c4749fd1da8819b4b8673a59e4997",
+  "schema_version": "cadengbench-p.evidence-manifest.v1"
+}

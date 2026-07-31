@@ -1,0 +1,89 @@
+{
+  "bundle_id": "sha256:277304e3b11da24b7204348ffae42bbf1c575c3d2d25d387b7bb4602a0387678",
+  "inputs": {
+    "authority": {
+      "llm_output_authority": "candidate_only",
+      "promotion_requires_deterministic_and_solver_validation": true,
+      "source_intent_claimed": false
+    },
+    "geometry": {
+      "bbox_lengths_mm": [
+        101.38,
+        101.38,
+        7.92
+      ],
+      "deterministic_eligibility": {
+        "eligible": true,
+        "policy": {
+          "expected_solid_count": 1,
+          "maximum_region_surface_count": 64,
+          "minimum_region_area_fraction": 0.002,
+          "normal_alignment_min": 0.98,
+          "plane_tolerance_relative": 1e-06
+        },
+        "reason_codes": []
+      },
+      "eligible_opposed_region_pairs": [
+        {
+          "axis": "z",
+          "maximum_region": {
+            "area_fraction": 0.3344922044,
+            "area_mm2": 2566.373872,
+            "axis": "z",
+            "region_id": "axis:z:max",
+            "side": "max",
+            "surface_count": 1
+          },
+          "minimum_region": {
+            "area_fraction": 0.3344922044,
+            "area_mm2": 2566.373872,
+            "axis": "z",
+            "region_id": "axis:z:min",
+            "side": "min",
+            "surface_count": 1
+          },
+          "pair_id": "opposed:z",
+          "span_length_mm": 7.92
+        }
+      ],
+      "face_count": 10,
+      "solid_count": 1
+    },
+    "item_id": "p_benchcad_000757",
+    "selection": {
+      "complexity": {
+        "aggregate_for_stratification_only": 0.26872476227693104,
+        "axes": {
+          "construction_topology": 0.2899570144587729,
+          "history": 0.06714862576527289,
+          "parametric": 0.26553341148886284,
+          "sketch": 0.45225999739481565
+        },
+        "method": "source_explicit_benchcad_difficulty",
+        "single_scalar_is_not_benchmark_truth": true,
+        "tier": "easy"
+      },
+      "selection_stratum": "family:star_blank",
+      "source_key": "benchcad",
+      "split": "development"
+    },
+    "semantic_context": {
+      "application_context": "industrial equipment mounting bracket",
+      "authority_warning": "LLM/VLM-authored context may be semantically wrong and is not selector or source-intent authority.",
+      "category": "structural mounting plate",
+      "global_form": "Thin four-pointed star plate with uniform thickness and sharp angular vertices.",
+      "interfaces": [
+        {
+          "description": "flat surface for bolt attachment",
+          "kind": "mounting"
+        }
+      ],
+      "status": "candidate_context_only",
+      "title": "Star-shaped mounting plate"
+    },
+    "source_family": "benchcad"
+  },
+  "item_id": "p_benchcad_000757",
+  "role_id": "l3_physics_probe_annotator",
+  "schema_version": "cadengbench-p.l3-annotation-bundle.v1"
+}

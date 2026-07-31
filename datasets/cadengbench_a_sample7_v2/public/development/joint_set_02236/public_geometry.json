@@ -1,0 +1,192 @@
+{
+  "assembly_id": "joint_set_02236",
+  "bodies": [
+    {
+      "area": 8.993810159237169,
+      "body_id": "22734_f6bad9f7_0019_1",
+      "body_role": "body_a",
+      "body_to_normalized_transform": [
+        [
+          0.25237229961639407,
+          0.0,
+          0.0,
+          -0.37980769230769235
+        ],
+        [
+          0.0,
+          0.25237229961639407,
+          0.0,
+          -0.06009615384615385
+        ],
+        [
+          0.0,
+          0.0,
+          0.25237229961639407,
+          -0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "bounding_box": {
+        "extents": [
+          3.9624,
+          0.47625,
+          0.9524999999999998
+        ],
+        "max": [
+          3.4861500000000003,
+          0.47625,
+          0.4762499999999999
+        ],
+        "min": [
+          -0.4762499999999999,
+          0.0,
+          -0.4762499999999999
+        ]
+      },
+      "normalized_to_body_transform": [
+        [
+          3.9624,
+          0.0,
+          0.0,
+          1.5049500000000002
+        ],
+        [
+          0.0,
+          3.9624,
+          0.0,
+          0.238125
+        ],
+        [
+          0.0,
+          0.0,
+          3.9624,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "topology": {
+        "body_count": 1,
+        "edge_count": 16,
+        "face_count": 8,
+        "shell_count": 1,
+        "vertex_count": 12
+      },
+      "volume": 0.8246942094610407
+    },
+    {
+      "area": 24.232018419140086,
+      "body_id": "22734_f6bad9f7_0040_1",
+      "body_role": "body_b",
+      "body_to_normalized_transform": [
+        [
+          0.19204916458613402,
+          0.0,
+          0.0,
+          -0.0
+        ],
+        [
+          0.0,
+          0.19204916458613402,
+          0.0,
+          -0.5
+        ],
+        [
+          0.0,
+          0.0,
+          0.19204916458613402,
+          -0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "bounding_box": {
+        "extents": [
+          2.54,
+          5.207000000000001,
+          2.54
+        ],
+        "max": [
+          1.27,
+          5.207000000000001,
+          1.27
+        ],
+        "min": [
+          -1.27,
+          0.0,
+          -1.27
+        ]
+      },
+      "normalized_to_body_transform": [
+        [
+          5.207000000000001,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          5.207000000000001,
+          0.0,
+          2.6035000000000004
+        ],
+        [
+          0.0,
+          0.0,
+          5.207000000000001,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "topology": {
+        "body_count": 1,
+        "edge_count": 6,
+        "face_count": 7,
+        "shell_count": 1,
+        "vertex_count": 6
+      },
+      "volume": 4.420608094227173
+    }
+  ],
+  "camera_views": {
+    "front": {
+      "azimuth_deg": -90.0,
+      "elevation_deg": 0.0,
+      "projection": "orthographic"
+    },
+    "iso": {
+      "azimuth_deg": -45.0,
+      "elevation_deg": 25.0,
+      "projection": "orthographic"
+    },
+    "side": {
+      "azimuth_deg": 0.0,
+      "elevation_deg": 0.0,
+      "projection": "orthographic"
+    },
+    "top": {
+      "azimuth_deg": -90.0,
+      "elevation_deg": 90.0,
+      "projection": "orthographic"
+    }
+  },
+  "schema": "cadengbench_a_public_geometry_v1"
+}

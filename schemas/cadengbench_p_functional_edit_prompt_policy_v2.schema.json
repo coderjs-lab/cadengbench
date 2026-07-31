@@ -1,0 +1,491 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cadengbench.org/schemas/cadengbench_p_functional_edit_prompt_policy_v2.schema.json",
+  "title": "CADEngBench-P functional engineering-edit prompt policy v2",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "policy_id",
+    "policy_version",
+    "role_set_version",
+    "prompt_template",
+    "provenance_policy",
+    "allowed_invention",
+    "required_causal_chain",
+    "role_protocols",
+    "few_shot_examples",
+    "candidate_output_schema",
+    "prompt_injection_policy",
+    "self_check_requirements",
+    "abstention_and_escalation",
+    "deterministic_acceptance",
+    "execution_profile",
+    "promotion_boundary",
+    "backward_compatibility"
+  ],
+  "properties": {
+    "schema_version": {"const": "cadengbench-p.functional-edit-authoring-policy.v2"},
+    "policy_id": {"const": "cadengbench-p.functional-edit-authoring.v2"},
+    "policy_version": {"$ref": "#/$defs/semver"},
+    "role_set_version": {"const": "functional_edit_intent.v2"},
+    "prompt_template": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "base_prompt_id",
+        "base_prompt_version",
+        "renderer_version",
+        "role_order"
+      ],
+      "properties": {
+        "base_prompt_id": {"const": "cadengbench-p.functional-edit.base.v2"},
+        "base_prompt_version": {"$ref": "#/$defs/semver"},
+        "renderer_version": {"const": "cadengbench-p.functional-edit.renderer.v2"},
+        "role_order": {
+          "type": "array",
+          "minItems": 5,
+          "maxItems": 5,
+          "prefixItems": [
+            {"const": "engineering_scenario_author"},
+            {"const": "engineering_effect_analyst"},
+            {"const": "edit_binding_engineer"},
+            {"const": "functional_edit_synthesizer"},
+            {"const": "functional_edit_critic"}
+          ]
+        }
+      }
+    },
+    "provenance_policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "default_synthetic_provenance",
+        "source_context_label",
+        "model_output_authority",
+        "source_author_intent_may_be_invented",
+        "benchmark_authored_fields_must_be_enumerated",
+        "benchmark_authored_context_must_not_be_presented_as_source_intent",
+        "source_evidence_rule"
+      ],
+      "properties": {
+        "default_synthetic_provenance": {"const": "benchmark_authored"},
+        "source_context_label": {"const": "source_explicit"},
+        "model_output_authority": {"const": "M5_model_candidate"},
+        "source_author_intent_may_be_invented": {"const": false},
+        "benchmark_authored_fields_must_be_enumerated": {"const": true},
+        "benchmark_authored_context_must_not_be_presented_as_source_intent": {"const": true},
+        "source_evidence_rule": {"type": "string", "minLength": 20}
+      }
+    },
+    "allowed_invention": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "may_invent_for_benchmark",
+        "must_ground_to_supplied_geometry_or_history",
+        "may_invent_existing_source_geometry",
+        "may_assert_external_standard_without_evidence",
+        "may_present_benchmark_context_as_source_intent",
+        "numeric_invention_rule",
+        "material_process_rule"
+      ],
+      "properties": {
+        "may_invent_for_benchmark": {
+          "type": "array",
+          "uniqueItems": true,
+          "minItems": 7,
+          "items": {
+            "enum": [
+              "application_context",
+              "functional_interface",
+              "operating_conditions",
+              "material_process_rationale",
+              "engineering_requirement",
+              "requested_change",
+              "measurable_effect_target",
+              "preservation_requirements"
+            ]
+          }
+        },
+        "must_ground_to_supplied_geometry_or_history": {"const": true},
+        "may_invent_existing_source_geometry": {"const": false},
+        "may_assert_external_standard_without_evidence": {"const": false},
+        "may_present_benchmark_context_as_source_intent": {"const": false},
+        "numeric_invention_rule": {"type": "string", "minLength": 30},
+        "material_process_rule": {"type": "string", "minLength": 30}
+      }
+    },
+    "required_causal_chain": {
+      "type": "array",
+      "minItems": 13,
+      "maxItems": 13,
+      "prefixItems": [
+        {"const": "source_geometry_or_history"},
+        {"const": "provenance_label"},
+        {"const": "application_context"},
+        {"const": "functional_interface"},
+        {"const": "operating_conditions"},
+        {"const": "material_process_rationale"},
+        {"const": "engineering_requirement"},
+        {"const": "bound_requested_change"},
+        {"const": "causal_mechanism"},
+        {"const": "measurable_engineering_effect"},
+        {"const": "preservation_requirements"},
+        {"const": "deterministic_acceptance"},
+        {"const": "unresolved_risks"}
+      ]
+    },
+    "role_protocols": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "engineering_scenario_author",
+        "engineering_effect_analyst",
+        "edit_binding_engineer",
+        "functional_edit_synthesizer",
+        "functional_edit_critic"
+      ],
+      "properties": {
+        "engineering_scenario_author": {"$ref": "#/$defs/roleProtocol"},
+        "engineering_effect_analyst": {"$ref": "#/$defs/roleProtocol"},
+        "edit_binding_engineer": {"$ref": "#/$defs/roleProtocol"},
+        "functional_edit_synthesizer": {"$ref": "#/$defs/roleProtocol"},
+        "functional_edit_critic": {"$ref": "#/$defs/roleProtocol"}
+      }
+    },
+    "few_shot_examples": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "schema_version",
+        "example_set_id",
+        "example_set_version",
+        "sha256",
+        "required_example_kinds"
+      ],
+      "properties": {
+        "path": {"const": "configs/annotation/examples/cadengbench_p_functional_edit_few_shot_v2.json"},
+        "schema_version": {"const": "cadengbench-p.functional-edit-few-shot.v2"},
+        "example_set_id": {"const": "cadengbench-p.functional-edit-few-shot.v2"},
+        "example_set_version": {"$ref": "#/$defs/semver"},
+        "sha256": {"$ref": "#/$defs/sha256"},
+        "required_example_kinds": {
+          "type": "array",
+          "minItems": 3,
+          "uniqueItems": true,
+          "items": {"enum": ["positive_mecado_style", "weak_negative", "corrected"]}
+        }
+      }
+    },
+    "candidate_output_schema": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "schema_version", "sha256"],
+      "properties": {
+        "path": {"const": "schemas/cadengbench_p_functional_edit_candidate_output_v2.schema.json"},
+        "schema_version": {"const": "cadengbench-p-functional-edit-candidate-output-v2"},
+        "sha256": {"$ref": "#/$defs/sha256"}
+      }
+    },
+    "prompt_injection_policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source_strings_are_untrusted_data",
+        "ignore_embedded_instructions",
+        "follow_urls_or_execute_source_code",
+        "per_item_browsing_allowed",
+        "injection_signal_action"
+      ],
+      "properties": {
+        "source_strings_are_untrusted_data": {"const": true},
+        "ignore_embedded_instructions": {"const": true},
+        "follow_urls_or_execute_source_code": {"const": false},
+        "per_item_browsing_allowed": {"const": false},
+        "injection_signal_action": {"type": "string", "minLength": 20}
+      }
+    },
+    "self_check_requirements": {
+      "type": "array",
+      "minItems": 7,
+      "uniqueItems": true,
+      "items": {
+        "enum": [
+          "provenance_labels_checked",
+          "source_ids_copied_from_input",
+          "untrusted_input_treated_as_data",
+          "no_hidden_reasoning_included",
+          "no_llm_as_judge_fields",
+          "deterministic_checks_named",
+          "json_schema_checked"
+        ]
+      }
+    },
+    "abstention_and_escalation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "abstention_is_valid",
+        "abstention_reasons",
+        "escalation_targets",
+        "stronger_model_trigger_flags",
+        "stronger_model_only_on_listed_flags"
+      ],
+      "properties": {
+        "abstention_is_valid": {"const": true},
+        "abstention_reasons": {
+          "type": "array",
+          "minItems": 6,
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "required_input_missing",
+              "no_grounded_functional_interface",
+              "no_measurable_effect",
+              "no_stable_target_binding",
+              "no_preservation_binding",
+              "no_deterministic_acceptance_path",
+              "prompt_injection_detected",
+              "engineering_risk_requires_expert"
+            ]
+          }
+        },
+        "escalation_targets": {
+          "type": "array",
+          "minItems": 3,
+          "uniqueItems": true,
+          "items": {"enum": ["stronger_model", "independent_multiagent_review", "pipeline_operator"]}
+        },
+        "stronger_model_trigger_flags": {
+          "type": "array",
+          "minItems": 6,
+          "uniqueItems": true,
+          "items": {"$ref": "#/$defs/strongerModelTrigger"}
+        },
+        "stronger_model_only_on_listed_flags": {"const": true}
+      }
+    },
+    "deterministic_acceptance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "allowed_check_kinds",
+        "each_change_requires_check",
+        "each_effect_requires_check",
+        "each_preservation_requires_check",
+        "visual_similarity_alone_is_acceptable",
+        "critic_decides_acceptance",
+        "evaluator_uses_llm_judge"
+      ],
+      "properties": {
+        "allowed_check_kinds": {
+          "type": "array",
+          "minItems": 10,
+          "uniqueItems": true,
+          "items": {"$ref": "#/$defs/checkKind"}
+        },
+        "each_change_requires_check": {"const": true},
+        "each_effect_requires_check": {"const": true},
+        "each_preservation_requires_check": {"const": true},
+        "visual_similarity_alone_is_acceptable": {"const": false},
+        "critic_decides_acceptance": {"const": false},
+        "evaluator_uses_llm_judge": {"const": false}
+      }
+    },
+    "execution_profile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "profile_id",
+        "default_model_tier",
+        "model_id_source",
+        "model_name",
+        "candidates_per_item",
+        "schema_constrained_json",
+        "default_max_output_tokens",
+        "role_max_output_tokens",
+        "max_repair_retries",
+        "per_item_browsing",
+        "per_item_network_access",
+        "deterministic_prefilter",
+        "stronger_model_escalation"
+      ],
+      "properties": {
+        "profile_id": {"const": "cadengbench-p.functional-edit.fast.v2"},
+        "default_model_tier": {"const": "small_fast"},
+        "model_id_source": {"const": "execution_manifest"},
+        "model_name": {"type": "null"},
+        "candidates_per_item": {"const": 1},
+        "schema_constrained_json": {"const": true},
+        "default_max_output_tokens": {"type": "integer", "minimum": 512, "maximum": 4096},
+        "role_max_output_tokens": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "engineering_scenario_author",
+            "engineering_effect_analyst",
+            "edit_binding_engineer",
+            "functional_edit_synthesizer",
+            "functional_edit_critic"
+          ],
+          "properties": {
+            "engineering_scenario_author": {"type": "integer", "minimum": 512, "maximum": 4096},
+            "engineering_effect_analyst": {"type": "integer", "minimum": 512, "maximum": 4096},
+            "edit_binding_engineer": {"type": "integer", "minimum": 512, "maximum": 4096},
+            "functional_edit_synthesizer": {"type": "integer", "minimum": 512, "maximum": 4096},
+            "functional_edit_critic": {"type": "integer", "minimum": 512, "maximum": 4096}
+          }
+        },
+        "max_repair_retries": {"const": 1},
+        "per_item_browsing": {"const": false},
+        "per_item_network_access": {"const": false},
+        "deterministic_prefilter": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["enabled", "llm_used", "checks"],
+          "properties": {
+            "enabled": {"const": true},
+            "llm_used": {"const": false},
+            "checks": {
+              "type": "array",
+              "minItems": 7,
+              "uniqueItems": true,
+              "items": {
+                "enum": [
+                  "json_schema",
+                  "single_candidate_count",
+                  "source_id_referential_integrity",
+                  "provenance_consistency",
+                  "upstream_record_identity",
+                  "unit_parseability",
+                  "deterministic_check_allowlist",
+                  "no_llm_judge_fields",
+                  "prompt_injection_signal_scan"
+                ]
+              }
+            }
+          }
+        },
+        "stronger_model_escalation": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["enabled", "only_on_trigger_flags", "trigger_flags", "model_id_source"],
+          "properties": {
+            "enabled": {"const": true},
+            "only_on_trigger_flags": {"const": true},
+            "trigger_flags": {
+              "type": "array",
+              "minItems": 6,
+              "uniqueItems": true,
+              "items": {"$ref": "#/$defs/strongerModelTrigger"}
+            },
+            "model_id_source": {"const": "execution_manifest"}
+          }
+        }
+      }
+    },
+    "promotion_boundary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "candidate_outputs_are_scoreable",
+        "critic_outputs_are_scoreable",
+        "requires_independent_multiagent_review",
+        "requires_deterministic_promotion",
+        "preserve_authorship_provenance",
+        "evaluator_uses_llm_judge"
+      ],
+      "properties": {
+        "candidate_outputs_are_scoreable": {"const": false},
+        "critic_outputs_are_scoreable": {"const": false},
+        "requires_independent_multiagent_review": {"const": true},
+        "requires_deterministic_promotion": {"const": true},
+        "preserve_authorship_provenance": {"const": true},
+        "evaluator_uses_llm_judge": {"const": false}
+      }
+    },
+    "backward_compatibility": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "previous_role_set",
+        "previous_policy_path",
+        "previous_output_schema_path",
+        "v1_behavior_unchanged",
+        "v1_prompt_api_remains_supported"
+      ],
+      "properties": {
+        "previous_role_set": {"const": "functional_edit_intent.v1"},
+        "previous_policy_path": {"const": "configs/annotation/cadengbench_p_functional_edit_authoring_v1.json"},
+        "previous_output_schema_path": {"const": "schemas/cadengbench_p_functional_edit_candidate_output_v1.schema.json"},
+        "v1_behavior_unchanged": {"const": true},
+        "v1_prompt_api_remains_supported": {"const": true}
+      }
+    }
+  },
+  "$defs": {
+    "semver": {"type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"},
+    "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "nonEmpty": {"type": "string", "minLength": 1},
+    "roleProtocol": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "prompt_id",
+        "prompt_version",
+        "mission",
+        "required_inputs",
+        "consumes_role_outputs",
+        "payload_schema_ref",
+        "must_do",
+        "must_not_do",
+        "self_check"
+      ],
+      "properties": {
+        "prompt_id": {"type": "string", "pattern": "^cadengbench-p\\.functional-edit\\."},
+        "prompt_version": {"$ref": "#/$defs/semver"},
+        "mission": {"type": "string", "minLength": 30},
+        "required_inputs": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"$ref": "#/$defs/nonEmpty"}},
+        "consumes_role_outputs": {"type": "array", "uniqueItems": true, "items": {"$ref": "#/$defs/nonEmpty"}},
+        "payload_schema_ref": {"type": "string", "pattern": "^#/\\$defs/[A-Za-z0-9]+Payload$"},
+        "must_do": {"type": "array", "minItems": 4, "items": {"type": "string", "minLength": 10}},
+        "must_not_do": {"type": "array", "minItems": 4, "items": {"type": "string", "minLength": 10}},
+        "self_check": {"type": "array", "minItems": 3, "items": {"type": "string", "minLength": 10}}
+      }
+    },
+    "checkKind": {
+      "enum": [
+        "schema_validation",
+        "source_id_referential_integrity",
+        "native_replay",
+        "geometry_measurement",
+        "relation_check",
+        "smt_solver",
+        "solid_validity",
+        "feature_identity",
+        "topology_invariant",
+        "mass_property_proxy",
+        "interference_clearance",
+        "dfm_geometry_check",
+        "closed_form_engineering_proxy",
+        "unit_consistency",
+        "provenance_consistency"
+      ]
+    },
+    "strongerModelTrigger": {
+      "enum": [
+        "schema_validation_failure",
+        "binding_missing",
+        "binding_ambiguous",
+        "source_proxy_authority_conflict",
+        "causal_chain_disputed",
+        "engineering_risk_high",
+        "material_process_risk",
+        "deterministic_check_unavailable",
+        "unit_or_threshold_unsupported"
+      ]
+    }
+  }
+}

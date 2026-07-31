@@ -1,0 +1,30 @@
+{
+  "schema_version": "cadengbench-p.l3-fusion-variant-spec.v1",
+  "items": [
+    {
+      "item_id": "p_fusion360_000757",
+      "source_history": "data/interim/cadengbench_p_v2_zero_to_cad_hpc_canary_30/dataset/items/p_fusion360_000757/source/113447_92e93a1b_0000.json",
+      "base_card": "configs/l3/cards/p_fusion360_000757_linear_static.json"
+    },
+    {
+      "item_id": "p_fusion360_000937",
+      "source_history": "data/interim/cadengbench_p_v2_zero_to_cad_hpc_canary_30/dataset/items/p_fusion360_000937/source/34770_6bba5bd4_0003.json",
+      "base_card": "configs/l3/cards/p_fusion360_000937_linear_static.json"
+    },
+    {
+      "item_id": "p_fusion360_001093",
+      "source_history": "data/interim/cadengbench_p_v2_zero_to_cad_hpc_canary_30/dataset/items/p_fusion360_001093/source/60292_ac2b9317_0000.json",
+      "base_card": "configs/l3/cards/p_fusion360_001093_linear_static.json"
+    }
+  ],
+  "variants": [
+    {
+      "variant_id": "first_extrude_minus_10pct",
+      "scale": 0.9
+    },
+    {
+      "variant_id": "first_extrude_plus_10pct",
+      "scale": 1.1
+    }
+  ]
+}

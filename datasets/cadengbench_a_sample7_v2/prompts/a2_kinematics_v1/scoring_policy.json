@@ -1,0 +1,21 @@
+{
+  "schema": "cadengbench_a_a2_kinematics_scoring_policy_v1",
+  "status": "frozen_v2_execution_enabled",
+  "headline_score": false,
+  "selected_a1_rank": 1,
+  "request_gate": "structurally_valid_non_abstaining_rank_1_a1_hypothesis",
+  "score_gate": "typed_known_positive_mapping_exists_for_selected_a1_hypothesis",
+  "ground_truth_repair_allowed": false,
+  "thresholds": {
+    "origin_normalized_error_max": 0.01,
+    "direction_error_deg_max": 5.0,
+    "relative_translation_normalized_error_max": 0.01,
+    "relative_rotation_error_deg_max": 5.0
+  },
+  "source_alternative_policy": "minimum_complete_pose_error_across_compatible_recorded_alternatives",
+  "simulation_authorization": "valid_scored_pose_passing_every_threshold",
+  "collision_verdict": "diagnostic_only",
+  "source_limits_scored": false,
+  "test_split_access": false,
+  "provider_requests_enabled": true
+}

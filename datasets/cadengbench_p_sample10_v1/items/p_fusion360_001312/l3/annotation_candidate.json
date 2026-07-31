@@ -1,0 +1,20 @@
+{
+  "applicability": "proposed",
+  "bundle_id": "sha256:bf6e35ae9b03e61074ada96565bfedc6ebbbe4788ef2af6d7b564d0088eec5ef",
+  "concise_rationale": "The geometry is a solid right circular cylinder with a clear axial load path along the Y-axis. The opposed regions axis:y:min and axis:y:max represent the flat circular ends, suitable for a conservative axial tension/compression probe.",
+  "confidence": 0.95,
+  "fixed_region_id": "axis:y:min",
+  "item_id": "p_fusion360_001312",
+  "load_direction": {
+    "axis": "y",
+    "sign": 1
+  },
+  "loaded_region_id": "axis:y:max",
+  "output_status": "complete",
+  "reason_code": "clear_axial_load_path",
+  "risk_flags": [],
+  "role_id": "l3_physics_probe_annotator",
+  "scenario_family": "axial_tension",
+  "schema_version": "cadengbench-p.l3-annotation-candidate.v1",
+  "source_intent_claimed": false
+}

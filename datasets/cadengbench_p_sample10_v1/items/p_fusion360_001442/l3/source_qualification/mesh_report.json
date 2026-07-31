@@ -1,0 +1,82 @@
+{
+  "applied_force_n": [
+    25.806400000000004,
+    0.0,
+    0.0
+  ],
+  "characteristic_length_mm": 3.5560000400000007,
+  "connectivity_mapping": "gmsh_tetra10_to_calculix_c3d10_swap_nodes_9_10_v1",
+  "element_count": 7250,
+  "element_type": "C3D10",
+  "fixed_node_count": 179,
+  "fixed_selector": [
+    {
+      "area_fraction": 0.024955436720142603,
+      "area_mm2": 361.2896,
+      "bbox_mm": [
+        -1e-07,
+        -1e-07,
+        -1e-07,
+        1e-07,
+        17.780000100000002,
+        20.3200001
+      ],
+      "normal": [
+        -1.0,
+        -0.0,
+        -0.0
+      ],
+      "normal_source": "gmsh_parametric_surface_normal",
+      "surface_tag": 1,
+      "surface_type": "Plane",
+      "target_coordinate_mm": -1e-07
+    }
+  ],
+  "geometry_bbox_mm": [
+    -1e-07,
+    -1e-07,
+    -1e-07,
+    187.9600001,
+    17.780000100000002,
+    20.3200001
+  ],
+  "gmsh_threads": 1,
+  "gmsh_version": "4.15.2",
+  "high_order_optimization": "none",
+  "loaded_area_mm2": 258.06399999999996,
+  "loaded_area_relative_discrepancy": 0.0,
+  "loaded_boundary_triangle_area_mm2": 258.06399999999996,
+  "loaded_node_count": 100,
+  "loaded_selector": [
+    {
+      "area_fraction": 0.017825311942959,
+      "area_mm2": 258.06399999999996,
+      "bbox_mm": [
+        187.9599999,
+        5.0799999,
+        -1e-07,
+        187.9600001,
+        17.780000100000002,
+        20.3200001
+      ],
+      "normal": [
+        1.0,
+        -0.0,
+        -0.0
+      ],
+      "normal_source": "gmsh_parametric_surface_normal",
+      "surface_tag": 5,
+      "surface_type": "Plane",
+      "target_coordinate_mm": 187.9600001
+    }
+  ],
+  "mean_quality": 0.802335511974248,
+  "mesh_path": "./data/derived/cadengbench_p_300_l3_probe_v1/items/p_fusion360_001442/source_qualification/mesh.msh",
+  "mesh_runtime_seconds": 0.18252608308102936,
+  "mesh_sha256": "5f562285381cec0c4a971afd691e617da58330ac4f95ed81543eddd051a4d8dd",
+  "minimum_quality": 0.3587201651082761,
+  "node_count": 12730,
+  "quality_metric": "minSICN",
+  "traction_force_area_normalization": "exact_occ_planar_region_area_v1",
+  "volume_entity_count": 1
+}

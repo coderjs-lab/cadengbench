@@ -1,0 +1,82 @@
+{
+  "applied_force_n": [
+    0.0,
+    0.0,
+    7.3138240470978895
+  ],
+  "characteristic_length_mm": 2.1720833416666667,
+  "connectivity_mapping": "gmsh_tetra10_to_calculix_c3d10_swap_nodes_9_10_v1",
+  "element_count": 5616,
+  "element_type": "C3D10",
+  "fixed_node_count": 294,
+  "fixed_selector": [
+    {
+      "area_fraction": 0.04985727521263205,
+      "area_mm2": 168.78244069249337,
+      "bbox_mm": [
+        -9.238000100001907,
+        -8.000342780161006,
+        -1e-07,
+        9.238000100001909,
+        8.000342780160999,
+        1e-07
+      ],
+      "normal": [
+        -0.0,
+        0.0,
+        -1.0
+      ],
+      "normal_source": "gmsh_parametric_surface_normal",
+      "surface_tag": 4,
+      "surface_type": "Plane",
+      "target_coordinate_mm": -1e-07
+    }
+  ],
+  "geometry_bbox_mm": [
+    -9.238000100001907,
+    -8.000342780161006,
+    -1e-07,
+    9.238000100001909,
+    8.000342780160999,
+    52.130000100000004
+  ],
+  "gmsh_threads": 1,
+  "gmsh_version": "4.15.2",
+  "high_order_optimization": "none",
+  "loaded_area_mm2": 73.13824047097889,
+  "loaded_area_relative_discrepancy": 0.03323361469144792,
+  "loaded_boundary_triangle_area_mm2": 70.70759236795591,
+  "loaded_node_count": 76,
+  "loaded_selector": [
+    {
+      "area_fraction": 0.02160457787414515,
+      "area_mm2": 73.13824047097889,
+      "bbox_mm": [
+        -4.8250001000000005,
+        -4.8250001000000005,
+        52.1299999,
+        4.8250001000000005,
+        4.8250001000000005,
+        52.130000100000004
+      ],
+      "normal": [
+        0.0,
+        -0.0,
+        1.0
+      ],
+      "normal_source": "gmsh_parametric_surface_normal",
+      "surface_tag": 12,
+      "surface_type": "Plane",
+      "target_coordinate_mm": 52.130000100000004
+    }
+  ],
+  "mean_quality": 0.794265624327482,
+  "mesh_path": "./data/derived/cadengbench_p_300_l3_probe_v1/items/p_benchcad_000338/source_qualification/mesh.msh",
+  "mesh_runtime_seconds": 0.15394373494200408,
+  "mesh_sha256": "c223dd05e591231b4fa09e76185f8e60d15c511a7bef52f19adaf0e3cb6713bf",
+  "minimum_quality": 0.25243582332722697,
+  "node_count": 9442,
+  "quality_metric": "minSICN",
+  "traction_force_area_normalization": "exact_occ_planar_region_area_v1",
+  "volume_entity_count": 1
+}

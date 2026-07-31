@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cadengbench.org/schemas/cadengbench_p_material_process_scenario_v2.schema.json",
+  "title": "CADEngBench-P v2 material-process scenario",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "record_type", "scenario"],
+  "properties": {
+    "schema_version": {"const": "cadengbench-p.material-process-scenario.v2"},
+    "record_type": {"const": "material_process_scenario"},
+    "scenario": {"$ref": "#/$defs/scenario"}
+  },
+  "$defs": {
+    "nonEmpty": {"type": "string", "minLength": 1},
+    "scenario": {
+      "type": "object", "additionalProperties": false,
+      "required": ["scenario_id", "origin", "material_card_ref", "process_profile_ref", "production_context", "tolerance_profile_ref", "surface_finish_profile_ref", "applicable_dfm_check_ids", "requirement_text", "authority", "validation_status", "source_intent_claimed"],
+      "properties": {
+        "scenario_id": {"$ref": "#/$defs/nonEmpty"},
+        "origin": {"enum": ["source_explicit", "benchmark_assigned"]},
+        "material_card_ref": {"$ref": "#/$defs/nonEmpty"},
+        "process_profile_ref": {"$ref": "#/$defs/nonEmpty"},
+        "production_context": {"type": "object", "additionalProperties": false, "required": ["context_id", "description"], "properties": {"context_id": {"$ref": "#/$defs/nonEmpty"}, "description": {"$ref": "#/$defs/nonEmpty"}, "volume": {"anyOf": [{"type": "integer", "minimum": 1}, {"type": "null"}]}, "stock_description": {"anyOf": [{"$ref": "#/$defs/nonEmpty"}, {"type": "null"}]}}},
+        "tolerance_profile_ref": {"anyOf": [{"$ref": "#/$defs/nonEmpty"}, {"type": "null"}]},
+        "surface_finish_profile_ref": {"anyOf": [{"$ref": "#/$defs/nonEmpty"}, {"type": "null"}]},
+        "applicable_dfm_check_ids": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"$ref": "#/$defs/nonEmpty"}},
+        "requirement_text": {"$ref": "#/$defs/nonEmpty"},
+        "authority": {"enum": ["source_explicit", "benchmark_requirement", "needs_validation", "unavailable"]},
+        "validation_status": {"enum": ["validated", "candidate_only", "needs_validation", "unavailable"]},
+        "source_intent_claimed": {"type": "boolean"},
+        "unavailable_reason": {"anyOf": [{"$ref": "#/$defs/nonEmpty"}, {"type": "null"}]}
+      },
+      "allOf": [
+        {"if": {"properties": {"origin": {"const": "benchmark_assigned"}}}, "then": {"properties": {"authority": {"const": "benchmark_requirement"}, "source_intent_claimed": {"const": false}}}},
+        {"if": {"properties": {"origin": {"const": "source_explicit"}}}, "then": {"properties": {"authority": {"const": "source_explicit"}}}},
+        {"if": {"properties": {"validation_status": {"const": "unavailable"}}}, "then": {"required": ["unavailable_reason"], "properties": {"authority": {"const": "unavailable"}, "source_intent_claimed": {"const": false}}}}
+      ]
+    }
+  }
+}

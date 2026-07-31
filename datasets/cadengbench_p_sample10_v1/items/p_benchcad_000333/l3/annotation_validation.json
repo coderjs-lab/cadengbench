@@ -1,0 +1,9 @@
+{
+  "card_path": "data/derived/cadengbench_p_300_l3_probe_v1/items/p_benchcad_000333/physics_card.json",
+  "card_sha256": "47f839c8ba24c6e340483ee2af1c39771fb6f307619de8feecbe2e8d6f10997d",
+  "disposition": "geometry_qualified",
+  "item_id": "p_benchcad_000333",
+  "llm_can_promote_solver_authority": false,
+  "reason": "candidate_matches_deterministic_region_contract",
+  "schema_version": "cadengbench-p.l3-annotation-validation.v1"
+}

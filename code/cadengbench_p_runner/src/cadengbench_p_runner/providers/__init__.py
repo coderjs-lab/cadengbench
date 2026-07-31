@@ -1,0 +1,1 @@
+"""Candidate-model provider adapters."""

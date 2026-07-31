@@ -1,0 +1,20 @@
+{
+  "applicability": "proposed",
+  "bundle_id": "sha256:f0c4cec6312efc447753d46f7865638190b0f3107b658036768be6e151956da4",
+  "concise_rationale": "The object is a hexagonal standoff with a clear vertical prismatic body. The Z-axis represents the primary structural span between the base and the top boss, forming a direct axial load path suitable for tension/compression analysis.",
+  "confidence": 0.95,
+  "fixed_region_id": "axis:z:min",
+  "item_id": "p_benchcad_000338",
+  "load_direction": {
+    "axis": "z",
+    "sign": 1
+  },
+  "loaded_region_id": "axis:z:max",
+  "output_status": "complete",
+  "reason_code": "clear_axial_load_path",
+  "risk_flags": [],
+  "role_id": "l3_physics_probe_annotator",
+  "scenario_family": "axial_tension",
+  "schema_version": "cadengbench-p.l3-annotation-candidate.v1",
+  "source_intent_claimed": false
+}

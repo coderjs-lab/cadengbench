@@ -1,0 +1,92 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CADEngBench-P L3 body-acceleration response contract",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "contract_id",
+    "contract_sha256",
+    "item_id",
+    "status",
+    "source_intent_claimed",
+    "threshold_authority",
+    "profile",
+    "bindings",
+    "scenario",
+    "material",
+    "loading",
+    "reference_base",
+    "fidelity",
+    "engineering_requirements",
+    "numerical",
+    "evaluator"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "cadengbench-p.l3-body-response-contract.v1"
+    },
+    "contract_id": {"type": "string"},
+    "contract_sha256": {"$ref": "#/$defs/sha"},
+    "item_id": {
+      "type": "string",
+      "pattern": "^p_(benchcad|fusion360)_[0-9]{6}$"
+    },
+    "status": {"const": "calibrated"},
+    "source_intent_claimed": {"const": false},
+    "threshold_authority": {
+      "const": "benchmark_assigned_reference_relative_body_acceleration_v1"
+    },
+    "profile": {"type": "object"},
+    "bindings": {
+      "type": "object",
+      "required": [
+        "base_card_sha256",
+        "nominal_reference_step_sha256",
+        "reference_base_result_sha256",
+        "body_evaluator_build_hash",
+        "l3_runtime_lock_sha256"
+      ],
+      "properties": {
+        "base_card_sha256": {"$ref": "#/$defs/sha"},
+        "nominal_reference_step_sha256": {"$ref": "#/$defs/sha"},
+        "reference_base_result_sha256": {"$ref": "#/$defs/sha"},
+        "body_evaluator_build_hash": {"$ref": "#/$defs/sha"},
+        "l3_runtime_lock_sha256": {"$ref": "#/$defs/sha"}
+      }
+    },
+    "scenario": {"const": "single_support_body_acceleration"},
+    "material": {"type": "object"},
+    "loading": {
+      "type": "object",
+      "required": [
+        "control",
+        "acceleration_vector_mm_s2",
+        "density_tonne_per_mm3",
+        "force_scales_with_candidate_mass"
+      ],
+      "properties": {
+        "control": {"const": "fixed_acceleration"},
+        "acceleration_vector_mm_s2": {
+          "type": "array",
+          "items": {"type": "number"},
+          "minItems": 3,
+          "maxItems": 3
+        },
+        "density_tonne_per_mm3": {"type": "number", "exclusiveMinimum": 0},
+        "force_scales_with_candidate_mass": {"const": true}
+      }
+    },
+    "reference_base": {"type": "object"},
+    "fidelity": {"type": "object"},
+    "engineering_requirements": {"type": "object"},
+    "numerical": {"type": "object"},
+    "evaluator": {"type": "object"}
+  },
+  "$defs": {
+    "sha": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    }
+  }
+}

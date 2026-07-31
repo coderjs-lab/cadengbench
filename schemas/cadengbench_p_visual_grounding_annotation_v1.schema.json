@@ -1,0 +1,97 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "cadengbench_p_visual_grounding_annotation_v1.schema.json",
+  "title": "CADEngBench-P compact visual grounding annotation",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "item_id",
+    "role_id",
+    "output_status",
+    "payload"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "cadengbench-p.visual-grounding-annotation.v1"
+    },
+    "item_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 128
+    },
+    "role_id": {
+      "const": "visual_geometry_grounder"
+    },
+    "output_status": {
+      "const": "complete"
+    },
+    "payload": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["global_form", "features", "recommended_prompt_profile"],
+      "properties": {
+        "global_form": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 240
+        },
+        "features": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 8,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "feature_kind",
+              "description",
+              "view_ids",
+              "visibility"
+            ],
+            "properties": {
+              "feature_kind": {
+                "enum": [
+                  "base_form",
+                  "opening",
+                  "boss_or_protrusion",
+                  "recess_or_pocket",
+                  "fillet_or_chamfer",
+                  "pattern",
+                  "interface_surface",
+                  "thin_wall_or_rib",
+                  "other"
+                ]
+              },
+              "description": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 180
+              },
+              "view_ids": {
+                "type": "array",
+                "minItems": 1,
+                "maxItems": 2,
+                "items": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 64
+                }
+              },
+              "visibility": {
+                "enum": ["visible", "partial", "occluded"]
+              }
+            }
+          }
+        },
+        "recommended_prompt_profile": {
+          "enum": [
+            "text_only",
+            "text_plus_isometric",
+            "text_plus_engineering_views"
+          ]
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "schema_version": "cadengbench-p.l3-response-profile.v1",
+  "profile_id": "cadengbench-p-l3-response-dev-v1",
+  "status": "development_only",
+  "source_intent_claimed": false,
+  "material": {
+    "model": "linear_elastic_isotropic",
+    "youngs_modulus_mpa": 70000.0,
+    "poisson_ratio": 0.33,
+    "yield_strength_mpa": 250.0,
+    "safety_factor": 2.0
+  },
+  "calibration": {
+    "load_control": "fixed_resultant_force",
+    "target_reference_stress_utilization": 0.5,
+    "target_reference_normalized_displacement": 0.01,
+    "minimum_load_scale": 0.01,
+    "maximum_load_scale": 1000.0,
+    "maximum_traction_mpa": 100.0
+  },
+  "fidelity": {
+    "metrics": [
+      "regularized_von_mises_p95_mpa",
+      "normalized_max_displacement",
+      "normalized_compliance"
+    ],
+    "maximum_symmetric_log_error": {
+      "regularized_von_mises_p95_mpa": 0.22314355131420976,
+      "normalized_max_displacement": 0.22314355131420976,
+      "normalized_compliance": 0.22314355131420976
+    },
+    "mesh_uncertainty_multiplier": 3.0,
+    "component_score": "exp_negative_normalized_log_error",
+    "aggregate": "geometric_mean"
+  },
+  "engineering_requirements": {
+    "maximum_stress_utilization": 1.0,
+    "maximum_normalized_displacement": 0.02,
+    "maximum_candidate_reference_displacement_ratio": 1.25,
+    "maximum_candidate_reference_compliance_ratio": 1.25
+  },
+  "numerical": {
+    "maximum_force_control_relative_error": 1e-5,
+    "maximum_equilibrium_relative_error": 1e-5,
+    "maximum_linearity_relative_error": 0.02,
+    "ratio_epsilon": 1e-12
+  }
+}

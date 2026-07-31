@@ -1,0 +1,14 @@
+{
+  "attempt": 1,
+  "finish_reason": "stop",
+  "http_status": 200,
+  "native_schema_guidance_used": true,
+  "outcome": "accepted",
+  "parse_recovery": "exact",
+  "raw_content": "{\"schema_version\": \"cadengbench-p.engineering-task-annotation.v3\", \"item_id\": \"p_fusion360_001312\", \"role_id\": \"engineering_task_author\", \"output_status\": \"complete\", \"payload\": {\"part_identity\": {\"title\": \"cylindrical support column\", \"category\": \"structural support\"}, \"design\": {\"goal\": \"increase axial load capacity\", \"application_context\": \"industrial machinery mounting base\", \"design_freedom\": [\"maintain base footprint and hole locations\"]}, \"function\": {\"functional_interpretation\": \"transmit vertical compressive loads from machine to foundation\", \"interfaces\": [{\"interface_id\": \"interface_1\", \"interface_kind\": \"mounting\", \"description\": \"base plate interface with foundation\"}], \"non_requirements\": [\"no surface finish requirements\"]}, \"material_process\": {\"material_family\": \"unspecified\", \"material_specification\": \"unspecified\", \"process_family\": \"unspecified\", \"process_variant\": \"unspecified\"}, \"standards\": [], \"load_case\": {\"load_type\": \"pressure\", \"magnitude\": 2.5, \"unit\": \"MPa\", \"direction\": \"axial\", \"application_region\": \"full column height\", \"constraint_region\": \"base plate interface\", \"duty\": \"static\"}, \"functional_edit\": {\"operating_condition\": \"static axial compression\", \"engineering_objective\": \"increase load capacity by 10 percent\"}}}",
+  "usage": {
+    "input_tokens": 991,
+    "output_tokens": 320,
+    "total_tokens": 1311
+  }
+}

@@ -1,0 +1,93 @@
+{
+  "schema_version": "cadengbench-p.evaluator-dev-slice-plan.v1",
+  "slice_id": "cadengbench-p.real-dev-10.v1",
+  "selection_policy": "frozen development-split items with direct deterministic parameter observables",
+  "items": [
+    {
+      "item_id": "p_benchcad_000521",
+      "difficulty": "easy",
+      "measurement_kind": "bbox_axis",
+      "axis": "y"
+    },
+    {
+      "item_id": "p_benchcad_000333",
+      "difficulty": "hard",
+      "measurement_kind": "hole_diameter"
+    },
+    {
+      "item_id": "p_benchcad_000338",
+      "difficulty": "medium",
+      "measurement_kind": "hole_diameter"
+    },
+    {
+      "item_id": "p_benchcad_000518",
+      "difficulty": "medium",
+      "measurement_kind": "bbox_axis",
+      "axis": "x"
+    },
+    {
+      "item_id": "p_benchcad_000522",
+      "difficulty": "hard",
+      "measurement_kind": "bbox_axis",
+      "axis": "x"
+    },
+    {
+      "item_id": "p_benchcad_000757",
+      "difficulty": "easy",
+      "measurement_kind": "bbox_axis",
+      "axis": "z"
+    },
+    {
+      "item_id": "p_fusion360_001165",
+      "difficulty": "hard",
+      "measurement_kind": "bbox_axis",
+      "axis": "x",
+      "fusion_distance_expressions": {
+        "ee35e5b5-e2b4-11ea-a35b-54bf646e7e1f": {
+          "scale": 1.0,
+          "offset_mm": 0.0
+        }
+      }
+    },
+    {
+      "item_id": "p_fusion360_001312",
+      "difficulty": "easy",
+      "measurement_kind": "bbox_axis",
+      "axis": "y",
+      "fusion_distance_expressions": {
+        "00ede09a-e2d7-11ea-a512-54bf646e7e1f": {
+          "scale": 1.0,
+          "offset_mm": 0.0
+        },
+        "00eef27a-e2d7-11ea-abee-54bf646e7e1f": {
+          "scale": 1.0,
+          "offset_mm": 30.0
+        }
+      }
+    },
+    {
+      "item_id": "p_fusion360_001442",
+      "difficulty": "easy",
+      "measurement_kind": "bbox_axis",
+      "axis": "z",
+      "fusion_distance_expressions": {
+        "6407f82c-e2a4-11ea-977d-54bf646e7e1f": {
+          "scale": 1.0,
+          "offset_mm": 0.0
+        }
+      }
+    },
+    {
+      "item_id": "p_fusion360_001017",
+      "difficulty": "easy",
+      "measurement_kind": "bbox_axis",
+      "axis": "z",
+      "fusion_distance_expressions": {
+        "b7ef649b-e314-11ea-91fc-54bf646e7e1f": {
+          "scale": 1.0,
+          "offset_mm": 0.0
+        }
+      }
+    }
+  ]
+}

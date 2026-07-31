@@ -1,0 +1,1 @@
+{"base_plane":"XY","code":"import cadquery as cq\n\nresult = (\n    cq.Workplane(\"XY\")\n    .box(43.47, 6.52, 6.52)\n    .edges(\"|X\")\n    .chamfer(0.65)\n)\n\n# Export\nshow_object(result)","difficulty":"medium","family":"parallel_key","standard":"DIN 6885","stem":"parallel_key_010313_s20260505","variant":"standard"}

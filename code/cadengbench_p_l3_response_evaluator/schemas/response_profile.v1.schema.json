@@ -1,0 +1,84 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cadengbench.org/schemas/l3-response-profile.v1.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version", "profile_id", "status", "source_intent_claimed", "material",
+    "calibration", "fidelity", "engineering_requirements", "numerical"
+  ],
+  "properties": {
+    "schema_version": {"const": "cadengbench-p.l3-response-profile.v1"},
+    "profile_id": {"type": "string", "minLength": 1},
+    "status": {"enum": ["development_only", "calibrated"]},
+    "source_intent_claimed": {"const": false},
+    "material": {
+      "type": "object", "additionalProperties": false,
+      "required": ["model", "youngs_modulus_mpa", "poisson_ratio", "yield_strength_mpa", "safety_factor"],
+      "properties": {
+        "model": {"const": "linear_elastic_isotropic"},
+        "youngs_modulus_mpa": {"type": "number", "exclusiveMinimum": 0},
+        "poisson_ratio": {"type": "number", "exclusiveMinimum": -1, "exclusiveMaximum": 0.5},
+        "yield_strength_mpa": {"type": "number", "exclusiveMinimum": 0},
+        "safety_factor": {"type": "number", "minimum": 1}
+      }
+    },
+    "calibration": {
+      "type": "object", "additionalProperties": false,
+      "required": ["load_control", "target_reference_stress_utilization", "target_reference_normalized_displacement", "minimum_load_scale", "maximum_load_scale", "maximum_traction_mpa"],
+      "properties": {
+        "load_control": {"const": "fixed_resultant_force"},
+        "target_reference_stress_utilization": {"type": "number", "exclusiveMinimum": 0, "maximum": 1},
+        "target_reference_normalized_displacement": {"type": "number", "exclusiveMinimum": 0},
+        "minimum_load_scale": {"type": "number", "exclusiveMinimum": 0},
+        "maximum_load_scale": {"type": "number", "exclusiveMinimum": 0},
+        "maximum_traction_mpa": {"type": "number", "exclusiveMinimum": 0}
+      }
+    },
+    "fidelity": {
+      "type": "object", "additionalProperties": false,
+      "required": ["metrics", "maximum_symmetric_log_error", "mesh_uncertainty_multiplier", "component_score", "aggregate"],
+      "properties": {
+        "metrics": {
+          "type": "array", "minItems": 3, "maxItems": 3, "uniqueItems": true,
+          "items": {"enum": ["regularized_von_mises_p95_mpa", "normalized_max_displacement", "normalized_compliance"]}
+        },
+        "maximum_symmetric_log_error": {"$ref": "#/$defs/metricMap"},
+        "mesh_uncertainty_multiplier": {"type": "number", "minimum": 1},
+        "component_score": {"const": "exp_negative_normalized_log_error"},
+        "aggregate": {"const": "geometric_mean"}
+      }
+    },
+    "engineering_requirements": {
+      "type": "object", "additionalProperties": false,
+      "required": ["maximum_stress_utilization", "maximum_normalized_displacement", "maximum_candidate_reference_displacement_ratio", "maximum_candidate_reference_compliance_ratio"],
+      "properties": {
+        "maximum_stress_utilization": {"type": "number", "exclusiveMinimum": 0},
+        "maximum_normalized_displacement": {"type": "number", "exclusiveMinimum": 0},
+        "maximum_candidate_reference_displacement_ratio": {"type": "number", "minimum": 1},
+        "maximum_candidate_reference_compliance_ratio": {"type": "number", "minimum": 1}
+      }
+    },
+    "numerical": {
+      "type": "object", "additionalProperties": false,
+      "required": ["maximum_force_control_relative_error", "maximum_equilibrium_relative_error", "maximum_linearity_relative_error", "ratio_epsilon"],
+      "properties": {
+        "maximum_force_control_relative_error": {"type": "number", "exclusiveMinimum": 0},
+        "maximum_equilibrium_relative_error": {"type": "number", "exclusiveMinimum": 0},
+        "maximum_linearity_relative_error": {"type": "number", "exclusiveMinimum": 0},
+        "ratio_epsilon": {"type": "number", "exclusiveMinimum": 0}
+      }
+    }
+  },
+  "$defs": {
+    "metricMap": {
+      "type": "object", "additionalProperties": false,
+      "required": ["regularized_von_mises_p95_mpa", "normalized_max_displacement", "normalized_compliance"],
+      "properties": {
+        "regularized_von_mises_p95_mpa": {"type": "number", "exclusiveMinimum": 0},
+        "normalized_max_displacement": {"type": "number", "exclusiveMinimum": 0},
+        "normalized_compliance": {"type": "number", "exclusiveMinimum": 0}
+      }
+    }
+  }
+}

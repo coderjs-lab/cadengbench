@@ -1,0 +1,14 @@
+{
+  "attempt": 1,
+  "finish_reason": "stop",
+  "http_status": 200,
+  "native_schema_guidance_used": true,
+  "outcome": "accepted",
+  "parse_recovery": "exact",
+  "raw_content": "{\"schema_version\": \"cadengbench-p.engineering-task-annotation.v3\", \"item_id\": \"p_benchcad_000522\", \"role_id\": \"engineering_task_author\", \"output_status\": \"complete\", \"payload\": {\"part_identity\": {\"title\": \"Parallel key\", \"category\": \"transmission component\"}, \"design\": {\"goal\": \"increase shaft diameter clearance\", \"application_context\": \"transmission shaft interface\", \"design_freedom\": [\"clearance increase only\"]}, \"function\": {\"functional_interpretation\": \"transmit torque between shaft and hub\", \"interfaces\": [{\"interface_id\": \"interface_1\", \"interface_kind\": \"mounting\", \"description\": \"fits into shaft keyway\"}], \"non_requirements\": [\"no torque capacity change\"]}, \"material_process\": {\"material_family\": \"unspecified\", \"material_specification\": \"unspecified\", \"process_family\": \"unspecified\", \"process_variant\": \"unspecified\"}, \"standards\": [{\"standard_id\": \"DIN 6885\", \"requirement_category\": \"material\"}, {\"standard_id\": \"ISO 14\", \"requirement_category\": \"fit\"}], \"load_case\": {\"load_type\": \"not_applicable\", \"magnitude\": null, \"unit\": \"not_applicable\", \"direction\": \"not_applicable\", \"application_region\": \"not_applicable\", \"constraint_region\": \"not_applicable\", \"duty\": \"not_applicable\"}, \"functional_edit\": {\"operating_condition\": \"static torque transmission\", \"engineering_objective\": \"increase shaft diameter clearance for assembly ease\"}}}",
+  "usage": {
+    "input_tokens": 991,
+    "output_tokens": 356,
+    "total_tokens": 1347
+  }
+}

@@ -1,0 +1,114 @@
+{
+  "bundle_id": "sha256:2d11aad6561acf34d42fd65cf5d5bebd2727409cf0924211da96c6f202f42d72",
+  "inputs": {
+    "authority": {
+      "llm_output_authority": "candidate_only",
+      "promotion_requires_deterministic_and_solver_validation": true,
+      "source_intent_claimed": false
+    },
+    "geometry": {
+      "bbox_lengths_mm": [
+        27.714,
+        44.19,
+        24.00102804
+      ],
+      "deterministic_eligibility": {
+        "eligible": true,
+        "policy": {
+          "expected_solid_count": 1,
+          "maximum_region_surface_count": 64,
+          "minimum_region_area_fraction": 0.002,
+          "normal_alignment_min": 0.98,
+          "plane_tolerance_relative": 1e-06
+        },
+        "reason_codes": []
+      },
+      "eligible_opposed_region_pairs": [
+        {
+          "axis": "y",
+          "maximum_region": {
+            "area_fraction": 0.0483490025,
+            "area_mm2": 235.87776648,
+            "axis": "y",
+            "region_id": "axis:y:max",
+            "side": "max",
+            "surface_count": 1
+          },
+          "minimum_region": {
+            "area_fraction": 0.0617108304,
+            "area_mm2": 301.06542164,
+            "axis": "y",
+            "region_id": "axis:y:min",
+            "side": "min",
+            "surface_count": 1
+          },
+          "pair_id": "opposed:y",
+          "span_length_mm": 44.19
+        },
+        {
+          "axis": "z",
+          "maximum_region": {
+            "area_fraction": 0.1126477285,
+            "area_mm2": 549.56862,
+            "axis": "z",
+            "region_id": "axis:z:max",
+            "side": "max",
+            "surface_count": 1
+          },
+          "minimum_region": {
+            "area_fraction": 0.1126477285,
+            "area_mm2": 549.56862,
+            "axis": "z",
+            "region_id": "axis:z:min",
+            "side": "min",
+            "surface_count": 1
+          },
+          "pair_id": "opposed:z",
+          "span_length_mm": 24.00102804
+        }
+      ],
+      "face_count": 13,
+      "solid_count": 1
+    },
+    "item_id": "p_benchcad_000333",
+    "selection": {
+      "complexity": {
+        "aggregate_for_stratification_only": 0.35453302071121534,
+        "axes": {
+          "construction_topology": 0.4731666015370588,
+          "history": 0.4307672267812948,
+          "parametric": 0.09808518952715904,
+          "sketch": 0.4161130649993487
+        },
+        "method": "source_explicit_benchcad_difficulty",
+        "single_scalar_is_not_benchmark_truth": true,
+        "tier": "hard"
+      },
+      "selection_stratum": "family:hex_standoff",
+      "source_key": "benchcad",
+      "split": "development"
+    },
+    "semantic_context": {
+      "application_context": "electrical enclosure assembly",
+      "authority_warning": "LLM/VLM-authored context may be semantically wrong and is not selector or source-intent authority.",
+      "category": "mounting hardware",
+      "global_form": "Hexagonal block with central through-hole and cylindrical end protrusion",
+      "interfaces": [
+        {
+          "description": "hexagonal flange for torque transmission",
+          "kind": "mounting"
+        },
+        {
+          "description": "internal threaded bore for screw engagement",
+          "kind": "fastening"
+        }
+      ],
+      "status": "candidate_context_only",
+      "title": "hex standoff"
+    },
+    "source_family": "benchcad"
+  },
+  "item_id": "p_benchcad_000333",
+  "role_id": "l3_physics_probe_annotator",
+  "schema_version": "cadengbench-p.l3-annotation-bundle.v1"
+}

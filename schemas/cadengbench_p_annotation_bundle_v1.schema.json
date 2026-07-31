@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cadengbench.org/schemas/cadengbench_p_annotation_bundle_v1.schema.json",
+  "title": "CADEngBench-P v1 frozen annotation bundle",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "bundle_id", "schema_version", "item_id", "role_id", "independence_class",
+    "prompt", "output_schema", "input_sha256", "inputs", "egress_policy"
+  ],
+  "properties": {
+    "bundle_id": {"type": "string", "pattern": "^sha256:[a-f0-9]{64}$"},
+    "schema_version": {"enum": ["cadengbench-p.annotation-bundle.v1", "cadengbench-p.critic-bundle.v1"]},
+    "item_id": {"$ref": "#/$defs/itemId"},
+    "role_id": {"type": "string", "pattern": "^[a-z0-9][a-z0-9._-]*$"},
+    "independence_class": {"enum": ["same_model_isolated", "heterogeneous_model", "deterministic_tool"]},
+    "prompt": {"$ref": "#/$defs/hashedPrompt"},
+    "output_schema": {"$ref": "#/$defs/hashedSchema"},
+    "input_sha256": {"$ref": "#/$defs/sha256"},
+    "inputs": {"type": "object"},
+    "execution_compilation": {"$ref": "#/$defs/executionCompilation"},
+    "egress_policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["network_access_required", "source_text_is_untrusted_data", "may_read_paths", "must_write_path"],
+      "properties": {
+        "network_access_required": {"const": false},
+        "source_text_is_untrusted_data": {"const": true},
+        "may_read_paths": {"type": "array", "items": {"$ref": "#/$defs/relativePath"}, "uniqueItems": true},
+        "must_write_path": {"$ref": "#/$defs/relativePath"}
+      }
+    }
+  },
+  "$defs": {
+    "itemId": {"type": "string", "pattern": "^p_(benchcad|fusion360|futurecad)_[0-9]{3,}$"},
+    "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "relativePath": {"type": "string", "pattern": "^[^/].+"},
+    "hashedPrompt": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["prompt_id", "prompt_version", "path", "sha256"],
+      "properties": {
+        "prompt_id": {"type": "string", "minLength": 1},
+        "prompt_version": {"type": "string", "minLength": 1},
+        "path": {"$ref": "#/$defs/relativePath"},
+        "sha256": {"$ref": "#/$defs/sha256"}
+      }
+    },
+    "hashedSchema": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "sha256"],
+      "properties": {
+        "path": {"$ref": "#/$defs/relativePath"},
+        "sha256": {"$ref": "#/$defs/sha256"}
+      }
+    },
+    "executionCompilation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "profile_id", "overlay_path", "overlay_sha256", "dynamic_input_bytes",
+        "dynamic_input_budget_bytes", "native_structured_output_required"
+      ],
+      "properties": {
+        "profile_id": {"type": "string", "minLength": 1},
+        "overlay_path": {"$ref": "#/$defs/relativePath"},
+        "overlay_sha256": {"$ref": "#/$defs/sha256"},
+        "dynamic_input_bytes": {"type": "integer", "minimum": 1},
+        "dynamic_input_budget_bytes": {"type": "integer", "minimum": 1},
+        "native_structured_output_required": {"const": true}
+      }
+    }
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "attempt": 1,
+  "finish_reason": "stop",
+  "http_status": 200,
+  "native_schema_guidance_used": true,
+  "outcome": "accepted",
+  "parse_recovery": "exact",
+  "raw_content": "{\"schema_version\": \"cadengbench-p.engineering-task-annotation.v3\", \"item_id\": \"p_benchcad_000333\", \"role_id\": \"engineering_task_author\", \"output_status\": \"complete\", \"payload\": {\"part_identity\": {\"title\": \"hex standoff\", \"category\": \"mounting hardware\"}, \"design\": {\"goal\": \"provide threaded interface for securing components\", \"application_context\": \"electrical enclosure assembly\", \"design_freedom\": [\"hole_diameter\"]}, \"function\": {\"functional_interpretation\": \"transmit axial load through threaded bore\", \"interfaces\": [{\"interface_id\": \"interface_1\", \"interface_kind\": \"mounting\", \"description\": \"hexagonal flange for torque transmission\"}, {\"interface_id\": \"interface_2\", \"interface_kind\": \"fastening\", \"description\": \"internal threaded bore for screw engagement\"}], \"non_requirements\": [\"no surface finish requirement\"]}, \"material_process\": {\"material_family\": \"aluminum_alloy\", \"material_specification\": \"6061_T6\", \"process_family\": \"casting\", \"process_variant\": \"sand casting\"}, \"standards\": [{\"standard_id\": \"ISO 272\", \"requirement_category\": \"thread\"}, {\"standard_id\": \"ISO 4762\", \"requirement_category\": \"safety\"}], \"load_case\": {\"load_type\": \"torque\", \"magnitude\": 15.0, \"unit\": \"N_mm\", \"direction\": \"axial\", \"application_region\": \"threaded bore\", \"constraint_region\": \"hex flange\", \"duty\": \"static\"}, \"functional_edit\": {\"operating_condition\": \"standard M6 screw engagement\", \"engineering_objective\": \"increase clearance for M6 screw while retaining location\"}}}",
+  "usage": {
+    "input_tokens": 1077,
+    "output_tokens": 396,
+    "total_tokens": 1473
+  }
+}

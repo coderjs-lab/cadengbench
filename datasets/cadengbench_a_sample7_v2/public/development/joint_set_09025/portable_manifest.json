@@ -1,0 +1,151 @@
+{
+  "assembly_id": "joint_set_09025",
+  "canonical_candidate_registry": {
+    "bytes": 45322,
+    "sha256": "ad2396f0ff572bde1af0aab2aa8b4ac074de807008253ec173a7a6a85366e840"
+  },
+  "capacity_measurement": {
+    "estimated_input_tokens": 18424,
+    "requested_output_tokens": 4000,
+    "serialized_request_bytes": 919118,
+    "text_tokens": 6174
+  },
+  "compact_candidate_registry": {
+    "bytes": 13932,
+    "relative_path": "candidates.compact.json",
+    "sha256": "b8ea8fd42d3850584b138ee5745af526453b232b9277c5dd84bec204542e47e7"
+  },
+  "equivalence": {
+    "assembly_id": "joint_set_09025",
+    "candidate_count": 48,
+    "checks": {
+      "assembly_id_matches": true,
+      "body_count_matches": true,
+      "body_counts_match": true,
+      "candidate_ids_byte_stable": true,
+      "candidate_ids_unique": true,
+      "eligible_candidates_have_valid_atlas_pages": true,
+      "retained_values_match_precision_policy": true,
+      "schema_matches": true
+    },
+    "equivalent": true,
+    "max_numeric_absolute_error": 4.4101852836320177e-07,
+    "max_numeric_relative_error": 4.459422737385431e-09,
+    "schema": "cadengbench_a_compact_equivalence_report_v1",
+    "significant_digits": 9
+  },
+  "ground_truth_accessed": false,
+  "images": {
+    "clean_view_count": 8,
+    "entity_atlas_count": 3,
+    "image_base64_bytes": 892128,
+    "image_count": 11,
+    "image_raw_bytes": 669083,
+    "images": [
+      {
+        "body_role": "body_a",
+        "bytes": 49723,
+        "height": 768,
+        "kind": "clean",
+        "relative_path": "views/body_a_iso.png",
+        "sha256": "750a1df17ad077ab75e9775dff646d737508599ce2874190650b827e2ae4a423",
+        "width": 768
+      },
+      {
+        "body_role": "body_a",
+        "bytes": 14516,
+        "height": 768,
+        "kind": "clean",
+        "relative_path": "views/body_a_front.png",
+        "sha256": "4089afe710af95a1a6cc6457080aec649e2ca04e0fc98983861d671b8b597107",
+        "width": 768
+      },
+      {
+        "body_role": "body_a",
+        "bytes": 16955,
+        "height": 768,
+        "kind": "clean",
+        "relative_path": "views/body_a_side.png",
+        "sha256": "20635c4c3ac496124fb1874aa7f7fc575392eb7eaa2444dae875a73021ae6e50",
+        "width": 768
+      },
+      {
+        "body_role": "body_a",
+        "bytes": 14215,
+        "height": 768,
+        "kind": "clean",
+        "relative_path": "views/body_a_top.png",
+        "sha256": "bf6755dd1e512f7dd618047b0e188f6ffda59963fca569689e589c8a74ec558a",
+        "width": 768
+      },
+      {
+        "body_role": "body_a",
+        "bytes": 89186,
+        "height": 768,
+        "kind": "atlas",
+        "relative_path": "views/body_a_entity_atlas_01.png",
+        "sha256": "3a5b887f69af5dfab4715fffe2057f0d80240da56486888e69c83654dbcc49f6",
+        "width": 1200
+      },
+      {
+        "body_role": "body_a",
+        "bytes": 104860,
+        "height": 768,
+        "kind": "atlas",
+        "relative_path": "views/body_a_entity_atlas_02.png",
+        "sha256": "d2c6b386d1b83af00eb712e0632dd7edacc5e6a38cc4f81d70799e297127e7a6",
+        "width": 1200
+      },
+      {
+        "body_role": "body_b",
+        "bytes": 94172,
+        "height": 768,
+        "kind": "clean",
+        "relative_path": "views/body_b_iso.png",
+        "sha256": "9bf5d360fda310af386ca00b9c0f2ca94188f65e1a7acf411470f6ad3e421940",
+        "width": 768
+      },
+      {
+        "body_role": "body_b",
+        "bytes": 26875,
+        "height": 768,
+        "kind": "clean",
+        "relative_path": "views/body_b_front.png",
+        "sha256": "41bbac7f68cd19a9cb6f3f1dbb8fec1c49f38e3cf00c25898844e92a62a5f74b",
+        "width": 768
+      },
+      {
+        "body_role": "body_b",
+        "bytes": 107475,
+        "height": 768,
+        "kind": "clean",
+        "relative_path": "views/body_b_side.png",
+        "sha256": "77e0e5cc7b645a0a06fe0c28ca43996ed8fac24fdaa48092a7dbf243a2f9d859",
+        "width": 768
+      },
+      {
+        "body_role": "body_b",
+        "bytes": 26105,
+        "height": 768,
+        "kind": "clean",
+        "relative_path": "views/body_b_top.png",
+        "sha256": "35819ae2a4ffa1fab53d2a3169cf5ec7de50da6106fc37152f624c815e0db7e5",
+        "width": 768
+      },
+      {
+        "body_role": "body_b",
+        "bytes": 125001,
+        "height": 768,
+        "kind": "atlas",
+        "relative_path": "views/body_b_entity_atlas_01.png",
+        "sha256": "baa9b5fcec86c5524830ff55f91af7f213a8ea2d2c1808ba0947d496773cb9ab",
+        "width": 1200
+      }
+    ],
+    "reference_high_detail_image_tokens": 11906
+  },
+  "profile_id": "a1_portable_128k_v1",
+  "public_geometry_sha256": "41b0c4eae37dc908c819b090dfda05bd7a91e0f279e1652bcbded2444ae09a98",
+  "schema": "cadengbench_a_portable_item_manifest_v1",
+  "schema_errors": []
+}

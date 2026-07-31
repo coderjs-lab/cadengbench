@@ -1,0 +1,73 @@
+{
+  "schema_version": "cadengbench-p.l3-probe-profile.v1",
+  "profile_id": "cadengbench-p.l3-linear-static-probe-v1",
+  "dataset": {
+    "item_ids_path": "data/production/cadengbench_p_1800_v2_two_source_r25/final_subsets/cadengbench_p_300_v1/item_ids.txt",
+    "items_root": "data/production/cadengbench_p_1800_v2_two_source_r25/dataset/items",
+    "sidecar_root": "data/derived/cadengbench_p_300_l3_probe_v1"
+  },
+  "annotation": {
+    "role_id": "l3_physics_probe_annotator",
+    "model_profile_path": "configs/production/cadengbench_p_local_vllm_models_v1.json",
+    "endpoint_name": "visual",
+    "model_id": "Qwen/Qwen3.6-27B-FP8",
+    "served_model_name": "cadengbench-qwen3.6-27b-vlm",
+    "revision": "e89b16ebf1988b3d6befa7de50abc2d76f26eb09",
+    "system_prompt_path": "configs/l3/prompts/l3_physics_probe_annotator_v1.txt",
+    "output_schema_path": "cadengbench_p_evaluator/schemas/l3_annotation_candidate.v1.schema.json",
+    "temperature": 0.0,
+    "top_p": 1.0,
+    "max_input_tokens": 6000,
+    "max_output_tokens": 650,
+    "request_concurrency": 4,
+    "timeout_seconds": 900,
+    "maximum_transport_retries": 3,
+    "image_long_edge_px": 768,
+    "images_per_item": 1
+  },
+  "eligibility": {
+    "expected_solid_count": 1,
+    "normal_alignment_min": 0.98,
+    "plane_tolerance_relative": 0.000001,
+    "minimum_region_area_fraction": 0.002,
+    "maximum_region_surface_count": 64
+  },
+  "probe": {
+    "source_intent_claimed": false,
+    "material": {
+      "profile_id": "probe-isotropic-70gpa-v1",
+      "model": "linear_elastic_isotropic",
+      "youngs_modulus_mpa": 70000.0,
+      "poisson_ratio": 0.33
+    },
+    "traction_magnitude_mpa": 0.1,
+    "load_distribution": "boundary_triangle_consistent_nodal_v1",
+    "analysis": {
+      "type": "linear_static",
+      "small_deformation": true,
+      "max_equilibrium_relative_error": 0.00001,
+      "max_normalized_displacement": 0.02,
+      "stress_exclusion_mesh_lengths": 2.0,
+      "regularized_stress_percentiles": [95.0, 99.0]
+    },
+    "mesh": {
+      "element_type": "C3D10",
+      "algorithm_3d": 10,
+      "high_order_optimization": "none",
+      "target_long_axis_divisions": 24,
+      "target_short_axis_divisions": 5,
+      "minimum_sicn": 0.02,
+      "maximum_elements": 250000
+    },
+    "checks": [
+      "mesh_quality",
+      "selector_stability",
+      "solver_completion",
+      "force_equilibrium",
+      "finite_response",
+      "small_deformation",
+      "regularized_von_mises",
+      "normalized_compliance"
+    ]
+  }
+}

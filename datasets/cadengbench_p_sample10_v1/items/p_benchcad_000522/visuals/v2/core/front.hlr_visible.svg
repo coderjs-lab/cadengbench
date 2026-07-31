@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+  <g id="hlr-root" transform="scale(36.959660297239914,-36.959660297239914) translate(13.852941176470589,-13.852941176470589)" stroke-width="0.022998046875" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <g id="visible-sharp" stroke="#17212b">
+      <path d="M-11.775,1.18 L-11.775,0.8299999999999998 " />
+      <path d="M-11.775,-0.83 L-11.775,0.8299999999999998 " />
+      <path d="M-11.775,-1.18 L-11.775,-0.83 " />
+      <path d="M-11.775,-1.18 L11.775,-1.18 " />
+      <path d="M11.775,-1.18 L11.775,-0.83 " />
+      <path d="M-11.775,-0.83 L11.775,-0.83 " />
+      <path d="M11.775,-0.83 L11.775,0.8299999999999998 " />
+      <path d="M-11.775,0.83 L11.775,0.83 " />
+      <path d="M-11.775,1.18 L11.775,1.18 " />
+      <path d="M11.775,1.18 L11.775,0.8299999999999998 " />
+    </g>
+    <g id="visible-smooth" stroke="#17212b">
+
+    </g>
+    <g id="visible-sewn" stroke="#17212b">
+
+    </g>
+    <g id="visible-outline" stroke="#17212b">
+
+    </g>
+  </g>
+</svg>

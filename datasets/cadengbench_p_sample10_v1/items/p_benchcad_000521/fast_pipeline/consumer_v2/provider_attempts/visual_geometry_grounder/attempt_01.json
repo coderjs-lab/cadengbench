@@ -1,0 +1,14 @@
+{
+  "attempt": 1,
+  "finish_reason": "stop",
+  "http_status": 200,
+  "native_schema_guidance_used": true,
+  "outcome": "accepted",
+  "parse_recovery": "exact",
+  "raw_content": "{\"schema_version\": \"cadengbench-p.visual-grounding-annotation.v2\", \"item_id\": \"p_benchcad_000521\", \"role_id\": \"visual_geometry_grounder\", \"output_status\": \"complete\", \"payload\": {\"global_form\": \"Long rectangular prism with uniform cross-section and sharp edges.\", \"features\": [{\"feature_kind\": \"base_form\", \"description\": \"Elongated rectangular solid with high length-to-width ratio.\", \"view_ids\": [\"iso_front_right_top\", \"iso_rear_left_top\"], \"visibility\": \"visible\"}, {\"feature_kind\": \"base_form\", \"description\": \"Uniform square cross-section along the entire length.\", \"view_ids\": [\"iso_front_right_top\", \"iso_rear_left_top\"], \"visibility\": \"visible\"}, {\"feature_kind\": \"base_form\", \"description\": \"Flat top and bottom faces parallel to each other.\", \"view_ids\": [\"iso_front_right_top\", \"iso_rear_left_top\"], \"visibility\": \"visible\"}, {\"feature_kind\": \"base_form\", \"description\": \"Flat side faces perpendicular to top and bottom.\", \"view_ids\": [\"iso_front_right_top\", \"iso_rear_left_top\"], \"visibility\": \"visible\"}, {\"feature_kind\": \"base_form\", \"description\": \"Sharp 90-degree edges at all corners.\", \"view_ids\": [\"iso_front_right_top\", \"iso_rear_left_top\"], \"visibility\": \"visible\"}, {\"feature_kind\": \"base_form\", \"description\": \"Flat square end faces perpendicular to length.\", \"view_ids\": [\"iso_front_right_top\", \"iso_rear_left_top\"], \"visibility\": \"visible\"}], \"affordances\": [{\"affordance_kind\": \"load_transfer\", \"description\": \"Structural support via flat top and bottom surfaces.\", \"view_ids\": [\"iso_front_right_top\", \"iso_rear_left_top\"], \"visibility\": \"visible\"}, {\"affordance_kind\": \"load_transfer\", \"description\": \"Lateral bracing via flat side surfaces.\", \"view_ids\": [\"iso_front_right_top\", \"iso_rear_left_top\"], \"visibility\": \"visible\"}, {\"affordance_kind\": \"load_transfer\", \"description\": \"End-bearing support via flat square ends.\", \"view_ids\": [\"iso_front_right_top\", \"iso_rear_left_top\"], \"visibility\": \"visible\"}], \"recommended_prompt_profile\": \"text_only\"}}",
+  "usage": {
+    "input_tokens": 2228,
+    "output_tokens": 515,
+    "total_tokens": 2743
+  }
+}

@@ -1,0 +1,1640 @@
+{
+  "item_count": 10,
+  "items": [
+    {
+      "item_id": "p_benchcad_000521",
+      "mutant_first_failure": {
+        "check_id": "L1.requirement.R-BBOX:hidden.check.bbox_dimensions.v1",
+        "failure_code": "bbox_dimensions_mismatch",
+        "layer": "L1",
+        "summary": "deterministic requirement violated"
+      },
+      "mutant_status": "failed",
+      "positive_status": "passed"
+    },
+    {
+      "item_id": "p_benchcad_000333",
+      "mutant_first_failure": {
+        "check_id": "L1.requirement.R-HOLE-001:hidden.check.cylindrical_opening_group.v1",
+        "failure_code": "cylindrical_opening_group_mismatch",
+        "layer": "L1",
+        "summary": "deterministic requirement violated"
+      },
+      "mutant_status": "failed",
+      "positive_status": "passed"
+    },
+    {
+      "item_id": "p_benchcad_000338",
+      "mutant_first_failure": {
+        "check_id": "L1.requirement.R-HOLE-001:hidden.check.cylindrical_opening_group.v1",
+        "failure_code": "cylindrical_opening_group_mismatch",
+        "layer": "L1",
+        "summary": "deterministic requirement violated"
+      },
+      "mutant_status": "failed",
+      "positive_status": "passed"
+    },
+    {
+      "item_id": "p_benchcad_000518",
+      "mutant_first_failure": {
+        "check_id": "L1.requirement.R-BBOX:hidden.check.bbox_dimensions.v1",
+        "failure_code": "bbox_dimensions_mismatch",
+        "layer": "L1",
+        "summary": "deterministic requirement violated"
+      },
+      "mutant_status": "failed",
+      "positive_status": "passed"
+    },
+    {
+      "item_id": "p_benchcad_000522",
+      "mutant_first_failure": {
+        "check_id": "L1.requirement.R-BBOX:hidden.check.bbox_dimensions.v1",
+        "failure_code": "bbox_dimensions_mismatch",
+        "layer": "L1",
+        "summary": "deterministic requirement violated"
+      },
+      "mutant_status": "failed",
+      "positive_status": "passed"
+    },
+    {
+      "item_id": "p_benchcad_000757",
+      "mutant_first_failure": {
+        "check_id": "L1.requirement.R-BBOX:hidden.check.bbox_dimensions.v1",
+        "failure_code": "bbox_dimensions_mismatch",
+        "layer": "L1",
+        "summary": "deterministic requirement violated"
+      },
+      "mutant_status": "failed",
+      "positive_status": "passed"
+    },
+    {
+      "item_id": "p_fusion360_001165",
+      "mutant_first_failure": {
+        "check_id": "L1.requirement.R-BBOX:hidden.check.bbox_dimensions.v1",
+        "failure_code": "bbox_dimensions_mismatch",
+        "layer": "L1",
+        "summary": "deterministic requirement violated"
+      },
+      "mutant_status": "failed",
+      "positive_status": "passed"
+    },
+    {
+      "item_id": "p_fusion360_001312",
+      "mutant_first_failure": {
+        "check_id": "L1.requirement.R-BBOX:hidden.check.bbox_dimensions.v1",
+        "failure_code": "bbox_dimensions_mismatch",
+        "layer": "L1",
+        "summary": "deterministic requirement violated"
+      },
+      "mutant_status": "failed",
+      "positive_status": "passed"
+    },
+    {
+      "item_id": "p_fusion360_001442",
+      "mutant_first_failure": {
+        "check_id": "L1.requirement.R-BBOX:hidden.check.bbox_dimensions.v1",
+        "failure_code": "bbox_dimensions_mismatch",
+        "layer": "L1",
+        "summary": "deterministic requirement violated"
+      },
+      "mutant_status": "failed",
+      "positive_status": "passed"
+    },
+    {
+      "item_id": "p_fusion360_001017",
+      "mutant_first_failure": {
+        "check_id": "L1.requirement.R-BBOX:hidden.check.bbox_dimensions.v1",
+        "failure_code": "bbox_dimensions_mismatch",
+        "layer": "L1",
+        "summary": "deterministic requirement violated"
+      },
+      "mutant_status": "failed",
+      "positive_status": "passed"
+    }
+  ],
+  "mutant_fail_count": 10,
+  "mutant_run": {
+    "aggregate_hash": "3cec44c5f5bf7fe004c59293e6ac761f934eb15b117cf85fecf6b27878e67e52",
+    "checks": {
+      "L0.deliverable.model_step": {
+        "evaluator_error": 0,
+        "failed": 0,
+        "not_applicable": 0,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 10
+      },
+      "L0.deliverable.roundtrip_invariants": {
+        "evaluator_error": 0,
+        "failed": 0,
+        "not_applicable": 0,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 10
+      },
+      "L0.deliverable.step_reimport": {
+        "evaluator_error": 0,
+        "failed": 0,
+        "not_applicable": 0,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 10
+      },
+      "L0.geometry.brep_validity": {
+        "evaluator_error": 0,
+        "failed": 0,
+        "not_applicable": 0,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 10
+      },
+      "L0.geometry.solid_count": {
+        "evaluator_error": 0,
+        "failed": 0,
+        "not_applicable": 0,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 10
+      },
+      "L0.submission.contract": {
+        "evaluator_error": 0,
+        "failed": 0,
+        "not_applicable": 0,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 10
+      },
+      "L0.submission.execution": {
+        "evaluator_error": 0,
+        "failed": 0,
+        "not_applicable": 0,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 10
+      },
+      "L1.DFM.minimum_hole_geometry": {
+        "evaluator_error": 0,
+        "failed": 0,
+        "not_applicable": 8,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 2
+      },
+      "L1.DFM.minimum_wall_thickness": {
+        "evaluator_error": 0,
+        "failed": 0,
+        "not_applicable": 10,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 0
+      },
+      "L1.geometry.analysis": {
+        "evaluator_error": 0,
+        "failed": 0,
+        "not_applicable": 0,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 10
+      },
+      "L1.reference_geometry.diagnostics": {
+        "evaluator_error": 0,
+        "failed": 0,
+        "not_applicable": 0,
+        "not_reached": 0,
+        "not_scoreable": 10,
+        "passed": 0
+      },
+      "L1.requirement.R-BBOX:hidden.check.bbox_dimensions.v1": {
+        "evaluator_error": 0,
+        "failed": 8,
+        "not_applicable": 0,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 2
+      },
+      "L1.requirement.R-HOLE-001:hidden.check.cylindrical_opening_group.v1": {
+        "evaluator_error": 0,
+        "failed": 2,
+        "not_applicable": 0,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 0
+      },
+      "L1.requirement.R-SOLID:hidden.check.solid_count.v1": {
+        "evaluator_error": 0,
+        "failed": 0,
+        "not_applicable": 0,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 10
+      },
+      "L1.requirement_contract": {
+        "evaluator_error": 0,
+        "failed": 0,
+        "not_applicable": 0,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 10
+      },
+      "L2.context.nominal_l1": {
+        "evaluator_error": 0,
+        "failed": 10,
+        "not_applicable": 0,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 0
+      },
+      "L2.feasibility_contract": {
+        "evaluator_error": 0,
+        "failed": 0,
+        "not_applicable": 0,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 10
+      },
+      "L2.functional_edit.contract": {
+        "evaluator_error": 0,
+        "failed": 0,
+        "not_applicable": 10,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 0
+      },
+      "L2.invalid_probe_contract": {
+        "evaluator_error": 0,
+        "failed": 0,
+        "not_applicable": 10,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 0
+      },
+      "L2.nominal_execution": {
+        "evaluator_error": 0,
+        "failed": 0,
+        "not_applicable": 0,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 10
+      },
+      "L2.parameter_manifest": {
+        "evaluator_error": 0,
+        "failed": 0,
+        "not_applicable": 0,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 10
+      },
+      "L2.qualified_domains": {
+        "evaluator_error": 0,
+        "failed": 0,
+        "not_applicable": 0,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 10
+      },
+      "L2.relation_contract": {
+        "evaluator_error": 0,
+        "failed": 0,
+        "not_applicable": 0,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 10
+      },
+      "L2.schedule.coupled": {
+        "evaluator_error": 0,
+        "failed": 0,
+        "not_applicable": 10,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 0
+      },
+      "L2.schedule.directed": {
+        "evaluator_error": 0,
+        "failed": 0,
+        "not_applicable": 0,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 10
+      },
+      "L2.schedule.morris": {
+        "evaluator_error": 0,
+        "failed": 0,
+        "not_applicable": 0,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 10
+      },
+      "L2.schedule.parameter_coverage": {
+        "evaluator_error": 0,
+        "failed": 0,
+        "not_applicable": 0,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 10
+      },
+      "L2.solver.SOLVER-P-001-POSITIVE": {
+        "evaluator_error": 0,
+        "failed": 0,
+        "not_applicable": 0,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 10
+      },
+      "L2.variant.morris-t000-s000.canonical_geometry": {
+        "evaluator_error": 0,
+        "failed": 0,
+        "not_applicable": 0,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 10
+      },
+      "L2.variant.morris-t000-s000.execution": {
+        "evaluator_error": 0,
+        "failed": 0,
+        "not_applicable": 0,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 10
+      },
+      "L2.variant.morris-t000-s000.l0": {
+        "evaluator_error": 0,
+        "failed": 0,
+        "not_applicable": 0,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 10
+      },
+      "L2.variant.morris-t000-s000.l1": {
+        "evaluator_error": 0,
+        "failed": 10,
+        "not_applicable": 0,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 0
+      },
+      "L2.variant.morris-t000-s000.parameter_response": {
+        "evaluator_error": 0,
+        "failed": 0,
+        "not_applicable": 10,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 0
+      },
+      "L2.variant.morris-t000-s000.parameter_response.origin-01-morris": {
+        "evaluator_error": 0,
+        "failed": 0,
+        "not_applicable": 0,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 10
+      },
+      "L2.variant.morris-t000-s000.relation.REL-P-001-MEASUREMENT": {
+        "evaluator_error": 0,
+        "failed": 10,
+        "not_applicable": 0,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 0
+      },
+      "L2.variant.morris-t000-s000.solid_count_preserved": {
+        "evaluator_error": 0,
+        "failed": 0,
+        "not_applicable": 0,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 10
+      },
+      "L2.variant.morris-t000-s001.canonical_geometry": {
+        "evaluator_error": 0,
+        "failed": 0,
+        "not_applicable": 0,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 10
+      },
+      "L2.variant.morris-t000-s001.execution": {
+        "evaluator_error": 0,
+        "failed": 0,
+        "not_applicable": 0,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 10
+      },
+      "L2.variant.morris-t000-s001.l0": {
+        "evaluator_error": 0,
+        "failed": 0,
+        "not_applicable": 0,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 10
+      },
+      "L2.variant.morris-t000-s001.l1": {
+        "evaluator_error": 0,
+        "failed": 10,
+        "not_applicable": 0,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 0
+      },
+      "L2.variant.morris-t000-s001.parameter_response": {
+        "evaluator_error": 0,
+        "failed": 0,
+        "not_applicable": 0,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 10
+      },
+      "L2.variant.morris-t000-s001.parameter_response.origin-01-morris": {
+        "evaluator_error": 0,
+        "failed": 0,
+        "not_applicable": 10,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 0
+      },
+      "L2.variant.morris-t000-s001.relation.REL-P-001-MEASUREMENT": {
+        "evaluator_error": 0,
+        "failed": 10,
+        "not_applicable": 0,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 0
+      },
+      "L2.variant.morris-t000-s001.solid_count_preserved": {
+        "evaluator_error": 0,
+        "failed": 0,
+        "not_applicable": 0,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 10
+      },
+      "L2.variant.morris-t002-s000.canonical_geometry": {
+        "evaluator_error": 0,
+        "failed": 0,
+        "not_applicable": 0,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 10
+      },
+      "L2.variant.morris-t002-s000.execution": {
+        "evaluator_error": 0,
+        "failed": 0,
+        "not_applicable": 0,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 10
+      },
+      "L2.variant.morris-t002-s000.l0": {
+        "evaluator_error": 0,
+        "failed": 0,
+        "not_applicable": 0,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 10
+      },
+      "L2.variant.morris-t002-s000.l1": {
+        "evaluator_error": 0,
+        "failed": 10,
+        "not_applicable": 0,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 0
+      },
+      "L2.variant.morris-t002-s000.parameter_response": {
+        "evaluator_error": 0,
+        "failed": 0,
+        "not_applicable": 10,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 0
+      },
+      "L2.variant.morris-t002-s000.relation.REL-P-001-MEASUREMENT": {
+        "evaluator_error": 0,
+        "failed": 10,
+        "not_applicable": 0,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 0
+      },
+      "L2.variant.morris-t002-s000.solid_count_preserved": {
+        "evaluator_error": 0,
+        "failed": 0,
+        "not_applicable": 0,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 10
+      },
+      "L2.variant.morris-t002-s001.canonical_geometry": {
+        "evaluator_error": 0,
+        "failed": 0,
+        "not_applicable": 0,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 10
+      },
+      "L2.variant.morris-t002-s001.execution": {
+        "evaluator_error": 0,
+        "failed": 0,
+        "not_applicable": 0,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 10
+      },
+      "L2.variant.morris-t002-s001.l0": {
+        "evaluator_error": 0,
+        "failed": 0,
+        "not_applicable": 0,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 10
+      },
+      "L2.variant.morris-t002-s001.l1": {
+        "evaluator_error": 0,
+        "failed": 10,
+        "not_applicable": 0,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 0
+      },
+      "L2.variant.morris-t002-s001.parameter_response": {
+        "evaluator_error": 0,
+        "failed": 0,
+        "not_applicable": 0,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 10
+      },
+      "L2.variant.morris-t002-s001.parameter_response.origin-01-directed": {
+        "evaluator_error": 0,
+        "failed": 0,
+        "not_applicable": 0,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 10
+      },
+      "L2.variant.morris-t002-s001.relation.REL-P-001-MEASUREMENT": {
+        "evaluator_error": 0,
+        "failed": 10,
+        "not_applicable": 0,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 0
+      },
+      "L2.variant.morris-t002-s001.solid_count_preserved": {
+        "evaluator_error": 0,
+        "failed": 0,
+        "not_applicable": 0,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 10
+      },
+      "L2.variant.morris-t003-s000.canonical_geometry": {
+        "evaluator_error": 0,
+        "failed": 0,
+        "not_applicable": 0,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 10
+      },
+      "L2.variant.morris-t003-s000.execution": {
+        "evaluator_error": 0,
+        "failed": 0,
+        "not_applicable": 0,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 10
+      },
+      "L2.variant.morris-t003-s000.l0": {
+        "evaluator_error": 0,
+        "failed": 0,
+        "not_applicable": 0,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 10
+      },
+      "L2.variant.morris-t003-s000.l1": {
+        "evaluator_error": 0,
+        "failed": 10,
+        "not_applicable": 0,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 0
+      },
+      "L2.variant.morris-t003-s000.parameter_response": {
+        "evaluator_error": 0,
+        "failed": 0,
+        "not_applicable": 10,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 0
+      },
+      "L2.variant.morris-t003-s000.parameter_response.origin-01-directed": {
+        "evaluator_error": 0,
+        "failed": 0,
+        "not_applicable": 0,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 10
+      },
+      "L2.variant.morris-t003-s000.relation.REL-P-001-MEASUREMENT": {
+        "evaluator_error": 0,
+        "failed": 10,
+        "not_applicable": 0,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 0
+      },
+      "L2.variant.morris-t003-s000.solid_count_preserved": {
+        "evaluator_error": 0,
+        "failed": 0,
+        "not_applicable": 0,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 10
+      },
+      "L2.variant.morris-t003-s001.canonical_geometry": {
+        "evaluator_error": 0,
+        "failed": 0,
+        "not_applicable": 0,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 10
+      },
+      "L2.variant.morris-t003-s001.execution": {
+        "evaluator_error": 0,
+        "failed": 0,
+        "not_applicable": 0,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 10
+      },
+      "L2.variant.morris-t003-s001.l0": {
+        "evaluator_error": 0,
+        "failed": 0,
+        "not_applicable": 0,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 10
+      },
+      "L2.variant.morris-t003-s001.l1": {
+        "evaluator_error": 0,
+        "failed": 10,
+        "not_applicable": 0,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 0
+      },
+      "L2.variant.morris-t003-s001.parameter_response": {
+        "evaluator_error": 0,
+        "failed": 0,
+        "not_applicable": 0,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 10
+      },
+      "L2.variant.morris-t003-s001.relation.REL-P-001-MEASUREMENT": {
+        "evaluator_error": 0,
+        "failed": 10,
+        "not_applicable": 0,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 0
+      },
+      "L2.variant.morris-t003-s001.solid_count_preserved": {
+        "evaluator_error": 0,
+        "failed": 0,
+        "not_applicable": 0,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 10
+      },
+      "L2.variant.nominal.canonical_geometry": {
+        "evaluator_error": 0,
+        "failed": 0,
+        "not_applicable": 0,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 10
+      },
+      "L2.variant_requirement_contracts": {
+        "evaluator_error": 0,
+        "failed": 0,
+        "not_applicable": 0,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 10
+      }
+    },
+    "item_count": 10,
+    "l2_authority": {
+      "direct_measurement_only": {
+        "item_count": 10,
+        "scoreable_item_count": 10,
+        "strict_pass_rate": 0.0
+      }
+    },
+    "layers": {
+      "L0": {
+        "benchmark_excluded_item_count": 0,
+        "conditional_pass_rate": 1.0,
+        "mean_required_check_pass_rate_on_reached": 1.0,
+        "raw_strict_pass_rate": 1.0,
+        "reach_rate": 1.0,
+        "scoreable_item_count": 10,
+        "scoreable_rate": 1.0,
+        "status_counts": {
+          "evaluator_error": 0,
+          "failed": 0,
+          "not_applicable": 0,
+          "not_reached": 0,
+          "not_scoreable": 0,
+          "passed": 10
+        },
+        "strict_pass_rate": 1.0
+      },
+      "L1": {
+        "benchmark_excluded_item_count": 0,
+        "conditional_pass_rate": 0.0,
+        "mean_required_check_pass_rate_on_reached": 0.6933333333333334,
+        "raw_strict_pass_rate": 0.0,
+        "reach_rate": 1.0,
+        "scoreable_item_count": 10,
+        "scoreable_rate": 1.0,
+        "status_counts": {
+          "evaluator_error": 0,
+          "failed": 10,
+          "not_applicable": 0,
+          "not_reached": 0,
+          "not_scoreable": 0,
+          "passed": 0
+        },
+        "strict_pass_rate": 0.0
+      },
+      "L2": {
+        "benchmark_excluded_item_count": 0,
+        "conditional_pass_rate": 0.0,
+        "mean_required_check_pass_rate_on_reached": 0.7735849056603774,
+        "raw_strict_pass_rate": 0.0,
+        "reach_rate": 1.0,
+        "scoreable_item_count": 10,
+        "scoreable_rate": 1.0,
+        "status_counts": {
+          "evaluator_error": 0,
+          "failed": 10,
+          "not_applicable": 0,
+          "not_reached": 0,
+          "not_scoreable": 0,
+          "passed": 0
+        },
+        "strict_pass_rate": 0.0
+      }
+    },
+    "llm_judge_used": false,
+    "overall": {
+      "benchmark_excluded_item_count": 0,
+      "evaluator_error_item_count": 0,
+      "evaluator_error_rate": 0.0,
+      "publication_strict_pass_rate": 0.0,
+      "publication_valid": true,
+      "raw_strict_pass_rate": 0.0,
+      "required_not_scoreable_item_count": 0,
+      "scoreable_item_count": 10,
+      "source_macro_strict_pass_rate": 0.0,
+      "status_counts": {
+        "evaluator_error": 0,
+        "failed": 10,
+        "not_applicable": 0,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 0
+      },
+      "strict_pass_rate": 0.0
+    },
+    "protocols": {
+      "zero_to_cad": {
+        "item_count": 10,
+        "scoreable_item_count": 10,
+        "strict_pass_rate": 0.0
+      }
+    },
+    "reference_geometry_diagnostics": {
+      "computed_item_count": 0,
+      "coverage_rate": 0.0,
+      "exact_reconstruction_scoring_item_count": 0,
+      "metric_item_counts": {
+        "bbox_dimension_max_error_mm": 0,
+        "bbox_dimension_max_error_normalized_by_target_diagonal": 0,
+        "centroid_distance_mm": 0,
+        "centroid_distance_normalized_by_target_diagonal": 0,
+        "chamfer_mm": 0,
+        "chamfer_normalized_by_target_diagonal": 0,
+        "hd95_mm": 0,
+        "hd95_normalized_by_target_diagonal": 0,
+        "surface_area_relative_error": 0,
+        "surface_f1": 0,
+        "surface_precision": 0,
+        "surface_recall": 0,
+        "volume_relative_error": 0,
+        "voxel_dice": 0,
+        "voxel_iou": 0
+      },
+      "metric_means": {
+        "bbox_dimension_max_error_mm": null,
+        "bbox_dimension_max_error_normalized_by_target_diagonal": null,
+        "centroid_distance_mm": null,
+        "centroid_distance_normalized_by_target_diagonal": null,
+        "chamfer_mm": null,
+        "chamfer_normalized_by_target_diagonal": null,
+        "hd95_mm": null,
+        "hd95_normalized_by_target_diagonal": null,
+        "surface_area_relative_error": null,
+        "surface_f1": null,
+        "surface_precision": null,
+        "surface_recall": null,
+        "volume_relative_error": null,
+        "voxel_dice": null,
+        "voxel_iou": null
+      },
+      "score_bearing_for_general_tasks": false
+    },
+    "run_hash": "525074eb03bc42057aa4b6b8b8fd8ec5f73b68c0d6dc26bd2b301fcb14a1c176",
+    "schema_version": "cadengbench-p.aggregate-result.v3",
+    "sources": {
+      "benchcad": {
+        "item_count": 6,
+        "scoreable_item_count": 6,
+        "strict_pass_rate": 0.0
+      },
+      "fusion360_reconstruction": {
+        "item_count": 4,
+        "scoreable_item_count": 4,
+        "strict_pass_rate": 0.0
+      }
+    }
+  },
+  "positive_pass_count": 10,
+  "positive_run": {
+    "aggregate_hash": "722e8fa7523ac4eb1145f7f3ecce7a98f04340b32303843155d66688815dc2e6",
+    "checks": {
+      "L0.deliverable.model_step": {
+        "evaluator_error": 0,
+        "failed": 0,
+        "not_applicable": 0,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 10
+      },
+      "L0.deliverable.roundtrip_invariants": {
+        "evaluator_error": 0,
+        "failed": 0,
+        "not_applicable": 0,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 10
+      },
+      "L0.deliverable.step_reimport": {
+        "evaluator_error": 0,
+        "failed": 0,
+        "not_applicable": 0,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 10
+      },
+      "L0.geometry.brep_validity": {
+        "evaluator_error": 0,
+        "failed": 0,
+        "not_applicable": 0,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 10
+      },
+      "L0.geometry.solid_count": {
+        "evaluator_error": 0,
+        "failed": 0,
+        "not_applicable": 0,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 10
+      },
+      "L0.submission.contract": {
+        "evaluator_error": 0,
+        "failed": 0,
+        "not_applicable": 0,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 10
+      },
+      "L0.submission.execution": {
+        "evaluator_error": 0,
+        "failed": 0,
+        "not_applicable": 0,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 10
+      },
+      "L1.DFM.minimum_hole_geometry": {
+        "evaluator_error": 0,
+        "failed": 0,
+        "not_applicable": 8,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 2
+      },
+      "L1.DFM.minimum_wall_thickness": {
+        "evaluator_error": 0,
+        "failed": 0,
+        "not_applicable": 10,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 0
+      },
+      "L1.geometry.analysis": {
+        "evaluator_error": 0,
+        "failed": 0,
+        "not_applicable": 0,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 10
+      },
+      "L1.reference_geometry.diagnostics": {
+        "evaluator_error": 0,
+        "failed": 0,
+        "not_applicable": 0,
+        "not_reached": 0,
+        "not_scoreable": 10,
+        "passed": 0
+      },
+      "L1.requirement.R-BBOX:hidden.check.bbox_dimensions.v1": {
+        "evaluator_error": 0,
+        "failed": 0,
+        "not_applicable": 0,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 10
+      },
+      "L1.requirement.R-HOLE-001:hidden.check.cylindrical_opening_group.v1": {
+        "evaluator_error": 0,
+        "failed": 0,
+        "not_applicable": 0,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 2
+      },
+      "L1.requirement.R-SOLID:hidden.check.solid_count.v1": {
+        "evaluator_error": 0,
+        "failed": 0,
+        "not_applicable": 0,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 10
+      },
+      "L1.requirement_contract": {
+        "evaluator_error": 0,
+        "failed": 0,
+        "not_applicable": 0,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 10
+      },
+      "L2.context.nominal_l1": {
+        "evaluator_error": 0,
+        "failed": 0,
+        "not_applicable": 0,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 10
+      },
+      "L2.feasibility_contract": {
+        "evaluator_error": 0,
+        "failed": 0,
+        "not_applicable": 0,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 10
+      },
+      "L2.functional_edit.contract": {
+        "evaluator_error": 0,
+        "failed": 0,
+        "not_applicable": 10,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 0
+      },
+      "L2.invalid_probe_contract": {
+        "evaluator_error": 0,
+        "failed": 0,
+        "not_applicable": 10,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 0
+      },
+      "L2.nominal_execution": {
+        "evaluator_error": 0,
+        "failed": 0,
+        "not_applicable": 0,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 10
+      },
+      "L2.parameter_manifest": {
+        "evaluator_error": 0,
+        "failed": 0,
+        "not_applicable": 0,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 10
+      },
+      "L2.qualified_domains": {
+        "evaluator_error": 0,
+        "failed": 0,
+        "not_applicable": 0,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 10
+      },
+      "L2.relation_contract": {
+        "evaluator_error": 0,
+        "failed": 0,
+        "not_applicable": 0,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 10
+      },
+      "L2.schedule.coupled": {
+        "evaluator_error": 0,
+        "failed": 0,
+        "not_applicable": 10,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 0
+      },
+      "L2.schedule.directed": {
+        "evaluator_error": 0,
+        "failed": 0,
+        "not_applicable": 0,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 10
+      },
+      "L2.schedule.morris": {
+        "evaluator_error": 0,
+        "failed": 0,
+        "not_applicable": 0,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 10
+      },
+      "L2.schedule.parameter_coverage": {
+        "evaluator_error": 0,
+        "failed": 0,
+        "not_applicable": 0,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 10
+      },
+      "L2.solver.SOLVER-P-001-POSITIVE": {
+        "evaluator_error": 0,
+        "failed": 0,
+        "not_applicable": 0,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 10
+      },
+      "L2.variant.morris-t000-s000.canonical_geometry": {
+        "evaluator_error": 0,
+        "failed": 0,
+        "not_applicable": 0,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 10
+      },
+      "L2.variant.morris-t000-s000.execution": {
+        "evaluator_error": 0,
+        "failed": 0,
+        "not_applicable": 0,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 10
+      },
+      "L2.variant.morris-t000-s000.l0": {
+        "evaluator_error": 0,
+        "failed": 0,
+        "not_applicable": 0,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 10
+      },
+      "L2.variant.morris-t000-s000.l1": {
+        "evaluator_error": 0,
+        "failed": 0,
+        "not_applicable": 0,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 10
+      },
+      "L2.variant.morris-t000-s000.parameter_response": {
+        "evaluator_error": 0,
+        "failed": 0,
+        "not_applicable": 10,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 0
+      },
+      "L2.variant.morris-t000-s000.parameter_response.origin-01-morris": {
+        "evaluator_error": 0,
+        "failed": 0,
+        "not_applicable": 0,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 10
+      },
+      "L2.variant.morris-t000-s000.relation.REL-P-001-MEASUREMENT": {
+        "evaluator_error": 0,
+        "failed": 0,
+        "not_applicable": 0,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 10
+      },
+      "L2.variant.morris-t000-s000.solid_count_preserved": {
+        "evaluator_error": 0,
+        "failed": 0,
+        "not_applicable": 0,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 10
+      },
+      "L2.variant.morris-t000-s001.canonical_geometry": {
+        "evaluator_error": 0,
+        "failed": 0,
+        "not_applicable": 0,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 10
+      },
+      "L2.variant.morris-t000-s001.execution": {
+        "evaluator_error": 0,
+        "failed": 0,
+        "not_applicable": 0,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 10
+      },
+      "L2.variant.morris-t000-s001.l0": {
+        "evaluator_error": 0,
+        "failed": 0,
+        "not_applicable": 0,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 10
+      },
+      "L2.variant.morris-t000-s001.l1": {
+        "evaluator_error": 0,
+        "failed": 0,
+        "not_applicable": 0,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 10
+      },
+      "L2.variant.morris-t000-s001.parameter_response": {
+        "evaluator_error": 0,
+        "failed": 0,
+        "not_applicable": 0,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 10
+      },
+      "L2.variant.morris-t000-s001.parameter_response.origin-01-morris": {
+        "evaluator_error": 0,
+        "failed": 0,
+        "not_applicable": 10,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 0
+      },
+      "L2.variant.morris-t000-s001.relation.REL-P-001-MEASUREMENT": {
+        "evaluator_error": 0,
+        "failed": 0,
+        "not_applicable": 0,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 10
+      },
+      "L2.variant.morris-t000-s001.solid_count_preserved": {
+        "evaluator_error": 0,
+        "failed": 0,
+        "not_applicable": 0,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 10
+      },
+      "L2.variant.morris-t002-s000.canonical_geometry": {
+        "evaluator_error": 0,
+        "failed": 0,
+        "not_applicable": 0,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 10
+      },
+      "L2.variant.morris-t002-s000.execution": {
+        "evaluator_error": 0,
+        "failed": 0,
+        "not_applicable": 0,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 10
+      },
+      "L2.variant.morris-t002-s000.l0": {
+        "evaluator_error": 0,
+        "failed": 0,
+        "not_applicable": 0,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 10
+      },
+      "L2.variant.morris-t002-s000.l1": {
+        "evaluator_error": 0,
+        "failed": 0,
+        "not_applicable": 0,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 10
+      },
+      "L2.variant.morris-t002-s000.parameter_response": {
+        "evaluator_error": 0,
+        "failed": 0,
+        "not_applicable": 10,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 0
+      },
+      "L2.variant.morris-t002-s000.relation.REL-P-001-MEASUREMENT": {
+        "evaluator_error": 0,
+        "failed": 0,
+        "not_applicable": 0,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 10
+      },
+      "L2.variant.morris-t002-s000.solid_count_preserved": {
+        "evaluator_error": 0,
+        "failed": 0,
+        "not_applicable": 0,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 10
+      },
+      "L2.variant.morris-t002-s001.canonical_geometry": {
+        "evaluator_error": 0,
+        "failed": 0,
+        "not_applicable": 0,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 10
+      },
+      "L2.variant.morris-t002-s001.execution": {
+        "evaluator_error": 0,
+        "failed": 0,
+        "not_applicable": 0,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 10
+      },
+      "L2.variant.morris-t002-s001.l0": {
+        "evaluator_error": 0,
+        "failed": 0,
+        "not_applicable": 0,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 10
+      },
+      "L2.variant.morris-t002-s001.l1": {
+        "evaluator_error": 0,
+        "failed": 0,
+        "not_applicable": 0,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 10
+      },
+      "L2.variant.morris-t002-s001.parameter_response": {
+        "evaluator_error": 0,
+        "failed": 0,
+        "not_applicable": 0,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 10
+      },
+      "L2.variant.morris-t002-s001.parameter_response.origin-01-directed": {
+        "evaluator_error": 0,
+        "failed": 0,
+        "not_applicable": 0,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 10
+      },
+      "L2.variant.morris-t002-s001.relation.REL-P-001-MEASUREMENT": {
+        "evaluator_error": 0,
+        "failed": 0,
+        "not_applicable": 0,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 10
+      },
+      "L2.variant.morris-t002-s001.solid_count_preserved": {
+        "evaluator_error": 0,
+        "failed": 0,
+        "not_applicable": 0,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 10
+      },
+      "L2.variant.morris-t003-s000.canonical_geometry": {
+        "evaluator_error": 0,
+        "failed": 0,
+        "not_applicable": 0,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 10
+      },
+      "L2.variant.morris-t003-s000.execution": {
+        "evaluator_error": 0,
+        "failed": 0,
+        "not_applicable": 0,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 10
+      },
+      "L2.variant.morris-t003-s000.l0": {
+        "evaluator_error": 0,
+        "failed": 0,
+        "not_applicable": 0,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 10
+      },
+      "L2.variant.morris-t003-s000.l1": {
+        "evaluator_error": 0,
+        "failed": 0,
+        "not_applicable": 0,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 10
+      },
+      "L2.variant.morris-t003-s000.parameter_response": {
+        "evaluator_error": 0,
+        "failed": 0,
+        "not_applicable": 10,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 0
+      },
+      "L2.variant.morris-t003-s000.parameter_response.origin-01-directed": {
+        "evaluator_error": 0,
+        "failed": 0,
+        "not_applicable": 0,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 10
+      },
+      "L2.variant.morris-t003-s000.relation.REL-P-001-MEASUREMENT": {
+        "evaluator_error": 0,
+        "failed": 0,
+        "not_applicable": 0,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 10
+      },
+      "L2.variant.morris-t003-s000.solid_count_preserved": {
+        "evaluator_error": 0,
+        "failed": 0,
+        "not_applicable": 0,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 10
+      },
+      "L2.variant.morris-t003-s001.canonical_geometry": {
+        "evaluator_error": 0,
+        "failed": 0,
+        "not_applicable": 0,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 10
+      },
+      "L2.variant.morris-t003-s001.execution": {
+        "evaluator_error": 0,
+        "failed": 0,
+        "not_applicable": 0,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 10
+      },
+      "L2.variant.morris-t003-s001.l0": {
+        "evaluator_error": 0,
+        "failed": 0,
+        "not_applicable": 0,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 10
+      },
+      "L2.variant.morris-t003-s001.l1": {
+        "evaluator_error": 0,
+        "failed": 0,
+        "not_applicable": 0,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 10
+      },
+      "L2.variant.morris-t003-s001.parameter_response": {
+        "evaluator_error": 0,
+        "failed": 0,
+        "not_applicable": 0,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 10
+      },
+      "L2.variant.morris-t003-s001.relation.REL-P-001-MEASUREMENT": {
+        "evaluator_error": 0,
+        "failed": 0,
+        "not_applicable": 0,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 10
+      },
+      "L2.variant.morris-t003-s001.solid_count_preserved": {
+        "evaluator_error": 0,
+        "failed": 0,
+        "not_applicable": 0,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 10
+      },
+      "L2.variant.nominal.canonical_geometry": {
+        "evaluator_error": 0,
+        "failed": 0,
+        "not_applicable": 0,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 10
+      },
+      "L2.variant_requirement_contracts": {
+        "evaluator_error": 0,
+        "failed": 0,
+        "not_applicable": 0,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 10
+      }
+    },
+    "item_count": 10,
+    "l2_authority": {
+      "direct_measurement_only": {
+        "item_count": 10,
+        "scoreable_item_count": 10,
+        "strict_pass_rate": 1.0
+      }
+    },
+    "layers": {
+      "L0": {
+        "benchmark_excluded_item_count": 0,
+        "conditional_pass_rate": 1.0,
+        "mean_required_check_pass_rate_on_reached": 1.0,
+        "raw_strict_pass_rate": 1.0,
+        "reach_rate": 1.0,
+        "scoreable_item_count": 10,
+        "scoreable_rate": 1.0,
+        "status_counts": {
+          "evaluator_error": 0,
+          "failed": 0,
+          "not_applicable": 0,
+          "not_reached": 0,
+          "not_scoreable": 0,
+          "passed": 10
+        },
+        "strict_pass_rate": 1.0
+      },
+      "L1": {
+        "benchmark_excluded_item_count": 0,
+        "conditional_pass_rate": 1.0,
+        "mean_required_check_pass_rate_on_reached": 1.0,
+        "raw_strict_pass_rate": 1.0,
+        "reach_rate": 1.0,
+        "scoreable_item_count": 10,
+        "scoreable_rate": 1.0,
+        "status_counts": {
+          "evaluator_error": 0,
+          "failed": 0,
+          "not_applicable": 0,
+          "not_reached": 0,
+          "not_scoreable": 0,
+          "passed": 10
+        },
+        "strict_pass_rate": 1.0
+      },
+      "L2": {
+        "benchmark_excluded_item_count": 0,
+        "conditional_pass_rate": 1.0,
+        "mean_required_check_pass_rate_on_reached": 1.0,
+        "raw_strict_pass_rate": 1.0,
+        "reach_rate": 1.0,
+        "scoreable_item_count": 10,
+        "scoreable_rate": 1.0,
+        "status_counts": {
+          "evaluator_error": 0,
+          "failed": 0,
+          "not_applicable": 0,
+          "not_reached": 0,
+          "not_scoreable": 0,
+          "passed": 10
+        },
+        "strict_pass_rate": 1.0
+      }
+    },
+    "llm_judge_used": false,
+    "overall": {
+      "benchmark_excluded_item_count": 0,
+      "evaluator_error_item_count": 0,
+      "evaluator_error_rate": 0.0,
+      "publication_strict_pass_rate": 1.0,
+      "publication_valid": true,
+      "raw_strict_pass_rate": 1.0,
+      "required_not_scoreable_item_count": 0,
+      "scoreable_item_count": 10,
+      "source_macro_strict_pass_rate": 1.0,
+      "status_counts": {
+        "evaluator_error": 0,
+        "failed": 0,
+        "not_applicable": 0,
+        "not_reached": 0,
+        "not_scoreable": 0,
+        "passed": 10
+      },
+      "strict_pass_rate": 1.0
+    },
+    "protocols": {
+      "zero_to_cad": {
+        "item_count": 10,
+        "scoreable_item_count": 10,
+        "strict_pass_rate": 1.0
+      }
+    },
+    "reference_geometry_diagnostics": {
+      "computed_item_count": 0,
+      "coverage_rate": 0.0,
+      "exact_reconstruction_scoring_item_count": 0,
+      "metric_item_counts": {
+        "bbox_dimension_max_error_mm": 0,
+        "bbox_dimension_max_error_normalized_by_target_diagonal": 0,
+        "centroid_distance_mm": 0,
+        "centroid_distance_normalized_by_target_diagonal": 0,
+        "chamfer_mm": 0,
+        "chamfer_normalized_by_target_diagonal": 0,
+        "hd95_mm": 0,
+        "hd95_normalized_by_target_diagonal": 0,
+        "surface_area_relative_error": 0,
+        "surface_f1": 0,
+        "surface_precision": 0,
+        "surface_recall": 0,
+        "volume_relative_error": 0,
+        "voxel_dice": 0,
+        "voxel_iou": 0
+      },
+      "metric_means": {
+        "bbox_dimension_max_error_mm": null,
+        "bbox_dimension_max_error_normalized_by_target_diagonal": null,
+        "centroid_distance_mm": null,
+        "centroid_distance_normalized_by_target_diagonal": null,
+        "chamfer_mm": null,
+        "chamfer_normalized_by_target_diagonal": null,
+        "hd95_mm": null,
+        "hd95_normalized_by_target_diagonal": null,
+        "surface_area_relative_error": null,
+        "surface_f1": null,
+        "surface_precision": null,
+        "surface_recall": null,
+        "volume_relative_error": null,
+        "voxel_dice": null,
+        "voxel_iou": null
+      },
+      "score_bearing_for_general_tasks": false
+    },
+    "run_hash": "f55f91af6508f7b9342fbc5a996d101c07e42043cff504bf873d6faf10015e63",
+    "schema_version": "cadengbench-p.aggregate-result.v3",
+    "sources": {
+      "benchcad": {
+        "item_count": 6,
+        "scoreable_item_count": 6,
+        "strict_pass_rate": 1.0
+      },
+      "fusion360_reconstruction": {
+        "item_count": 4,
+        "scoreable_item_count": 4,
+        "strict_pass_rate": 1.0
+      }
+    }
+  },
+  "report_hash": "1f4776a994197b05dafb95876f1ffe43f2f400f76c95029245f5ac5de2edc604",
+  "schema_version": "cadengbench-p.evaluator-dev-slice-report.v1",
+  "slice_manifest_sha256": "8521b157d3c5a8097b0da89f892902da5b0bdc4abd9b1940be1f20c3856f50da",
+  "unexpected_outcomes": [],
+  "valid": true
+}

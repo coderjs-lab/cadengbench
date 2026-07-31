@@ -1,0 +1,877 @@
+{
+  "annotation_flags": [
+    "benchmark_authored_engineering_context",
+    "material_process_unspecified",
+    "dfm_measurement_only_no_threshold"
+  ],
+  "annotations": {
+    "engineering_task": {
+      "design": {
+        "application_context": "precision assembly interface",
+        "design_freedom": [
+          "maintain location tolerances"
+        ],
+        "goal": "provide precise axial spacing"
+      },
+      "function": {
+        "functional_interpretation": "maintain axial separation between mating components",
+        "interfaces": [
+          {
+            "description": "cylindrical surface interface",
+            "interface_id": "interface_1",
+            "interface_kind": "mounting"
+          }
+        ],
+        "non_requirements": [
+          "maintain location tolerances"
+        ]
+      },
+      "functional_edit": {
+        "engineering_objective": "increase axial spacing by a specified amount",
+        "operating_condition": "static axial load"
+      },
+      "load_case": {
+        "application_region": "not applicable",
+        "constraint_region": "not applicable",
+        "direction": "not_applicable",
+        "duty": "not_applicable",
+        "load_type": "not_applicable",
+        "magnitude": null,
+        "unit": "not_applicable"
+      },
+      "material_process": {
+        "material_family": "unspecified",
+        "material_specification": "unspecified",
+        "process_family": "unspecified",
+        "process_variant": "unspecified"
+      },
+      "part_identity": {
+        "category": "mechanical spacer",
+        "title": "cylindrical spacer"
+      },
+      "standards": []
+    },
+    "visual_grounding": {
+      "affordances": [
+        {
+          "affordance_kind": "mounting",
+          "description": "Flanges provide surface area for attachment or clamping",
+          "view_ids": [
+            "orbit_000",
+            "orbit_180"
+          ],
+          "visibility": "visible"
+        },
+        {
+          "affordance_kind": "locating",
+          "description": "Central cutout allows alignment with mating components",
+          "view_ids": [
+            "orbit_000",
+            "orbit_180"
+          ],
+          "visibility": "visible"
+        },
+        {
+          "affordance_kind": "load_transfer",
+          "description": "Vertical plate structure supports shear loads",
+          "view_ids": [
+            "orbit_090",
+            "orbit_270"
+          ],
+          "visibility": "visible"
+        }
+      ],
+      "features": [
+        {
+          "description": "Narrow vertical plate body with uniform thickness",
+          "feature_kind": "thin_wall_or_rib",
+          "view_ids": [
+            "orbit_090",
+            "orbit_270"
+          ],
+          "visibility": "visible"
+        },
+        {
+          "description": "Large central trapezoidal cutout spanning the plate height",
+          "feature_kind": "opening",
+          "view_ids": [
+            "orbit_000",
+            "orbit_180"
+          ],
+          "visibility": "visible"
+        },
+        {
+          "description": "Stepped flanges at top and bottom ends",
+          "feature_kind": "boss_or_protrusion",
+          "view_ids": [
+            "orbit_000",
+            "orbit_180"
+          ],
+          "visibility": "visible"
+        },
+        {
+          "description": "Chamfered edges on the flange corners",
+          "feature_kind": "fillet_or_chamfer",
+          "view_ids": [
+            "orbit_045",
+            "orbit_315"
+          ],
+          "visibility": "visible"
+        },
+        {
+          "description": "Symmetric geometry mirrored across the vertical axis",
+          "feature_kind": "pattern",
+          "view_ids": [
+            "orbit_000",
+            "orbit_180"
+          ],
+          "visibility": "visible"
+        },
+        {
+          "description": "Recessed inner faces defining the trapezoidal void",
+          "feature_kind": "recess_or_pocket",
+          "view_ids": [
+            "orbit_045",
+            "orbit_135"
+          ],
+          "visibility": "visible"
+        }
+      ],
+      "global_form": "Thin vertical plate with central trapezoidal cutout and stepped end flanges",
+      "recommended_prompt_profile": "text_only"
+    }
+  },
+  "consumer_contract_id": "cadengbench-p.consumer-driven-annotation.v2",
+  "evaluator_inputs": {
+    "functional_edit": {
+      "effect_proxy": {
+        "absolute_tolerance": 1e-06,
+        "comparator": "within_tolerance",
+        "expected_direction": "increase",
+        "measurement_method": "brep_geometry",
+        "metric_kind": "target_parameter_value",
+        "target_value": 2.2,
+        "unit": "mm"
+      },
+      "llm_judge_used": false,
+      "non_target_source_unchanged": true,
+      "preservation_scope": [
+        "valid_solid",
+        "solid_count",
+        "non_target_parameters"
+      ],
+      "relation_checks": [],
+      "solid_count_preserved": true,
+      "target": {
+        "base_value": 2.0,
+        "feature_id": "ee35e5b5-e2b4-11ea-a35b-54bf646e7e1f",
+        "measurement": {
+          "absolute_tolerance": 1e-06,
+          "measurement_name": "fusion_extrude_distance_mm:fusion360:ee35e5b5-e2b4-11ea-a35b-54bf646e7e1f:distance",
+          "method": "qualified_source_assignment_and_hidden_target_brep_v1",
+          "unit": "mm"
+        },
+        "oracle_id": "p_fusion360_001165:edit-target:v2",
+        "parameter_id": "fusion360:ee35e5b5-e2b4-11ea-a35b-54bf646e7e1f:distance",
+        "parameter_key": "extrude_distance",
+        "target_value": 2.2,
+        "unit": "mm",
+        "valid_range": {
+          "lower": 1.7,
+          "unit": "mm",
+          "upper": 2.3000000000000003
+        }
+      },
+      "valid_solid_required": true
+    },
+    "geometry": {
+      "bbox": {
+        "diagonal": 76.4792941,
+        "xlen": 2.0,
+        "xmax": 2.0,
+        "xmin": -0.0,
+        "ylen": 28.6666408,
+        "ymax": 25.8270618,
+        "ymin": -2.8395789,
+        "zlen": 70.8752858,
+        "zmax": 35.5060296,
+        "zmin": -35.3692562
+      },
+      "body_count": 1,
+      "geometry_physics": {
+        "bbox_fill_ratio": 0.5277012,
+        "bbox_volume_mm3": 4063.5127193,
+        "center_of_mass_interpretation": "volume_centroid_uniform_density_only",
+        "characteristic_length_mm": 12.8952544,
+        "failure_code": null,
+        "geometric_inertia_tensor_mm5": [
+          [
+            1096361.0309263,
+            -0.0,
+            -0.0
+          ],
+          [
+            -0.0,
+            966040.9914514,
+            -1827.4113047
+          ],
+          [
+            -0.0,
+            -1827.4113047,
+            131749.586629
+          ]
+        ],
+        "method": "occ_volume_properties_v1",
+        "physical_mass_status": "requires_verified_material_density",
+        "principal_axes": [
+          [
+            1.0,
+            -0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.999997601,
+            -0.00219036
+          ],
+          [
+            0.0,
+            0.00219036,
+            0.999997601
+          ]
+        ],
+        "principal_geometric_moments_mm5": [
+          1096361.0309263,
+          966044.9941488,
+          131745.5839316
+        ],
+        "schema_version": "cadengbench-p.geometry-physics.v1",
+        "status": "complete",
+        "surface_area_mm2": 2734.0678897,
+        "surface_area_to_volume_per_mm": 1.2750275,
+        "units": {
+          "area": "mm2",
+          "geometric_inertia": "mm5",
+          "length": "mm",
+          "volume": "mm3"
+        },
+        "volume_centroid_mm": [
+          1.0,
+          12.3848904,
+          0.0041179
+        ],
+        "volume_mm3": 2144.3207311
+      },
+      "hole_inventory": {
+        "hole_count": 0,
+        "holes": [],
+        "recognizer": "internal_near_full_cylindrical_face_v1",
+        "recognizer_scope": "internal_near_full_cylindrical_faces"
+      },
+      "topology_summary": {
+        "edge_count": 78,
+        "face_count": 28,
+        "is_valid": true,
+        "shell_count": 1,
+        "solid_count": 1,
+        "vertex_count": 52
+      }
+    },
+    "manufacturing": {
+      "applicable_standards": [],
+      "dfm_requirements": [
+        {
+          "applicability": "requires_frozen_process_material_condition",
+          "check_id": "minimum_wall_thickness",
+          "compliance_status": "not_evaluated_no_frozen_applicable_threshold",
+          "hole_count": null,
+          "maximum_depth_to_diameter": null,
+          "measurement_id": "p_fusion360_001165:dfm:wall_thickness_proxy",
+          "measurement_kind": "geometry_proxy_not_global_thickness_solution",
+          "minimum_candidate_mm": 0.4535771,
+          "minimum_diameter_mm": null,
+          "threshold": null
+        },
+        {
+          "applicability": "requires_frozen_process_tool_or_process_capability",
+          "check_id": "minimum_hole_geometry",
+          "compliance_status": "not_evaluated_no_frozen_applicable_threshold",
+          "hole_count": 0,
+          "maximum_depth_to_diameter": null,
+          "measurement_id": "p_fusion360_001165:dfm:minimum_hole_geometry",
+          "measurement_kind": null,
+          "minimum_candidate_mm": null,
+          "minimum_diameter_mm": null,
+          "threshold": null
+        }
+      ],
+      "llm_judge_used": false,
+      "material_process": {
+        "basis": "unspecified",
+        "material_basis": "unspecified",
+        "material_family": "unspecified",
+        "material_specification": "unspecified",
+        "material_verification_status": "unspecified",
+        "process_basis": "unspecified",
+        "process_family": "unspecified",
+        "process_variant": "unspecified",
+        "process_verification_status": "unspecified"
+      },
+      "recommended_check_families": [
+        {
+          "applicability": "selected_process_family",
+          "check_id": "minimum_wall_thickness",
+          "measurement_status": "deterministic_measurement_present"
+        },
+        {
+          "applicability": "selected_process_family",
+          "check_id": "minimum_hole_geometry",
+          "measurement_status": "deterministic_measurement_present"
+        }
+      ]
+    },
+    "parametric": {
+      "constraint_relations": [
+        {
+          "hard": true,
+          "relation_id": "fusion:ee317900-e2b4-11ea-a410-54bf646e7e1f",
+          "relation_type": "HorizontalConstraint"
+        },
+        {
+          "hard": true,
+          "relation_id": "fusion:ee317901-e2b4-11ea-813c-54bf646e7e1f",
+          "relation_type": "HorizontalConstraint"
+        },
+        {
+          "hard": true,
+          "relation_id": "fusion:ee317902-e2b4-11ea-adab-54bf646e7e1f",
+          "relation_type": "HorizontalConstraint"
+        },
+        {
+          "hard": true,
+          "relation_id": "fusion:ee31a008-e2b4-11ea-b663-54bf646e7e1f",
+          "relation_type": "HorizontalConstraint"
+        },
+        {
+          "hard": true,
+          "relation_id": "fusion:ee31c71c-e2b4-11ea-8e8c-54bf646e7e1f",
+          "relation_type": "HorizontalConstraint"
+        },
+        {
+          "hard": true,
+          "relation_id": "fusion:ee31c71d-e2b4-11ea-9233-54bf646e7e1f",
+          "relation_type": "PerpendicularConstraint"
+        },
+        {
+          "hard": true,
+          "relation_id": "fusion:ee31c71e-e2b4-11ea-9d95-54bf646e7e1f",
+          "relation_type": "HorizontalConstraint"
+        },
+        {
+          "hard": true,
+          "relation_id": "fusion:ee31ee28-e2b4-11ea-a91d-54bf646e7e1f",
+          "relation_type": "HorizontalConstraint"
+        },
+        {
+          "hard": true,
+          "relation_id": "fusion:ee31ee29-e2b4-11ea-b80e-54bf646e7e1f",
+          "relation_type": "HorizontalConstraint"
+        },
+        {
+          "hard": true,
+          "relation_id": "fusion:ee321534-e2b4-11ea-8432-54bf646e7e1f",
+          "relation_type": "HorizontalConstraint"
+        },
+        {
+          "hard": true,
+          "relation_id": "fusion:ee321535-e2b4-11ea-afab-54bf646e7e1f",
+          "relation_type": "HorizontalConstraint"
+        },
+        {
+          "hard": true,
+          "relation_id": "fusion:ee323c48-e2b4-11ea-ad96-54bf646e7e1f",
+          "relation_type": "HorizontalConstraint"
+        },
+        {
+          "hard": true,
+          "relation_id": "fusion:ee323c49-e2b4-11ea-ad3f-54bf646e7e1f",
+          "relation_type": "HorizontalConstraint"
+        },
+        {
+          "hard": true,
+          "relation_id": "fusion:ee326364-e2b4-11ea-a400-54bf646e7e1f",
+          "relation_type": "HorizontalConstraint"
+        },
+        {
+          "hard": true,
+          "relation_id": "fusion:ee326365-e2b4-11ea-b235-54bf646e7e1f",
+          "relation_type": "HorizontalConstraint"
+        },
+        {
+          "hard": true,
+          "relation_id": "fusion:ee328a6e-e2b4-11ea-bce1-54bf646e7e1f",
+          "relation_type": "HorizontalConstraint"
+        },
+        {
+          "hard": true,
+          "relation_id": "fusion:ee328a6f-e2b4-11ea-ad9d-54bf646e7e1f",
+          "relation_type": "HorizontalConstraint"
+        },
+        {
+          "hard": true,
+          "relation_id": "fusion:ee32b180-e2b4-11ea-a67b-54bf646e7e1f",
+          "relation_type": "HorizontalConstraint"
+        },
+        {
+          "hard": true,
+          "relation_id": "fusion:ee572892-e2b4-11ea-8f3e-54bf646e7e1f",
+          "relation_type": "HorizontalConstraint"
+        },
+        {
+          "hard": true,
+          "relation_id": "fusion:ee574f9e-e2b4-11ea-8252-54bf646e7e1f",
+          "relation_type": "HorizontalConstraint"
+        },
+        {
+          "hard": true,
+          "relation_id": "fusion:ee5776a8-e2b4-11ea-bfd3-54bf646e7e1f",
+          "relation_type": "HorizontalConstraint"
+        },
+        {
+          "hard": true,
+          "relation_id": "fusion:ee5776a9-e2b4-11ea-a418-54bf646e7e1f",
+          "relation_type": "HorizontalConstraint"
+        },
+        {
+          "expression": "canonical_value_mm == source_value_cm * 10",
+          "hard": true,
+          "relation_id": "fusion360:ee35e5b5-e2b4-11ea-a35b-54bf646e7e1f:distance:source_to_canonical",
+          "relation_type": "exact_unit_conversion"
+        },
+        {
+          "expression": "canonical_value_mm == source_value_cm * 10",
+          "hard": true,
+          "relation_id": "fusion360:ee5812e6-e2b4-11ea-8813-54bf646e7e1f:distance:source_to_canonical",
+          "relation_type": "exact_unit_conversion"
+        }
+      ],
+      "operation_sequence": [
+        {
+          "operation_id": "fusion:ee1a2106-e2b4-11ea-9fb6-54bf646e7e1f",
+          "operation_type": "Sketch",
+          "sequence_index": 0
+        },
+        {
+          "operation_id": "fusion:ee35e5b5-e2b4-11ea-a35b-54bf646e7e1f",
+          "operation_type": "ExtrudeFeature",
+          "sequence_index": 1
+        },
+        {
+          "operation_id": "fusion:ee360cc0-e2b4-11ea-91e0-54bf646e7e1f",
+          "operation_type": "Sketch",
+          "sequence_index": 2
+        },
+        {
+          "operation_id": "fusion:ee5812e6-e2b4-11ea-8813-54bf646e7e1f",
+          "operation_type": "ExtrudeFeature",
+          "sequence_index": 3
+        }
+      ],
+      "parameters": [
+        {
+          "base_value": 2.0,
+          "feature_id": "ee35e5b5-e2b4-11ea-a35b-54bf646e7e1f",
+          "parameter_id": "fusion360:ee35e5b5-e2b4-11ea-a35b-54bf646e7e1f:distance",
+          "parameter_key": "extrude_distance",
+          "target_value": 2.2,
+          "unit": "mm",
+          "valid_range": {
+            "lower": 1.7,
+            "unit": "mm",
+            "upper": 2.3000000000000003
+          }
+        },
+        {
+          "editable": true,
+          "parameter_id": "fusion:d1",
+          "unit": "cm_source_native"
+        },
+        {
+          "editable": true,
+          "parameter_id": "fusion:d10",
+          "unit": "cm_source_native"
+        },
+        {
+          "editable": true,
+          "parameter_id": "fusion:d11",
+          "unit": "radian_source_native"
+        },
+        {
+          "editable": true,
+          "parameter_id": "fusion:d12",
+          "unit": "cm_source_native"
+        },
+        {
+          "editable": true,
+          "parameter_id": "fusion:d14",
+          "unit": "cm_source_native"
+        },
+        {
+          "editable": true,
+          "parameter_id": "fusion:d15",
+          "unit": "radian_source_native"
+        },
+        {
+          "editable": true,
+          "parameter_id": "fusion:d16",
+          "unit": "cm_source_native"
+        },
+        {
+          "editable": true,
+          "parameter_id": "fusion:d17",
+          "unit": "radian_source_native"
+        },
+        {
+          "editable": true,
+          "parameter_id": "fusion:d18",
+          "unit": "cm_source_native"
+        },
+        {
+          "editable": true,
+          "parameter_id": "fusion:d19",
+          "unit": "cm_source_native"
+        },
+        {
+          "editable": true,
+          "parameter_id": "fusion:d2",
+          "unit": "radian_source_native"
+        },
+        {
+          "editable": true,
+          "parameter_id": "fusion:d20",
+          "unit": "radian_source_native"
+        },
+        {
+          "editable": true,
+          "parameter_id": "fusion:d21",
+          "unit": "cm_source_native"
+        },
+        {
+          "editable": true,
+          "parameter_id": "fusion:d22",
+          "unit": "radian_source_native"
+        },
+        {
+          "editable": true,
+          "parameter_id": "fusion:d23",
+          "unit": "cm_source_native"
+        },
+        {
+          "editable": true,
+          "parameter_id": "fusion:d24",
+          "unit": "radian_source_native"
+        },
+        {
+          "editable": true,
+          "parameter_id": "fusion:d25",
+          "unit": "cm_source_native"
+        },
+        {
+          "editable": true,
+          "parameter_id": "fusion:d26",
+          "unit": "radian_source_native"
+        },
+        {
+          "editable": true,
+          "parameter_id": "fusion:d27",
+          "unit": "cm_source_native"
+        },
+        {
+          "editable": true,
+          "parameter_id": "fusion:d28",
+          "unit": "radian_source_native"
+        },
+        {
+          "editable": true,
+          "parameter_id": "fusion:d29",
+          "unit": "cm_source_native"
+        },
+        {
+          "editable": true,
+          "parameter_id": "fusion:d3",
+          "unit": "cm_source_native"
+        },
+        {
+          "editable": true,
+          "parameter_id": "fusion:d30",
+          "unit": "radian_source_native"
+        },
+        {
+          "editable": true,
+          "parameter_id": "fusion:d31",
+          "unit": "cm_source_native"
+        },
+        {
+          "editable": true,
+          "parameter_id": "fusion:d32",
+          "unit": "cm_source_native"
+        },
+        {
+          "editable": true,
+          "parameter_id": "fusion:d33",
+          "unit": "radian_source_native"
+        },
+        {
+          "editable": true,
+          "parameter_id": "fusion:d34",
+          "unit": "cm_source_native"
+        },
+        {
+          "editable": true,
+          "parameter_id": "fusion:d35",
+          "unit": "radian_source_native"
+        },
+        {
+          "editable": true,
+          "parameter_id": "fusion:d36",
+          "unit": "cm_source_native"
+        },
+        {
+          "editable": true,
+          "parameter_id": "fusion:d37",
+          "unit": "radian_source_native"
+        },
+        {
+          "editable": true,
+          "parameter_id": "fusion:d38",
+          "unit": "cm_source_native"
+        },
+        {
+          "editable": true,
+          "parameter_id": "fusion:d39",
+          "unit": "cm_source_native"
+        },
+        {
+          "editable": true,
+          "parameter_id": "fusion:d4",
+          "unit": "radian_source_native"
+        },
+        {
+          "editable": true,
+          "parameter_id": "fusion:d40",
+          "unit": "radian_source_native"
+        },
+        {
+          "editable": true,
+          "parameter_id": "fusion:d41",
+          "unit": "radian_source_native"
+        },
+        {
+          "editable": true,
+          "parameter_id": "fusion:d42",
+          "unit": "cm_source_native"
+        },
+        {
+          "editable": true,
+          "parameter_id": "fusion:d43",
+          "unit": "radian_source_native"
+        },
+        {
+          "editable": true,
+          "parameter_id": "fusion:d44",
+          "unit": "cm_source_native"
+        },
+        {
+          "editable": true,
+          "parameter_id": "fusion:d45",
+          "unit": "cm_source_native"
+        },
+        {
+          "editable": true,
+          "parameter_id": "fusion:d46",
+          "unit": "radian_source_native"
+        },
+        {
+          "editable": true,
+          "parameter_id": "fusion:d5",
+          "unit": "cm_source_native"
+        },
+        {
+          "editable": true,
+          "parameter_id": "fusion:d6",
+          "unit": "radian_source_native"
+        },
+        {
+          "editable": true,
+          "parameter_id": "fusion:d7",
+          "unit": "cm_source_native"
+        },
+        {
+          "editable": true,
+          "parameter_id": "fusion:d8",
+          "unit": "cm_source_native"
+        },
+        {
+          "editable": true,
+          "parameter_id": "fusion:d9",
+          "unit": "radian_source_native"
+        }
+      ]
+    },
+    "physics": {
+      "fea_readiness": {
+        "missing_inputs": [
+          "verified_condition_specific_material_properties",
+          "geometric_boundary_condition_bindings",
+          "mesh_and_solver_profile"
+        ],
+        "simulation_result_present": false,
+        "status": "geometry_only"
+      },
+      "functional_interfaces": [
+        {
+          "description": "cylindrical surface interface",
+          "interface_id": "interface_1",
+          "interface_kind": "mounting"
+        }
+      ],
+      "geometry_properties": {
+        "bbox_fill_ratio": 0.5277012,
+        "bbox_volume_mm3": 4063.5127193,
+        "center_of_mass_interpretation": "volume_centroid_uniform_density_only",
+        "characteristic_length_mm": 12.8952544,
+        "failure_code": null,
+        "geometric_inertia_tensor_mm5": [
+          [
+            1096361.0309263,
+            -0.0,
+            -0.0
+          ],
+          [
+            -0.0,
+            966040.9914514,
+            -1827.4113047
+          ],
+          [
+            -0.0,
+            -1827.4113047,
+            131749.586629
+          ]
+        ],
+        "method": "occ_volume_properties_v1",
+        "physical_mass_status": "requires_verified_material_density",
+        "principal_axes": [
+          [
+            1.0,
+            -0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.999997601,
+            -0.00219036
+          ],
+          [
+            0.0,
+            0.00219036,
+            0.999997601
+          ]
+        ],
+        "principal_geometric_moments_mm5": [
+          1096361.0309263,
+          966044.9941488,
+          131745.5839316
+        ],
+        "schema_version": "cadengbench-p.geometry-physics.v1",
+        "status": "complete",
+        "surface_area_mm2": 2734.0678897,
+        "surface_area_to_volume_per_mm": 1.2750275,
+        "units": {
+          "area": "mm2",
+          "geometric_inertia": "mm5",
+          "length": "mm",
+          "volume": "mm3"
+        },
+        "volume_centroid_mm": [
+          1.0,
+          12.3848904,
+          0.0041179
+        ],
+        "volume_mm3": 2144.3207311
+      },
+      "llm_judge_used": false,
+      "load_case": {
+        "application_region": "not applicable",
+        "basis": "not_applicable",
+        "constraint_region": "not applicable",
+        "direction": "not_applicable",
+        "duty": "not_applicable",
+        "load_type": "not_applicable",
+        "magnitude": null,
+        "physical_performance_verified": false,
+        "unit": "not_applicable",
+        "validation_status": "not_applicable"
+      },
+      "material_context": {
+        "material_basis": "unspecified",
+        "material_family": "unspecified",
+        "material_specification": "unspecified",
+        "material_verification_status": "unspecified"
+      },
+      "visual_affordances": [
+        {
+          "affordance_kind": "mounting",
+          "description": "Flanges provide surface area for attachment or clamping",
+          "view_ids": [
+            "orbit_000",
+            "orbit_180"
+          ],
+          "visibility": "visible"
+        },
+        {
+          "affordance_kind": "locating",
+          "description": "Central cutout allows alignment with mating components",
+          "view_ids": [
+            "orbit_000",
+            "orbit_180"
+          ],
+          "visibility": "visible"
+        },
+        {
+          "affordance_kind": "load_transfer",
+          "description": "Vertical plate structure supports shear loads",
+          "view_ids": [
+            "orbit_090",
+            "orbit_270"
+          ],
+          "visibility": "visible"
+        }
+      ]
+    }
+  },
+  "item_id": "p_fusion360_001165",
+  "migration_sources": [],
+  "model_facing": {
+    "functional_edit": {
+      "input_assets": {
+        "canonical_geometry_artifact": "data/production/cadengbench_p_1800_v2_two_source_r25/dataset/items/p_fusion360_001165/source/21338_d5c31ee8_0000.step",
+        "native_history_artifact": "data/production/cadengbench_p_1800_v2_two_source_r25/dataset/items/p_fusion360_001165/source/21338_d5c31ee8_0000.json",
+        "visual_assets": []
+      },
+      "user_prompt": "Modify the existing editable CAD model for this use case: precision assembly interface Intended function: maintain axial separation between mating components Functional interfaces: mounting: cylindrical surface interface Operating condition: static axial load Set parameter `extrude_distance` from 2.0 mm to 2.2 mm so that increase axial spacing by a specified amount Measure the intended effect with target parameter value within_tolerance 2.2 mm; expected direction: increase. Use the benchmark scenario material/process context unspecified / unspecified (unspecified / unspecified). Preserve valid solid, solid count, non target parameters. Geometric acceptance does not certify service performance."
+    },
+    "zero_to_cad": {
+      "system_prompt": "configs/prompts/zero_to_cad/model_under_evaluation.system.v2.txt",
+      "user_prompt": "Design an editable parametric CAD model of cylindrical spacer (mechanical spacer). Goal: provide precise axial spacing Application context: precision assembly interface Required global form: Thin vertical plate with central trapezoidal cutout and stepped end flanges Produce 1 solid body or bodies with nominal envelope 2.0 x 28.6666408 x 70.8752858 mm. Visible features: thin wall or rib: Narrow vertical plate body with uniform thickness [views: orbit_090, orbit_270; visibility: visible]. opening: Large central trapezoidal cutout spanning the plate height [views: orbit_000, orbit_180; visibility: visible]. boss or protrusion: Stepped flanges at top and bottom ends [views: orbit_000, orbit_180; visibility: visible]. fillet or chamfer: Chamfered edges on the flange corners [views: orbit_045, orbit_315; visibility: visible]. pattern: Symmetric geometry mirrored across the vertical axis [views: orbit_000, orbit_180; visibility: visible]. recess or pocket: Recessed inner faces defining the trapezoidal void [views: orbit_045, orbit_135; visibility: visible]. Functional interpretation: maintain axial separation between mating components Interfaces: interface_1 mounting: cylindrical surface interface. Visual affordances: mounting: Flanges provide surface area for attachment or clamping [views: orbit_000, orbit_180; visibility: visible]. locating: Central cutout allows alignment with mating components [views: orbit_000, orbit_180; visibility: visible]. load transfer: Vertical plate structure supports shear loads [views: orbit_090, orbit_270; visibility: visible]. Material/process context: unspecified / unspecified (unspecified / unspecified). DFM priorities: minimum wall thickness, minimum hole geometry. Design freedom: maintain location tolerances Explicit non-requirements: maintain location tolerances Use named parameters for the declared dimensions and preserve the supplied deterministic relations.",
+      "visual_assets": []
+    }
+  },
+  "schema_version": "cadengbench-p.consumer-ready-item.v2",
+  "source": {
+    "canonical_geometry_artifact": "data/production/cadengbench_p_1800_v2_two_source_r25/dataset/items/p_fusion360_001165/source/21338_d5c31ee8_0000.step",
+    "native_history_artifact": "data/production/cadengbench_p_1800_v2_two_source_r25/dataset/items/p_fusion360_001165/source/21338_d5c31ee8_0000.json",
+    "source_dataset": "Fusion 360 Reconstruction",
+    "source_key": "fusion360",
+    "source_record_id": "21338_d5c31ee8_0000"
+  }
+}

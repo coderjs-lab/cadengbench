@@ -1,0 +1,537 @@
+{
+  "annotation_flags": [
+    "benchmark_authored_engineering_context",
+    "dfm_measurement_only_no_threshold",
+    "benchmark_authored_load_case_candidate"
+  ],
+  "annotations": {
+    "engineering_task": {
+      "design": {
+        "application_context": "industrial equipment mounting bracket",
+        "design_freedom": [
+          "star-shaped geometry for space efficiency"
+        ],
+        "goal": "provide a flat, star-shaped interface for mounting components"
+      },
+      "function": {
+        "functional_interpretation": "distribute fastener loads across a star pattern",
+        "interfaces": [
+          {
+            "description": "flat surface for bolt attachment",
+            "interface_id": "interface_1",
+            "interface_kind": "mounting"
+          }
+        ],
+        "non_requirements": [
+          "no sealing required"
+        ]
+      },
+      "functional_edit": {
+        "engineering_objective": "increase plate thickness to improve stiffness and reduce deflection under load",
+        "operating_condition": "maintain flatness under clamping pressure"
+      },
+      "load_case": {
+        "application_region": "entire star face",
+        "constraint_region": "star face",
+        "direction": "normal_to_interface",
+        "duty": "static",
+        "load_type": "pressure",
+        "magnitude": 0.5,
+        "unit": "MPa"
+      },
+      "material_process": {
+        "material_family": "aluminum_alloy",
+        "material_specification": "6061-T6",
+        "process_family": "casting",
+        "process_variant": "sand casting"
+      },
+      "part_identity": {
+        "category": "structural mounting plate",
+        "title": "Star-shaped mounting plate"
+      },
+      "standards": []
+    },
+    "visual_grounding": {
+      "affordances": [
+        {
+          "affordance_kind": "locating",
+          "description": "Star shape provides rotational orientation and alignment.",
+          "view_ids": [
+            "orbit_top"
+          ],
+          "visibility": "visible"
+        },
+        {
+          "affordance_kind": "grip",
+          "description": "Sharp corners allow mechanical engagement or gripping.",
+          "view_ids": [
+            "orbit_045"
+          ],
+          "visibility": "visible"
+        },
+        {
+          "affordance_kind": "mounting",
+          "description": "Flat faces support surface mounting or stacking.",
+          "view_ids": [
+            "orbit_top"
+          ],
+          "visibility": "visible"
+        }
+      ],
+      "features": [
+        {
+          "description": "Flat top surface defining the star outline.",
+          "feature_kind": "recess_or_pocket",
+          "view_ids": [
+            "orbit_top"
+          ],
+          "visibility": "visible"
+        },
+        {
+          "description": "Flat bottom surface matching the star outline.",
+          "feature_kind": "recess_or_pocket",
+          "view_ids": [
+            "orbit_bottom"
+          ],
+          "visibility": "visible"
+        },
+        {
+          "description": "Vertical side walls connecting top and bottom faces.",
+          "feature_kind": "fillet_or_chamfer",
+          "view_ids": [
+            "orbit_045"
+          ],
+          "visibility": "visible"
+        },
+        {
+          "description": "Four sharp convex corners extending outward.",
+          "feature_kind": "fillet_or_chamfer",
+          "view_ids": [
+            "orbit_top"
+          ],
+          "visibility": "visible"
+        },
+        {
+          "description": "Four concave re-entrant corners between points.",
+          "feature_kind": "fillet_or_chamfer",
+          "view_ids": [
+            "orbit_top"
+          ],
+          "visibility": "visible"
+        },
+        {
+          "description": "Uniform thickness across the entire body.",
+          "feature_kind": "fillet_or_chamfer",
+          "view_ids": [
+            "orbit_000"
+          ],
+          "visibility": "visible"
+        }
+      ],
+      "global_form": "Thin four-pointed star plate with uniform thickness and sharp angular vertices.",
+      "recommended_prompt_profile": "text_only"
+    }
+  },
+  "consumer_contract_id": "cadengbench-p.consumer-driven-annotation.v2",
+  "evaluator_inputs": {
+    "functional_edit": {
+      "effect_proxy": {
+        "absolute_tolerance": 1e-06,
+        "comparator": "within_tolerance",
+        "expected_direction": "increase",
+        "measurement_method": "native_parameter_replay",
+        "metric_kind": "target_parameter_value",
+        "target_value": 8.712,
+        "unit": "mm"
+      },
+      "llm_judge_used": false,
+      "non_target_source_unchanged": true,
+      "preservation_scope": [
+        "valid_solid",
+        "solid_count",
+        "non_target_parameters"
+      ],
+      "relation_checks": [],
+      "solid_count_preserved": true,
+      "target": {
+        "base_value": 7.92,
+        "feature_id": "cadquery:extrude:0",
+        "measurement": {
+          "absolute_tolerance": 1e-06,
+          "measurement_name": "cadquery_parameter_mm:extrude_arg_0",
+          "method": "cadquery_ast_bound_literal_verified_replay_v1",
+          "unit": "mm"
+        },
+        "oracle_id": "p_benchcad_000757:edit-target:v2",
+        "parameter_id": "cadquery:line:7:col:13",
+        "parameter_key": "extrude_arg_0",
+        "target_value": 8.712,
+        "unit": "mm",
+        "valid_range": {
+          "lower": 6.732,
+          "unit": "mm",
+          "upper": 9.108
+        }
+      },
+      "valid_solid_required": true
+    },
+    "geometry": {
+      "bbox": {
+        "diagonal": 143.5915569,
+        "xlen": 101.38,
+        "xmax": 50.69,
+        "xmin": -50.69,
+        "ylen": 101.38,
+        "ymax": 50.69,
+        "ymin": -50.69,
+        "zlen": 7.92,
+        "zmax": 7.92,
+        "zmin": 0.0
+      },
+      "body_count": 1,
+      "geometry_physics": {
+        "bbox_fill_ratio": 0.2496982,
+        "bbox_volume_mm3": 81401.002848,
+        "center_of_mass_interpretation": "volume_centroid_uniform_density_only",
+        "characteristic_length_mm": 27.2907226,
+        "failure_code": null,
+        "geometric_inertia_tensor_mm5": [
+          [
+            6087889.3731505,
+            1e-07,
+            0.0
+          ],
+          [
+            1e-07,
+            6087889.3731478,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            11963285.9461596
+          ]
+        ],
+        "method": "occ_volume_properties_v1",
+        "physical_mass_status": "requires_verified_material_density",
+        "principal_axes": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.999507209,
+            0.031390117,
+            -0.0
+          ],
+          [
+            -0.031390117,
+            0.999507209,
+            -0.0
+          ]
+        ],
+        "principal_geometric_moments_mm5": [
+          11963285.9461596,
+          6087889.3731505,
+          6087889.3731478
+        ],
+        "schema_version": "cadengbench-p.geometry-physics.v1",
+        "status": "complete",
+        "surface_area_mm2": 7672.4474842,
+        "surface_area_to_volume_per_mm": 0.3774755,
+        "units": {
+          "area": "mm2",
+          "geometric_inertia": "mm5",
+          "length": "mm",
+          "volume": "mm3"
+        },
+        "volume_centroid_mm": [
+          0.0,
+          -0.0,
+          3.96
+        ],
+        "volume_mm3": 20325.6810662
+      },
+      "hole_inventory": {
+        "hole_count": 0,
+        "holes": [],
+        "recognizer": "internal_near_full_cylindrical_face_v1",
+        "recognizer_scope": "internal_near_full_cylindrical_faces"
+      },
+      "topology_summary": {
+        "edge_count": 24,
+        "face_count": 10,
+        "is_valid": true,
+        "shell_count": 1,
+        "solid_count": 1,
+        "vertex_count": 16
+      }
+    },
+    "manufacturing": {
+      "applicable_standards": [],
+      "dfm_requirements": [
+        {
+          "applicability": "requires_frozen_process_material_condition",
+          "check_id": "minimum_wall_thickness",
+          "compliance_status": "not_evaluated_no_frozen_applicable_threshold",
+          "hole_count": null,
+          "maximum_depth_to_diameter": null,
+          "measurement_id": "p_benchcad_000757:dfm:wall_thickness_proxy",
+          "measurement_kind": "geometry_proxy_not_global_thickness_solution",
+          "minimum_candidate_mm": 7.92,
+          "minimum_diameter_mm": null,
+          "threshold": null
+        },
+        {
+          "applicability": "requires_frozen_process_tool_or_process_capability",
+          "check_id": "minimum_hole_geometry",
+          "compliance_status": "not_evaluated_no_frozen_applicable_threshold",
+          "hole_count": 0,
+          "maximum_depth_to_diameter": null,
+          "measurement_id": "p_benchcad_000757:dfm:minimum_hole_geometry",
+          "measurement_kind": null,
+          "minimum_candidate_mm": null,
+          "minimum_diameter_mm": null,
+          "threshold": null
+        }
+      ],
+      "llm_judge_used": false,
+      "material_process": {
+        "basis": "benchmark_authored_candidate",
+        "material_basis": "benchmark_authored_candidate",
+        "material_family": "aluminum_alloy",
+        "material_specification": "6061-T6",
+        "material_verification_status": "candidate",
+        "process_basis": "benchmark_authored_candidate",
+        "process_family": "casting",
+        "process_variant": "sand casting",
+        "process_verification_status": "candidate"
+      },
+      "recommended_check_families": [
+        {
+          "applicability": "selected_process_family",
+          "check_id": "minimum_wall_thickness",
+          "measurement_status": "deterministic_measurement_present"
+        },
+        {
+          "applicability": "selected_process_family",
+          "check_id": "draft_angle",
+          "measurement_status": "annotation_only_no_extractor"
+        },
+        {
+          "applicability": "selected_process_family",
+          "check_id": "undercut",
+          "measurement_status": "annotation_only_no_extractor"
+        },
+        {
+          "applicability": "selected_process_family",
+          "check_id": "uniform_wall",
+          "measurement_status": "annotation_only_no_extractor"
+        }
+      ]
+    },
+    "parametric": {
+      "constraint_relations": [],
+      "operation_sequence": [
+        {
+          "operation_id": "op:line_4:Workplane",
+          "operation_type": "Workplane",
+          "sequence_index": 0
+        },
+        {
+          "operation_id": "op:line_5:polyline",
+          "operation_type": "polyline",
+          "sequence_index": 1
+        },
+        {
+          "operation_id": "op:line_6:close",
+          "operation_type": "close",
+          "sequence_index": 2
+        },
+        {
+          "operation_id": "op:line_7:extrude",
+          "operation_type": "extrude",
+          "sequence_index": 3
+        },
+        {
+          "operation_id": "op:line_11:show_object",
+          "operation_type": "show_object",
+          "sequence_index": 4
+        }
+      ],
+      "parameters": [
+        {
+          "base_value": 7.92,
+          "feature_id": "cadquery:extrude:0",
+          "parameter_id": "cadquery:line:7:col:13",
+          "parameter_key": "extrude_arg_0",
+          "target_value": 8.712,
+          "unit": "mm",
+          "valid_range": {
+            "lower": 6.732,
+            "unit": "mm",
+            "upper": 9.108
+          }
+        },
+        {
+          "editable": true,
+          "parameter_id": "op:line_7:extrude:arg_0",
+          "unit": "mm_or_count_needs_semantic_binding"
+        }
+      ]
+    },
+    "physics": {
+      "fea_readiness": {
+        "missing_inputs": [
+          "verified_condition_specific_material_properties",
+          "geometric_boundary_condition_bindings",
+          "mesh_and_solver_profile"
+        ],
+        "simulation_result_present": false,
+        "status": "geometry_and_scenario_only"
+      },
+      "functional_interfaces": [
+        {
+          "description": "flat surface for bolt attachment",
+          "interface_id": "interface_1",
+          "interface_kind": "mounting"
+        }
+      ],
+      "geometry_properties": {
+        "bbox_fill_ratio": 0.2496982,
+        "bbox_volume_mm3": 81401.002848,
+        "center_of_mass_interpretation": "volume_centroid_uniform_density_only",
+        "characteristic_length_mm": 27.2907226,
+        "failure_code": null,
+        "geometric_inertia_tensor_mm5": [
+          [
+            6087889.3731505,
+            1e-07,
+            0.0
+          ],
+          [
+            1e-07,
+            6087889.3731478,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            11963285.9461596
+          ]
+        ],
+        "method": "occ_volume_properties_v1",
+        "physical_mass_status": "requires_verified_material_density",
+        "principal_axes": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.999507209,
+            0.031390117,
+            -0.0
+          ],
+          [
+            -0.031390117,
+            0.999507209,
+            -0.0
+          ]
+        ],
+        "principal_geometric_moments_mm5": [
+          11963285.9461596,
+          6087889.3731505,
+          6087889.3731478
+        ],
+        "schema_version": "cadengbench-p.geometry-physics.v1",
+        "status": "complete",
+        "surface_area_mm2": 7672.4474842,
+        "surface_area_to_volume_per_mm": 0.3774755,
+        "units": {
+          "area": "mm2",
+          "geometric_inertia": "mm5",
+          "length": "mm",
+          "volume": "mm3"
+        },
+        "volume_centroid_mm": [
+          0.0,
+          -0.0,
+          3.96
+        ],
+        "volume_mm3": 20325.6810662
+      },
+      "llm_judge_used": false,
+      "load_case": {
+        "application_region": "entire star face",
+        "basis": "benchmark_authored_candidate",
+        "constraint_region": "star face",
+        "direction": "normal_to_interface",
+        "duty": "static",
+        "load_type": "pressure",
+        "magnitude": 0.5,
+        "physical_performance_verified": false,
+        "unit": "MPa",
+        "validation_status": "unit_checked_candidate"
+      },
+      "material_context": {
+        "material_basis": "benchmark_authored_candidate",
+        "material_family": "aluminum_alloy",
+        "material_specification": "6061-T6",
+        "material_verification_status": "candidate"
+      },
+      "visual_affordances": [
+        {
+          "affordance_kind": "locating",
+          "description": "Star shape provides rotational orientation and alignment.",
+          "view_ids": [
+            "orbit_top"
+          ],
+          "visibility": "visible"
+        },
+        {
+          "affordance_kind": "grip",
+          "description": "Sharp corners allow mechanical engagement or gripping.",
+          "view_ids": [
+            "orbit_045"
+          ],
+          "visibility": "visible"
+        },
+        {
+          "affordance_kind": "mounting",
+          "description": "Flat faces support surface mounting or stacking.",
+          "view_ids": [
+            "orbit_top"
+          ],
+          "visibility": "visible"
+        }
+      ]
+    }
+  },
+  "item_id": "p_benchcad_000757",
+  "migration_sources": [],
+  "model_facing": {
+    "functional_edit": {
+      "input_assets": {
+        "canonical_geometry_artifact": "data/production/cadengbench_p_1800_v2_two_source_r25/dataset/items/p_benchcad_000757/source/generated_from_cadquery.step",
+        "native_history_artifact": "data/production/cadengbench_p_1800_v2_two_source_r25/dataset/items/p_benchcad_000757/source/cadquery.py",
+        "visual_assets": []
+      },
+      "user_prompt": "Modify the existing editable CAD model for this use case: industrial equipment mounting bracket Intended function: distribute fastener loads across a star pattern Functional interfaces: mounting: flat surface for bolt attachment Operating condition: maintain flatness under clamping pressure Design condition: 0.5 MPa pressure applied normal to interface at entire star face, constrained at star face, static duty. Set parameter `extrude_arg_0` from 7.92 mm to 8.712 mm so that increase plate thickness to improve stiffness and reduce deflection under load Measure the intended effect with target parameter value within_tolerance 8.712 mm; expected direction: increase. Use the benchmark scenario material/process context 6061-T6 / sand casting (aluminum alloy / casting). Preserve valid solid, solid count, non target parameters. Geometric acceptance does not certify service performance."
+    },
+    "zero_to_cad": {
+      "system_prompt": "configs/prompts/zero_to_cad/model_under_evaluation.system.v2.txt",
+      "user_prompt": "Design an editable parametric CAD model of Star-shaped mounting plate (structural mounting plate). Goal: provide a flat, star-shaped interface for mounting components Application context: industrial equipment mounting bracket Required global form: Thin four-pointed star plate with uniform thickness and sharp angular vertices. Produce 1 solid body or bodies with nominal envelope 101.38 x 101.38 x 7.92 mm. Visible features: recess or pocket: Flat top surface defining the star outline. [views: orbit_top; visibility: visible]. recess or pocket: Flat bottom surface matching the star outline. [views: orbit_bottom; visibility: visible]. fillet or chamfer: Vertical side walls connecting top and bottom faces. [views: orbit_045; visibility: visible]. fillet or chamfer: Four sharp convex corners extending outward. [views: orbit_top; visibility: visible]. fillet or chamfer: Four concave re-entrant corners between points. [views: orbit_top; visibility: visible]. fillet or chamfer: Uniform thickness across the entire body. [views: orbit_000; visibility: visible]. Functional interpretation: distribute fastener loads across a star pattern Interfaces: interface_1 mounting: flat surface for bolt attachment. Visual affordances: locating: Star shape provides rotational orientation and alignment. [views: orbit_top; visibility: visible]. grip: Sharp corners allow mechanical engagement or gripping. [views: orbit_045; visibility: visible]. mounting: Flat faces support surface mounting or stacking. [views: orbit_top; visibility: visible]. Design condition: 0.5 MPa pressure applied normal to interface at entire star face, constrained at star face, static duty. Material/process context: 6061-T6 / sand casting (aluminum alloy / casting). DFM priorities: minimum wall thickness, draft angle, undercut, uniform wall. Design freedom: star-shaped geometry for space efficiency Explicit non-requirements: no sealing required Use named parameters for the declared dimensions and preserve the supplied deterministic relations.",
+      "visual_assets": []
+    }
+  },
+  "schema_version": "cadengbench-p.consumer-ready-item.v2",
+  "source": {
+    "canonical_geometry_artifact": "data/production/cadengbench_p_1800_v2_two_source_r25/dataset/items/p_benchcad_000757/source/generated_from_cadquery.step",
+    "native_history_artifact": "data/production/cadengbench_p_1800_v2_two_source_r25/dataset/items/p_benchcad_000757/source/cadquery.py",
+    "source_dataset": "BenchCAD",
+    "source_key": "benchcad",
+    "source_record_id": "star_blank_008978_s20260505"
+  }
+}

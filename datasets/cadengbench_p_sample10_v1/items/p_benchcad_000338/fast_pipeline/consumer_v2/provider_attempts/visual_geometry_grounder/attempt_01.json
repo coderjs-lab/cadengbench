@@ -1,0 +1,14 @@
+{
+  "attempt": 1,
+  "finish_reason": "stop",
+  "http_status": 200,
+  "native_schema_guidance_used": true,
+  "outcome": "accepted",
+  "parse_recovery": "exact",
+  "raw_content": "{\"schema_version\": \"cadengbench-p.visual-grounding-annotation.v2\", \"item_id\": \"p_benchcad_000338\", \"role_id\": \"visual_geometry_grounder\", \"output_status\": \"complete\", \"payload\": {\"global_form\": \"Hexagonal prism with central cylindrical boss\", \"features\": [{\"feature_kind\": \"base_form\", \"description\": \"Hexagonal prism body with flat vertical faces\", \"view_ids\": [\"orbit_000\", \"orbit_045\"], \"visibility\": \"visible\"}, {\"feature_kind\": \"boss_or_protrusion\", \"description\": \"Central cylindrical boss on top face\", \"view_ids\": [\"orbit_000\", \"orbit_top\"], \"visibility\": \"visible\"}, {\"feature_kind\": \"opening\", \"description\": \"Through hole centered in top boss\", \"view_ids\": [\"orbit_000\", \"orbit_top\"], \"visibility\": \"visible\"}, {\"feature_kind\": \"base_form\", \"description\": \"Flat bottom face for seating\", \"view_ids\": [\"orbit_bottom\", \"orbit_000\"], \"visibility\": \"visible\"}, {\"feature_kind\": \"base_form\", \"description\": \"Vertical side faces for wrench engagement\", \"view_ids\": [\"orbit_090\", \"orbit_180\"], \"visibility\": \"visible\"}, {\"feature_kind\": \"base_form\", \"description\": \"Flat top face surrounding the boss\", \"view_ids\": [\"orbit_top\", \"orbit_000\"], \"visibility\": \"visible\"}], \"affordances\": [{\"affordance_kind\": \"locating\", \"description\": \"Central hole for pin or bolt alignment\", \"view_ids\": [\"orbit_000\", \"orbit_top\"], \"visibility\": \"visible\"}, {\"affordance_kind\": \"grip\", \"description\": \"Hexagonal body for wrench or socket grip\", \"view_ids\": [\"orbit_000\", \"orbit_045\"], \"visibility\": \"visible\"}, {\"affordance_kind\": \"mounting\", \"description\": \"Flat base for stable seating on surfaces\", \"view_ids\": [\"orbit_bottom\", \"orbit_000\"], \"visibility\": \"visible\"}], \"recommended_prompt_profile\": \"text_only\"}}",
+  "usage": {
+    "input_tokens": 2330,
+    "output_tokens": 479,
+    "total_tokens": 2809
+  }
+}

@@ -1,0 +1,110 @@
+{
+  "bundle_id": "sha256:d180b08afeda8921ba364eb22f56961691f44482cd12319670fbc9e51bd9d1a5",
+  "inputs": {
+    "authority": {
+      "llm_output_authority": "candidate_only",
+      "promotion_requires_deterministic_and_solver_validation": true,
+      "source_intent_claimed": false
+    },
+    "geometry": {
+      "bbox_lengths_mm": [
+        2.0,
+        28.66664077,
+        70.87528582
+      ],
+      "deterministic_eligibility": {
+        "eligible": true,
+        "policy": {
+          "expected_solid_count": 1,
+          "maximum_region_surface_count": 64,
+          "minimum_region_area_fraction": 0.002,
+          "normal_alignment_min": 0.98,
+          "plane_tolerance_relative": 1e-06
+        },
+        "reason_codes": []
+      },
+      "eligible_opposed_region_pairs": [
+        {
+          "axis": "x",
+          "maximum_region": {
+            "area_fraction": 0.3921484063,
+            "area_mm2": 1072.16036553,
+            "axis": "x",
+            "region_id": "axis:x:max",
+            "side": "max",
+            "surface_count": 1
+          },
+          "minimum_region": {
+            "area_fraction": 0.3921484063,
+            "area_mm2": 1072.16036553,
+            "axis": "x",
+            "region_id": "axis:x:min",
+            "side": "min",
+            "surface_count": 1
+          },
+          "pair_id": "opposed:x",
+          "span_length_mm": 2.0
+        },
+        {
+          "axis": "z",
+          "maximum_region": {
+            "area_fraction": 0.0036575537,
+            "area_mm2": 10.0,
+            "axis": "z",
+            "region_id": "axis:z:max",
+            "side": "max",
+            "surface_count": 1
+          },
+          "minimum_region": {
+            "area_fraction": 0.0036575537,
+            "area_mm2": 10.0,
+            "axis": "z",
+            "region_id": "axis:z:min",
+            "side": "min",
+            "surface_count": 1
+          },
+          "pair_id": "opposed:z",
+          "span_length_mm": 70.87528582
+        }
+      ],
+      "face_count": 28,
+      "solid_count": 1
+    },
+    "item_id": "p_fusion360_001165",
+    "selection": {
+      "complexity": {
+        "aggregate_for_stratification_only": 0.6774905422446406,
+        "axes": {
+          "construction_topology": 0.512400168137873,
+          "history": 0.5411517444304329,
+          "parametric": 0.9923076923076923,
+          "sketch": 0.6641025641025641
+        },
+        "method": "within_source_multiaxis_percentile_v1",
+        "single_scalar_is_not_benchmark_truth": true,
+        "tier": "hard"
+      },
+      "selection_stratum": "new_body_with_cut",
+      "source_key": "fusion360",
+      "split": "frozen_evaluation"
+    },
+    "semantic_context": {
+      "application_context": "precision assembly interface",
+      "authority_warning": "LLM/VLM-authored context may be semantically wrong and is not selector or source-intent authority.",
+      "category": "mechanical spacer",
+      "global_form": "Thin vertical plate with central trapezoidal cutout and stepped end flanges",
+      "interfaces": [
+        {
+          "description": "cylindrical surface interface",
+          "kind": "mounting"
+        }
+      ],
+      "status": "candidate_context_only",
+      "title": "cylindrical spacer"
+    },
+    "source_family": "fusion360_reconstruction"
+  },
+  "item_id": "p_fusion360_001165",
+  "role_id": "l3_physics_probe_annotator",
+  "schema_version": "cadengbench-p.l3-annotation-bundle.v1"
+}

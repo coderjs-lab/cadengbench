@@ -1,0 +1,89 @@
+{
+  "bundle_id": "sha256:bf6e35ae9b03e61074ada96565bfedc6ebbbe4788ef2af6d7b564d0088eec5ef",
+  "inputs": {
+    "authority": {
+      "llm_output_authority": "candidate_only",
+      "promotion_requires_deterministic_and_solver_validation": true,
+      "source_intent_claimed": false
+    },
+    "geometry": {
+      "bbox_lengths_mm": [
+        30.0,
+        300.0,
+        30.0
+      ],
+      "deterministic_eligibility": {
+        "eligible": true,
+        "policy": {
+          "expected_solid_count": 1,
+          "maximum_region_surface_count": 64,
+          "minimum_region_area_fraction": 0.002,
+          "normal_alignment_min": 0.98,
+          "plane_tolerance_relative": 1e-06
+        },
+        "reason_codes": []
+      },
+      "eligible_opposed_region_pairs": [
+        {
+          "axis": "y",
+          "maximum_region": {
+            "area_fraction": 0.0238095238,
+            "area_mm2": 706.85834706,
+            "axis": "y",
+            "region_id": "axis:y:max",
+            "side": "max",
+            "surface_count": 1
+          },
+          "minimum_region": {
+            "area_fraction": 0.0238095238,
+            "area_mm2": 706.85834706,
+            "axis": "y",
+            "region_id": "axis:y:min",
+            "side": "min",
+            "surface_count": 1
+          },
+          "pair_id": "opposed:y",
+          "span_length_mm": 300.0
+        }
+      ],
+      "face_count": 3,
+      "solid_count": 1
+    },
+    "item_id": "p_fusion360_001312",
+    "selection": {
+      "complexity": {
+        "aggregate_for_stratification_only": 0.26399747793190415,
+        "axes": {
+          "construction_topology": 0.4021857923497268,
+          "history": 0.487473728457335,
+          "parametric": 0.08902900378310215,
+          "sketch": 0.0773013871374527
+        },
+        "method": "within_source_multiaxis_percentile_v1",
+        "single_scalar_is_not_benchmark_truth": true,
+        "tier": "easy"
+      },
+      "selection_stratum": "new_body_with_cut",
+      "source_key": "fusion360",
+      "split": "development"
+    },
+    "semantic_context": {
+      "application_context": "industrial machinery mounting base",
+      "authority_warning": "LLM/VLM-authored context may be semantically wrong and is not selector or source-intent authority.",
+      "category": "structural support",
+      "global_form": "Solid right circular cylinder with uniform diameter and flat ends",
+      "interfaces": [
+        {
+          "description": "base plate interface with foundation",
+          "kind": "mounting"
+        }
+      ],
+      "status": "candidate_context_only",
+      "title": "cylindrical support column"
+    },
+    "source_family": "fusion360_reconstruction"
+  },
+  "item_id": "p_fusion360_001312",
+  "role_id": "l3_physics_probe_annotator",
+  "schema_version": "cadengbench-p.l3-annotation-bundle.v1"
+}

@@ -1,0 +1,55 @@
+{
+  "annotation_system": "visual_grounding",
+  "attempt_count": 1,
+  "attempts": [
+    {
+      "attempt": 1,
+      "finish_reason": "stop",
+      "http_status": 200,
+      "native_schema_guidance_used": true,
+      "outcome": "accepted",
+      "parse_recovery": "exact",
+      "raw_content_characters": 1702,
+      "usage": {
+        "input_tokens": 2330,
+        "output_tokens": 479,
+        "total_tokens": 2809
+      }
+    }
+  ],
+  "created_at": "2026-07-21T08:33:31Z",
+  "endpoint": "visual",
+  "finish_reason": "stop",
+  "image_count": 1,
+  "item_id": "p_benchcad_000338",
+  "latency_seconds": 137.16,
+  "model_id": "Qwen/Qwen3.6-27B-FP8",
+  "model_revision": "e89b16ebf1988b3d6befa7de50abc2d76f26eb09",
+  "native_schema_guidance_used": true,
+  "parse_recovery": "exact",
+  "provider_attempt_paths": [
+    "source://cadengbench-build/data/production/cadengbench_p_1800_v2_two_source_r25/dataset/items/p_benchcad_000338/fast_pipeline/consumer_v2/provider_attempts/visual_geometry_grounder/attempt_01.json"
+  ],
+  "queue_seconds": 1983.18,
+  "role_id": "visual_geometry_grounder",
+  "schema_version": "cadengbench-p.fast-dataset.v3-engineering-physics",
+  "token_preflight": {
+    "context_compacted": false,
+    "context_limit": 8192,
+    "observations": [
+      {
+        "http_status": 200,
+        "input_byte_limit": null,
+        "status": "available"
+      }
+    ],
+    "prompt_tokens": 2330,
+    "reserved_output_tokens": 900,
+    "status": "fit"
+  },
+  "usage": {
+    "input_tokens": 2330,
+    "output_tokens": 479,
+    "total_tokens": 2809
+  }
+}

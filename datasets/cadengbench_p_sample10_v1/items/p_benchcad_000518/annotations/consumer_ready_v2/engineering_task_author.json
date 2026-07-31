@@ -1,0 +1,61 @@
+{
+  "item_id": "p_benchcad_000518",
+  "output_status": "complete",
+  "payload": {
+    "design": {
+      "application_context": "mechanical power transmission assembly",
+      "design_freedom": [
+        "geometry modification allowed"
+      ],
+      "goal": "transmit torque between shaft and hub"
+    },
+    "function": {
+      "functional_interpretation": "transmit torque between shaft and hub",
+      "interfaces": [
+        {
+          "description": "fits into keyway in shaft and hub",
+          "interface_id": "interface_1",
+          "interface_kind": "mounting"
+        }
+      ],
+      "non_requirements": [
+        "no compliance claim"
+      ]
+    },
+    "functional_edit": {
+      "engineering_objective": "increase keyway clearance for assembly ease while retaining location and torque capacity",
+      "operating_condition": "static torque transmission"
+    },
+    "load_case": {
+      "application_region": "keyway interface",
+      "constraint_region": "full length of key",
+      "direction": "tangential",
+      "duty": "static",
+      "load_type": "torque",
+      "magnitude": 50.0,
+      "unit": "N_mm"
+    },
+    "material_process": {
+      "material_family": "unspecified",
+      "material_specification": "unspecified",
+      "process_family": "unspecified",
+      "process_variant": "unspecified"
+    },
+    "part_identity": {
+      "category": "transmission component",
+      "title": "Parallel key"
+    },
+    "standards": [
+      {
+        "requirement_category": "material",
+        "standard_id": "DIN 6885"
+      },
+      {
+        "requirement_category": "general_tolerance",
+        "standard_id": "ISO 14"
+      }
+    ]
+  },
+  "role_id": "engineering_task_author",
+  "schema_version": "cadengbench-p.engineering-task-annotation.v3"
+}

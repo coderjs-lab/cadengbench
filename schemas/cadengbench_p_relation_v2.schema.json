@@ -1,0 +1,184 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cadengbench.org/schemas/cadengbench_p_relation_v2.schema.json",
+  "title": "CADEngBench-P v2 relation DSL and promotion record",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "record_type", "relation", "promotion"],
+  "properties": {
+    "schema_version": {"const": "cadengbench-p.relation.v2"},
+    "record_type": {"const": "relation_promotion"},
+    "relation": {"$ref": "#/$defs/relation"},
+    "promotion": {"$ref": "#/$defs/promotion"}
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {"promotion": {"properties": {"status": {"const": "promoted"}}}},
+        "required": ["promotion"]
+      },
+      "then": {
+        "properties": {
+          "relation": {
+            "properties": {
+              "authority": {"enum": ["source_explicit", "deterministic_geometry", "verified_replay", "authoritative_external"]}
+            }
+          },
+          "promotion": {"properties": {"scorer_allowed": {"const": true}}}
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "relation": {
+            "properties": {"authority": {"enum": ["generated_proxy", "llm_candidate", "retrieval_supported"]}}
+          }
+        },
+        "required": ["relation"]
+      },
+      "then": {
+        "properties": {
+          "promotion": {"properties": {"status": {"not": {"const": "promoted"}}, "scorer_allowed": {"const": false}}}
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "nonEmpty": {"type": "string", "minLength": 1},
+    "unit": {"type": "string", "minLength": 1, "pattern": "^[A-Za-z0-9_./^*-]+$"},
+    "expression": {
+      "oneOf": [
+        {"$ref": "#/$defs/variable"},
+        {"$ref": "#/$defs/literal"},
+        {"$ref": "#/$defs/unary"},
+        {"$ref": "#/$defs/binary"}
+      ]
+    },
+    "variable": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["node_type", "key", "unit", "source", "state"],
+      "properties": {
+        "node_type": {"const": "variable"},
+        "key": {"$ref": "#/$defs/nonEmpty"},
+        "unit": {"$ref": "#/$defs/unit"},
+        "source": {"enum": ["parameter", "geometry"]},
+        "state": {"enum": ["current", "baseline"]}
+      }
+    },
+    "literal": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["node_type", "value", "unit"],
+      "properties": {
+        "node_type": {"const": "literal"},
+        "value": {"type": "number"},
+        "unit": {"$ref": "#/$defs/unit"}
+      }
+    },
+    "unary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["node_type", "operator", "operand"],
+      "properties": {
+        "node_type": {"const": "unary"},
+        "operator": {"const": "negate"},
+        "operand": {"$ref": "#/$defs/expression"}
+      }
+    },
+    "binary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["node_type", "operator", "left", "right"],
+      "properties": {
+        "node_type": {"const": "binary"},
+        "operator": {"enum": ["add", "subtract", "multiply", "divide"]},
+        "left": {"$ref": "#/$defs/expression"},
+        "right": {"$ref": "#/$defs/expression"}
+      }
+    },
+    "tolerance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "value", "unit"],
+      "properties": {
+        "kind": {"enum": ["absolute", "relative"]},
+        "value": {"type": "number", "minimum": 0},
+        "unit": {"$ref": "#/$defs/unit"}
+      }
+    },
+    "comparison": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["left", "operator", "right"],
+      "properties": {
+        "left": {"$ref": "#/$defs/expression"},
+        "operator": {"enum": ["equal", "not_equal", "less_than", "less_equal", "greater_than", "greater_equal"]},
+        "right": {"$ref": "#/$defs/expression"},
+        "tolerance": {"anyOf": [{"$ref": "#/$defs/tolerance"}, {"type": "null"}]}
+      }
+    },
+    "relation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["relation_id", "relation_kind", "comparison", "hard", "authority"],
+      "properties": {
+        "relation_id": {"$ref": "#/$defs/nonEmpty"},
+        "relation_kind": {"enum": ["equality", "inequality", "range", "symmetry", "dependency", "preserved_feature"]},
+        "replay_scope": {"enum": ["target_only", "all_valid"]},
+        "comparison": {"$ref": "#/$defs/comparison"},
+        "hard": {"type": "boolean"},
+        "authority": {"enum": ["source_explicit", "deterministic_geometry", "verified_replay", "authoritative_external", "generated_proxy", "llm_candidate", "retrieval_supported", "needs_validation", "unavailable", "rejected"]}
+      }
+    },
+    "candidateSource": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["source_type", "artifact_ref", "authority", "evidence_status"],
+      "properties": {
+        "source_type": {"enum": ["source_formula", "native_history", "deterministic_geometry", "verified_replay", "qualified_source_bound_replay", "llm_candidate", "retrieval", "human_review"]},
+        "artifact_ref": {"$ref": "#/$defs/nonEmpty"},
+        "authority": {"enum": ["source_explicit", "deterministic_geometry", "verified_replay", "authoritative_external", "generated_proxy", "llm_candidate", "retrieval_supported", "needs_validation", "unavailable", "rejected"]},
+        "evidence_status": {"enum": ["candidate_only", "promoted", "verified_replay", "rejected", "needs_validation", "unavailable"]}
+      }
+    },
+    "validation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["sample_count", "nominal_pass", "perturbation_pass", "negative_mutants_rejected", "validation_command", "logs", "scorer_version"],
+      "properties": {
+        "sample_count": {"type": "integer", "minimum": 1},
+        "nominal_pass": {"const": true},
+        "perturbation_pass": {"const": true},
+        "negative_mutants_rejected": {"const": true},
+        "validation_command": {"$ref": "#/$defs/nonEmpty"},
+        "logs": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/nonEmpty"}},
+        "scorer_version": {"$ref": "#/$defs/nonEmpty"},
+        "solver_status": {"enum": ["holds", "counterexample", "unknown", "unavailable", "error", null]}
+      }
+    },
+    "promotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "candidate_sources", "scorer_allowed"],
+      "properties": {
+        "status": {"enum": ["candidate_only", "ready_for_replay_validation", "promoted", "rejected"]},
+        "candidate_sources": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/candidateSource"}},
+        "validation": {"$ref": "#/$defs/validation"},
+        "scorer_allowed": {"type": "boolean"},
+        "rejection_reason": {"anyOf": [{"$ref": "#/$defs/nonEmpty"}, {"type": "null"}]}
+      },
+      "allOf": [
+        {
+          "if": {"properties": {"status": {"const": "promoted"}}},
+          "then": {"required": ["validation"], "properties": {"scorer_allowed": {"const": true}}}
+        },
+        {
+          "if": {"properties": {"status": {"enum": ["candidate_only", "ready_for_replay_validation", "rejected"]}}},
+          "then": {"properties": {"scorer_allowed": {"const": false}}}
+        }
+      ]
+    }
+  }
+}

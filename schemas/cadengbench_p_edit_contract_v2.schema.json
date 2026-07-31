@@ -1,0 +1,231 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cadengbench.org/schemas/cadengbench_p_edit_contract_v2.schema.json",
+  "title": "CADEngBench-P v2 functional edit contract, parameter space, and mutants",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "record_type", "contract"],
+  "properties": {
+    "schema_version": {"const": "cadengbench-p.edit-contract.v2"},
+    "record_type": {"const": "functional_edit_contract"},
+    "contract": {"$ref": "#/$defs/contract"}
+  },
+  "$defs": {
+    "nonEmpty": {"type": "string", "minLength": 1},
+    "sha256": {"type": "string", "pattern": "^[A-Fa-f0-9]{64}$"},
+    "quantity": {
+      "type": "object", "additionalProperties": false,
+      "required": ["value", "unit"],
+      "properties": {"value": {"type": "number"}, "unit": {"$ref": "#/$defs/nonEmpty"}}
+    },
+    "authority": {
+      "type": "object", "additionalProperties": false,
+      "required": ["source_artifact_ref", "scoring_truth_source", "proxy_allowed_for_scoring", "scoring_eligible"],
+      "properties": {
+        "source_artifact_ref": {"$ref": "#/$defs/nonEmpty"},
+        "scoring_truth_source": {"enum": ["native_cadquery", "native_fusion_json", "native_futurecad_json", "source_step", "deterministic_geometry", "verified_replay", "generated_proxy", "unavailable"]},
+        "proxy_allowed_for_scoring": {"type": "boolean"},
+        "scoring_eligible": {"type": "boolean"},
+        "unavailable_reason": {"anyOf": [{"$ref": "#/$defs/nonEmpty"}, {"type": "null"}]}
+      },
+      "allOf": [
+        {"if": {"properties": {"scoring_truth_source": {"const": "generated_proxy"}}}, "then": {"properties": {"proxy_allowed_for_scoring": {"const": false}, "scoring_eligible": {"const": false}}}},
+        {"if": {"properties": {"scoring_truth_source": {"const": "unavailable"}}}, "then": {"required": ["unavailable_reason"], "properties": {"scoring_eligible": {"const": false}}}}
+      ]
+    },
+    "binding": {
+      "type": "object", "additionalProperties": false,
+      "required": ["binding_id", "parameter_key", "source_pointer", "feature_id", "base_value", "editable", "authority"],
+      "properties": {
+        "binding_id": {"$ref": "#/$defs/nonEmpty"},
+        "parameter_key": {"$ref": "#/$defs/nonEmpty"},
+        "source_pointer": {"$ref": "#/$defs/nonEmpty"},
+        "feature_id": {"anyOf": [{"$ref": "#/$defs/nonEmpty"}, {"type": "null"}]},
+        "base_value": {"$ref": "#/$defs/quantity"},
+        "editable": {"const": true},
+        "authority": {"enum": ["source_explicit", "deterministic_geometry", "verified_replay", "needs_validation", "unavailable"]}
+      }
+    },
+    "variable": {
+      "type": "object", "additionalProperties": false,
+      "required": ["key", "unit", "source", "state"],
+      "properties": {
+        "key": {"$ref": "#/$defs/nonEmpty"}, "unit": {"$ref": "#/$defs/nonEmpty"},
+        "source": {"const": "parameter"}, "state": {"const": "current"}
+      }
+    },
+    "domain": {
+      "type": "object", "additionalProperties": false,
+      "required": ["domain_id", "variable"],
+      "properties": {
+        "domain_id": {"$ref": "#/$defs/nonEmpty"},
+        "variable": {"$ref": "#/$defs/variable"},
+        "lower": {"$ref": "#/$defs/quantity"},
+        "upper": {"$ref": "#/$defs/quantity"},
+        "allowed_values": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"$ref": "#/$defs/quantity"}}
+      },
+      "oneOf": [
+        {"required": ["lower", "upper"]},
+        {"required": ["allowed_values"]}
+      ]
+    },
+    "parameterSpace": {
+      "type": "object", "additionalProperties": false,
+      "required": ["domains", "hard_relation_ids", "infeasible_regions", "source_status"],
+      "properties": {
+        "domains": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/domain"}},
+        "hard_relation_ids": {"type": "array", "uniqueItems": true, "items": {"$ref": "#/$defs/nonEmpty"}},
+        "infeasible_regions": {
+          "type": "array", "items": {
+            "type": "object", "additionalProperties": false,
+            "required": ["region_id", "expression", "evidence_status"],
+            "properties": {
+              "region_id": {"$ref": "#/$defs/nonEmpty"}, "expression": {"$ref": "#/$defs/nonEmpty"},
+              "evidence_status": {"enum": ["source_explicit", "deterministic_inferred", "human_reviewed_promoted", "candidate_only", "unavailable"]},
+              "evidence_refs": {"type": "array", "uniqueItems": true, "items": {"$ref": "#/$defs/nonEmpty"}}
+            }
+          }
+        },
+        "source_status": {"enum": ["source_explicit", "deterministic_inferred", "human_reviewed_promoted", "candidate_only", "needs_validation", "unavailable"]}
+      }
+    },
+    "mutant": {
+      "type": "object", "additionalProperties": false,
+      "required": ["mutant_id", "kind", "parameter_overrides", "geometry_overrides", "deleted_feature_ids", "expected_failure_categories", "materialized"],
+      "properties": {
+        "mutant_id": {"$ref": "#/$defs/nonEmpty"},
+        "kind": {"enum": ["no_op", "wrong_target", "broken_relation", "invalid_value", "forbidden_deletion"]},
+        "parameter_overrides": {"type": "object", "patternProperties": {"^[A-Za-z0-9_.:-]+$": {"$ref": "#/$defs/quantity"}}, "additionalProperties": false},
+        "geometry_overrides": {"type": "object", "patternProperties": {"^[A-Za-z0-9_.:-]+$": {"$ref": "#/$defs/quantity"}}, "additionalProperties": false},
+        "deleted_feature_ids": {"type": "array", "uniqueItems": true, "items": {"$ref": "#/$defs/nonEmpty"}},
+        "expected_failure_categories": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"$ref": "#/$defs/nonEmpty"}},
+        "materialized": {
+          "type": "object", "additionalProperties": false,
+          "required": ["fingerprint", "feature_ids", "semantic_rejected", "scorer_rejected", "expectations_met"],
+          "properties": {
+            "fingerprint": {"$ref": "#/$defs/sha256"},
+            "feature_ids": {"type": "array", "uniqueItems": true, "items": {"$ref": "#/$defs/nonEmpty"}},
+            "semantic_rejected": {"const": true}, "scorer_rejected": {"const": true}, "expectations_met": {"const": true},
+            "execution_mode": {"enum": ["in_memory_context", "native_replay", "qualified_replay", "deterministic_validator", "generated_proxy", "unavailable"]},
+            "evidence_mode": {"enum": ["context_only", "native_replay", "qualified_replay", "deterministic_validator", "generated_proxy", "unavailable"]},
+            "execution_status": {"enum": ["not_run", "success", "failure", "rejected_before_replay", "unavailable"]},
+            "solid_valid": {"anyOf": [{"type": "boolean"}, {"type": "null"}]},
+            "detected_failure_categories": {"type": "array", "uniqueItems": true, "items": {"$ref": "#/$defs/nonEmpty"}}
+          }
+        }
+      },
+      "allOf": [
+        {"if": {"properties": {"kind": {"const": "no_op"}}}, "then": {"properties": {"parameter_overrides": {"maxProperties": 0}, "geometry_overrides": {"maxProperties": 0}, "deleted_feature_ids": {"maxItems": 0}}}},
+        {"if": {"properties": {"kind": {"const": "forbidden_deletion"}}}, "then": {"properties": {"deleted_feature_ids": {"minItems": 1}}}},
+        {"if": {"properties": {"kind": {"enum": ["wrong_target", "broken_relation", "invalid_value", "forbidden_deletion"]}}}, "then": {"anyOf": [{"required": ["parameter_overrides"], "properties": {"parameter_overrides": {"minProperties": 1}}}, {"required": ["geometry_overrides"], "properties": {"geometry_overrides": {"minProperties": 1}}}, {"required": ["deleted_feature_ids"], "properties": {"deleted_feature_ids": {"minItems": 1}}}]}}
+      ]
+    },
+    "intentContract": {
+      "type": "object", "additionalProperties": false,
+      "required": [
+        "intent_class", "intent_evidence_status", "application_context",
+        "engineering_requirement", "engineering_rationale",
+        "source_intent_evidence_refs", "target_binding_ids",
+        "preservation_predicate_ids", "deterministic_acceptance_check_ids",
+        "evaluator_uses_llm_judge"
+      ],
+      "properties": {
+        "intent_class": {
+          "enum": [
+            "source_backed_functional_edit",
+            "benchmark_assigned_constrained_edit"
+          ]
+        },
+        "intent_evidence_status": {
+          "enum": ["source_explicit", "partner_annotation", "benchmark_assigned"]
+        },
+        "application_context": {"$ref": "#/$defs/nonEmpty"},
+        "engineering_requirement": {"$ref": "#/$defs/nonEmpty"},
+        "engineering_rationale": {"$ref": "#/$defs/nonEmpty"},
+        "source_intent_evidence_refs": {
+          "type": "array", "uniqueItems": true,
+          "items": {"$ref": "#/$defs/nonEmpty"}
+        },
+        "target_binding_ids": {
+          "type": "array", "minItems": 1, "uniqueItems": true,
+          "items": {"$ref": "#/$defs/nonEmpty"}
+        },
+        "preservation_predicate_ids": {
+          "type": "array", "minItems": 1, "uniqueItems": true,
+          "items": {"$ref": "#/$defs/nonEmpty"}
+        },
+        "deterministic_acceptance_check_ids": {
+          "type": "array", "minItems": 1, "uniqueItems": true,
+          "items": {"$ref": "#/$defs/nonEmpty"}
+        },
+        "evaluator_uses_llm_judge": {"const": false}
+      },
+      "allOf": [
+        {
+          "if": {"properties": {"intent_class": {"const": "source_backed_functional_edit"}}},
+          "then": {
+            "properties": {
+              "intent_evidence_status": {"enum": ["source_explicit", "partner_annotation"]},
+              "source_intent_evidence_refs": {"minItems": 1}
+            }
+          }
+        },
+        {
+          "if": {"properties": {"intent_class": {"const": "benchmark_assigned_constrained_edit"}}},
+          "then": {
+            "properties": {"intent_evidence_status": {"const": "benchmark_assigned"}}
+          }
+        }
+      ]
+    },
+    "contract": {
+      "type": "object", "additionalProperties": false,
+      "required": ["contract_id", "status", "task_style", "oracle_authority", "canonical_units", "parameter_bindings", "target_predicate_ids", "non_target_predicate_ids", "hard_relation_ids", "parameter_space", "perturbation_policy", "expected_propagation", "feature_identity_policy", "validation_oracle", "negative_mutants", "scorer_config", "llm_annotation_record"],
+      "properties": {
+        "contract_id": {"$ref": "#/$defs/nonEmpty"},
+        "status": {"enum": ["source_explicit", "inferred_validated", "llm_proposed_validated", "needs_validation", "not_available"]},
+        "task_style": {"enum": ["numeric_perturbation", "functional_edit", "mixed"]},
+        "oracle_authority": {"$ref": "#/$defs/authority"},
+        "canonical_units": {
+          "type": "object", "additionalProperties": false, "required": ["length", "angle_internal", "mass", "coordinate_frame", "kernel_tolerance", "measurement_tolerances"],
+          "properties": {"length": {"$ref": "#/$defs/nonEmpty"}, "angle_internal": {"$ref": "#/$defs/nonEmpty"}, "mass": {"$ref": "#/$defs/nonEmpty"}, "coordinate_frame": {"$ref": "#/$defs/nonEmpty"}, "kernel_tolerance": {"$ref": "#/$defs/quantity"}, "measurement_tolerances": {"type": "object", "patternProperties": {"^[A-Za-z0-9_.:-]+$": {"$ref": "#/$defs/quantity"}}, "additionalProperties": false}}
+        },
+        "public_edit_instruction": {"type": "string", "minLength": 1},
+        "intent_contract": {"$ref": "#/$defs/intentContract"},
+        "parameter_bindings": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/binding"}},
+        "target_predicate_ids": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"$ref": "#/$defs/nonEmpty"}},
+        "non_target_predicate_ids": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"$ref": "#/$defs/nonEmpty"}},
+        "hard_relation_ids": {"type": "array", "uniqueItems": true, "items": {"$ref": "#/$defs/nonEmpty"}},
+        "parameter_space": {"$ref": "#/$defs/parameterSpace"},
+        "perturbation_policy": {
+          "type": "object", "additionalProperties": false, "required": ["sampling_method", "sample_count", "skip_infeasible_samples"],
+          "properties": {"sampling_method": {"enum": ["morris", "grid", "discrete_variant", "handpicked_edit"]}, "sample_count": {"type": "integer", "minimum": 1}, "skip_infeasible_samples": {"type": "boolean"}, "seed": {"type": "integer", "minimum": 0}}
+        },
+        "expected_propagation": {
+          "type": "object", "additionalProperties": false, "required": ["changed_parameter_ids", "dependent_parameter_ids", "fixed_parameter_ids"],
+          "properties": {"changed_parameter_ids": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"$ref": "#/$defs/nonEmpty"}}, "dependent_parameter_ids": {"type": "array", "uniqueItems": true, "items": {"$ref": "#/$defs/nonEmpty"}}, "fixed_parameter_ids": {"type": "array", "uniqueItems": true, "items": {"$ref": "#/$defs/nonEmpty"}}}
+        },
+        "feature_identity_policy": {
+          "type": "object", "additionalProperties": false, "required": ["match_strategy", "stable_ids", "geometric_signature", "fallback_matching", "ambiguity_status"],
+          "properties": {"match_strategy": {"enum": ["native_feature_id", "source_pointer", "brep_signature", "geometry_selector", "hybrid"]}, "stable_ids": {"type": "boolean"}, "geometric_signature": {"type": "object", "additionalProperties": false, "required": ["fields"], "properties": {"fields": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/nonEmpty"}}}}, "fallback_matching": {"type": "string", "minLength": 1}, "ambiguity_status": {"enum": ["unambiguous", "ambiguous", "unavailable"]}}
+        },
+        "validation_oracle": {
+          "type": "object", "additionalProperties": false, "required": ["execute_after_edit", "export_step", "valid_solid", "target_edit_check", "relation_checks", "non_target_checks", "llm_judge_used"],
+          "properties": {"execute_after_edit": {"type": "boolean"}, "export_step": {"type": "boolean"}, "valid_solid": {"anyOf": [{"type": "boolean"}, {"type": "null"}]}, "target_edit_check": {"$ref": "#/$defs/nonEmpty"}, "relation_checks": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/nonEmpty"}}, "non_target_checks": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/nonEmpty"}}, "llm_judge_used": {"const": false}}
+        },
+        "negative_mutants": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/mutant"}},
+        "scorer_config": {
+          "type": "object", "additionalProperties": false, "required": ["scorer_version", "timeout_seconds", "tolerance_profile", "accepted_input_statuses", "rejected_input_statuses", "llm_judge_allowed"],
+          "properties": {"scorer_version": {"$ref": "#/$defs/nonEmpty"}, "dependency_versions": {"type": "object", "patternProperties": {"^[A-Za-z0-9_.:-]+$": {"$ref": "#/$defs/nonEmpty"}}, "additionalProperties": false}, "timeout_seconds": {"type": "number", "exclusiveMinimum": 0}, "tolerance_profile": {"$ref": "#/$defs/nonEmpty"}, "accepted_input_statuses": {"type": "array", "uniqueItems": true, "items": {"$ref": "#/$defs/nonEmpty"}}, "rejected_input_statuses": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"$ref": "#/$defs/nonEmpty"}}, "llm_judge_allowed": {"const": false}}
+        },
+        "llm_annotation_record": {
+          "type": "object", "additionalProperties": false, "required": ["used", "candidate_ids", "promoted_by", "scoring_truth", "evaluator_uses_llm_judge"],
+          "properties": {"used": {"type": "boolean"}, "candidate_ids": {"type": "array", "uniqueItems": true, "items": {"$ref": "#/$defs/nonEmpty"}}, "promoted_by": {"anyOf": [{"$ref": "#/$defs/nonEmpty"}, {"type": "null"}]}, "scoring_truth": {"const": "deterministic_only"}, "evaluator_uses_llm_judge": {"const": false}}
+        }
+      },
+      "allOf": [
+        {"if": {"properties": {"oracle_authority": {"properties": {"scoring_eligible": {"const": true}}}}}, "then": {"properties": {"feature_identity_policy": {"properties": {"ambiguity_status": {"const": "unambiguous"}}}}}}
+      ]
+    }
+  }
+}

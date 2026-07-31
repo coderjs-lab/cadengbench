@@ -1,0 +1,94 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cadengbench.org/schemas/cadengbench-p.candidate-submission.v1.json",
+  "title": "CADEngBench-P CandidateSubmissionV1",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "submission_id",
+    "run_id",
+    "item_id",
+    "sample_index",
+    "request_hash",
+    "run_manifest_hash",
+    "model",
+    "successful_attempt",
+    "raw_response",
+    "extraction",
+    "artifact",
+    "candidate_hash"
+  ],
+  "properties": {
+    "schema_version": {"const": "cadengbench-p.candidate-submission.v1"},
+    "submission_id": {"type": "string", "minLength": 1},
+    "run_id": {"type": "string", "minLength": 1},
+    "item_id": {"type": "string", "pattern": "^p_(benchcad|fusion360)_[0-9]{6}$"},
+    "sample_index": {"type": "integer", "minimum": 0},
+    "request_hash": {"$ref": "#/$defs/sha256"},
+    "run_manifest_hash": {"$ref": "#/$defs/sha256"},
+    "model": {
+      "type": "object",
+      "required": ["provider", "requested_model_id", "returned_model_id"],
+      "properties": {
+        "provider": {"const": "openai_compatible"},
+        "requested_model_id": {"type": "string", "minLength": 1},
+        "returned_model_id": {"type": ["string", "null"]},
+        "provider_request_id": {"type": ["string", "null"]}
+      },
+      "additionalProperties": false
+    },
+    "successful_attempt": {
+      "type": "object",
+      "required": ["attempt_index", "ledger_record_hash"],
+      "properties": {
+        "attempt_index": {"type": "integer", "minimum": 1},
+        "ledger_record_hash": {"$ref": "#/$defs/sha256"}
+      },
+      "additionalProperties": false
+    },
+    "raw_response": {"$ref": "#/$defs/file_record"},
+    "extraction": {
+      "type": "object",
+      "required": ["policy", "method", "status"],
+      "properties": {
+        "policy": {"const": "single_python_artifact_no_repair.v1"},
+        "method": {"enum": ["raw_python", "single_python_fence", "single_valid_python_fence", "unique_cadquery_suffix"]},
+        "status": {"const": "succeeded"}
+      },
+      "additionalProperties": false
+    },
+    "artifact": {
+      "type": "object",
+      "required": [
+        "path",
+        "sha256",
+        "size_bytes",
+        "media_type",
+        "interface_version"
+      ],
+      "properties": {
+        "path": {"type": "string", "minLength": 1},
+        "sha256": {"$ref": "#/$defs/sha256"},
+        "size_bytes": {"type": "integer", "minimum": 1},
+        "media_type": {"const": "text/x-python"},
+        "interface_version": {"const": "cadengbench-p.cadquery-submission.v1"}
+      },
+      "additionalProperties": false
+    },
+    "candidate_hash": {"$ref": "#/$defs/sha256"}
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "file_record": {
+      "type": "object",
+      "required": ["path", "sha256", "size_bytes"],
+      "properties": {
+        "path": {"type": "string", "minLength": 1},
+        "sha256": {"$ref": "#/$defs/sha256"},
+        "size_bytes": {"type": "integer", "minimum": 1}
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

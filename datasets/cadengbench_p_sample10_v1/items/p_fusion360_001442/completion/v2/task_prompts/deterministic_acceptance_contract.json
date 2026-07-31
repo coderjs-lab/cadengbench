@@ -1,0 +1,166 @@
+{
+  "authority_boundary": {
+    "authority_scope": "bounded_source_bound_profile_or_extrusion_patch_only",
+    "edit_oracle_authority": "verified_replay",
+    "generated_cadquery_proxy_used": false,
+    "independent_occ_reconstruction_used": true,
+    "nominal_geometry_authority": "source_step",
+    "source_native_execution_used": false
+  },
+  "candidate_declared_checks": [],
+  "candidate_effect_contracts": [],
+  "candidate_id": null,
+  "candidate_preservation_contracts": [],
+  "contract_hash": "5f4f61d6feab95dc901091a944aade7ea0e03a829d06827def11f24bfe7ee4f4",
+  "contract_id": "p_fusion360_001442:functional-edit-acceptance:v2",
+  "core_checks": [
+    {
+      "check_id": "core.target_parameter_assignment",
+      "expected_value": 22.352,
+      "method": "source_bound_exact_parameter_assignment_v1",
+      "unit": "mm"
+    },
+    {
+      "check_id": "core.parameter_domain",
+      "expected_value": true,
+      "method": "canonical_parameter_domain_membership_v1",
+      "unit": null
+    },
+    {
+      "check_id": "core.valid_solid",
+      "expected_value": true,
+      "method": "occt_brep_validity",
+      "unit": null
+    },
+    {
+      "check_id": "core.solid_count_preserved",
+      "expected_value": 0,
+      "method": "canonical_step_solid_count_comparison",
+      "unit": "delta_count"
+    },
+    {
+      "check_id": "core.non_target_source_preserved",
+      "expected_value": true,
+      "method": "json_pointer_masked_canonical_digest_v1",
+      "unit": null
+    },
+    {
+      "check_id": "core.target_brep_similarity",
+      "expected_value": "hidden_target_step",
+      "method": "canonical_step_solid_set_comparison_v1",
+      "unit": null
+    }
+  ],
+  "edit_oracle_id": "p_fusion360_001442:edit-target:v2",
+  "engineering_effect_scope": "The benchmark scores the deterministic geometry-mediated edit contract; it does not infer unmodeled service performance from prose.",
+  "hidden_reference_artifacts": {
+    "base_history": {
+      "bytes": 40401,
+      "path": "data/production/cadengbench_p_1800_v2_two_source_r25/dataset/items/p_fusion360_001442/source/40586_86bc7430_0000.json",
+      "sha256": "942faca765840079a1e329e2e37351c190a63d751030ac864670ebcef937235e"
+    },
+    "base_step": {
+      "bytes": 16479,
+      "path": "data/production/cadengbench_p_1800_v2_two_source_r25/dataset/items/p_fusion360_001442/source/40586_86bc7430_0000.step",
+      "sha256": "ad6dd8d6a6857d353acc7c741b4b4628409a91c2be76c123b98a4f86394677f0"
+    },
+    "edit_binding_qualification": {
+      "bytes": 6654,
+      "path": "data/production/cadengbench_p_1800_v2_two_source_r25/dataset/items/p_fusion360_001442/source/edit_binding_qualification.json",
+      "sha256": "524abb23e5ab375bdfeb1db308c9432fdd6968423885e1d4fc01d02459867d26"
+    },
+    "target_history": {
+      "bytes": 17605,
+      "path": "data/production/cadengbench_p_1800_v2_two_source_r25/dataset/items/p_fusion360_001442/domain/parametric_edits/v2/replay/probe_01_22p352/model.fusion360.json",
+      "sha256": "a9af303490963f41e5e56e2855d3f8cc43be696fcfcaf45afcf767c2b3ae5226"
+    },
+    "target_replay_report": {
+      "bytes": 7158,
+      "path": "data/production/cadengbench_p_1800_v2_two_source_r25/dataset/items/p_fusion360_001442/domain/parametric_edits/v2/replay/probe_01_22p352/execution.json",
+      "sha256": "2df225a7961f4d18b7ea21f48e426d401d6b72e52ae282c6554622f02f03e09e"
+    },
+    "target_step": {
+      "bytes": 36291,
+      "path": "data/production/cadengbench_p_1800_v2_two_source_r25/dataset/items/p_fusion360_001442/domain/parametric_edits/v2/replay/probe_01_22p352/model.step",
+      "sha256": "b1fbcd60738e370bd60d0a331e342764c10bfb4ac21596f80ddacdf79f678e74"
+    }
+  },
+  "item_id": "p_fusion360_001442",
+  "llm_judge_used": false,
+  "parameter_contract": {
+    "base_value": 20.32,
+    "canonical_unit": "mm",
+    "domain": {
+      "domain_id": "p_fusion360_001442:domain:bootstrap",
+      "lower": {
+        "unit": "mm",
+        "value": 17.272
+      },
+      "upper": {
+        "unit": "mm",
+        "value": 23.368000000000002
+      },
+      "variable": {
+        "key": "extrude_distance",
+        "node_type": "variable",
+        "source": "parameter",
+        "state": "current",
+        "unit": "mm"
+      }
+    },
+    "feature_id": "6407f82c-e2a4-11ea-977d-54bf646e7e1f",
+    "measurement": {
+      "absolute_error": 0.0,
+      "absolute_tolerance": 1e-06,
+      "authority": "D2_verified_replay_geometry",
+      "brep_measurement": {
+        "axis": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "extent_mm": 22.352,
+        "maximum_projection_mm": 22.352,
+        "method": "occt_brep_vertex_directional_extent_v1",
+        "minimum_projection_mm": 0.0,
+        "selector_cardinality": 20,
+        "selector_kind": "all_brep_vertices_projected_to_frozen_extrusion_axis"
+      },
+      "expected_entity_count": 1,
+      "expected_value": 22.352,
+      "extent_multiplier": 1.0,
+      "measured_value": 22.352,
+      "measured_values": [
+        22.352
+      ],
+      "measurement_name": "fusion_extrude_distance_mm:fusion360:6407f82c-e2a4-11ea-977d-54bf646e7e1f:distance",
+      "measurement_status": "measured",
+      "method": "occt_brep_vertex_directional_extent_v1",
+      "observed_entity_count": 1,
+      "reason": "The emitted STEP directional extent independently agrees with the source-bound extrusion distance.",
+      "step_artifact": "data/production/cadengbench_p_1800_v2_two_source_r25/dataset/items/p_fusion360_001442/domain/parametric_edits/v2/replay/probe_01_22p352/model.step",
+      "tolerance_agreement": true,
+      "unit": "mm"
+    },
+    "parameter_id": "fusion360:6407f82c-e2a4-11ea-977d-54bf646e7e1f:distance",
+    "parameter_key": "extrude_distance",
+    "scale_to_canonical": 10.0,
+    "source_pointer": "/entities/6407f82c-e2a4-11ea-977d-54bf646e7e1f/extent_one/distance/value",
+    "source_unit": "cm",
+    "target_value": 22.352,
+    "verified_probe_values": [
+      18.288,
+      22.352
+    ]
+  },
+  "publication_projection": {
+    "candidate_declared_checks_are_scoring_authority": false,
+    "critic_findings_are_scoring_authority": false,
+    "projection_version": "consumer_ready_functional_edit.v1"
+  },
+  "record_type": "deterministic_functional_edit_acceptance",
+  "schema_version": "cadengbench-p.functional-edit-acceptance.v2",
+  "scoring_scope": "bounded_geometry_mediated_functional_edit",
+  "source_key": "fusion360",
+  "status": "verified_compiled"
+}

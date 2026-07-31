@@ -1,0 +1,244 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cadengbench.org/schemas/cadengbench_p_edit_target_oracle_v2.schema.json",
+  "title": "CADEngBench-P deterministic edit target oracle v2",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version", "record_type", "oracle_id", "item_id", "source_key",
+    "status", "authority_boundary", "parameter_contract", "reference_artifacts",
+    "geometry_contract", "preservation_contract", "qualification", "limitations",
+    "llm_judge_used"
+  ],
+  "properties": {
+    "schema_version": {"const": "cadengbench-p.edit-target-oracle.v2"},
+    "record_type": {"const": "deterministic_edit_target_oracle"},
+    "oracle_id": {"type": "string", "minLength": 1},
+    "item_id": {"type": "string", "pattern": "^p_(benchcad|fusion360)_[0-9]{3,}$"},
+    "source_key": {"enum": ["benchcad", "fusion360"]},
+    "status": {"const": "verified"},
+    "authority_boundary": {
+      "type": "object", "additionalProperties": false,
+      "required": [
+        "nominal_geometry_authority", "edit_oracle_authority", "authority_scope",
+        "source_native_execution_used", "independent_occ_reconstruction_used",
+        "generated_cadquery_proxy_used"
+      ],
+      "properties": {
+        "nominal_geometry_authority": {"enum": ["native_cadquery_execution", "source_step"]},
+        "edit_oracle_authority": {"const": "verified_replay"},
+        "authority_scope": {
+          "enum": [
+            "bounded_frozen_parameter_edit_only",
+            "bounded_source_bound_profile_or_extrusion_patch_only"
+          ]
+        },
+        "source_native_execution_used": {"type": "boolean"},
+        "independent_occ_reconstruction_used": {"type": "boolean"},
+        "generated_cadquery_proxy_used": {"const": false}
+      }
+    },
+    "parameter_contract": {
+      "type": "object", "additionalProperties": false,
+      "required": [
+        "parameter_key", "parameter_id", "feature_id", "source_pointer",
+        "source_unit", "canonical_unit", "scale_to_canonical", "base_value",
+        "target_value", "verified_probe_values", "domain", "measurement"
+      ],
+      "properties": {
+        "parameter_key": {"type": "string", "minLength": 1},
+        "parameter_id": {"type": "string", "minLength": 1},
+        "feature_id": {"type": "string", "minLength": 1},
+        "source_pointer": {"type": "string", "minLength": 1},
+        "source_unit": {"type": "string", "minLength": 1},
+        "canonical_unit": {"const": "mm"},
+        "scale_to_canonical": {"type": "number", "exclusiveMinimum": 0},
+        "base_value": {"type": "number"},
+        "target_value": {"type": "number"},
+        "verified_probe_values": {"type": "array", "minItems": 2, "items": {"type": "number"}},
+        "domain": {"type": "object", "minProperties": 3},
+        "measurement": {"type": "object"}
+      }
+    },
+    "reference_artifacts": {
+      "type": "object", "additionalProperties": false,
+      "required": ["base_history", "base_step", "target_step", "target_history", "target_replay_report", "edit_binding_qualification"],
+      "properties": {
+        "base_history": {"$ref": "#/$defs/artifact"},
+        "base_step": {"$ref": "#/$defs/artifact"},
+        "target_step": {"$ref": "#/$defs/artifact"},
+        "target_history": {"$ref": "#/$defs/artifact"},
+        "target_replay_report": {"$ref": "#/$defs/artifact"},
+        "edit_binding_qualification": {"$ref": "#/$defs/artifact"}
+      }
+    },
+    "geometry_contract": {
+      "type": "object", "additionalProperties": false,
+      "required": ["target_step_is_hidden_scoring_reference", "valid_solid_required", "solid_count_preserved", "geometry_change_required", "observed_delta", "comparison_protocol", "topology_partition_policy"],
+      "properties": {
+        "target_step_is_hidden_scoring_reference": {"const": true},
+        "valid_solid_required": {"const": true},
+        "solid_count_preserved": {"const": true},
+        "geometry_change_required": {"const": true},
+        "observed_delta": {"type": "object"},
+        "comparison_protocol": {
+          "type": "object", "additionalProperties": false,
+          "required": ["method", "checks", "tolerance_profile"],
+          "properties": {
+            "method": {"const": "canonical_step_solid_set_comparison_v1"},
+            "checks": {"type": "array", "minItems": 4, "uniqueItems": true, "items": {"type": "string"}},
+            "tolerance_profile": {"const": "cadengbench-p-default-mm-v1"}
+          }
+        },
+        "topology_partition_policy": {"const": "diagnostic_not_persistent_identity"}
+      }
+    },
+    "preservation_contract": {
+      "type": "object", "additionalProperties": false,
+      "required": ["non_target_source_unchanged", "integrity_method", "baseline_masked_sha256", "edited_masked_sha256", "operation_sequence_sha256", "constraint_system_sha256"],
+      "properties": {
+        "non_target_source_unchanged": {"const": true},
+        "integrity_method": {"type": "string", "minLength": 1},
+        "baseline_masked_sha256": {"$ref": "#/$defs/sha256"},
+        "edited_masked_sha256": {"$ref": "#/$defs/sha256"},
+        "operation_sequence_sha256": {"$ref": "#/$defs/sha256"},
+        "constraint_system_sha256": {"$ref": "#/$defs/sha256"}
+      }
+    },
+    "qualification": {
+      "type": "object", "additionalProperties": false,
+      "required": ["all_probe_replays_verified", "target_replay_verified", "nominal_source_equivalence_required", "nominal_source_equivalence_verified", "negative_conditions", "evaluator_uses_llm_judge"],
+      "properties": {
+        "all_probe_replays_verified": {"const": true},
+        "target_replay_verified": {"const": true},
+        "nominal_source_equivalence_required": {"type": "boolean"},
+        "nominal_source_equivalence_verified": {"type": "boolean"},
+        "negative_conditions": {"type": "array", "minItems": 5, "uniqueItems": true, "items": {"type": "string"}},
+        "evaluator_uses_llm_judge": {"const": false}
+      }
+    },
+    "limitations": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
+    "llm_judge_used": {"const": false}
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"source_key": {"const": "benchcad"}}},
+      "then": {"properties": {"authority_boundary": {"properties": {
+        "nominal_geometry_authority": {"const": "native_cadquery_execution"},
+        "authority_scope": {"const": "bounded_frozen_parameter_edit_only"},
+        "source_native_execution_used": {"const": true},
+        "independent_occ_reconstruction_used": {"const": false}
+      }}}}
+    },
+    {
+      "if": {"properties": {"source_key": {"const": "fusion360"}}},
+      "then": {"properties": {
+        "authority_boundary": {"properties": {
+          "nominal_geometry_authority": {"const": "source_step"},
+          "authority_scope": {"const": "bounded_source_bound_profile_or_extrusion_patch_only"},
+          "source_native_execution_used": {"const": false},
+          "independent_occ_reconstruction_used": {"const": true}
+        }},
+        "parameter_contract": {"properties": {
+          "source_unit": {"const": "cm"},
+          "scale_to_canonical": {"const": 10},
+          "source_pointer": {"pattern": "^/entities/.+/(extent_one/distance/value|profiles/.+/loops/[0-9]+/profile_curves/[0-9]+/radius)$"},
+          "measurement": {"oneOf": [
+            {"required": [
+              "authority", "method", "measurement_status", "expected_value",
+              "measured_value", "expected_entity_count", "observed_entity_count",
+              "absolute_tolerance", "absolute_error", "tolerance_agreement",
+              "step_artifact", "brep_measurement", "extent_multiplier"
+            ], "properties": {
+              "authority": {"const": "D2_verified_replay_geometry"},
+              "method": {"const": "occt_brep_vertex_directional_extent_v1"},
+              "measurement_status": {"const": "measured"},
+              "expected_value": {"type": "number"},
+              "measured_value": {"type": "number"},
+              "expected_entity_count": {"const": 1},
+              "observed_entity_count": {"const": 1},
+              "absolute_tolerance": {"type": "number", "exclusiveMinimum": 0},
+              "absolute_error": {"type": "number", "minimum": 0},
+              "tolerance_agreement": {"const": true},
+              "step_artifact": {"type": "string", "minLength": 1},
+              "brep_measurement": {
+                "type": "object",
+                "required": ["method", "extent_mm"],
+                "properties": {
+                  "method": {"const": "occt_brep_vertex_directional_extent_v1"},
+                  "extent_mm": {"type": "number", "exclusiveMinimum": 0}
+                }
+              },
+              "extent_multiplier": {"type": "number", "exclusiveMinimum": 0}
+            }},
+            {"required": [
+              "authority", "method", "measurement_status", "expected_value",
+              "measured_value", "expected_entity_count", "observed_entity_count",
+              "absolute_tolerance", "absolute_error", "tolerance_agreement",
+              "step_artifact", "evidence_kind", "value_origin",
+              "direct_brep_parameter_readback", "source_assignment_evidence",
+              "target_step_sha256"
+            ], "properties": {
+              "authority": {"const": "D2_verified_replay"},
+              "method": {"const": "qualified_source_assignment_and_hidden_target_brep_v1"},
+              "measurement_status": {"const": "measured"},
+              "expected_value": {"type": "number"},
+              "measured_value": {"type": "number"},
+              "expected_entity_count": {"const": 1},
+              "observed_entity_count": {"const": 1},
+              "absolute_tolerance": {"type": "number", "exclusiveMinimum": 0},
+              "absolute_error": {"type": "number", "minimum": 0},
+              "tolerance_agreement": {"const": true},
+              "step_artifact": {"type": "string", "minLength": 1},
+              "evidence_kind": {"const": "source_assignment_and_geometry_realization"},
+              "value_origin": {"const": "source_json_pointer_assignment_not_brep_readback"},
+              "direct_brep_parameter_readback": {"const": false},
+              "source_assignment_evidence": {"$ref": "#/$defs/source_assignment_evidence"},
+              "target_step_sha256": {"$ref": "#/$defs/sha256"}
+            }}
+          ]}
+        }}
+      }}
+    }
+  ],
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "source_assignment_evidence": {
+      "type": "object",
+      "required": [
+        "status", "assignments", "all_assignments_verified",
+        "proves_named_target_geometry"
+      ],
+      "properties": {
+        "status": {"const": "source_json_pointer_assignment_verified"},
+        "assignments": {
+          "type": "array", "minItems": 1, "maxItems": 1,
+          "items": {
+            "type": "object",
+            "required": [
+              "json_pointer", "expected_value", "observed_value", "exact_match"
+            ],
+            "properties": {
+              "json_pointer": {"type": "string", "pattern": "^/"},
+              "expected_value": {"type": "number"},
+              "observed_value": {"type": "number"},
+              "exact_match": {"const": true}
+            }
+          }
+        },
+        "all_assignments_verified": {"const": true},
+        "proves_named_target_geometry": {"const": false},
+        "artifact": {"type": "string", "minLength": 1}
+      }
+    },
+    "artifact": {
+      "type": "object", "additionalProperties": false,
+      "required": ["path", "sha256", "bytes"],
+      "properties": {
+        "path": {"type": "string", "pattern": "^[^/].+"},
+        "sha256": {"$ref": "#/$defs/sha256"},
+        "bytes": {"type": "integer", "minimum": 1}
+      }
+    }
+  }
+}

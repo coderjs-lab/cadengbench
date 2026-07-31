@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cadengbench.org/schemas/cadengbench-p.evaluator-case.v1.json",
+  "title": "CADEngBench-P evaluator case v1",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "item_id",
+    "source_family",
+    "protocol",
+    "source_item_root",
+    "task_contract",
+    "requirements",
+    "parameter_system",
+    "dfm",
+    "functional_edit",
+    "artifacts",
+    "evaluator_profile",
+    "profile_hash",
+    "case_hash"
+  ],
+  "properties": {
+    "schema_version": {"const": "cadengbench-p.evaluator-case.v1"},
+    "item_id": {"type": "string", "minLength": 1},
+    "source_family": {"enum": ["benchcad", "fusion360_reconstruction"]},
+    "protocol": {"enum": ["zero_to_cad", "functional_edit"]},
+    "source_item_root": {"type": "string", "minLength": 1},
+    "task_contract": {"type": "object"},
+    "requirements": {"type": "array"},
+    "parameter_system": {"type": "object"},
+    "dfm": {"type": "object"},
+    "functional_edit": {"type": "object"},
+    "artifacts": {"type": "object"},
+    "evaluator_profile": {"type": "object"},
+    "profile_hash": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "case_hash": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+  },
+  "additionalProperties": false
+}

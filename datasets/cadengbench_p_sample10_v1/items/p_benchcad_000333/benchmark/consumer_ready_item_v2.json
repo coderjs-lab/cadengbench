@@ -1,0 +1,674 @@
+{
+  "annotation_flags": [
+    "benchmark_authored_engineering_context",
+    "source_standard_unverified",
+    "dfm_measurement_only_no_threshold",
+    "benchmark_authored_load_case_candidate"
+  ],
+  "annotations": {
+    "engineering_task": {
+      "design": {
+        "application_context": "electrical enclosure assembly",
+        "design_freedom": [
+          "hole diameter"
+        ],
+        "goal": "provide threaded interface for securing components"
+      },
+      "function": {
+        "functional_interpretation": "transmit axial load through threaded bore",
+        "interfaces": [
+          {
+            "description": "hexagonal flange for torque transmission",
+            "interface_id": "interface_1",
+            "interface_kind": "mounting"
+          },
+          {
+            "description": "internal threaded bore for screw engagement",
+            "interface_id": "interface_2",
+            "interface_kind": "fastening"
+          }
+        ],
+        "non_requirements": [
+          "no surface finish requirement"
+        ]
+      },
+      "functional_edit": {
+        "engineering_objective": "increase clearance for specified fastener screw while retaining location",
+        "operating_condition": "standard specified fastener screw engagement"
+      },
+      "load_case": {
+        "application_region": "threaded bore",
+        "constraint_region": "hex flange",
+        "direction": "axial",
+        "duty": "static",
+        "load_type": "torque",
+        "magnitude": 15.0,
+        "unit": "N_mm"
+      },
+      "material_process": {
+        "material_family": "aluminum_alloy",
+        "material_specification": "6061 T6",
+        "process_family": "casting",
+        "process_variant": "sand casting"
+      },
+      "part_identity": {
+        "category": "mounting hardware",
+        "title": "hex standoff"
+      },
+      "standards": [
+        {
+          "requirement_category": "thread",
+          "standard_id": "ISO 272"
+        },
+        {
+          "requirement_category": "safety",
+          "standard_id": "ISO 4762"
+        }
+      ]
+    },
+    "visual_grounding": {
+      "affordances": [
+        {
+          "affordance_kind": "locating",
+          "description": "Hexagonal body allows wrench engagement for torque application",
+          "view_ids": [
+            "orbit_090",
+            "orbit_270"
+          ],
+          "visibility": "visible"
+        },
+        {
+          "affordance_kind": "mounting",
+          "description": "Central through-hole enables shaft or bolt passage",
+          "view_ids": [
+            "orbit_090",
+            "orbit_270"
+          ],
+          "visibility": "visible"
+        },
+        {
+          "affordance_kind": "locating",
+          "description": "Cylindrical protrusion provides alignment or bearing surface",
+          "view_ids": [
+            "orbit_000",
+            "orbit_180"
+          ],
+          "visibility": "visible"
+        }
+      ],
+      "features": [
+        {
+          "description": "Hexagonal prism body with flat parallel faces",
+          "feature_kind": "base_form",
+          "view_ids": [
+            "orbit_090",
+            "orbit_270"
+          ],
+          "visibility": "visible"
+        },
+        {
+          "description": "Central cylindrical through-hole passing through hexagonal body",
+          "feature_kind": "opening",
+          "view_ids": [
+            "orbit_090",
+            "orbit_270"
+          ],
+          "visibility": "visible"
+        },
+        {
+          "description": "Cylindrical protrusion extending from one hexagonal end face",
+          "feature_kind": "boss_or_protrusion",
+          "view_ids": [
+            "orbit_000",
+            "orbit_180"
+          ],
+          "visibility": "visible"
+        },
+        {
+          "description": "Chamfered edges on the hexagonal body perimeter",
+          "feature_kind": "fillet_or_chamfer",
+          "view_ids": [
+            "orbit_045",
+            "orbit_135"
+          ],
+          "visibility": "visible"
+        },
+        {
+          "description": "Raised cylindrical collar on the protrusion end",
+          "feature_kind": "boss_or_protrusion",
+          "view_ids": [
+            "orbit_top",
+            "orbit_bottom"
+          ],
+          "visibility": "visible"
+        },
+        {
+          "description": "Circular opening at the base of the protrusion",
+          "feature_kind": "opening",
+          "view_ids": [
+            "orbit_000",
+            "orbit_180"
+          ],
+          "visibility": "visible"
+        }
+      ],
+      "global_form": "Hexagonal block with central through-hole and cylindrical end protrusion",
+      "recommended_prompt_profile": "text_only"
+    }
+  },
+  "consumer_contract_id": "cadengbench-p.consumer-driven-annotation.v2",
+  "evaluator_inputs": {
+    "functional_edit": {
+      "effect_proxy": {
+        "absolute_tolerance": 1e-06,
+        "comparator": "within_tolerance",
+        "expected_direction": "increase",
+        "measurement_method": "native_parameter_replay",
+        "metric_kind": "hole_diameter",
+        "target_value": 17.457,
+        "unit": "mm"
+      },
+      "llm_judge_used": false,
+      "non_target_source_unchanged": true,
+      "preservation_scope": [
+        "valid_solid",
+        "solid_count",
+        "non_target_parameters"
+      ],
+      "relation_checks": [],
+      "solid_count_preserved": true,
+      "target": {
+        "base_value": 15.87,
+        "feature_id": "cadquery:hole:0",
+        "measurement": {
+          "absolute_tolerance": 1e-06,
+          "measurement_name": "cadquery_parameter_mm:hole_arg_0",
+          "method": "cadquery_ast_bound_literal_verified_replay_v1",
+          "unit": "mm"
+        },
+        "oracle_id": "p_benchcad_000333:edit-target:v2",
+        "parameter_id": "cadquery:line:13:col:10",
+        "parameter_key": "hole_arg_0",
+        "target_value": 17.457,
+        "unit": "mm",
+        "valid_range": {
+          "lower": 13.4895,
+          "unit": "mm",
+          "upper": 18.250500000000002
+        }
+      },
+      "valid_solid_required": true
+    },
+    "geometry": {
+      "bbox": {
+        "diagonal": 57.4183877,
+        "xlen": 27.714,
+        "xmax": 13.857,
+        "xmin": -13.857,
+        "ylen": 44.19,
+        "ymax": 4.53,
+        "ymin": -39.66,
+        "zlen": 24.001028,
+        "zmax": 12.000514,
+        "zmin": -12.000514
+      },
+      "body_count": 1,
+      "geometry_physics": {
+        "bbox_fill_ratio": 0.666988,
+        "bbox_volume_mm3": 29393.6188127,
+        "center_of_mass_interpretation": "volume_centroid_uniform_density_only",
+        "characteristic_length_mm": 26.9643745,
+        "failure_code": null,
+        "geometric_inertia_tensor_mm5": [
+          [
+            3472844.8666217,
+            0.0,
+            1e-07
+          ],
+          [
+            0.0,
+            1588305.9020633,
+            0.0
+          ],
+          [
+            1e-07,
+            0.0,
+            3472844.8666218
+          ]
+        ],
+        "method": "occ_volume_properties_v1",
+        "physical_mass_status": "requires_verified_material_density",
+        "principal_axes": [
+          [
+            0.518161363,
+            0.0,
+            0.855282878
+          ],
+          [
+            0.855282878,
+            0.0,
+            -0.518161363
+          ],
+          [
+            -0.0,
+            1.0,
+            -0.0
+          ]
+        ],
+        "principal_geometric_moments_mm5": [
+          3472844.8666219,
+          3472844.8666216,
+          1588305.9020633
+        ],
+        "schema_version": "cadengbench-p.geometry-physics.v1",
+        "status": "complete",
+        "surface_area_mm2": 4878.6480391,
+        "surface_area_to_volume_per_mm": 0.2488447,
+        "units": {
+          "area": "mm2",
+          "geometric_inertia": "mm5",
+          "length": "mm",
+          "volume": "mm3"
+        },
+        "volume_centroid_mm": [
+          0.0,
+          -17.3903271,
+          0.0
+        ],
+        "volume_mm3": 19605.1896806
+      },
+      "hole_inventory": {
+        "hole_count": 1,
+        "holes": [
+          {
+            "axis_direction": [
+              0.0,
+              1.0,
+              0.0
+            ],
+            "classification": "hole_candidate",
+            "depth": 6.8,
+            "depth_to_diameter": 0.4284814,
+            "diameter": 15.87,
+            "face_id": "face_cae943a05c5d",
+            "feature_id": "hole_cae943a05c5d",
+            "internal": true
+          }
+        ],
+        "recognizer": "internal_near_full_cylindrical_face_v1",
+        "recognizer_scope": "internal_near_full_cylindrical_faces"
+      },
+      "topology_summary": {
+        "edge_count": 26,
+        "face_count": 13,
+        "is_valid": true,
+        "shell_count": 1,
+        "solid_count": 1,
+        "vertex_count": 17
+      }
+    },
+    "manufacturing": {
+      "applicable_standards": [
+        {
+          "basis": "source_explicit_label",
+          "compliance_claimed": false,
+          "requirement_category": "thread",
+          "standard_id": "ISO 272",
+          "verification_status": "source_explicit_unverified"
+        },
+        {
+          "basis": "benchmark_authored_candidate",
+          "compliance_claimed": false,
+          "requirement_category": "safety",
+          "standard_id": "ISO 4762",
+          "verification_status": "candidate"
+        }
+      ],
+      "dfm_requirements": [
+        {
+          "applicability": "requires_frozen_process_material_condition",
+          "check_id": "minimum_wall_thickness",
+          "compliance_status": "not_evaluated_no_frozen_applicable_threshold",
+          "hole_count": null,
+          "maximum_depth_to_diameter": null,
+          "measurement_id": "p_benchcad_000333:dfm:wall_thickness_proxy",
+          "measurement_kind": "geometry_proxy_not_global_thickness_solution",
+          "minimum_candidate_mm": 1.13,
+          "minimum_diameter_mm": null,
+          "threshold": null
+        },
+        {
+          "applicability": "requires_frozen_process_tool_or_process_capability",
+          "check_id": "minimum_hole_geometry",
+          "compliance_status": "not_evaluated_no_frozen_applicable_threshold",
+          "hole_count": 1,
+          "maximum_depth_to_diameter": 0.4284814,
+          "measurement_id": "p_benchcad_000333:dfm:minimum_hole_geometry",
+          "measurement_kind": null,
+          "minimum_candidate_mm": null,
+          "minimum_diameter_mm": 15.87,
+          "threshold": null
+        }
+      ],
+      "llm_judge_used": false,
+      "material_process": {
+        "basis": "benchmark_authored_candidate",
+        "material_basis": "benchmark_authored_candidate",
+        "material_family": "aluminum_alloy",
+        "material_specification": "6061 T6",
+        "material_verification_status": "candidate",
+        "process_basis": "benchmark_authored_candidate",
+        "process_family": "casting",
+        "process_variant": "sand casting",
+        "process_verification_status": "candidate"
+      },
+      "recommended_check_families": [
+        {
+          "applicability": "selected_process_family",
+          "check_id": "minimum_wall_thickness",
+          "measurement_status": "deterministic_measurement_present"
+        },
+        {
+          "applicability": "selected_process_family",
+          "check_id": "draft_angle",
+          "measurement_status": "annotation_only_no_extractor"
+        },
+        {
+          "applicability": "selected_process_family",
+          "check_id": "undercut",
+          "measurement_status": "annotation_only_no_extractor"
+        },
+        {
+          "applicability": "selected_process_family",
+          "check_id": "uniform_wall",
+          "measurement_status": "annotation_only_no_extractor"
+        }
+      ]
+    },
+    "parametric": {
+      "constraint_relations": [],
+      "operation_sequence": [
+        {
+          "operation_id": "op:line_4:Workplane",
+          "operation_type": "Workplane",
+          "sequence_index": 0
+        },
+        {
+          "operation_id": "op:line_5:polygon",
+          "operation_type": "polygon",
+          "sequence_index": 1
+        },
+        {
+          "operation_id": "op:line_6:extrude",
+          "operation_type": "extrude",
+          "sequence_index": 2
+        },
+        {
+          "operation_id": "op:line_7:faces",
+          "operation_type": "faces",
+          "sequence_index": 3
+        },
+        {
+          "operation_id": "op:line_7:workplane",
+          "operation_type": "workplane",
+          "sequence_index": 4
+        },
+        {
+          "operation_id": "op:line_8:circle",
+          "operation_type": "circle",
+          "sequence_index": 5
+        },
+        {
+          "operation_id": "op:line_9:extrude",
+          "operation_type": "extrude",
+          "sequence_index": 6
+        },
+        {
+          "operation_id": "op:line_10:edges",
+          "operation_type": "edges",
+          "sequence_index": 7
+        },
+        {
+          "operation_id": "op:line_11:chamfer",
+          "operation_type": "chamfer",
+          "sequence_index": 8
+        },
+        {
+          "operation_id": "op:line_12:faces",
+          "operation_type": "faces",
+          "sequence_index": 9
+        },
+        {
+          "operation_id": "op:line_12:workplane",
+          "operation_type": "workplane",
+          "sequence_index": 10
+        },
+        {
+          "operation_id": "op:line_13:hole",
+          "operation_type": "hole",
+          "sequence_index": 11
+        },
+        {
+          "operation_id": "op:line_17:show_object",
+          "operation_type": "show_object",
+          "sequence_index": 12
+        }
+      ],
+      "parameters": [
+        {
+          "base_value": 15.87,
+          "feature_id": "cadquery:hole:0",
+          "parameter_id": "cadquery:line:13:col:10",
+          "parameter_key": "hole_arg_0",
+          "target_value": 17.457,
+          "unit": "mm",
+          "valid_range": {
+            "lower": 13.4895,
+            "unit": "mm",
+            "upper": 18.250500000000002
+          }
+        },
+        {
+          "editable": true,
+          "parameter_id": "op:line_11:chamfer:arg_0",
+          "unit": "mm_or_count_needs_semantic_binding"
+        },
+        {
+          "editable": true,
+          "parameter_id": "op:line_13:hole:arg_0",
+          "unit": "mm_or_count_needs_semantic_binding"
+        },
+        {
+          "editable": true,
+          "parameter_id": "op:line_13:hole:kw_depth",
+          "unit": "unknown"
+        },
+        {
+          "editable": true,
+          "parameter_id": "op:line_5:polygon:arg_0",
+          "unit": "mm_or_count_needs_semantic_binding"
+        },
+        {
+          "editable": true,
+          "parameter_id": "op:line_5:polygon:arg_1",
+          "unit": "mm_or_count_needs_semantic_binding"
+        },
+        {
+          "editable": true,
+          "parameter_id": "op:line_6:extrude:arg_0",
+          "unit": "mm_or_count_needs_semantic_binding"
+        },
+        {
+          "editable": true,
+          "parameter_id": "op:line_8:circle:arg_0",
+          "unit": "mm_or_count_needs_semantic_binding"
+        },
+        {
+          "editable": true,
+          "parameter_id": "op:line_9:extrude:arg_0",
+          "unit": "mm_or_count_needs_semantic_binding"
+        }
+      ]
+    },
+    "physics": {
+      "fea_readiness": {
+        "missing_inputs": [
+          "verified_condition_specific_material_properties",
+          "geometric_boundary_condition_bindings",
+          "mesh_and_solver_profile"
+        ],
+        "simulation_result_present": false,
+        "status": "geometry_and_scenario_only"
+      },
+      "functional_interfaces": [
+        {
+          "description": "hexagonal flange for torque transmission",
+          "interface_id": "interface_1",
+          "interface_kind": "mounting"
+        },
+        {
+          "description": "internal threaded bore for screw engagement",
+          "interface_id": "interface_2",
+          "interface_kind": "fastening"
+        }
+      ],
+      "geometry_properties": {
+        "bbox_fill_ratio": 0.666988,
+        "bbox_volume_mm3": 29393.6188127,
+        "center_of_mass_interpretation": "volume_centroid_uniform_density_only",
+        "characteristic_length_mm": 26.9643745,
+        "failure_code": null,
+        "geometric_inertia_tensor_mm5": [
+          [
+            3472844.8666217,
+            0.0,
+            1e-07
+          ],
+          [
+            0.0,
+            1588305.9020633,
+            0.0
+          ],
+          [
+            1e-07,
+            0.0,
+            3472844.8666218
+          ]
+        ],
+        "method": "occ_volume_properties_v1",
+        "physical_mass_status": "requires_verified_material_density",
+        "principal_axes": [
+          [
+            0.518161363,
+            0.0,
+            0.855282878
+          ],
+          [
+            0.855282878,
+            0.0,
+            -0.518161363
+          ],
+          [
+            -0.0,
+            1.0,
+            -0.0
+          ]
+        ],
+        "principal_geometric_moments_mm5": [
+          3472844.8666219,
+          3472844.8666216,
+          1588305.9020633
+        ],
+        "schema_version": "cadengbench-p.geometry-physics.v1",
+        "status": "complete",
+        "surface_area_mm2": 4878.6480391,
+        "surface_area_to_volume_per_mm": 0.2488447,
+        "units": {
+          "area": "mm2",
+          "geometric_inertia": "mm5",
+          "length": "mm",
+          "volume": "mm3"
+        },
+        "volume_centroid_mm": [
+          0.0,
+          -17.3903271,
+          0.0
+        ],
+        "volume_mm3": 19605.1896806
+      },
+      "llm_judge_used": false,
+      "load_case": {
+        "application_region": "threaded bore",
+        "basis": "benchmark_authored_candidate",
+        "constraint_region": "hex flange",
+        "direction": "axial",
+        "duty": "static",
+        "load_type": "torque",
+        "magnitude": 15.0,
+        "physical_performance_verified": false,
+        "unit": "N_mm",
+        "validation_status": "unit_checked_candidate"
+      },
+      "material_context": {
+        "material_basis": "benchmark_authored_candidate",
+        "material_family": "aluminum_alloy",
+        "material_specification": "6061 T6",
+        "material_verification_status": "candidate"
+      },
+      "visual_affordances": [
+        {
+          "affordance_kind": "locating",
+          "description": "Hexagonal body allows wrench engagement for torque application",
+          "view_ids": [
+            "orbit_090",
+            "orbit_270"
+          ],
+          "visibility": "visible"
+        },
+        {
+          "affordance_kind": "mounting",
+          "description": "Central through-hole enables shaft or bolt passage",
+          "view_ids": [
+            "orbit_090",
+            "orbit_270"
+          ],
+          "visibility": "visible"
+        },
+        {
+          "affordance_kind": "locating",
+          "description": "Cylindrical protrusion provides alignment or bearing surface",
+          "view_ids": [
+            "orbit_000",
+            "orbit_180"
+          ],
+          "visibility": "visible"
+        }
+      ]
+    }
+  },
+  "item_id": "p_benchcad_000333",
+  "migration_sources": [],
+  "model_facing": {
+    "functional_edit": {
+      "input_assets": {
+        "canonical_geometry_artifact": "data/production/cadengbench_p_1800_v2_two_source_r25/dataset/items/p_benchcad_000333/source/generated_from_cadquery.step",
+        "native_history_artifact": "data/production/cadengbench_p_1800_v2_two_source_r25/dataset/items/p_benchcad_000333/source/cadquery.py",
+        "visual_assets": []
+      },
+      "user_prompt": "Modify the existing editable CAD model for this use case: electrical enclosure assembly Intended function: transmit axial load through threaded bore Functional interfaces: mounting: hexagonal flange for torque transmission; fastening: internal threaded bore for screw engagement Operating condition: standard specified fastener screw engagement Design condition: 15 N_mm torque applied axial at threaded bore, constrained at hex flange, static duty. Set parameter `hole_arg_0` from 15.87 mm to 17.457 mm so that increase clearance for specified fastener screw while retaining location Measure the intended effect with hole diameter within_tolerance 17.457 mm; expected direction: increase. Use the benchmark scenario material/process context 6061 T6 / sand casting (aluminum alloy / casting). Preserve valid solid, solid count, non target parameters. Geometric acceptance does not certify service performance."
+    },
+    "zero_to_cad": {
+      "system_prompt": "configs/prompts/zero_to_cad/model_under_evaluation.system.v2.txt",
+      "user_prompt": "Design an editable parametric CAD model of hex standoff (mounting hardware). Goal: provide threaded interface for securing components Application context: electrical enclosure assembly Required global form: Hexagonal block with central through-hole and cylindrical end protrusion Produce 1 solid body or bodies with nominal envelope 27.714 x 44.19 x 24.001028 mm. Visible features: base form: Hexagonal prism body with flat parallel faces [views: orbit_090, orbit_270; visibility: visible]. opening: Central cylindrical through-hole passing through hexagonal body [views: orbit_090, orbit_270; visibility: visible]. boss or protrusion: Cylindrical protrusion extending from one hexagonal end face [views: orbit_000, orbit_180; visibility: visible]. fillet or chamfer: Chamfered edges on the hexagonal body perimeter [views: orbit_045, orbit_135; visibility: visible]. boss or protrusion: Raised cylindrical collar on the protrusion end [views: orbit_top, orbit_bottom; visibility: visible]. opening: Circular opening at the base of the protrusion [views: orbit_000, orbit_180; visibility: visible]. Functional interpretation: transmit axial load through threaded bore Interfaces: interface_1 mounting: hexagonal flange for torque transmission interface_2 fastening: internal threaded bore for screw engagement. Visual affordances: locating: Hexagonal body allows wrench engagement for torque application [views: orbit_090, orbit_270; visibility: visible]. mounting: Central through-hole enables shaft or bolt passage [views: orbit_090, orbit_270; visibility: visible]. locating: Cylindrical protrusion provides alignment or bearing surface [views: orbit_000, orbit_180; visibility: visible]. Design condition: 15 N_mm torque applied axial at threaded bore, constrained at hex flange, static duty. Material/process context: 6061 T6 / sand casting (aluminum alloy / casting). DFM priorities: minimum wall thickness, draft angle, undercut, uniform wall. Design freedom: hole diameter Explicit non-requirements: no surface finish requirement Use named parameters for the declared dimensions and preserve the supplied deterministic relations.",
+      "visual_assets": []
+    }
+  },
+  "schema_version": "cadengbench-p.consumer-ready-item.v2",
+  "source": {
+    "canonical_geometry_artifact": "data/production/cadengbench_p_1800_v2_two_source_r25/dataset/items/p_benchcad_000333/source/generated_from_cadquery.step",
+    "native_history_artifact": "data/production/cadengbench_p_1800_v2_two_source_r25/dataset/items/p_benchcad_000333/source/cadquery.py",
+    "source_dataset": "BenchCAD",
+    "source_key": "benchcad",
+    "source_record_id": "hex_standoff_009993_s20260505"
+  }
+}

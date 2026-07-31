@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+  <g id="hlr-root" transform="scale(270.3105590062112,-270.3105590062112) translate(1.8941176470588235,-1.8941176470588235)" stroke-width="0.0031445312499999998" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <g id="visible-sharp" stroke="#17212b">
+      <path d="M1.61,-1.61 L-1.61,-1.61 " />
+      <path d="M1.61,-1.61 L1.61,1.61 " />
+      <path d="M1.61,1.61 L-1.61,1.61 " />
+      <path d="M-1.61,-1.61 L-1.61,1.61 " />
+    </g>
+    <g id="visible-smooth" stroke="#17212b">
+
+    </g>
+    <g id="visible-sewn" stroke="#17212b">
+
+    </g>
+    <g id="visible-outline" stroke="#17212b">
+
+    </g>
+    <g id="hidden-sharp" stroke="#8a949d" stroke-dasharray="0.012578124999999999,0.012578124999999999">
+      <path d="M1.61,-1.61 L-1.61,-1.61 " />
+      <path d="M1.61,-1.61 L1.61,1.61 " />
+      <path d="M1.61,1.61 L-1.61,1.61 " />
+      <path d="M-1.61,-1.61 L-1.61,1.61 " />
+    </g>
+    <g id="hidden-smooth" stroke="#8a949d" stroke-dasharray="0.012578124999999999,0.012578124999999999">
+
+    </g>
+    <g id="hidden-sewn" stroke="#8a949d" stroke-dasharray="0.012578124999999999,0.012578124999999999">
+
+    </g>
+    <g id="hidden-outline" stroke="#8a949d" stroke-dasharray="0.012578124999999999,0.012578124999999999">
+
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,61 @@
+{
+  "item_id": "p_benchcad_000338",
+  "output_status": "complete",
+  "payload": {
+    "design": {
+      "application_context": "electrical equipment chassis assembly",
+      "design_freedom": [
+        "clearance for fastener head and nut"
+      ],
+      "goal": "provide threaded mounting interface"
+    },
+    "function": {
+      "functional_interpretation": "transmit axial load between chassis and component",
+      "interfaces": [
+        {
+          "description": "threaded bore for specified fastener",
+          "interface_id": "interface_1",
+          "interface_kind": "mounting"
+        }
+      ],
+      "non_requirements": [
+        "no sealing required"
+      ]
+    },
+    "functional_edit": {
+      "engineering_objective": "increase internal thread diameter for improved fastener clearance and reduced stripping risk",
+      "operating_condition": "standard assembly torque"
+    },
+    "load_case": {
+      "application_region": "threaded bore",
+      "constraint_region": "hex body",
+      "direction": "axial",
+      "duty": "static",
+      "load_type": "force",
+      "magnitude": 500.0,
+      "unit": "N"
+    },
+    "material_process": {
+      "material_family": "aluminum_alloy",
+      "material_specification": "6061 T6",
+      "process_family": "casting",
+      "process_variant": "sand casting"
+    },
+    "part_identity": {
+      "category": "mechanical fastener",
+      "title": "hex standoff"
+    },
+    "standards": [
+      {
+        "requirement_category": "thread",
+        "standard_id": "ISO 272"
+      },
+      {
+        "requirement_category": "general_tolerance",
+        "standard_id": "ISO 4775"
+      }
+    ]
+  },
+  "role_id": "engineering_task_author",
+  "schema_version": "cadengbench-p.engineering-task-annotation.v3"
+}

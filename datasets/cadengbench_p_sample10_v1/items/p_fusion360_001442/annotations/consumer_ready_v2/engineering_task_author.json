@@ -1,0 +1,57 @@
+{
+  "item_id": "p_fusion360_001442",
+  "output_status": "complete",
+  "payload": {
+    "design": {
+      "application_context": "precision assembly interface",
+      "design_freedom": [
+        "maintain radial location"
+      ],
+      "goal": "increase axial clearance"
+    },
+    "function": {
+      "functional_interpretation": "axial spacing and load transfer",
+      "interfaces": [
+        {
+          "description": "cylindrical surface interface",
+          "interface_id": "interface_1",
+          "interface_kind": "mounting"
+        }
+      ],
+      "non_requirements": [
+        "no sealing required"
+      ]
+    },
+    "functional_edit": {
+      "engineering_objective": "accommodate thermal expansion and assembly tolerance stack-up",
+      "operating_condition": "axial clearance increase"
+    },
+    "load_case": {
+      "application_region": "full cylindrical face",
+      "constraint_region": "mounting flange",
+      "direction": "axial",
+      "duty": "static",
+      "load_type": "pressure",
+      "magnitude": 0.5,
+      "unit": "MPa"
+    },
+    "material_process": {
+      "material_family": "aluminum_alloy",
+      "material_specification": "6061 T6",
+      "process_family": "casting",
+      "process_variant": "sand casting"
+    },
+    "part_identity": {
+      "category": "mechanical spacer",
+      "title": "cylindrical spacer"
+    },
+    "standards": [
+      {
+        "requirement_category": "material",
+        "standard_id": "ASTM B209"
+      }
+    ]
+  },
+  "role_id": "engineering_task_author",
+  "schema_version": "cadengbench-p.engineering-task-annotation.v3"
+}

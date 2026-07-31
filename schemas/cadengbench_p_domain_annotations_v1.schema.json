@@ -1,0 +1,834 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cadengbench.org/schemas/cadengbench_p_domain_annotations_v1.schema.json",
+  "title": "CADEngBench-P v1 parametric-edit or manufacturing annotation artifact",
+  "oneOf": [
+    {"$ref": "#/$defs/parametricEdit"},
+    {"$ref": "#/$defs/manufacturing"}
+  ],
+  "$defs": {
+    "namedTargetMeasurement": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "measurement_name", "measurement_status", "method", "unit",
+        "expected_value", "measured_value", "measured_values",
+        "expected_entity_count", "observed_entity_count", "absolute_tolerance",
+        "absolute_error", "tolerance_agreement", "authority", "reason"
+      ],
+      "properties": {
+        "measurement_name": {"type": "string", "minLength": 1},
+        "measurement_status": {"enum": ["measured", "not_measured", "ambiguous"]},
+        "method": {"type": ["string", "null"]},
+        "unit": {"const": "mm"},
+        "expected_value": {"type": "number"},
+        "measured_value": {"type": ["number", "null"]},
+        "measured_values": {"type": "array", "items": {"type": "number"}},
+        "expected_entity_count": {"type": ["integer", "null"], "minimum": 1},
+        "observed_entity_count": {"type": "integer", "minimum": 0},
+        "absolute_tolerance": {"type": "number", "minimum": 0},
+        "absolute_error": {"type": ["number", "null"], "minimum": 0},
+        "tolerance_agreement": {"type": "boolean"},
+        "authority": {
+          "enum": [
+            "D1_deterministic_geometry", "D2_verified_replay",
+            "D2_verified_replay_geometry", null
+          ]
+        },
+        "reason": {"type": "string", "minLength": 1},
+        "direct_brep_parameter_readback": {"type": "boolean"},
+        "evidence_kind": {"type": "string", "minLength": 1},
+        "source_assignment_evidence": {"$ref": "#/$defs/sourceAssignmentEvidence"},
+        "target_step_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+        "value_origin": {"type": "string", "minLength": 1},
+        "brep_measurement": {"type": "object"},
+        "extent_multiplier": {"type": "number", "exclusiveMinimum": 0},
+        "candidate_diameter_groups": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["diameter", "entity_count", "raw_face_indices"],
+            "properties": {
+              "diameter": {"type": "number"},
+              "entity_count": {"type": "integer", "minimum": 1},
+              "raw_face_indices": {
+                "type": "array",
+                "items": {"type": "integer", "minimum": 0}
+              }
+            }
+          }
+        },
+        "step_artifact": {"type": "string", "pattern": "^[^/].+"}
+      }
+    },
+    "sourceAssignmentEvidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status", "assignments", "all_assignments_verified",
+        "proves_named_target_geometry"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "source_json_pointer_assignment_verified",
+            "source_json_pointer_assignment_mismatch"
+          ]
+        },
+        "assignments": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["json_pointer", "expected_value", "observed_value", "exact_match"],
+            "properties": {
+              "json_pointer": {"type": "string", "pattern": "^/"},
+              "expected_value": {},
+              "observed_value": {},
+              "exact_match": {"type": "boolean"}
+            }
+          }
+        },
+        "all_assignments_verified": {"type": "boolean"},
+        "proves_named_target_geometry": {"const": false},
+        "artifact": {"type": "string", "pattern": "^[^/].+"},
+        "canonical_assigned_value": {"type": "number"},
+        "canonical_unit": {"const": "mm"},
+        "scale_to_canonical": {"type": "number", "exclusiveMinimum": 0}
+      }
+    },
+    "selectionSignatureEntry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "target_index", "selected_entity_kind", "selected_entity_index", "shape_type"
+      ],
+      "properties": {
+        "target_index": {"type": ["integer", "null"], "minimum": 0},
+        "selected_entity_kind": {"type": "string"},
+        "selected_entity_index": {"type": ["integer", "null"], "minimum": 0},
+        "shape_type": {"type": ["string", "null"]}
+      }
+    },
+    "selectorTargetMatchEvidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status", "feature_id", "operation_type", "target_kind", "target_count",
+        "matched_count", "all_source_targets_matched", "selection_signature",
+        "proves_named_target_geometry", "authority"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "selector_target_match_observed",
+            "selector_target_match_not_observed",
+            "selector_target_match_ambiguous"
+          ]
+        },
+        "feature_id": {"type": ["string", "null"]},
+        "operation_type": {"type": ["string", "null"]},
+        "target_kind": {"type": ["string", "null"]},
+        "target_count": {"type": "integer", "minimum": 0},
+        "matched_count": {"type": "integer", "minimum": 0},
+        "all_source_targets_matched": {"type": "boolean"},
+        "selection_signature": {
+          "type": "array",
+          "items": {"$ref": "#/$defs/selectionSignatureEntry"}
+        },
+        "proves_named_target_geometry": {"const": false},
+        "authority": {"const": "generated_conversion_proxy_diagnostic"}
+      }
+    },
+    "selectorTargetMatchStability": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status", "feature_id", "probe_count", "observed_probe_count",
+        "fully_matched_probe_count", "stable_across_probes", "comparison_basis",
+        "probe_selection_signatures", "authority", "proves_named_target_geometry"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "stable_across_conversion_proxy_replays",
+            "not_stable_across_conversion_proxy_replays"
+          ]
+        },
+        "feature_id": {"type": ["string", "null"]},
+        "probe_count": {"type": "integer", "minimum": 0},
+        "observed_probe_count": {"type": "integer", "minimum": 0},
+        "fully_matched_probe_count": {"type": "integer", "minimum": 0},
+        "stable_across_probes": {"type": "boolean"},
+        "comparison_basis": {"type": "string", "minLength": 1},
+        "probe_selection_signatures": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["variant_id", "selection_signature"],
+            "properties": {
+              "variant_id": {"type": ["string", "null"]},
+              "selection_signature": {
+                "type": "array",
+                "items": {"$ref": "#/$defs/selectionSignatureEntry"}
+              }
+            }
+          }
+        },
+        "authority": {"const": "generated_conversion_proxy_diagnostic"},
+        "proves_named_target_geometry": {"const": false}
+      }
+    },
+    "replayRecord": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "variant_id", "assigned_values", "execution_status", "solid_valid",
+        "evidence_class", "source_assignment_evidence", "selector_target_match_evidence",
+        "artifacts", "report", "geometry_delta", "any_geometry_change_observed",
+        "named_target_measurement", "target_effect_observed",
+        "target_feasible_sample_verified"
+      ],
+      "properties": {
+        "variant_id": {"type": "string", "minLength": 1},
+        "sample_kind": {"enum": ["probe", "target"]},
+        "assigned_values": {"type": "object", "minProperties": 1},
+        "source_assigned_values": {"type": "object", "minProperties": 1},
+        "execution_status": {"type": ["string", "null"]},
+        "solid_valid": {"type": "boolean"},
+        "evidence_class": {
+          "enum": [
+            "named_target_geometry_measurement", "conversion_proxy_observation",
+            "independent_occ_reconstruction_observation",
+            "source_bound_parameter_and_hidden_target_brep"
+          ]
+        },
+        "source_assignment_evidence": {
+          "oneOf": [
+            {"$ref": "#/$defs/sourceAssignmentEvidence"},
+            {"type": "null"}
+          ]
+        },
+        "selector_target_match_evidence": {
+          "oneOf": [
+            {"$ref": "#/$defs/selectorTargetMatchEvidence"},
+            {"type": "null"}
+          ]
+        },
+        "non_target_integrity_evidence": {
+          "type": "object", "additionalProperties": false,
+          "required": [
+            "method", "baseline_masked_sha256", "edited_masked_sha256",
+            "non_target_source_unchanged"
+          ],
+          "properties": {
+            "method": {"type": "string", "minLength": 1},
+            "target_pointer": {"type": ["string", "null"]},
+            "target_pointers": {"type": "array", "items": {"type": "string"}},
+            "baseline_masked_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+            "edited_masked_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+            "non_target_source_unchanged": {"type": "boolean"}
+          }
+        },
+        "reconstruction_contract": {"type": "string"},
+        "edit_replay_contract": {"type": "string"},
+        "scoring_authority": {"type": "boolean"},
+        "native_fusion_execution_used": {"type": "boolean"},
+        "replay_origin": {
+          "enum": ["frozen_admission_qualification_artifact"]
+        },
+        "frozen_qualification_artifact_hashes": {
+          "type": "object",
+          "minProperties": 1,
+          "additionalProperties": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          }
+        },
+        "proxy_status": {"const": "generated_futurecad_to_cadquery_conversion_proxy"},
+        "artifacts": {"type": "object"},
+        "report": {"type": "object"},
+        "geometry_delta": {"type": ["object", "null"]},
+        "any_geometry_change_observed": {"type": "boolean"},
+        "named_target_measurement": {"$ref": "#/$defs/namedTargetMeasurement"},
+        "target_effect_observed": {"type": "boolean"},
+        "target_feasible_sample_verified": {"type": "boolean"}
+      }
+    },
+    "candidateProxyObservation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["variant_id", "assigned_values", "evidence_class"],
+      "properties": {
+        "variant_id": {"type": "string", "minLength": 1},
+        "assigned_values": {"type": "object", "minProperties": 1},
+        "evidence_class": {"const": "conversion_proxy_observation"}
+      }
+    },
+    "parametricEdit": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "contract_version", "edit_annotation_id", "status", "evidence_class", "task_style",
+        "intent_description_candidate", "oracle_authority", "target_feature_ids",
+        "target_parameter_ids", "parameter_system", "constraint_relations",
+        "valid_parameter_space", "expected_geometry_effects", "non_target_preservation",
+        "replay_evidence", "negative_mutant_refs", "validation_oracle_data",
+        "artifact_derivation_chain", "llm_annotation_record", "promotion_status"
+      ],
+      "properties": {
+        "contract_version": {"const": "cadengbench-p.parametric-edit.v1"},
+        "edit_annotation_id": {
+          "type": "string",
+          "pattern": "^p_(benchcad|fusion360|futurecad)_[0-9]{3,}:edit:"
+        },
+        "status": {
+          "enum": [
+            "native_replay_named_target_measured",
+            "native_replay_target_unverified",
+            "verified_replay_named_target_measured",
+            "verified_replay_target_unverified",
+            "conversion_proxy_replay_observed",
+            "conversion_proxy_replay_unavailable",
+            "source_bound_replay_unavailable",
+            "not_available"
+          ]
+        },
+        "evidence_class": {
+          "enum": [
+            "verified_named_target_replay",
+            "candidate_replay_evidence",
+            "candidate_conversion_proxy_evidence",
+            "source_binding_only"
+          ]
+        },
+        "task_style": {"enum": ["numeric_perturbation", "functional_edit", "mixed"]},
+        "intent_description_candidate": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["text", "origin", "status", "is_final_benchmark_prompt"],
+          "properties": {
+            "text": {"type": "string"},
+            "origin": {"type": "string"},
+            "status": {"const": "candidate_only"},
+            "is_final_benchmark_prompt": {"const": false}
+          }
+        },
+        "oracle_authority": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "source_artifact", "scoring_truth_source", "proxy_allowed_for_scoring",
+            "replay_artifact_class"
+          ],
+          "properties": {
+            "source_artifact": {"type": "string", "pattern": "^[^/].+"},
+            "scoring_truth_source": {
+              "enum": ["native_cadquery", "native_fusion_json", "native_futurecad_json", "verified_replay"]
+            },
+            "proxy_allowed_for_scoring": {"type": "boolean"},
+            "replay_artifact_class": {
+              "enum": [
+                "native_cadquery_derived_step",
+                "verified_source_bound_occ_edit_step",
+                "generated_conversion_proxy_step",
+                "unavailable"
+              ]
+            },
+            "scoring_eligible": {"type": "boolean"}
+          }
+        },
+        "target_feature_ids": {"type": "array", "items": {"type": "string"}},
+        "target_parameter_ids": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"type": "string"}
+        },
+        "parameter_system": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["target_bindings", "all_source_parameters", "derived_variables"],
+          "properties": {
+            "target_bindings": {"type": "array", "minItems": 1, "items": {"type": "object"}},
+            "all_source_parameters": {"type": "array", "items": {"type": "object"}},
+            "derived_variables": {"type": "array", "items": {"type": "object"}}
+          }
+        },
+        "constraint_relations": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["source_explicit", "deterministic_derived", "candidate_only"],
+          "properties": {
+            "source_explicit": {"type": "array", "items": {"type": "object"}},
+            "deterministic_derived": {"type": "array", "items": {"type": "object"}},
+            "candidate_only": {"type": "array", "items": {"type": "object"}}
+          }
+        },
+        "valid_parameter_space": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "verified_target_feasible_samples", "candidate_proxy_observations",
+            "sampled_envelope", "infeasible_regions", "invalid_region_tests", "warning"
+          ],
+          "properties": {
+            "verified_target_feasible_samples": {
+              "type": "array",
+              "items": {"$ref": "#/$defs/replayRecord"}
+            },
+            "candidate_proxy_observations": {
+              "type": "array",
+              "items": {"$ref": "#/$defs/candidateProxyObservation"}
+            },
+            "sampled_envelope": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "min", "max", "basis", "verified_sample_count",
+                "candidate_proxy_observation_count", "continuous_validity_proven"
+              ],
+              "properties": {
+                "min": {"type": ["number", "null"]},
+                "max": {"type": ["number", "null"]},
+                "basis": {"const": "verified_named_target_measurements_only"},
+                "verified_sample_count": {"type": "integer", "minimum": 0},
+                "candidate_proxy_observation_count": {"type": "integer", "minimum": 0},
+                "continuous_validity_proven": {"const": false}
+              }
+            },
+            "infeasible_regions": {"type": "array"},
+            "invalid_region_tests": {"type": "array"},
+            "warning": {"type": "string"}
+          }
+        },
+        "expected_geometry_effects": {"type": "array", "items": {"type": "string"}},
+        "non_target_preservation": {"type": "object"},
+        "replay_evidence": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "status", "evidence_class", "base_geometry", "records",
+            "selector_target_match_stability"
+          ],
+          "properties": {
+            "status": {
+              "enum": [
+                "native_replay_named_target_measured",
+                "native_replay_target_unverified",
+                "verified_replay_named_target_measured",
+                "verified_replay_target_unverified",
+                "conversion_proxy_replay_observed",
+                "conversion_proxy_replay_unavailable",
+                "source_bound_replay_unavailable"
+              ]
+            },
+            "evidence_class": {
+              "enum": [
+                "verified_named_target_replay",
+                "candidate_replay_evidence",
+                "candidate_conversion_proxy_evidence",
+                "source_binding_only"
+              ]
+            },
+            "base_geometry": {"type": "object"},
+            "records": {"type": "array", "items": {"$ref": "#/$defs/replayRecord"}},
+            "selector_target_match_stability": {
+              "oneOf": [
+                {"$ref": "#/$defs/selectorTargetMatchStability"},
+                {"type": "null"}
+              ]
+            }
+          }
+        },
+        "negative_mutant_refs": {"type": "array", "items": {"type": "object"}},
+        "validation_oracle_data": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "execute_after_edit", "export_step", "valid_solid", "target_measurements",
+            "relation_checks", "geometry_invariants", "target_measurement_required_for_effect",
+            "generic_geometry_change_proves_target_effect", "evaluator_uses_llm_judge"
+          ],
+          "properties": {
+            "execute_after_edit": {"type": "boolean"},
+            "export_step": {"type": "boolean"},
+            "valid_solid": {"type": "boolean"},
+            "target_measurements": {
+              "type": "array",
+              "minItems": 1,
+              "items": {"type": "string"}
+            },
+            "relation_checks": {"type": "array"},
+            "geometry_invariants": {"type": "array"},
+            "target_measurement_required_for_effect": {"const": true},
+            "generic_geometry_change_proves_target_effect": {"const": false},
+            "evaluator_uses_llm_judge": {"const": false}
+          }
+        },
+        "artifact_derivation_chain": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "native_artifact_sha256", "base_step_sha256", "replay_status",
+            "replay_artifact_class"
+          ],
+          "properties": {
+            "native_artifact_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+            "base_step_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+            "replay_status": {
+              "enum": [
+                "native_replay_named_target_measured",
+                "native_replay_target_unverified",
+                "verified_replay_named_target_measured",
+                "verified_replay_target_unverified",
+                "conversion_proxy_replay_observed",
+                "conversion_proxy_replay_unavailable",
+                "source_bound_replay_unavailable"
+              ]
+            },
+            "replay_artifact_class": {
+              "enum": [
+                "native_cadquery_derived_step",
+                "verified_source_bound_occ_edit_step",
+                "generated_conversion_proxy_step",
+                "unavailable"
+              ]
+            }
+          }
+        },
+        "llm_annotation_record": {
+          "type": "object",
+          "required": ["evaluator_uses_llm_judge"],
+          "properties": {"evaluator_uses_llm_judge": {"const": false}}
+        },
+        "promotion_status": {
+          "enum": [
+            "native_replay_target_measurement_verified",
+            "verified_replay_target_measurement_verified",
+            "needs_named_target_measurement",
+            "candidate_proxy_evidence_only",
+            "source_bound_replay_unavailable"
+          ]
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {"edit_annotation_id": {"pattern": "^p_futurecad_"}},
+            "required": ["edit_annotation_id"]
+          },
+          "then": {
+            "properties": {
+              "status": {"const": "conversion_proxy_replay_observed"},
+              "evidence_class": {"const": "candidate_conversion_proxy_evidence"},
+              "oracle_authority": {
+                "properties": {
+                  "proxy_allowed_for_scoring": {"const": false},
+                  "replay_artifact_class": {"const": "generated_conversion_proxy_step"}
+                }
+              },
+              "valid_parameter_space": {
+                "properties": {
+                  "verified_target_feasible_samples": {"maxItems": 0},
+                  "candidate_proxy_observations": {"minItems": 1},
+                  "sampled_envelope": {
+                    "properties": {
+                      "min": {"const": null},
+                      "max": {"const": null},
+                      "verified_sample_count": {"const": 0}
+                    }
+                  }
+                }
+              },
+              "replay_evidence": {
+                "properties": {
+                  "status": {"const": "conversion_proxy_replay_observed"},
+                  "evidence_class": {"const": "candidate_conversion_proxy_evidence"},
+                  "records": {
+                    "minItems": 1,
+                    "items": {
+                      "properties": {
+                        "evidence_class": {"const": "conversion_proxy_observation"},
+                        "source_assignment_evidence": {"$ref": "#/$defs/sourceAssignmentEvidence"},
+                        "selector_target_match_evidence": {"$ref": "#/$defs/selectorTargetMatchEvidence"},
+                        "named_target_measurement": {
+                          "properties": {
+                            "measurement_status": {"const": "not_measured"},
+                            "tolerance_agreement": {"const": false}
+                          }
+                        },
+                        "target_effect_observed": {"const": false},
+                        "target_feasible_sample_verified": {"const": false}
+                      }
+                    }
+                  },
+                  "selector_target_match_stability": {
+                    "$ref": "#/$defs/selectorTargetMatchStability"
+                  }
+                }
+              },
+              "promotion_status": {"const": "candidate_proxy_evidence_only"}
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {"edit_annotation_id": {"pattern": "^p_benchcad_"}},
+            "required": ["edit_annotation_id"]
+          },
+          "then": {
+            "properties": {
+              "status": {
+                "enum": ["native_replay_named_target_measured", "native_replay_target_unverified"]
+              },
+              "evidence_class": {
+                "enum": ["verified_named_target_replay", "candidate_replay_evidence"]
+              },
+              "oracle_authority": {
+                "properties": {
+                  "proxy_allowed_for_scoring": {"const": false},
+                  "replay_artifact_class": {"const": "native_cadquery_derived_step"}
+                }
+              },
+              "valid_parameter_space": {
+                "properties": {"candidate_proxy_observations": {"maxItems": 0}}
+              },
+              "replay_evidence": {
+                "properties": {
+                  "records": {
+                    "minItems": 1,
+                    "items": {
+                      "properties": {
+                        "evidence_class": {"const": "named_target_geometry_measurement"},
+                        "source_assignment_evidence": {"type": "null"},
+                        "selector_target_match_evidence": {"type": "null"}
+                      }
+                    }
+                  },
+                  "selector_target_match_stability": {"type": "null"}
+                }
+              },
+              "promotion_status": {
+                "enum": [
+                  "native_replay_target_measurement_verified",
+                  "needs_named_target_measurement"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {"edit_annotation_id": {"pattern": "^p_fusion360_"}},
+            "required": ["edit_annotation_id"]
+          },
+          "then": {
+            "properties": {
+              "status": {
+                "enum": [
+                  "source_bound_replay_unavailable",
+                  "verified_replay_named_target_measured",
+                  "verified_replay_target_unverified"
+                ]
+              },
+              "evidence_class": {
+                "enum": [
+                  "source_binding_only", "verified_named_target_replay",
+                  "candidate_replay_evidence"
+                ]
+              },
+              "oracle_authority": {
+                "properties": {
+                  "proxy_allowed_for_scoring": {"const": false},
+                  "replay_artifact_class": {
+                    "enum": ["unavailable", "verified_source_bound_occ_edit_step"]
+                  }
+                }
+              },
+              "valid_parameter_space": {
+                "properties": {
+                  "candidate_proxy_observations": {"maxItems": 0}
+                }
+              },
+              "replay_evidence": {
+                "properties": {
+                  "status": {
+                    "enum": [
+                      "source_bound_replay_unavailable",
+                      "verified_replay_named_target_measured",
+                      "verified_replay_target_unverified"
+                    ]
+                  },
+                  "evidence_class": {
+                    "enum": [
+                      "source_binding_only", "verified_named_target_replay",
+                      "candidate_replay_evidence"
+                    ]
+                  },
+                  "selector_target_match_stability": {"type": "null"}
+                }
+              },
+              "promotion_status": {
+                "enum": [
+                  "source_bound_replay_unavailable",
+                  "verified_replay_target_measurement_verified",
+                  "needs_named_target_measurement"
+                ]
+              }
+            }
+          },
+          "allOf": [
+            {
+              "if": {"properties": {"status": {"const": "source_bound_replay_unavailable"}}},
+              "then": {
+                "properties": {
+                  "evidence_class": {"const": "source_binding_only"},
+                  "oracle_authority": {
+                    "properties": {
+                      "replay_artifact_class": {"const": "unavailable"},
+                      "scoring_eligible": {"const": false}
+                    }
+                  },
+                  "replay_evidence": {"properties": {"records": {"maxItems": 0}}},
+                  "validation_oracle_data": {
+                    "properties": {
+                      "execute_after_edit": {"const": false},
+                      "export_step": {"const": false}
+                    }
+                  },
+                  "promotion_status": {"const": "source_bound_replay_unavailable"}
+                }
+              }
+            },
+            {
+              "if": {"properties": {"status": {"const": "verified_replay_named_target_measured"}}},
+              "then": {
+                "properties": {
+                  "evidence_class": {"const": "verified_named_target_replay"},
+                  "oracle_authority": {
+                    "properties": {
+                      "scoring_truth_source": {"const": "verified_replay"},
+                      "replay_artifact_class": {"const": "verified_source_bound_occ_edit_step"},
+                      "scoring_eligible": {"const": true}
+                    }
+                  },
+                  "replay_evidence": {
+                    "properties": {
+                      "records": {
+                        "minItems": 2,
+                        "items": {
+                          "properties": {
+                            "evidence_class": {
+                              "enum": [
+                                "named_target_geometry_measurement",
+                                "source_bound_parameter_and_hidden_target_brep"
+                              ]
+                            },
+                            "scoring_authority": {"const": true},
+                            "target_effect_observed": {"const": true},
+                            "target_feasible_sample_verified": {"const": true}
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "validation_oracle_data": {
+                    "properties": {
+                      "execute_after_edit": {"const": true},
+                      "export_step": {"const": true}
+                    }
+                  },
+                  "promotion_status": {"const": "verified_replay_target_measurement_verified"}
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "manufacturing": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "annotation_version", "item_id", "source_manufacturing_evidence",
+        "material_process_scenario", "material_card", "process_profile",
+        "standards_tolerance_finish_context", "manufacturing_feature_graph",
+        "deterministic_dfm_measurements", "dfm_check_contracts",
+        "functional_dfm_repair_annotations", "future_cam_fields", "annotation_boundary"
+      ],
+      "properties": {
+        "annotation_version": {"const": "cadengbench-p.manufacturing-annotations.v1"},
+        "item_id": {"type": "string", "pattern": "^p_(benchcad|fusion360|futurecad)_[0-9]{3,}$"},
+        "source_manufacturing_evidence": {"type": "object"},
+        "material_process_scenario": {
+          "oneOf": [
+            {
+              "type": "object",
+              "required": ["scenario_id", "origin", "source_intent_claimed"],
+              "properties": {
+                "scenario_id": {"type": "string"},
+                "origin": {"const": "benchmark_assigned"},
+                "source_intent_claimed": {"const": false}
+              }
+            },
+            {"type": "null"}
+          ]
+        },
+        "material_card": {"type": ["object", "null"]},
+        "process_profile": {"type": ["object", "null"]},
+        "standards_tolerance_finish_context": {"type": "object"},
+        "manufacturing_feature_graph": {"type": "object"},
+        "deterministic_dfm_measurements": {
+          "type": "array",
+          "minItems": 2,
+          "items": {
+            "type": "object",
+            "required": [
+              "measurement_id", "check_family", "compliance_verdict", "authority", "limitations"
+            ],
+            "properties": {
+              "measurement_id": {"type": "string"},
+              "check_family": {"enum": ["minimum_wall_thickness", "minimum_hole_geometry"]},
+              "compliance_verdict": {"const": "not_evaluated_no_frozen_applicable_threshold"},
+              "threshold_evidence": {"type": "null"},
+              "authority": {"const": "D1_deterministic_geometry"},
+              "limitations": {"type": "array", "items": {"type": "string"}}
+            }
+          }
+        },
+        "dfm_check_contracts": {"type": "array", "minItems": 2, "items": {"type": "object"}},
+        "functional_dfm_repair_annotations": {"type": "array"},
+        "future_cam_fields": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["process_plan", "toolpath", "gcode", "cam_simulation", "status"],
+          "properties": {
+            "process_plan": {"type": "null"},
+            "toolpath": {"type": "null"},
+            "gcode": {"type": "null"},
+            "cam_simulation": {"type": "null"},
+            "status": {"const": "not_applicable_current_scope"}
+          }
+        },
+        "annotation_boundary": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "geometry_measurements_are_compliance_labels",
+            "benchmark_scenario_claims_source_intent",
+            "llm_memory_thresholds_allowed", "cam_generated"
+          ],
+          "properties": {
+            "geometry_measurements_are_compliance_labels": {"const": false},
+            "benchmark_scenario_claims_source_intent": {"const": false},
+            "llm_memory_thresholds_allowed": {"const": false},
+            "cam_generated": {"const": false}
+          }
+        }
+      }
+    }
+  }
+}

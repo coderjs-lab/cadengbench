@@ -1,0 +1,14 @@
+{
+  "attempt": 1,
+  "finish_reason": "stop",
+  "http_status": 200,
+  "native_schema_guidance_used": true,
+  "outcome": "accepted",
+  "parse_recovery": "exact",
+  "raw_content": "{\"schema_version\": \"cadengbench-p.visual-grounding-annotation.v2\", \"item_id\": \"p_benchcad_000757\", \"role_id\": \"visual_geometry_grounder\", \"output_status\": \"complete\", \"payload\": {\"global_form\": \"Thin four-pointed star plate with uniform thickness and sharp angular vertices.\", \"features\": [{\"feature_kind\": \"recess_or_pocket\", \"description\": \"Flat top surface defining the star outline.\", \"view_ids\": [\"orbit_top\"], \"visibility\": \"visible\"}, {\"feature_kind\": \"recess_or_pocket\", \"description\": \"Flat bottom surface matching the star outline.\", \"view_ids\": [\"orbit_bottom\"], \"visibility\": \"visible\"}, {\"feature_kind\": \"fillet_or_chamfer\", \"description\": \"Vertical side walls connecting top and bottom faces.\", \"view_ids\": [\"orbit_045\"], \"visibility\": \"visible\"}, {\"feature_kind\": \"fillet_or_chamfer\", \"description\": \"Four sharp convex corners extending outward.\", \"view_ids\": [\"orbit_top\"], \"visibility\": \"visible\"}, {\"feature_kind\": \"fillet_or_chamfer\", \"description\": \"Four concave re-entrant corners between points.\", \"view_ids\": [\"orbit_top\"], \"visibility\": \"visible\"}, {\"feature_kind\": \"fillet_or_chamfer\", \"description\": \"Uniform thickness across the entire body.\", \"view_ids\": [\"orbit_000\"], \"visibility\": \"visible\"}], \"affordances\": [{\"affordance_kind\": \"locating\", \"description\": \"Star shape provides rotational orientation and alignment.\", \"view_ids\": [\"orbit_top\"], \"visibility\": \"visible\"}, {\"affordance_kind\": \"grip\", \"description\": \"Sharp corners allow mechanical engagement or gripping.\", \"view_ids\": [\"orbit_045\"], \"visibility\": \"visible\"}, {\"affordance_kind\": \"mounting\", \"description\": \"Flat faces support surface mounting or stacking.\", \"view_ids\": [\"orbit_top\"], \"visibility\": \"visible\"}], \"recommended_prompt_profile\": \"text_only\"}}",
+  "usage": {
+    "input_tokens": 2233,
+    "output_tokens": 451,
+    "total_tokens": 2684
+  }
+}

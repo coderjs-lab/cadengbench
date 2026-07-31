@@ -1,0 +1,23 @@
+{
+  "schema_version": "cadengbench-p.model-spec.v1",
+  "model_label": "local-vllm-candidate",
+  "provider": "openai_compatible",
+  "protocol": "openai_chat",
+  "model_id": "replace-with-served-model-name",
+  "base_url": "http://127.0.0.1:8000",
+  "api_key_env": null,
+  "api_key_required": false,
+  "capabilities": {
+    "text": true,
+    "images": true
+  },
+  "request_defaults": {
+    "temperature": 0.0,
+    "top_p": 1.0,
+    "max_tokens": 8192
+  },
+  "rate_limits": {
+    "max_concurrency": 4,
+    "requests_per_minute": 120
+  }
+}

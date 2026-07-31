@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cadengbench.org/schemas/cadengbench_p_material_card_v2.schema.json",
+  "title": "CADEngBench-P v2 material card",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "record_type", "material_card"],
+  "properties": {
+    "schema_version": {"const": "cadengbench-p.material-card.v2"},
+    "record_type": {"const": "material_card"},
+    "material_card": {"$ref": "#/$defs/card"}
+  },
+  "$defs": {
+    "nonEmpty": {"type": "string", "minLength": 1},
+    "evidenceRef": {"type": "string", "minLength": 1},
+    "property": {
+      "type": "object", "additionalProperties": false,
+      "required": ["property", "value", "unit", "evidence_ref"],
+      "properties": {
+        "property": {"$ref": "#/$defs/nonEmpty"}, "value": {"type": "number"}, "unit": {"$ref": "#/$defs/nonEmpty"},
+        "temperature": {"anyOf": [{"type": "number"}, {"type": "null"}]}, "direction": {"anyOf": [{"$ref": "#/$defs/nonEmpty"}, {"type": "null"}]}, "test_condition": {"anyOf": [{"$ref": "#/$defs/nonEmpty"}, {"type": "null"}]}, "uncertainty": {"anyOf": [{"type": "number", "minimum": 0}, {"type": "null"}]}, "evidence_ref": {"$ref": "#/$defs/evidenceRef"}
+      }
+    },
+    "card": {
+      "type": "object", "additionalProperties": false,
+      "required": ["material_id", "family", "grade", "condition_or_temper", "governing_specification", "properties", "process_compatibility", "provenance", "origin", "source_intent_claimed", "scoring_status"],
+      "properties": {
+        "material_id": {"$ref": "#/$defs/nonEmpty"},
+        "family": {"enum": ["metal", "polymer", "ceramic", "timber", "composite", "other"]},
+        "grade": {"anyOf": [{"$ref": "#/$defs/nonEmpty"}, {"type": "null"}]},
+        "condition_or_temper": {"anyOf": [{"$ref": "#/$defs/nonEmpty"}, {"type": "null"}]},
+        "governing_specification": {"anyOf": [{"$ref": "#/$defs/nonEmpty"}, {"type": "null"}]},
+        "properties": {"type": "array", "items": {"$ref": "#/$defs/property"}},
+        "density": {"anyOf": [{"$ref": "#/$defs/property"}, {"type": "null"}]},
+        "hardness": {"anyOf": [{"$ref": "#/$defs/property"}, {"type": "null"}]},
+        "process_compatibility": {"type": "array", "items": {"type": "object", "additionalProperties": false, "required": ["process_profile_id", "status"], "properties": {"process_profile_id": {"$ref": "#/$defs/nonEmpty"}, "status": {"enum": ["supported", "limited", "unsupported", "unknown"]}, "evidence_ref": {"$ref": "#/$defs/evidenceRef"}}}},
+        "provenance": {"$ref": "#/$defs/evidenceRef"},
+        "origin": {"enum": ["source_explicit", "benchmark_assigned", "unavailable"]},
+        "source_intent_claimed": {"type": "boolean"},
+        "scoring_status": {"enum": ["context_only", "eligible", "not_eligible"]},
+        "unavailable_reason": {"anyOf": [{"$ref": "#/$defs/nonEmpty"}, {"type": "null"}]}
+      },
+      "allOf": [
+        {"if": {"properties": {"scoring_status": {"const": "eligible"}}}, "then": {"required": ["grade", "condition_or_temper"], "properties": {"grade": {"type": "string", "minLength": 1}, "condition_or_temper": {"type": "string", "minLength": 1}, "origin": {"not": {"const": "unavailable"}}}}},
+        {"if": {"properties": {"origin": {"const": "benchmark_assigned"}}}, "then": {"properties": {"source_intent_claimed": {"const": false}}}},
+        {"if": {"properties": {"origin": {"const": "unavailable"}}}, "then": {"required": ["unavailable_reason"], "properties": {"scoring_status": {"const": "not_eligible"}, "source_intent_claimed": {"const": false}}}}
+      ]
+    }
+  }
+}

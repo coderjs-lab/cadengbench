@@ -1,0 +1,20 @@
+{
+  "applicability": "proposed",
+  "bundle_id": "sha256:cc7a21805c45b97a7a30f5a5d7bccf67018261bf8d1e2512119aa57d78f68d5a",
+  "concise_rationale": "The object is a prismatic parallel key with a high aspect ratio along the X-axis. The geometry supports a clear axial load path between the opposed end faces.",
+  "confidence": 0.95,
+  "fixed_region_id": "axis:x:min",
+  "item_id": "p_benchcad_000522",
+  "load_direction": {
+    "axis": "x",
+    "sign": 1
+  },
+  "loaded_region_id": "axis:x:max",
+  "output_status": "complete",
+  "reason_code": "clear_axial_load_path",
+  "risk_flags": [],
+  "role_id": "l3_physics_probe_annotator",
+  "scenario_family": "axial_tension",
+  "schema_version": "cadengbench-p.l3-annotation-candidate.v1",
+  "source_intent_claimed": false
+}

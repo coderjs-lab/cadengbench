@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cadengbench.org/schemas/cadengbench_p_model_workspace_manifest_v1.schema.json",
+  "title": "CADEngBench-P model-visible workspace manifest v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "item_id",
+    "source_key",
+    "execution_division",
+    "visibility",
+    "public_task",
+    "artifacts",
+    "allowed_relative_paths",
+    "hidden_acceptance_material_present"
+  ],
+  "properties": {
+    "schema_version": {"const": "cadengbench-p.model-workspace-manifest.v1"},
+    "item_id": {"type": "string", "minLength": 1},
+    "source_key": {"enum": ["benchcad", "fusion360"]},
+    "execution_division": {"enum": ["code_only", "agentic_python_cad"]},
+    "visibility": {"const": "model_visible_allowlist_only"},
+    "public_task": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["relative_path", "sha256"],
+      "properties": {
+        "relative_path": {"const": "task.json"},
+        "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+      }
+    },
+    "artifacts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["filename", "relative_path", "sha256", "bytes"],
+        "properties": {
+          "filename": {"type": "string", "pattern": "^[^/\\\\]+$"},
+          "relative_path": {"type": "string", "pattern": "^artifacts/[^/\\\\]+$"},
+          "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+          "bytes": {"type": "integer", "minimum": 1}
+        }
+      }
+    },
+    "allowed_relative_paths": {
+      "type": "array",
+      "minItems": 2,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "pattern": "^(task\\.json|workspace_manifest\\.json|artifacts/[^/\\\\]+)$"
+      },
+      "contains": {"const": "task.json"},
+      "allOf": [{"contains": {"const": "workspace_manifest.json"}}]
+    },
+    "hidden_acceptance_material_present": {"const": false}
+  }
+}

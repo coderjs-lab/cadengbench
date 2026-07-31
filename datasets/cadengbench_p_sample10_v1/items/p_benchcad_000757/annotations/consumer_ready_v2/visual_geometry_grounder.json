@@ -1,0 +1,86 @@
+{
+  "item_id": "p_benchcad_000757",
+  "output_status": "complete",
+  "payload": {
+    "affordances": [
+      {
+        "affordance_kind": "locating",
+        "description": "Star shape provides rotational orientation and alignment.",
+        "view_ids": [
+          "orbit_top"
+        ],
+        "visibility": "visible"
+      },
+      {
+        "affordance_kind": "grip",
+        "description": "Sharp corners allow mechanical engagement or gripping.",
+        "view_ids": [
+          "orbit_045"
+        ],
+        "visibility": "visible"
+      },
+      {
+        "affordance_kind": "mounting",
+        "description": "Flat faces support surface mounting or stacking.",
+        "view_ids": [
+          "orbit_top"
+        ],
+        "visibility": "visible"
+      }
+    ],
+    "features": [
+      {
+        "description": "Flat top surface defining the star outline.",
+        "feature_kind": "recess_or_pocket",
+        "view_ids": [
+          "orbit_top"
+        ],
+        "visibility": "visible"
+      },
+      {
+        "description": "Flat bottom surface matching the star outline.",
+        "feature_kind": "recess_or_pocket",
+        "view_ids": [
+          "orbit_bottom"
+        ],
+        "visibility": "visible"
+      },
+      {
+        "description": "Vertical side walls connecting top and bottom faces.",
+        "feature_kind": "fillet_or_chamfer",
+        "view_ids": [
+          "orbit_045"
+        ],
+        "visibility": "visible"
+      },
+      {
+        "description": "Four sharp convex corners extending outward.",
+        "feature_kind": "fillet_or_chamfer",
+        "view_ids": [
+          "orbit_top"
+        ],
+        "visibility": "visible"
+      },
+      {
+        "description": "Four concave re-entrant corners between points.",
+        "feature_kind": "fillet_or_chamfer",
+        "view_ids": [
+          "orbit_top"
+        ],
+        "visibility": "visible"
+      },
+      {
+        "description": "Uniform thickness across the entire body.",
+        "feature_kind": "fillet_or_chamfer",
+        "view_ids": [
+          "orbit_000"
+        ],
+        "visibility": "visible"
+      }
+    ],
+    "global_form": "Thin four-pointed star plate with uniform thickness and sharp angular vertices.",
+    "recommended_prompt_profile": "text_only"
+  },
+  "role_id": "visual_geometry_grounder",
+  "schema_version": "cadengbench-p.visual-grounding-annotation.v2"
+}

@@ -1,0 +1,14 @@
+{
+  "attempt": 1,
+  "finish_reason": "stop",
+  "http_status": 200,
+  "native_schema_guidance_used": true,
+  "outcome": "accepted",
+  "parse_recovery": "exact",
+  "raw_content": "{\"schema_version\": \"cadengbench-p.engineering-task-annotation.v3\", \"item_id\": \"p_benchcad_000757\", \"role_id\": \"engineering_task_author\", \"output_status\": \"complete\", \"payload\": {\"part_identity\": {\"title\": \"Star-shaped mounting plate\", \"category\": \"structural mounting plate\"}, \"design\": {\"goal\": \"provide a flat, star-shaped interface for mounting components\", \"application_context\": \"industrial equipment mounting bracket\", \"design_freedom\": [\"star-shaped geometry for space efficiency\"]}, \"function\": {\"functional_interpretation\": \"distribute fastener loads across a star pattern\", \"interfaces\": [{\"interface_id\": \"interface_1\", \"interface_kind\": \"mounting\", \"description\": \"flat surface for bolt attachment\"}], \"non_requirements\": [\"no sealing required\"]}, \"material_process\": {\"material_family\": \"aluminum_alloy\", \"material_specification\": \"6061-T6\", \"process_family\": \"casting\", \"process_variant\": \"sand casting\"}, \"standards\": [], \"load_case\": {\"load_type\": \"pressure\", \"magnitude\": 0.5, \"unit\": \"MPa\", \"direction\": \"normal_to_interface\", \"application_region\": \"entire star face\", \"constraint_region\": \"star face\", \"duty\": \"static\"}, \"functional_edit\": {\"operating_condition\": \"maintain flatness under clamping pressure\", \"engineering_objective\": \"increase plate thickness to improve stiffness and reduce deflection under load\"}}}",
+  "usage": {
+    "input_tokens": 978,
+    "output_tokens": 332,
+    "total_tokens": 1310
+  }
+}

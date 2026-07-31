@@ -1,0 +1,95 @@
+{
+  "item_id": "p_fusion360_001442",
+  "output_status": "complete",
+  "payload": {
+    "affordances": [
+      {
+        "affordance_kind": "locating",
+        "description": "Central groove provides alignment or track guidance",
+        "view_ids": [
+          "orbit_top",
+          "orbit_090"
+        ],
+        "visibility": "visible"
+      },
+      {
+        "affordance_kind": "mounting",
+        "description": "Flat bottom surface supports planar attachment",
+        "view_ids": [
+          "orbit_bottom",
+          "orbit_090"
+        ],
+        "visibility": "visible"
+      },
+      {
+        "affordance_kind": "locating",
+        "description": "End protrusions define positional limits or stops",
+        "view_ids": [
+          "orbit_000",
+          "orbit_180"
+        ],
+        "visibility": "visible"
+      }
+    ],
+    "features": [
+      {
+        "description": "Long rectangular prism with uniform cross-section",
+        "feature_kind": "base_form",
+        "view_ids": [
+          "orbit_045",
+          "orbit_135"
+        ],
+        "visibility": "visible"
+      },
+      {
+        "description": "Central longitudinal groove along the top surface",
+        "feature_kind": "recess_or_pocket",
+        "view_ids": [
+          "orbit_top",
+          "orbit_090"
+        ],
+        "visibility": "visible"
+      },
+      {
+        "description": "Secondary recessed section adjacent to the central groove",
+        "feature_kind": "recess_or_pocket",
+        "view_ids": [
+          "orbit_270",
+          "orbit_090"
+        ],
+        "visibility": "visible"
+      },
+      {
+        "description": "Raised end block at one extremity",
+        "feature_kind": "boss_or_protrusion",
+        "view_ids": [
+          "orbit_000",
+          "orbit_180"
+        ],
+        "visibility": "visible"
+      },
+      {
+        "description": "Raised end block at the opposite extremity",
+        "feature_kind": "boss_or_protrusion",
+        "view_ids": [
+          "orbit_000",
+          "orbit_180"
+        ],
+        "visibility": "visible"
+      },
+      {
+        "description": "Stepped transitions between height levels",
+        "feature_kind": "fillet_or_chamfer",
+        "view_ids": [
+          "orbit_045",
+          "orbit_225"
+        ],
+        "visibility": "visible"
+      }
+    ],
+    "global_form": "Elongated rectangular block with stepped profile and end extensions",
+    "recommended_prompt_profile": "text_only"
+  },
+  "role_id": "visual_geometry_grounder",
+  "schema_version": "cadengbench-p.visual-grounding-annotation.v2"
+}

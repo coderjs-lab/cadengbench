@@ -1,0 +1,148 @@
+<?xml version='1.0' encoding='utf-8'?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1100" viewBox="0 0 1024 1100" data-line-semantics="exact-occt-visible-and-hidden">
+  <rect x="0" y="0" width="1024" height="1100" fill="white" />
+  <svg id="view-isometric" x="0" y="0" width="512" height="512" viewBox="0 0 1024 1024" preserveAspectRatio="xMidYMid meet">
+    <g id="hlr-root" transform="scale(37.0204957801366,-37.0204957801366) translate(13.830176749678062,-13.830176749678062)" stroke-width="0.022960254369582718" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <g id="visible-sharp" stroke="#17212b">
+        <path d="M-11.755650237226353,-6.787127828961723 L-9.47876640180567,-8.101687324255362 " />
+        <path d="M-11.755650237226353,-6.787127828961723 L-11.755650237226353,-4.158008838374444 " />
+        <path d="M-11.755650237226353,-4.158008838374445 L-9.47876640180567,-5.472568333668084 " />
+        <path d="M-9.47876640180567,-8.101687324255364 L-9.47876640180567,-5.472568333668086 " />
+        <path d="M9.47876640180567,8.101687324255364 L11.755650237226353,6.787127828961724 " />
+        <path d="M11.755650237226353,4.158008838374445 L11.755650237226353,6.787127828961724 " />
+        <path d="M-9.47876640180567,-8.101687324255364 L11.755650237226357,4.158008838374448 " />
+        <path d="M-11.755650237226353,-4.158008838374445 L9.478766401805673,8.101687324255366 " />
+        <path d="M-9.47876640180567,-5.472568333668085 L11.755650237226357,6.787127828961727 " />
+      </g>
+      <g id="visible-smooth" stroke="#17212b">
+
+    </g>
+      <g id="visible-sewn" stroke="#17212b">
+
+    </g>
+      <g id="visible-outline" stroke="#17212b">
+
+    </g>
+      <g id="hidden-sharp" stroke="#8a949d" stroke-dasharray="0.09184101747833087,0.09184101747833087">
+        <path d="M9.47876640180567,5.472568333668085 L11.755650237226353,4.158008838374446 " />
+        <path d="M9.47876640180567,5.472568333668085 L9.47876640180567,8.101687324255364 " />
+        <path d="M-11.755650237226353,-6.787127828961723 L9.478766401805673,5.472568333668089 " />
+      </g>
+      <g id="hidden-smooth" stroke="#8a949d" stroke-dasharray="0.09184101747833087,0.09184101747833087">
+
+    </g>
+      <g id="hidden-sewn" stroke="#8a949d" stroke-dasharray="0.09184101747833087,0.09184101747833087">
+
+    </g>
+      <g id="hidden-outline" stroke="#8a949d" stroke-dasharray="0.09184101747833087,0.09184101747833087">
+
+    </g>
+    </g>
+  </svg>
+  <text x="12" y="538" fill="#191f24" font-family="sans-serif" font-size="20">Isometric</text>
+  <svg id="view-top" x="512" y="0" width="512" height="512" viewBox="0 0 1024 1024" preserveAspectRatio="xMidYMid meet">
+    <g id="hlr-root" transform="scale(28.984348984348983,-28.984348984348983) translate(17.66470588235294,-17.66470588235294)" stroke-width="0.029326171875" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <g id="visible-sharp" stroke="#17212b">
+        <path d="M-1.61,-15.015 L1.61,-15.015 " />
+        <path d="M-1.61,15.015 L1.61,15.015 " />
+        <path d="M-1.61,-15.015 L-1.61,15.015 " />
+        <path d="M1.61,-15.015 L1.61,15.015 " />
+      </g>
+      <g id="visible-smooth" stroke="#17212b">
+
+    </g>
+      <g id="visible-sewn" stroke="#17212b">
+
+    </g>
+      <g id="visible-outline" stroke="#17212b">
+
+    </g>
+      <g id="hidden-sharp" stroke="#8a949d" stroke-dasharray="0.1173046875,0.1173046875">
+        <path d="M-1.61,-15.015 L1.61,-15.015 " />
+        <path d="M-1.61,15.015 L1.61,15.015 " />
+        <path d="M-1.61,-15.015 L-1.61,15.015 " />
+        <path d="M1.61,-15.015 L1.61,15.015 " />
+      </g>
+      <g id="hidden-smooth" stroke="#8a949d" stroke-dasharray="0.1173046875,0.1173046875">
+
+    </g>
+      <g id="hidden-sewn" stroke="#8a949d" stroke-dasharray="0.1173046875,0.1173046875">
+
+    </g>
+      <g id="hidden-outline" stroke="#8a949d" stroke-dasharray="0.1173046875,0.1173046875">
+
+    </g>
+    </g>
+  </svg>
+  <text x="524" y="538" fill="#191f24" font-family="sans-serif" font-size="20">Top</text>
+  <svg id="view-front" x="0" y="550" width="512" height="512" viewBox="0 0 1024 1024" preserveAspectRatio="xMidYMid meet">
+    <g id="hlr-root" transform="scale(270.3105590062112,-270.3105590062112) translate(1.8941176470588235,-1.8941176470588235)" stroke-width="0.0031445312499999998" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <g id="visible-sharp" stroke="#17212b">
+        <path d="M-1.61,-1.61 L1.61,-1.61 " />
+        <path d="M-1.61,-1.61 L-1.61,1.61 " />
+        <path d="M-1.61,1.61 L1.61,1.61 " />
+        <path d="M1.61,-1.61 L1.61,1.61 " />
+      </g>
+      <g id="visible-smooth" stroke="#17212b">
+
+    </g>
+      <g id="visible-sewn" stroke="#17212b">
+
+    </g>
+      <g id="visible-outline" stroke="#17212b">
+
+    </g>
+      <g id="hidden-sharp" stroke="#8a949d" stroke-dasharray="0.012578124999999999,0.012578124999999999">
+        <path d="M-1.61,-1.61 L1.61,-1.61 " />
+        <path d="M-1.61,-1.61 L-1.61,1.61 " />
+        <path d="M-1.61,1.61 L1.61,1.61 " />
+        <path d="M1.61,-1.61 L1.61,1.61 " />
+      </g>
+      <g id="hidden-smooth" stroke="#8a949d" stroke-dasharray="0.012578124999999999,0.012578124999999999">
+
+    </g>
+      <g id="hidden-sewn" stroke="#8a949d" stroke-dasharray="0.012578124999999999,0.012578124999999999">
+
+    </g>
+      <g id="hidden-outline" stroke="#8a949d" stroke-dasharray="0.012578124999999999,0.012578124999999999">
+
+    </g>
+    </g>
+  </svg>
+  <text x="12" y="1088" fill="#191f24" font-family="sans-serif" font-size="20">Front</text>
+  <svg id="view-right" x="512" y="550" width="512" height="512" viewBox="0 0 1024 1024" preserveAspectRatio="xMidYMid meet">
+    <g id="hlr-root" transform="scale(28.984348984348983,-28.984348984348983) translate(17.66470588235294,-17.66470588235294)" stroke-width="0.029326171875" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <g id="visible-sharp" stroke="#17212b">
+        <path d="M-15.015,-1.61 L-15.015,1.61 " />
+        <path d="M15.015,-1.61 L15.015,1.61 " />
+        <path d="M-15.015,-1.61 L15.015,-1.61 " />
+        <path d="M-15.015,1.61 L15.015,1.61 " />
+      </g>
+      <g id="visible-smooth" stroke="#17212b">
+
+    </g>
+      <g id="visible-sewn" stroke="#17212b">
+
+    </g>
+      <g id="visible-outline" stroke="#17212b">
+
+    </g>
+      <g id="hidden-sharp" stroke="#8a949d" stroke-dasharray="0.1173046875,0.1173046875">
+        <path d="M-15.015,-1.61 L-15.015,1.61 " />
+        <path d="M15.015,-1.61 L15.015,1.61 " />
+        <path d="M-15.015,-1.61 L15.015,-1.61 " />
+        <path d="M-15.015,1.61 L15.015,1.61 " />
+      </g>
+      <g id="hidden-smooth" stroke="#8a949d" stroke-dasharray="0.1173046875,0.1173046875">
+
+    </g>
+      <g id="hidden-sewn" stroke="#8a949d" stroke-dasharray="0.1173046875,0.1173046875">
+
+    </g>
+      <g id="hidden-outline" stroke="#8a949d" stroke-dasharray="0.1173046875,0.1173046875">
+
+    </g>
+    </g>
+  </svg>
+  <text x="524" y="1088" fill="#191f24" font-family="sans-serif" font-size="20">Right</text>
+</svg>

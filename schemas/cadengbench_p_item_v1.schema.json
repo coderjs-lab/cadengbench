@@ -1,0 +1,441 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cadengbench.org/schemas/cadengbench_p_item_v1.schema.json",
+  "title": "CADEngBench-P v1 synchronized multimodal annotation package",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "dataset_version",
+    "run_id",
+    "created_at",
+    "updated_at",
+    "multimodal_annotation_package"
+  ],
+  "properties": {
+    "schema_version": {"const": "cadengbench-p.multimodal-annotation.v1"},
+    "dataset_version": {"type": "string", "minLength": 1},
+    "run_id": {"type": "string", "minLength": 1},
+    "created_at": {"type": "string", "format": "date-time"},
+    "updated_at": {"type": "string", "format": "date-time"},
+    "multimodal_annotation_package": {"$ref": "#/$defs/package"}
+  },
+  "$defs": {
+    "itemId": {
+      "type": "string",
+      "pattern": "^p_(benchcad|fusion360|futurecad)_[0-9]{3,}$"
+    },
+    "availability": {
+      "enum": [
+        "available",
+        "source_absent",
+        "unsupported",
+        "not_applicable",
+        "ambiguous",
+        "license_blocked",
+        "generation_failed",
+        "needs_verification"
+      ]
+    },
+    "authority": {
+      "type": ["string", "null"],
+      "enum": [
+        "S0_source_explicit",
+        "D1_deterministic_geometry",
+        "D2_verified_replay",
+        "E3_authoritative_external",
+        "M4_multi_model_candidate",
+        "M5_model_candidate",
+        "R6_rejected",
+        null
+      ]
+    },
+    "artifact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "sha256", "bytes"],
+      "properties": {
+        "path": {"type": "string", "pattern": "^[^/].+"},
+        "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+        "bytes": {"type": "integer", "minimum": 0}
+      }
+    },
+    "block": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["availability", "authority", "value"],
+      "properties": {
+        "availability": {"$ref": "#/$defs/availability"},
+        "authority": {"$ref": "#/$defs/authority"},
+        "value": {},
+        "note": {"type": ["string", "null"]},
+        "evidence_refs": {
+          "type": "array",
+          "items": {"type": "string"}
+        },
+        "artifact": {"$ref": "#/$defs/artifact"}
+      }
+    },
+    "sourceArtifact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["artifact_id", "path", "sha256", "bytes", "role", "authority"],
+      "properties": {
+        "artifact_id": {"type": "string", "pattern": "^sha256:[a-f0-9]{64}$"},
+        "path": {"type": "string", "pattern": "^[^/].+"},
+        "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+        "bytes": {"type": "integer", "minimum": 0},
+        "role": {"type": "string", "minLength": 1},
+        "authority": {
+          "enum": [
+            "S0_source_explicit",
+            "D1_deterministic_geometry",
+            "D2_verified_replay"
+          ]
+        }
+      }
+    },
+    "sourceToProxyGeometryComparison": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "comparison_method",
+        "authority",
+        "comparison_scope",
+        "exact_brep_equivalence",
+        "note",
+        "source_geometry_summary",
+        "generated_proxy_shape_stats",
+        "source_geometry_comparison"
+      ],
+      "properties": {
+        "comparison_method": {
+          "const": "futurecad_source_targets_vs_generated_proxy_shape_stats_v1"
+        },
+        "authority": {"const": "D1_deterministic_geometry"},
+        "comparison_scope": {"const": "lightweight_source_target_consistency"},
+        "exact_brep_equivalence": {"const": false},
+        "note": {
+          "const": "This lightweight source-target-to-proxy geometry comparison is not exact B-Rep equivalence."
+        },
+        "source_geometry_summary": {"type": "object"},
+        "generated_proxy_shape_stats": {
+          "type": "object",
+          "required": [
+            "solid_valid",
+            "solid_count",
+            "face_count",
+            "edge_count",
+            "volume",
+            "surface_area",
+            "bbox"
+          ],
+          "properties": {
+            "solid_valid": {"type": "boolean"},
+            "solid_count": {"type": "integer", "minimum": 0},
+            "face_count": {"type": "integer", "minimum": 0},
+            "edge_count": {"type": "integer", "minimum": 0},
+            "volume": {"type": "number"},
+            "surface_area": {"type": "number"},
+            "bbox": {"type": "object"}
+          }
+        },
+        "source_geometry_comparison": {
+          "type": "object",
+          "required": ["status"],
+          "properties": {
+            "status": {
+              "enum": ["passed", "failed", "insufficient_source_geometry"]
+            }
+          }
+        }
+      }
+    },
+    "sourceIdentity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source_key",
+        "source_dataset",
+        "source_record_id",
+        "source_snapshot",
+        "source_license",
+        "redistribution_status",
+        "oracle_authority",
+        "canonical_geometry_artifact",
+        "canonical_geometry_authority",
+        "native_history_artifact",
+        "native_history_authority",
+        "source_artifacts",
+        "source_notes",
+        "ingested_at",
+        "source_identity_hash"
+      ],
+      "properties": {
+        "source_key": {"enum": ["benchcad", "fusion360", "futurecad"]},
+        "source_dataset": {"type": "string", "minLength": 1},
+        "source_record_id": {"type": "string", "minLength": 1},
+        "source_snapshot": {"type": "string", "minLength": 1},
+        "source_license": {"type": "string", "minLength": 1},
+        "redistribution_status": {"type": "string", "minLength": 1},
+        "oracle_authority": {"type": "string", "minLength": 1},
+        "canonical_geometry_artifact": {"type": "string", "pattern": "^[^/].+"},
+        "canonical_geometry_authority": {
+          "enum": [
+            "S0_source_explicit",
+            "D1_deterministic_geometry",
+            "D2_verified_replay"
+          ]
+        },
+        "native_history_artifact": {"type": "string", "pattern": "^[^/].+"},
+        "native_history_authority": {"const": "S0_source_explicit"},
+        "source_artifacts": {"type": "array", "minItems": 2, "items": {"$ref": "#/$defs/sourceArtifact"}},
+        "source_notes": {"type": "array", "items": {"type": "string"}},
+        "ingested_at": {"type": "string", "format": "date-time"},
+        "source_to_proxy_geometry_comparison": {
+          "$ref": "#/$defs/sourceToProxyGeometryComparison"
+        },
+        "source_identity_hash": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+      },
+      "dependentRequired": {
+        "canonical_geometry_authority": ["native_history_authority"],
+        "native_history_authority": ["canonical_geometry_authority"],
+        "source_to_proxy_geometry_comparison": [
+          "canonical_geometry_authority",
+          "native_history_authority"
+        ]
+      },
+      "allOf": [
+        {
+          "if": {
+            "required": [
+              "canonical_geometry_authority",
+              "native_history_authority"
+            ],
+            "properties": {"source_key": {"const": "benchcad"}}
+          },
+          "then": {
+            "not": {"required": ["source_to_proxy_geometry_comparison"]},
+            "properties": {
+              "canonical_geometry_authority": {"const": "D2_verified_replay"},
+              "native_history_authority": {"const": "S0_source_explicit"},
+              "source_artifacts": {
+                "items": {
+                  "if": {
+                    "required": ["role"],
+                    "properties": {"role": {"const": "canonical_geometry"}}
+                  },
+                  "then": {
+                    "properties": {"authority": {"const": "D2_verified_replay"}}
+                  },
+                  "else": {
+                    "properties": {"authority": {"const": "S0_source_explicit"}}
+                  }
+                },
+                "allOf": [
+                  {
+                    "contains": {
+                      "required": ["role", "authority"],
+                      "properties": {
+                        "role": {"const": "canonical_geometry"},
+                        "authority": {"const": "D2_verified_replay"}
+                      }
+                    }
+                  },
+                  {
+                    "contains": {
+                      "required": ["role", "authority"],
+                      "properties": {
+                        "role": {"const": "native_parametric_history"},
+                        "authority": {"const": "S0_source_explicit"}
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "required": [
+              "canonical_geometry_authority",
+              "native_history_authority"
+            ],
+            "properties": {"source_key": {"const": "fusion360"}}
+          },
+          "then": {
+            "not": {"required": ["source_to_proxy_geometry_comparison"]},
+            "properties": {
+              "canonical_geometry_authority": {"const": "S0_source_explicit"},
+              "native_history_authority": {"const": "S0_source_explicit"},
+              "source_artifacts": {
+                "items": {
+                  "properties": {"authority": {"const": "S0_source_explicit"}}
+                },
+                "allOf": [
+                  {
+                    "contains": {
+                      "required": ["role", "authority"],
+                      "properties": {
+                        "role": {"const": "canonical_geometry"},
+                        "authority": {"const": "S0_source_explicit"}
+                      }
+                    }
+                  },
+                  {
+                    "contains": {
+                      "required": ["role", "authority"],
+                      "properties": {
+                        "role": {"const": "native_parametric_history"},
+                        "authority": {"const": "S0_source_explicit"}
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "required": [
+              "canonical_geometry_authority",
+              "native_history_authority"
+            ],
+            "properties": {"source_key": {"const": "futurecad"}}
+          },
+          "then": {
+            "required": ["source_to_proxy_geometry_comparison"],
+            "properties": {
+              "canonical_geometry_authority": {"const": "D1_deterministic_geometry"},
+              "native_history_authority": {"const": "S0_source_explicit"},
+              "source_artifacts": {
+                "items": {
+                  "if": {
+                    "required": ["role"],
+                    "properties": {
+                      "role": {
+                        "enum": [
+                          "canonical_geometry",
+                          "derived_conversion_proxy_code",
+                          "derived_conversion_proxy_geometry"
+                        ]
+                      }
+                    }
+                  },
+                  "then": {
+                    "properties": {
+                      "authority": {"const": "D1_deterministic_geometry"}
+                    }
+                  },
+                  "else": {
+                    "properties": {"authority": {"const": "S0_source_explicit"}}
+                  }
+                },
+                "allOf": [
+                  {
+                    "contains": {
+                      "required": ["role", "authority"],
+                      "properties": {
+                        "role": {"const": "canonical_geometry"},
+                        "authority": {"const": "D1_deterministic_geometry"}
+                      }
+                    }
+                  },
+                  {
+                    "contains": {
+                      "required": ["role", "authority"],
+                      "properties": {
+                        "role": {"const": "native_parametric_history"},
+                        "authority": {"const": "S0_source_explicit"}
+                      }
+                    }
+                  },
+                  {
+                    "contains": {
+                      "required": ["role", "authority"],
+                      "properties": {
+                        "role": {"const": "derived_conversion_proxy_code"},
+                        "authority": {"const": "D1_deterministic_geometry"}
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        }
+      ]
+    },
+    "canonicalFrame": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source_frame_id", "authority", "origin", "x_axis", "y_axis", "z_axis",
+        "handedness", "source_units", "canonical_units", "source_to_canonical_transform",
+        "orientation_method", "ambiguity_class", "transform_hash"
+      ],
+      "properties": {
+        "source_frame_id": {"type": "string"},
+        "authority": {"enum": ["source_native", "benchmark_normalized", "unresolved"]},
+        "origin": {"$ref": "#/$defs/vector3"},
+        "x_axis": {"$ref": "#/$defs/vector3"},
+        "y_axis": {"$ref": "#/$defs/vector3"},
+        "z_axis": {"$ref": "#/$defs/vector3"},
+        "handedness": {"const": "right"},
+        "source_units": {"type": "string"},
+        "canonical_units": {"const": "mm"},
+        "source_to_canonical_transform": {
+          "type": "array", "minItems": 4, "maxItems": 4,
+          "items": {"type": "array", "minItems": 4, "maxItems": 4, "items": {"type": "number"}}
+        },
+        "orientation_method": {"type": "string"},
+        "ambiguity_class": {"type": "string"},
+        "transform_hash": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+      }
+    },
+    "vector3": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 3,
+      "items": {"type": "number"}
+    },
+    "package": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "contract_version",
+        "item_id",
+        "source_identity",
+        "canonical_frame",
+        "deterministic_fact_packet",
+        "visual_asset_manifest",
+        "feature_grounding",
+        "text_annotations",
+        "parametric_edit_annotations",
+        "material_process_annotations",
+        "claim_ledger",
+        "annotation_runs",
+        "conflict_records",
+        "quality_report"
+      ],
+      "properties": {
+        "contract_version": {"const": "cadengbench-p.multimodal-annotation.v1"},
+        "item_id": {"$ref": "#/$defs/itemId"},
+        "source_identity": {"$ref": "#/$defs/sourceIdentity"},
+        "canonical_frame": {"$ref": "#/$defs/canonicalFrame"},
+        "deterministic_fact_packet": {"$ref": "#/$defs/block"},
+        "visual_asset_manifest": {"$ref": "#/$defs/block"},
+        "feature_grounding": {"$ref": "#/$defs/block"},
+        "text_annotations": {"$ref": "#/$defs/block"},
+        "parametric_edit_annotations": {"$ref": "#/$defs/block"},
+        "material_process_annotations": {"$ref": "#/$defs/block"},
+        "claim_ledger": {"$ref": "#/$defs/block"},
+        "annotation_runs": {"type": "array", "items": {"type": "object"}},
+        "conflict_records": {"type": "array", "items": {"type": "object"}},
+        "quality_report": {"$ref": "#/$defs/block"}
+      }
+    }
+  }
+}

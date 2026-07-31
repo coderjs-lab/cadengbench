@@ -1,0 +1,66 @@
+{
+  "item_id": "p_benchcad_000521",
+  "output_status": "complete",
+  "payload": {
+    "design": {
+      "application_context": "transmission shaft coupling",
+      "design_freedom": [
+        "length adjustment"
+      ],
+      "goal": "increase key length for torque capacity"
+    },
+    "function": {
+      "functional_interpretation": "transmit torque between shaft and hub",
+      "interfaces": [
+        {
+          "description": "interlock with shaft groove",
+          "interface_id": "interface_1",
+          "interface_kind": "mating"
+        },
+        {
+          "description": "interlock with hub groove",
+          "interface_id": "interface_2",
+          "interface_kind": "mating"
+        }
+      ],
+      "non_requirements": [
+        "no surface finish requirement"
+      ]
+    },
+    "functional_edit": {
+      "engineering_objective": "increase key length for torque capacity",
+      "operating_condition": "static torque transmission"
+    },
+    "load_case": {
+      "application_region": "key interface",
+      "constraint_region": "full length",
+      "direction": "tangential",
+      "duty": "static",
+      "load_type": "torque",
+      "magnitude": 50.0,
+      "unit": "N_mm"
+    },
+    "material_process": {
+      "material_family": "unspecified",
+      "material_specification": "unspecified",
+      "process_family": "unspecified",
+      "process_variant": "unspecified"
+    },
+    "part_identity": {
+      "category": "transmission component",
+      "title": "parallel key"
+    },
+    "standards": [
+      {
+        "requirement_category": "material",
+        "standard_id": "DIN 6885"
+      },
+      {
+        "requirement_category": "fit",
+        "standard_id": "ISO 14"
+      }
+    ]
+  },
+  "role_id": "engineering_task_author",
+  "schema_version": "cadengbench-p.engineering-task-annotation.v3"
+}

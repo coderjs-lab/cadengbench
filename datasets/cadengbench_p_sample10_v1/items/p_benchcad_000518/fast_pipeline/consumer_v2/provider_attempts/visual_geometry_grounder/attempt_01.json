@@ -1,0 +1,14 @@
+{
+  "attempt": 1,
+  "finish_reason": "stop",
+  "http_status": 200,
+  "native_schema_guidance_used": true,
+  "outcome": "accepted",
+  "parse_recovery": "exact",
+  "raw_content": "{\"schema_version\": \"cadengbench-p.visual-grounding-annotation.v2\", \"item_id\": \"p_benchcad_000518\", \"role_id\": \"visual_geometry_grounder\", \"output_status\": \"complete\", \"payload\": {\"global_form\": \"Elongated rectangular prism with uniform cross-section and sharp edges.\", \"features\": [{\"feature_kind\": \"base_form\", \"description\": \"Rectangular solid block with high length-to-width ratio.\", \"view_ids\": [\"iso_front_right_top\", \"iso_rear_left_top\"], \"visibility\": \"visible\"}, {\"feature_kind\": \"base_form\", \"description\": \"Uniform rectangular cross-section along the entire length.\", \"view_ids\": [\"iso_front_right_top\", \"iso_rear_left_top\"], \"visibility\": \"visible\"}, {\"feature_kind\": \"base_form\", \"description\": \"Flat top surface spanning the full length.\", \"view_ids\": [\"iso_front_right_top\", \"iso_rear_left_top\"], \"visibility\": \"visible\"}, {\"feature_kind\": \"base_form\", \"description\": \"Flat bottom surface spanning the full length.\", \"view_ids\": [\"iso_front_right_top\", \"iso_rear_left_top\"], \"visibility\": \"visible\"}, {\"feature_kind\": \"base_form\", \"description\": \"Two parallel flat side faces.\", \"view_ids\": [\"iso_front_right_top\", \"iso_rear_left_top\"], \"visibility\": \"visible\"}, {\"feature_kind\": \"base_form\", \"description\": \"Two flat rectangular end faces.\", \"view_ids\": [\"iso_front_right_top\", \"iso_rear_left_top\"], \"visibility\": \"visible\"}], \"affordances\": [{\"affordance_kind\": \"load_transfer\", \"description\": \"Flat surfaces support compressive load transfer.\", \"view_ids\": [\"iso_front_right_top\", \"iso_rear_left_top\"], \"visibility\": \"visible\"}, {\"affordance_kind\": \"mounting\", \"description\": \"Flat faces allow adhesion or bolting.\", \"view_ids\": [\"iso_front_right_top\", \"iso_rear_left_top\"], \"visibility\": \"visible\"}, {\"affordance_kind\": \"locating\", \"description\": \"Sharp edges provide precise positional alignment.\", \"view_ids\": [\"iso_front_right_top\", \"iso_rear_left_top\"], \"visibility\": \"visible\"}], \"recommended_prompt_profile\": \"text_only\"}}",
+  "usage": {
+    "input_tokens": 2230,
+    "output_tokens": 499,
+    "total_tokens": 2729
+  }
+}

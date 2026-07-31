@@ -1,0 +1,25 @@
+{
+  "schema_version": "cadengbench-p.l3-runtime-lock.v1",
+  "platform": {
+    "system": "Linux",
+    "machine": "x86_64",
+    "python": "3.12.3"
+  },
+  "python_packages": {
+    "cadquery": "2.7.0",
+        "gmsh": "4.15.2",
+        "jsonschema": "4.26.0",
+        "matplotlib": "3.11.1",
+        "numpy": "2.5.1",
+        "vtk": "9.3.1"
+    },
+  "evaluator_uv_lock_sha256": "e75193ec5b2b0a03e14701f38aba674956a504ce5d991ff6daaa79423194e05e",
+  "calculix": {
+    "version": "2.21",
+    "sha256": "0e5645e5ede2105dc816034fab6721d362ae2978885c2432f37d73c9fbbd863c",
+    "version_probe_allowed_exit_codes": [0, 201]
+  },
+    "solver_template": "linear_static_structural_probe_v3",
+  "element_connectivity_mapping": "gmsh_tetra10_to_calculix_c3d10_swap_nodes_9_10_v1",
+  "high_order_optimization": "none"
+}

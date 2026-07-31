@@ -1,0 +1,193 @@
+{
+  "authority": {
+    "llm_output_authority": "candidate_only",
+    "promotion_requires_deterministic_and_solver_validation": true,
+    "source_intent_claimed": false
+  },
+  "geometry": {
+    "all_opposed_region_pairs": [
+      {
+        "axis": "y",
+        "eligible": true,
+        "maximum_region": {
+          "area_fraction": 0.0238095238,
+          "area_mm2": 706.85834706,
+          "axis": "y",
+          "region_id": "axis:y:max",
+          "side": "max",
+          "surface_count": 1,
+          "surfaces": [
+            {
+              "area_mm2": 706.85834706,
+              "centroid_mm": [
+                525.0,
+                300.0,
+                0.0
+              ],
+              "face_index_diagnostic_only": 2,
+              "normal": [
+                0.0,
+                1.0,
+                0.0
+              ]
+            }
+          ]
+        },
+        "minimum_region": {
+          "area_fraction": 0.0238095238,
+          "area_mm2": 706.85834706,
+          "axis": "y",
+          "region_id": "axis:y:min",
+          "side": "min",
+          "surface_count": 1,
+          "surfaces": [
+            {
+              "area_mm2": 706.85834706,
+              "centroid_mm": [
+                525.0,
+                0.0,
+                0.0
+              ],
+              "face_index_diagnostic_only": 0,
+              "normal": [
+                -0.0,
+                -1.0,
+                -0.0
+              ]
+            }
+          ]
+        },
+        "pair_id": "opposed:y",
+        "span_length_mm": 300.0
+      }
+    ],
+    "bbox_mm": {
+      "diagonal": 302.98514815,
+      "lengths": [
+        30.0,
+        300.0,
+        30.0
+      ],
+      "maximum": [
+        540.0,
+        300.0,
+        15.0
+      ],
+      "minimum": [
+        510.0,
+        0.0,
+        -15.0
+      ]
+    },
+    "deterministic_eligibility": {
+      "eligible": true,
+      "policy": {
+        "expected_solid_count": 1,
+        "maximum_region_surface_count": 64,
+        "minimum_region_area_fraction": 0.002,
+        "normal_alignment_min": 0.98,
+        "plane_tolerance_relative": 1e-06
+      },
+      "reason_codes": []
+    },
+    "eligible_opposed_region_pairs": [
+      {
+        "axis": "y",
+        "eligible": true,
+        "maximum_region": {
+          "area_fraction": 0.0238095238,
+          "area_mm2": 706.85834706,
+          "axis": "y",
+          "region_id": "axis:y:max",
+          "side": "max",
+          "surface_count": 1,
+          "surfaces": [
+            {
+              "area_mm2": 706.85834706,
+              "centroid_mm": [
+                525.0,
+                300.0,
+                0.0
+              ],
+              "face_index_diagnostic_only": 2,
+              "normal": [
+                0.0,
+                1.0,
+                0.0
+              ]
+            }
+          ]
+        },
+        "minimum_region": {
+          "area_fraction": 0.0238095238,
+          "area_mm2": 706.85834706,
+          "axis": "y",
+          "region_id": "axis:y:min",
+          "side": "min",
+          "surface_count": 1,
+          "surfaces": [
+            {
+              "area_mm2": 706.85834706,
+              "centroid_mm": [
+                525.0,
+                0.0,
+                0.0
+              ],
+              "face_index_diagnostic_only": 0,
+              "normal": [
+                -0.0,
+                -1.0,
+                -0.0
+              ]
+            }
+          ]
+        },
+        "pair_id": "opposed:y",
+        "span_length_mm": 300.0
+      }
+    ],
+    "face_count": 3,
+    "solid_count": 1,
+    "step_sha256": "c660bf472a9532f98099dce063f0c62968f6a2f89349d2e4aaa2fe5c048fb88b",
+    "total_surface_area_mm2": 29688.05057643
+  },
+  "item_id": "p_fusion360_001312",
+  "schema_version": "cadengbench-p.l3-annotation-context.v1",
+  "selection": {
+    "complexity": {
+      "aggregate_for_stratification_only": 0.26399747793190415,
+      "axes": {
+        "construction_topology": 0.4021857923497268,
+        "history": 0.487473728457335,
+        "parametric": 0.08902900378310215,
+        "sketch": 0.0773013871374527
+      },
+      "method": "within_source_multiaxis_percentile_v1",
+      "single_scalar_is_not_benchmark_truth": true,
+      "tier": "easy"
+    },
+    "selection_stratum": "new_body_with_cut",
+    "source_key": "fusion360",
+    "split": "development"
+  },
+  "semantic_context": {
+    "application_context": "industrial machinery mounting base",
+    "authority_warning": "LLM/VLM-authored context may be semantically wrong and is not selector or source-intent authority.",
+    "category": "structural support",
+    "global_form": "Solid right circular cylinder with uniform diameter and flat ends",
+    "interfaces": [
+      {
+        "description": "base plate interface with foundation",
+        "kind": "mounting"
+      }
+    ],
+    "status": "candidate_context_only",
+    "title": "cylindrical support column"
+  },
+  "source_family": "fusion360_reconstruction",
+  "visual": {
+    "bytes": 31359,
+    "path": "data/derived/cadengbench_p_300_l3_probe_v1/items/p_fusion360_001312/input_image.png",
+    "sha256": "82f64f3cac0ee6c5220fa8d68b4ff9725dfa9692c1aa800a4c05b6130d77b1eb"
+  }
+}

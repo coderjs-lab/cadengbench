@@ -1,0 +1,14 @@
+{
+  "attempt": 1,
+  "finish_reason": "stop",
+  "http_status": 200,
+  "native_schema_guidance_used": true,
+  "outcome": "accepted",
+  "parse_recovery": "exact",
+  "raw_content": "{\"schema_version\": \"cadengbench-p.visual-grounding-annotation.v2\", \"item_id\": \"p_fusion360_001017\", \"role_id\": \"visual_geometry_grounder\", \"output_status\": \"complete\", \"payload\": {\"global_form\": \"Solid right circular cylinder with flat parallel end faces and smooth continuous lateral surface.\", \"features\": [{\"feature_kind\": \"base_form\", \"description\": \"Uniform cylindrical body with constant cross-section along vertical axis.\", \"view_ids\": [\"iso_front_right_top\", \"iso_rear_left_top\"], \"visibility\": \"visible\"}, {\"feature_kind\": \"base_form\", \"description\": \"Flat circular top face perpendicular to the central axis.\", \"view_ids\": [\"iso_front_right_top\", \"iso_rear_left_top\"], \"visibility\": \"visible\"}, {\"feature_kind\": \"base_form\", \"description\": \"Flat circular bottom face parallel to the top face.\", \"view_ids\": [\"iso_front_right_top\", \"iso_rear_left_top\"], \"visibility\": \"visible\"}, {\"feature_kind\": \"base_form\", \"description\": \"Smooth continuous curved lateral surface connecting top and bottom faces.\", \"view_ids\": [\"iso_front_right_top\", \"iso_rear_left_top\"], \"visibility\": \"visible\"}, {\"feature_kind\": \"base_form\", \"description\": \"Sharp circular edge at the intersection of the top face and lateral surface.\", \"view_ids\": [\"iso_front_right_top\", \"iso_rear_left_top\"], \"visibility\": \"visible\"}, {\"feature_kind\": \"base_form\", \"description\": \"Sharp circular edge at the intersection of the bottom face and lateral surface.\", \"view_ids\": [\"iso_front_right_top\", \"iso_rear_left_top\"], \"visibility\": \"visible\"}], \"affordances\": [{\"affordance_kind\": \"locating\", \"description\": \"Cylindrical geometry allows precise coaxial alignment within a mating bore.\", \"view_ids\": [\"iso_front_right_top\", \"iso_rear_left_top\"], \"visibility\": \"visible\"}, {\"affordance_kind\": \"load_transfer\", \"description\": \"Flat parallel end faces provide stable bearing surfaces for axial compression.\", \"view_ids\": [\"iso_front_right_top\", \"iso_rear_left_top\"], \"visibility\": \"visible\"}, {\"affordance_kind\": \"grip\", \"description\": \"Smooth continuous lateral surface enables friction-based handling or clamping.\", \"view_ids\": [\"iso_front_right_top\", \"iso_rear_left_top\"], \"visibility\": \"visible\"}], \"recommended_prompt_profile\": \"text_only\"}}",
+  "usage": {
+    "input_tokens": 2240,
+    "output_tokens": 538,
+    "total_tokens": 2778
+  }
+}

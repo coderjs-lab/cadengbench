@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cadengbench.org/schemas/cadengbench_p_source_snapshot_v2.schema.json",
+  "title": "CADEngBench-P v2 immutable source snapshot",
+  "type": "object", "additionalProperties": false,
+  "required": ["schema_version", "record_type", "snapshot_id", "source_id", "source_dataset", "captured_at", "root_path", "manifest_sha256", "content_identity_sha256", "files", "native_artifacts", "derived_artifacts", "authority", "availability", "immutable"],
+  "properties": {
+    "schema_version": {"const": "cadengbench-p.source-snapshot.v2"}, "record_type": {"const": "source_snapshot"}, "snapshot_id": {"type": "string", "minLength": 1}, "source_id": {"type": "string", "minLength": 1}, "source_dataset": {"enum": ["benchcad", "fusion360_reconstruction", "futurecad", "other"]}, "captured_at": {"type": "string", "format": "date-time"}, "root_path": {"type": "string", "minLength": 1}, "manifest_sha256": {"type": "string", "pattern": "^[A-Fa-f0-9]{64}$"}, "content_identity_sha256": {"type": "string", "pattern": "^[A-Fa-f0-9]{64}$"},
+    "files": {"type": "array", "minItems": 1, "items": {"type": "object", "additionalProperties": false, "required": ["path", "sha256", "bytes", "role"], "properties": {"path": {"type": "string", "minLength": 1}, "sha256": {"type": "string", "pattern": "^[A-Fa-f0-9]{64}$"}, "bytes": {"type": "integer", "minimum": 0}, "role": {"enum": ["native_source", "metadata", "license", "derived", "log"]}}}},
+    "native_artifacts": {"type": "array", "items": {"type": "string", "minLength": 1}}, "derived_artifacts": {"type": "array", "items": {"type": "object", "additionalProperties": false, "required": ["path", "sha256", "authority"], "properties": {"path": {"type": "string", "minLength": 1}, "sha256": {"type": "string", "pattern": "^[A-Fa-f0-9]{64}$"}, "authority": {"enum": ["deterministic_geometry", "verified_replay", "generated_proxy"]}}}},
+    "authority": {"enum": ["source_explicit", "needs_local_data", "unavailable"]}, "availability": {"enum": ["available", "partial", "unavailable"]}, "unavailable_reason": {"type": ["string", "null"]}, "immutable": {"const": true}
+  },
+  "allOf": [{"if": {"properties": {"availability": {"const": "unavailable"}}}, "then": {"required": ["unavailable_reason"], "properties": {"unavailable_reason": {"type": "string", "minLength": 1}, "authority": {"const": "unavailable"}}}}, {"if": {"properties": {"authority": {"const": "unavailable"}}}, "then": {"properties": {"availability": {"const": "unavailable"}}}}]
+}

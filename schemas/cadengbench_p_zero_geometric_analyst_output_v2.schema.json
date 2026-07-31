@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cadengbench.org/schemas/cadengbench_p_zero_geometric_analyst_output_v2.schema.json",
+  "type": "object", "additionalProperties": false,
+  "required": ["schema_version", "bundle_id", "item_id", "role_id", "output_status", "payload", "abstentions"],
+  "properties": {
+    "schema_version": {"const": "cadengbench-p.zero-to-cad-role-output.v2"},
+    "bundle_id": {"type": "string", "minLength": 1}, "item_id": {"type": "string", "minLength": 1},
+    "role_id": {"const": "zero_geometric_completeness_analyst"},
+    "output_status": {"enum": ["complete", "partial", "abstained"]},
+    "payload": {
+      "type": "object", "additionalProperties": false,
+      "required": ["global_form", "features", "ambiguities", "recommended_profile"],
+      "properties": {
+        "global_form": {"$ref": "#/$defs/prose"},
+        "features": {"type": "array", "maxItems": 20, "items": {"$ref": "#/$defs/feature"}},
+        "ambiguities": {"type": "array", "maxItems": 12, "items": {"$ref": "#/$defs/prose"}},
+        "recommended_profile": {"enum": ["zero_to_cad.text.v2", "zero_to_cad.text_iso.v2", "zero_to_cad.text_engineering_views.v2"]}
+      }
+    },
+    "abstentions": {"type": "array", "maxItems": 12, "items": {"$ref": "#/$defs/prose"}}
+  },
+  "$defs": {
+    "prose": {"type": "string", "minLength": 1, "maxLength": 600, "pattern": "^[^0-9]*$"},
+    "factRef": {"type": "string", "pattern": "^FACT-[A-Z0-9_-]+$"},
+    "feature": {
+      "type": "object", "additionalProperties": false,
+      "required": ["semantic_name", "geometric_type", "visual_description", "fact_refs", "view_refs", "ambiguity"],
+      "properties": {
+        "semantic_name": {"$ref": "#/$defs/prose"}, "geometric_type": {"$ref": "#/$defs/prose"},
+        "visual_description": {"$ref": "#/$defs/prose"},
+        "fact_refs": {"type": "array", "maxItems": 12, "uniqueItems": true, "items": {"$ref": "#/$defs/factRef"}},
+        "view_refs": {"type": "array", "minItems": 1, "maxItems": 8, "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+        "ambiguity": {"enum": ["none_observed", "occluded", "visually_ambiguous", "fact_conflict"]}
+      }
+    }
+  }
+}

@@ -1,0 +1,160 @@
+{
+  "assembly_id": "joint_set_18632",
+  "canonical_candidate_registry": {
+    "bytes": 61752,
+    "sha256": "fbdb0d576945afd5f1dee947aba1a5f74db7a1f8f3a34dfb3f62920b9404c589"
+  },
+  "capacity_measurement": {
+    "estimated_input_tokens": 21587,
+    "requested_output_tokens": 4000,
+    "serialized_request_bytes": 1128805,
+    "text_tokens": 7851
+  },
+  "compact_candidate_registry": {
+    "bytes": 18737,
+    "relative_path": "candidates.compact.json",
+    "sha256": "5687c396fcabb7e065929a3a205025fb89b1e1a2553b9ef086e3b7d9b1cb8e90"
+  },
+  "equivalence": {
+    "assembly_id": "joint_set_18632",
+    "candidate_count": 67,
+    "checks": {
+      "assembly_id_matches": true,
+      "body_count_matches": true,
+      "body_counts_match": true,
+      "candidate_ids_byte_stable": true,
+      "candidate_ids_unique": true,
+      "eligible_candidates_have_valid_atlas_pages": true,
+      "retained_values_match_precision_policy": true,
+      "schema_matches": true
+    },
+    "equivalent": true,
+    "max_numeric_absolute_error": 4.600688896516658e-08,
+    "max_numeric_relative_error": 2.9559909634773014e-09,
+    "schema": "cadengbench_a_compact_equivalence_report_v1",
+    "significant_digits": 9
+  },
+  "ground_truth_accessed": false,
+  "images": {
+    "clean_view_count": 8,
+    "entity_atlas_count": 4,
+    "image_base64_bytes": 1096652,
+    "image_count": 12,
+    "image_raw_bytes": 822476,
+    "images": [
+      {
+        "body_role": "body_a",
+        "bytes": 75800,
+        "height": 768,
+        "kind": "clean",
+        "relative_path": "views/body_a_iso.png",
+        "sha256": "e08a41e65e26db60bd3bcbc904f32dc5fa215ec5e07c86d74034976dd9d3c55c",
+        "width": 768
+      },
+      {
+        "body_role": "body_a",
+        "bytes": 12967,
+        "height": 768,
+        "kind": "clean",
+        "relative_path": "views/body_a_front.png",
+        "sha256": "d6a5ab6b555747e2bd9cdfb216c96ea754025636872d458fee296cf33d434544",
+        "width": 768
+      },
+      {
+        "body_role": "body_a",
+        "bytes": 12629,
+        "height": 768,
+        "kind": "clean",
+        "relative_path": "views/body_a_side.png",
+        "sha256": "b27c2b2e5c5d62bbeb59ea00d05f23e21e61b60b7b72ba6bf0ce05e111cc9883",
+        "width": 768
+      },
+      {
+        "body_role": "body_a",
+        "bytes": 47621,
+        "height": 768,
+        "kind": "clean",
+        "relative_path": "views/body_a_top.png",
+        "sha256": "4ab9a580e2b6a30ad66421b88b189a5651eb9f68c6daa3fda21c57ad2fb2cff2",
+        "width": 768
+      },
+      {
+        "body_role": "body_a",
+        "bytes": 124546,
+        "height": 768,
+        "kind": "atlas",
+        "relative_path": "views/body_a_entity_atlas_01.png",
+        "sha256": "b556052c6a008babc03793cecaf3ddd26ae88390bcedabafe2f7faeef9fad5de",
+        "width": 1200
+      },
+      {
+        "body_role": "body_a",
+        "bytes": 153254,
+        "height": 768,
+        "kind": "atlas",
+        "relative_path": "views/body_a_entity_atlas_02.png",
+        "sha256": "c62e937031d616c5a5992c23f9e47bf8918ef9917d513fe7b38495e6ece05a9e",
+        "width": 1200
+      },
+      {
+        "body_role": "body_a",
+        "bytes": 143515,
+        "height": 768,
+        "kind": "atlas",
+        "relative_path": "views/body_a_entity_atlas_03.png",
+        "sha256": "2515da5849c4a686ebd574f44d8ad3e9a7af2096654261adef074b2a7193ff13",
+        "width": 1200
+      },
+      {
+        "body_role": "body_b",
+        "bytes": 80644,
+        "height": 768,
+        "kind": "clean",
+        "relative_path": "views/body_b_iso.png",
+        "sha256": "0d9eb89f173754093ff70aa063abaa75fbcd42bafce57a1ae1f963dfc9160e54",
+        "width": 768
+      },
+      {
+        "body_role": "body_b",
+        "bytes": 21420,
+        "height": 768,
+        "kind": "clean",
+        "relative_path": "views/body_b_front.png",
+        "sha256": "f9b1c36364f40cc5354bec2062c6177a698d411a8099fa37a887ea9058da12b8",
+        "width": 768
+      },
+      {
+        "body_role": "body_b",
+        "bytes": 19746,
+        "height": 768,
+        "kind": "clean",
+        "relative_path": "views/body_b_side.png",
+        "sha256": "d6b7547c124c3f0f5d9cd97a7811c91df8f0630937d6d0cf07b89ab97627d277",
+        "width": 768
+      },
+      {
+        "body_role": "body_b",
+        "bytes": 30395,
+        "height": 768,
+        "kind": "clean",
+        "relative_path": "views/body_b_top.png",
+        "sha256": "0a2f7d63c544a7e85178393ff3c3a6bc4d74207597630acb9fdb342536bf1e70",
+        "width": 768
+      },
+      {
+        "body_role": "body_b",
+        "bytes": 99939,
+        "height": 768,
+        "kind": "atlas",
+        "relative_path": "views/body_b_entity_atlas_01.png",
+        "sha256": "3e51f828a4745442957270796581cd6a2f038ae5104e518cf1ea8d3f510c719d",
+        "width": 1200
+      }
+    ],
+    "reference_high_detail_image_tokens": 13384
+  },
+  "profile_id": "a1_portable_128k_v1",
+  "public_geometry_sha256": "99f24e1ea7f6305b127cd2723bc49894d9c89da70bae99cec963499b9c65fed4",
+  "schema": "cadengbench_a_portable_item_manifest_v1",
+  "schema_errors": []
+}

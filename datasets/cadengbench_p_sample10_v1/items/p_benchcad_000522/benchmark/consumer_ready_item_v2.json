@@ -1,0 +1,618 @@
+{
+  "annotation_flags": [
+    "benchmark_authored_engineering_context",
+    "material_process_unspecified",
+    "source_standard_unverified",
+    "dfm_measurement_only_no_threshold"
+  ],
+  "annotations": {
+    "engineering_task": {
+      "design": {
+        "application_context": "transmission shaft interface",
+        "design_freedom": [
+          "clearance increase only"
+        ],
+        "goal": "increase shaft diameter clearance"
+      },
+      "function": {
+        "functional_interpretation": "transmit torque between shaft and hub",
+        "interfaces": [
+          {
+            "description": "fits into shaft keyway",
+            "interface_id": "interface_1",
+            "interface_kind": "mounting"
+          }
+        ],
+        "non_requirements": [
+          "no torque capacity change"
+        ]
+      },
+      "functional_edit": {
+        "engineering_objective": "increase shaft diameter clearance for assembly ease",
+        "operating_condition": "static torque transmission"
+      },
+      "load_case": {
+        "application_region": "not applicable",
+        "constraint_region": "not applicable",
+        "direction": "not_applicable",
+        "duty": "not_applicable",
+        "load_type": "not_applicable",
+        "magnitude": null,
+        "unit": "not_applicable"
+      },
+      "material_process": {
+        "material_family": "unspecified",
+        "material_specification": "unspecified",
+        "process_family": "unspecified",
+        "process_variant": "unspecified"
+      },
+      "part_identity": {
+        "category": "transmission component",
+        "title": "Parallel key"
+      },
+      "standards": [
+        {
+          "requirement_category": "material",
+          "standard_id": "DIN 6885"
+        },
+        {
+          "requirement_category": "fit",
+          "standard_id": "ISO 14"
+        }
+      ]
+    },
+    "visual_grounding": {
+      "affordances": [
+        {
+          "affordance_kind": "locating",
+          "description": "Groove allows alignment or sliding fit with a mating pin or rail.",
+          "view_ids": [
+            "orbit_045",
+            "orbit_135"
+          ],
+          "visibility": "visible"
+        },
+        {
+          "affordance_kind": "mounting",
+          "description": "Flat faces provide surfaces for adhesion or clamping.",
+          "view_ids": [
+            "orbit_top",
+            "orbit_bottom"
+          ],
+          "visibility": "visible"
+        },
+        {
+          "affordance_kind": "load_transfer",
+          "description": "Rigid prismatic shape supports compressive or bending loads.",
+          "view_ids": [
+            "orbit_000",
+            "orbit_045"
+          ],
+          "visibility": "visible"
+        }
+      ],
+      "features": [
+        {
+          "description": "Elongated rectangular prism with chamfered ends.",
+          "feature_kind": "base_form",
+          "view_ids": [
+            "orbit_000",
+            "orbit_045"
+          ],
+          "visibility": "visible"
+        },
+        {
+          "description": "Longitudinal groove running along the top face.",
+          "feature_kind": "recess_or_pocket",
+          "view_ids": [
+            "orbit_045",
+            "orbit_135"
+          ],
+          "visibility": "visible"
+        },
+        {
+          "description": "Chamfered edges at both ends of the prism.",
+          "feature_kind": "fillet_or_chamfer",
+          "view_ids": [
+            "orbit_000",
+            "orbit_180"
+          ],
+          "visibility": "visible"
+        },
+        {
+          "description": "Flat bottom face for stable placement.",
+          "feature_kind": "base_form",
+          "view_ids": [
+            "orbit_bottom"
+          ],
+          "visibility": "visible"
+        },
+        {
+          "description": "Flat side faces perpendicular to the groove.",
+          "feature_kind": "base_form",
+          "view_ids": [
+            "orbit_090",
+            "orbit_270"
+          ],
+          "visibility": "visible"
+        },
+        {
+          "description": "Uniform cross-section along the length.",
+          "feature_kind": "base_form",
+          "view_ids": [
+            "orbit_000",
+            "orbit_180"
+          ],
+          "visibility": "visible"
+        }
+      ],
+      "global_form": "Elongated rectangular prism with chamfered ends and a longitudinal groove on one face.",
+      "recommended_prompt_profile": "text_only"
+    }
+  },
+  "consumer_contract_id": "cadengbench-p.consumer-driven-annotation.v2",
+  "evaluator_inputs": {
+    "functional_edit": {
+      "effect_proxy": {
+        "absolute_tolerance": 1e-06,
+        "comparator": "within_tolerance",
+        "expected_direction": "increase",
+        "measurement_method": "native_parameter_replay",
+        "metric_kind": "target_parameter_value",
+        "target_value": 25.905,
+        "unit": "mm"
+      },
+      "llm_judge_used": false,
+      "non_target_source_unchanged": true,
+      "preservation_scope": [
+        "valid_solid",
+        "solid_count",
+        "non_target_parameters"
+      ],
+      "relation_checks": [],
+      "solid_count_preserved": true,
+      "target": {
+        "base_value": 23.55,
+        "feature_id": "cadquery:box:0",
+        "measurement": {
+          "absolute_tolerance": 1e-06,
+          "measurement_name": "cadquery_parameter_mm:box_arg_0",
+          "method": "cadquery_ast_bound_literal_verified_replay_v1",
+          "unit": "mm"
+        },
+        "oracle_id": "p_benchcad_000522:edit-target:v2",
+        "parameter_id": "cadquery:line:5:col:9",
+        "parameter_key": "box_arg_0",
+        "target_value": 25.905,
+        "unit": "mm",
+        "valid_range": {
+          "lower": 20.0175,
+          "unit": "mm",
+          "upper": 27.082500000000003
+        }
+      },
+      "valid_solid_required": true
+    },
+    "geometry": {
+      "bbox": {
+        "diagonal": 23.7853253,
+        "xlen": 23.55,
+        "xmax": 11.775,
+        "xmin": -11.775,
+        "ylen": 2.36,
+        "ymax": 1.18,
+        "ymin": -1.18,
+        "zlen": 2.36,
+        "zmax": 1.18,
+        "zmin": -1.18
+      },
+      "body_count": 1,
+      "geometry_physics": {
+        "bbox_fill_ratio": 0.9084672,
+        "bbox_volume_mm3": 131.16408,
+        "center_of_mass_interpretation": "volume_centroid_uniform_density_only",
+        "characteristic_length_mm": 4.9208643,
+        "failure_code": null,
+        "geometric_inertia_tensor_mm5": [
+          [
+            102.3940388,
+            -0.0,
+            0.0
+          ],
+          [
+            -0.0,
+            5667.8658815,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            5662.1506906
+          ]
+        ],
+        "method": "occ_volume_properties_v1",
+        "physical_mass_status": "requires_verified_material_density",
+        "principal_axes": [
+          [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            -0.0,
+            1.0
+          ],
+          [
+            1.0,
+            0.0,
+            -0.0
+          ]
+        ],
+        "principal_geometric_moments_mm5": [
+          5667.8658815,
+          5662.1506906,
+          102.3940388
+        ],
+        "schema_version": "cadengbench-p.geometry-physics.v1",
+        "status": "complete",
+        "surface_area_mm2": 231.7383706,
+        "surface_area_to_volume_per_mm": 1.9447947,
+        "units": {
+          "area": "mm2",
+          "geometric_inertia": "mm5",
+          "length": "mm",
+          "volume": "mm3"
+        },
+        "volume_centroid_mm": [
+          -0.0,
+          -0.0494559,
+          0.0
+        ],
+        "volume_mm3": 119.158267
+      },
+      "hole_inventory": {
+        "hole_count": 0,
+        "holes": [],
+        "recognizer": "internal_near_full_cylindrical_face_v1",
+        "recognizer_scope": "internal_near_full_cylindrical_faces"
+      },
+      "topology_summary": {
+        "edge_count": 36,
+        "face_count": 15,
+        "is_valid": true,
+        "shell_count": 1,
+        "solid_count": 1,
+        "vertex_count": 24
+      }
+    },
+    "manufacturing": {
+      "applicable_standards": [
+        {
+          "basis": "source_explicit_label",
+          "compliance_claimed": false,
+          "requirement_category": "material",
+          "standard_id": "DIN 6885",
+          "verification_status": "source_explicit_unverified"
+        },
+        {
+          "basis": "benchmark_authored_candidate",
+          "compliance_claimed": false,
+          "requirement_category": "fit",
+          "standard_id": "ISO 14",
+          "verification_status": "candidate"
+        }
+      ],
+      "dfm_requirements": [
+        {
+          "applicability": "requires_frozen_process_material_condition",
+          "check_id": "minimum_wall_thickness",
+          "compliance_status": "not_evaluated_no_frozen_applicable_threshold",
+          "hole_count": null,
+          "maximum_depth_to_diameter": null,
+          "measurement_id": "p_benchcad_000522:dfm:wall_thickness_proxy",
+          "measurement_kind": "geometry_proxy_not_global_thickness_solution",
+          "minimum_candidate_mm": 0.47,
+          "minimum_diameter_mm": null,
+          "threshold": null
+        },
+        {
+          "applicability": "requires_frozen_process_tool_or_process_capability",
+          "check_id": "minimum_hole_geometry",
+          "compliance_status": "not_evaluated_no_frozen_applicable_threshold",
+          "hole_count": 0,
+          "maximum_depth_to_diameter": null,
+          "measurement_id": "p_benchcad_000522:dfm:minimum_hole_geometry",
+          "measurement_kind": null,
+          "minimum_candidate_mm": null,
+          "minimum_diameter_mm": null,
+          "threshold": null
+        }
+      ],
+      "llm_judge_used": false,
+      "material_process": {
+        "basis": "unspecified",
+        "material_basis": "unspecified",
+        "material_family": "unspecified",
+        "material_specification": "unspecified",
+        "material_verification_status": "unspecified",
+        "process_basis": "unspecified",
+        "process_family": "unspecified",
+        "process_variant": "unspecified",
+        "process_verification_status": "unspecified"
+      },
+      "recommended_check_families": [
+        {
+          "applicability": "selected_process_family",
+          "check_id": "minimum_wall_thickness",
+          "measurement_status": "deterministic_measurement_present"
+        },
+        {
+          "applicability": "selected_process_family",
+          "check_id": "minimum_hole_geometry",
+          "measurement_status": "deterministic_measurement_present"
+        }
+      ]
+    },
+    "parametric": {
+      "constraint_relations": [],
+      "operation_sequence": [
+        {
+          "operation_id": "op:line_4:Workplane",
+          "operation_type": "Workplane",
+          "sequence_index": 0
+        },
+        {
+          "operation_id": "op:line_5:box",
+          "operation_type": "box",
+          "sequence_index": 1
+        },
+        {
+          "operation_id": "op:line_6:edges",
+          "operation_type": "edges",
+          "sequence_index": 2
+        },
+        {
+          "operation_id": "op:line_7:chamfer",
+          "operation_type": "chamfer",
+          "sequence_index": 3
+        },
+        {
+          "operation_id": "op:line_8:faces",
+          "operation_type": "faces",
+          "sequence_index": 4
+        },
+        {
+          "operation_id": "op:line_8:workplane",
+          "operation_type": "workplane",
+          "sequence_index": 5
+        },
+        {
+          "operation_id": "op:line_9:slot2D",
+          "operation_type": "slot2D",
+          "sequence_index": 6
+        },
+        {
+          "operation_id": "op:line_10:cutBlind",
+          "operation_type": "cutBlind",
+          "sequence_index": 7
+        },
+        {
+          "operation_id": "op:line_14:show_object",
+          "operation_type": "show_object",
+          "sequence_index": 8
+        }
+      ],
+      "parameters": [
+        {
+          "base_value": 23.55,
+          "feature_id": "cadquery:box:0",
+          "parameter_id": "cadquery:line:5:col:9",
+          "parameter_key": "box_arg_0",
+          "target_value": 25.905,
+          "unit": "mm",
+          "valid_range": {
+            "lower": 20.0175,
+            "unit": "mm",
+            "upper": 27.082500000000003
+          }
+        },
+        {
+          "editable": true,
+          "parameter_id": "op:line_10:cutBlind:arg_0",
+          "unit": "mm_or_count_needs_semantic_binding"
+        },
+        {
+          "editable": true,
+          "parameter_id": "op:line_5:box:arg_0",
+          "unit": "mm_or_count_needs_semantic_binding"
+        },
+        {
+          "editable": true,
+          "parameter_id": "op:line_5:box:arg_1",
+          "unit": "mm_or_count_needs_semantic_binding"
+        },
+        {
+          "editable": true,
+          "parameter_id": "op:line_5:box:arg_2",
+          "unit": "mm_or_count_needs_semantic_binding"
+        },
+        {
+          "editable": true,
+          "parameter_id": "op:line_7:chamfer:arg_0",
+          "unit": "mm_or_count_needs_semantic_binding"
+        },
+        {
+          "editable": true,
+          "parameter_id": "op:line_9:slot2D:arg_0",
+          "unit": "mm_or_count_needs_semantic_binding"
+        },
+        {
+          "editable": true,
+          "parameter_id": "op:line_9:slot2D:arg_1",
+          "unit": "mm_or_count_needs_semantic_binding"
+        },
+        {
+          "editable": true,
+          "parameter_id": "op:line_9:slot2D:arg_2",
+          "unit": "mm_or_count_needs_semantic_binding"
+        }
+      ]
+    },
+    "physics": {
+      "fea_readiness": {
+        "missing_inputs": [
+          "verified_condition_specific_material_properties",
+          "geometric_boundary_condition_bindings",
+          "mesh_and_solver_profile"
+        ],
+        "simulation_result_present": false,
+        "status": "geometry_only"
+      },
+      "functional_interfaces": [
+        {
+          "description": "fits into shaft keyway",
+          "interface_id": "interface_1",
+          "interface_kind": "mounting"
+        }
+      ],
+      "geometry_properties": {
+        "bbox_fill_ratio": 0.9084672,
+        "bbox_volume_mm3": 131.16408,
+        "center_of_mass_interpretation": "volume_centroid_uniform_density_only",
+        "characteristic_length_mm": 4.9208643,
+        "failure_code": null,
+        "geometric_inertia_tensor_mm5": [
+          [
+            102.3940388,
+            -0.0,
+            0.0
+          ],
+          [
+            -0.0,
+            5667.8658815,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            5662.1506906
+          ]
+        ],
+        "method": "occ_volume_properties_v1",
+        "physical_mass_status": "requires_verified_material_density",
+        "principal_axes": [
+          [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            -0.0,
+            1.0
+          ],
+          [
+            1.0,
+            0.0,
+            -0.0
+          ]
+        ],
+        "principal_geometric_moments_mm5": [
+          5667.8658815,
+          5662.1506906,
+          102.3940388
+        ],
+        "schema_version": "cadengbench-p.geometry-physics.v1",
+        "status": "complete",
+        "surface_area_mm2": 231.7383706,
+        "surface_area_to_volume_per_mm": 1.9447947,
+        "units": {
+          "area": "mm2",
+          "geometric_inertia": "mm5",
+          "length": "mm",
+          "volume": "mm3"
+        },
+        "volume_centroid_mm": [
+          -0.0,
+          -0.0494559,
+          0.0
+        ],
+        "volume_mm3": 119.158267
+      },
+      "llm_judge_used": false,
+      "load_case": {
+        "application_region": "not applicable",
+        "basis": "not_applicable",
+        "constraint_region": "not applicable",
+        "direction": "not_applicable",
+        "duty": "not_applicable",
+        "load_type": "not_applicable",
+        "magnitude": null,
+        "physical_performance_verified": false,
+        "unit": "not_applicable",
+        "validation_status": "not_applicable"
+      },
+      "material_context": {
+        "material_basis": "unspecified",
+        "material_family": "unspecified",
+        "material_specification": "unspecified",
+        "material_verification_status": "unspecified"
+      },
+      "visual_affordances": [
+        {
+          "affordance_kind": "locating",
+          "description": "Groove allows alignment or sliding fit with a mating pin or rail.",
+          "view_ids": [
+            "orbit_045",
+            "orbit_135"
+          ],
+          "visibility": "visible"
+        },
+        {
+          "affordance_kind": "mounting",
+          "description": "Flat faces provide surfaces for adhesion or clamping.",
+          "view_ids": [
+            "orbit_top",
+            "orbit_bottom"
+          ],
+          "visibility": "visible"
+        },
+        {
+          "affordance_kind": "load_transfer",
+          "description": "Rigid prismatic shape supports compressive or bending loads.",
+          "view_ids": [
+            "orbit_000",
+            "orbit_045"
+          ],
+          "visibility": "visible"
+        }
+      ]
+    }
+  },
+  "item_id": "p_benchcad_000522",
+  "migration_sources": [],
+  "model_facing": {
+    "functional_edit": {
+      "input_assets": {
+        "canonical_geometry_artifact": "data/production/cadengbench_p_1800_v2_two_source_r25/dataset/items/p_benchcad_000522/source/generated_from_cadquery.step",
+        "native_history_artifact": "data/production/cadengbench_p_1800_v2_two_source_r25/dataset/items/p_benchcad_000522/source/cadquery.py",
+        "visual_assets": []
+      },
+      "user_prompt": "Modify the existing editable CAD model for this use case: transmission shaft interface Intended function: transmit torque between shaft and hub Functional interfaces: mounting: fits into shaft keyway Operating condition: static torque transmission Set parameter `box_arg_0` from 23.55 mm to 25.905 mm so that increase shaft diameter clearance for assembly ease Measure the intended effect with target parameter value within_tolerance 25.905 mm; expected direction: increase. Use the benchmark scenario material/process context unspecified / unspecified (unspecified / unspecified). Preserve valid solid, solid count, non target parameters. Geometric acceptance does not certify service performance."
+    },
+    "zero_to_cad": {
+      "system_prompt": "configs/prompts/zero_to_cad/model_under_evaluation.system.v2.txt",
+      "user_prompt": "Design an editable parametric CAD model of Parallel key (transmission component). Goal: increase shaft diameter clearance Application context: transmission shaft interface Required global form: Elongated rectangular prism with chamfered ends and a longitudinal groove on one face. Produce 1 solid body or bodies with nominal envelope 23.55 x 2.36 x 2.36 mm. Visible features: base form: Elongated rectangular prism with chamfered ends. [views: orbit_000, orbit_045; visibility: visible]. recess or pocket: Longitudinal groove running along the top face. [views: orbit_045, orbit_135; visibility: visible]. fillet or chamfer: Chamfered edges at both ends of the prism. [views: orbit_000, orbit_180; visibility: visible]. base form: Flat bottom face for stable placement. [views: orbit_bottom; visibility: visible]. base form: Flat side faces perpendicular to the groove. [views: orbit_090, orbit_270; visibility: visible]. base form: Uniform cross-section along the length. [views: orbit_000, orbit_180; visibility: visible]. Functional interpretation: transmit torque between shaft and hub Interfaces: interface_1 mounting: fits into shaft keyway. Visual affordances: locating: Groove allows alignment or sliding fit with a mating pin or rail. [views: orbit_045, orbit_135; visibility: visible]. mounting: Flat faces provide surfaces for adhesion or clamping. [views: orbit_top, orbit_bottom; visibility: visible]. load transfer: Rigid prismatic shape supports compressive or bending loads. [views: orbit_000, orbit_045; visibility: visible]. Material/process context: unspecified / unspecified (unspecified / unspecified). DFM priorities: minimum wall thickness, minimum hole geometry. Design freedom: clearance increase only Explicit non-requirements: no torque capacity change Use named parameters for the declared dimensions and preserve the supplied deterministic relations.",
+      "visual_assets": []
+    }
+  },
+  "schema_version": "cadengbench-p.consumer-ready-item.v2",
+  "source": {
+    "canonical_geometry_artifact": "data/production/cadengbench_p_1800_v2_two_source_r25/dataset/items/p_benchcad_000522/source/generated_from_cadquery.step",
+    "native_history_artifact": "data/production/cadengbench_p_1800_v2_two_source_r25/dataset/items/p_benchcad_000522/source/cadquery.py",
+    "source_dataset": "BenchCAD",
+    "source_key": "benchcad",
+    "source_record_id": "parallel_key_015051_s20260505"
+  }
+}

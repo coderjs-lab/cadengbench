@@ -1,0 +1,282 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cadengbench.org/schemas/l3_physics_card.v2.schema.json",
+  "title": "CADEngBench-P L3 standardized structural-probe card",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "card_id",
+    "item_id",
+    "status",
+    "source_intent_claimed",
+    "scenario_family",
+    "geometry",
+    "selectors",
+    "material",
+    "load",
+    "mesh",
+    "analysis",
+    "checks",
+    "provenance"
+  ],
+  "properties": {
+    "schema_version": {"const": "cadengbench-p.l3-physics-card.v2"},
+    "card_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9_.:-]+$",
+      "maxLength": 160
+    },
+    "item_id": {
+      "type": "string",
+      "pattern": "^p_(benchcad|fusion360)_[0-9]{6}$"
+    },
+    "status": {
+      "enum": [
+        "llm_candidate",
+        "deterministically_rejected",
+        "geometry_qualified",
+        "solver_qualified"
+      ]
+    },
+    "source_intent_claimed": {"const": false},
+    "scenario_family": {
+      "enum": ["axial_tension", "cantilever_transverse"]
+    },
+    "geometry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["units", "expected_solid_count"],
+      "properties": {
+        "units": {"const": "mm"},
+        "expected_solid_count": {"const": 1}
+      }
+    },
+    "selectors": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["fixed", "loaded"],
+      "properties": {
+        "fixed": {"$ref": "#/$defs/selector"},
+        "loaded": {"$ref": "#/$defs/selector"}
+      }
+    },
+    "material": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "profile_id",
+        "model",
+        "youngs_modulus_mpa",
+        "poisson_ratio"
+      ],
+      "properties": {
+        "profile_id": {"type": "string", "minLength": 1},
+        "model": {"const": "linear_elastic_isotropic"},
+        "youngs_modulus_mpa": {"type": "number", "exclusiveMinimum": 0},
+        "poisson_ratio": {
+          "type": "number",
+          "exclusiveMinimum": -1,
+          "exclusiveMaximum": 0.5
+        }
+      }
+    },
+    "load": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "traction_vector_mpa", "distribution"],
+      "properties": {
+        "kind": {"const": "surface_traction_probe"},
+        "traction_vector_mpa": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 3,
+          "items": {"type": "number"}
+        },
+        "distribution": {"const": "boundary_triangle_consistent_nodal_v1"}
+      }
+    },
+    "mesh": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "element_type",
+        "algorithm_3d",
+        "high_order_optimization",
+        "target_long_axis_divisions",
+        "target_short_axis_divisions",
+        "minimum_sicn",
+        "maximum_elements"
+      ],
+      "properties": {
+        "element_type": {"enum": ["C3D10", "C3D4"]},
+        "algorithm_3d": {"type": "integer", "minimum": 1},
+        "high_order_optimization": {"const": "none"},
+        "target_long_axis_divisions": {"type": "integer", "minimum": 4},
+        "target_short_axis_divisions": {"type": "integer", "minimum": 2},
+        "minimum_sicn": {"type": "number", "minimum": 0, "maximum": 1},
+        "maximum_elements": {"type": "integer", "minimum": 1}
+      }
+    },
+    "analysis": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "type",
+        "small_deformation",
+        "max_equilibrium_relative_error",
+        "max_normalized_displacement",
+        "stress_exclusion_mesh_lengths",
+        "regularized_stress_percentiles"
+      ],
+      "properties": {
+        "type": {"const": "linear_static"},
+        "small_deformation": {"const": true},
+        "max_equilibrium_relative_error": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "max_normalized_displacement": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "stress_exclusion_mesh_lengths": {
+          "type": "number",
+          "minimum": 0
+        },
+        "regularized_stress_percentiles": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {"type": "number", "exclusiveMinimum": 0, "maximum": 100}
+        }
+      }
+    },
+    "checks": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "enum": [
+          "mesh_quality",
+          "selector_stability",
+          "solver_completion",
+          "force_equilibrium",
+          "finite_response",
+          "small_deformation",
+          "regularized_von_mises",
+          "normalized_compliance"
+        ]
+      }
+    },
+    "qualification": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema_version",
+        "item_id",
+        "card_sha256",
+        "reference_step_sha256",
+        "result_sha256",
+        "evaluator_build_hash",
+        "runtime_lock_sha256",
+        "result_status",
+        "promoted",
+        "source_probe_metrics"
+      ],
+      "properties": {
+        "schema_version": {"const": "cadengbench-p.l3-card-qualification.v1"},
+        "item_id": {"type": "string"},
+        "card_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "reference_step_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "result_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "evaluator_build_hash": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "runtime_lock_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "result_status": {"const": "probe_pass"},
+        "promoted": {"const": true},
+        "source_probe_metrics": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "normalized_max_displacement",
+            "regularized_von_mises_p95_mpa",
+            "regularized_von_mises_p99_mpa",
+            "stress_concentration_p95",
+            "normalized_compliance",
+            "force_equilibrium_relative_error"
+          ],
+          "properties": {
+            "normalized_max_displacement": {"type": "number"},
+            "regularized_von_mises_p95_mpa": {"type": "number"},
+            "regularized_von_mises_p99_mpa": {"type": "number"},
+            "stress_concentration_p95": {"type": "number"},
+            "normalized_compliance": {"type": "number"},
+            "force_equilibrium_relative_error": {"type": "number"}
+          }
+        }
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "annotation_candidate_sha256",
+        "context_sha256",
+        "profile_sha256",
+        "annotator_model",
+        "annotator_revision"
+      ],
+      "properties": {
+        "annotation_candidate_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "context_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "profile_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "annotator_model": {"type": "string", "minLength": 1},
+        "annotator_revision": {"type": "string", "minLength": 1}
+      }
+    }
+  },
+  "$defs": {
+    "selector": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kind",
+        "region_id",
+        "axis",
+        "side",
+        "normal_alignment_min",
+        "plane_tolerance_relative",
+        "minimum_count",
+        "maximum_count",
+        "minimum_area_fraction"
+      ],
+      "properties": {
+        "kind": {"const": "axis_extreme_planar_surfaces_v2"},
+        "region_id": {"type": "string", "pattern": "^axis:[xyz]:(min|max)$"},
+        "axis": {"enum": ["x", "y", "z"]},
+        "side": {"enum": ["min", "max"]},
+        "normal_alignment_min": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "plane_tolerance_relative": {"type": "number", "exclusiveMinimum": 0},
+        "minimum_count": {"type": "integer", "minimum": 1},
+        "maximum_count": {"type": "integer", "minimum": 1},
+        "minimum_area_fraction": {"type": "number", "minimum": 0, "maximum": 1}
+      }
+    }
+  }
+}

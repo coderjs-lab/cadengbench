@@ -1,0 +1,82 @@
+{
+  "applied_force_n": [
+    0.0,
+    1.03684,
+    0.0
+  ],
+  "characteristic_length_mm": 0.6440000400000001,
+  "connectivity_mapping": "gmsh_tetra10_to_calculix_c3d10_swap_nodes_9_10_v1",
+  "element_count": 5887,
+  "element_type": "C3D10",
+  "fixed_node_count": 157,
+  "fixed_selector": [
+    {
+      "area_fraction": 0.025442477876106196,
+      "area_mm2": 10.368400000000001,
+      "bbox_mm": [
+        -1.6100001000000002,
+        -15.0150001,
+        -1.6100001000000002,
+        1.6100001000000002,
+        -15.014999900000001,
+        1.6100001000000002
+      ],
+      "normal": [
+        0.0,
+        -1.0,
+        -0.0
+      ],
+      "normal_source": "gmsh_parametric_surface_normal",
+      "surface_tag": 1,
+      "surface_type": "Plane",
+      "target_coordinate_mm": -15.0150001
+    }
+  ],
+  "geometry_bbox_mm": [
+    -1.6100001000000002,
+    -15.0150001,
+    -1.6100001000000002,
+    1.6100001000000002,
+    15.0150001,
+    1.6100001000000002
+  ],
+  "gmsh_threads": 1,
+  "gmsh_version": "4.15.2",
+  "high_order_optimization": "none",
+  "loaded_area_mm2": 10.368400000000001,
+  "loaded_area_relative_discrepancy": 1.7132410395048902e-16,
+  "loaded_boundary_triangle_area_mm2": 10.368400000000003,
+  "loaded_node_count": 109,
+  "loaded_selector": [
+    {
+      "area_fraction": 0.025442477876106196,
+      "area_mm2": 10.368400000000001,
+      "bbox_mm": [
+        -1.6100001000000002,
+        15.014999900000001,
+        -1.6100001000000002,
+        1.6100001000000002,
+        15.0150001,
+        1.6100001000000002
+      ],
+      "normal": [
+        -0.0,
+        1.0,
+        0.0
+      ],
+      "normal_source": "gmsh_parametric_surface_normal",
+      "surface_tag": 2,
+      "surface_type": "Plane",
+      "target_coordinate_mm": 15.0150001
+    }
+  ],
+  "mean_quality": 0.8027384086437707,
+  "mesh_path": "./data/derived/cadengbench_p_300_l3_probe_v1/items/p_benchcad_000521/source_qualification/mesh.msh",
+  "mesh_runtime_seconds": 0.14371221396140754,
+  "mesh_sha256": "8ea4e18566754f61c2e349238e3995054b4b1dee53f6671cf51e07ce7eac19bd",
+  "minimum_quality": 0.35070478474965594,
+  "node_count": 10327,
+  "quality_metric": "minSICN",
+  "traction_force_area_normalization": "exact_occ_planar_region_area_v1",
+  "volume_entity_count": 1
+}

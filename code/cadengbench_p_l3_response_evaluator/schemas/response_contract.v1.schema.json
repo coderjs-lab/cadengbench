@@ -1,0 +1,147 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cadengbench.org/schemas/l3-response-contract.v1.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version", "contract_id", "contract_sha256", "item_id", "status",
+    "source_intent_claimed", "threshold_authority", "profile", "bindings", "scenario",
+    "material", "loading", "reference_base", "fidelity", "engineering_requirements",
+    "numerical", "evaluator"
+  ],
+  "properties": {
+    "schema_version": {"const": "cadengbench-p.l3-response-contract.v1"},
+    "contract_id": {"type": "string", "pattern": "^[A-Za-z0-9_.:-]+$"},
+    "contract_sha256": {"$ref": "#/$defs/sha"},
+    "item_id": {"type": "string", "pattern": "^p_(benchcad|fusion360)_[0-9]{6}$"},
+    "status": {"enum": ["development_calibrated", "calibrated"]},
+    "source_intent_claimed": {"const": false},
+    "threshold_authority": {
+      "enum": [
+        "benchmark_assigned_reference_relative_development",
+        "benchmark_assigned_reference_relative_calibrated_v1"
+      ]
+    },
+    "profile": {
+      "type": "object", "additionalProperties": false,
+      "required": ["profile_id", "profile_sha256", "status"],
+      "properties": {
+        "profile_id": {"type": "string"},
+        "profile_sha256": {"$ref": "#/$defs/sha"},
+        "status": {"enum": ["development_only", "calibrated"]}
+      }
+    },
+    "bindings": {
+      "type": "object", "additionalProperties": false,
+      "required": ["base_card_sha256", "nominal_reference_step_sha256", "reference_base_result_sha256", "mesh_study_sha256", "l3_evaluator_build_hash", "l3_runtime_lock_sha256"],
+      "properties": {
+        "base_card_sha256": {"$ref": "#/$defs/sha"},
+        "nominal_reference_step_sha256": {"$ref": "#/$defs/sha"},
+        "reference_base_result_sha256": {"$ref": "#/$defs/sha"},
+        "mesh_study_sha256": {"oneOf": [{"$ref": "#/$defs/sha"}, {"type": "null"}]},
+        "l3_evaluator_build_hash": {"$ref": "#/$defs/sha"},
+        "l3_runtime_lock_sha256": {"$ref": "#/$defs/sha"}
+      }
+    },
+    "scenario": {"enum": ["axial_tension", "cantilever_transverse"]},
+    "material": {
+      "type": "object", "additionalProperties": false,
+      "required": ["model", "youngs_modulus_mpa", "poisson_ratio", "yield_strength_mpa", "safety_factor", "allowable_stress_mpa"],
+      "properties": {
+        "model": {"const": "linear_elastic_isotropic"},
+        "youngs_modulus_mpa": {"type": "number", "exclusiveMinimum": 0},
+        "poisson_ratio": {"type": "number"},
+        "yield_strength_mpa": {"type": "number", "exclusiveMinimum": 0},
+        "safety_factor": {"type": "number", "minimum": 1},
+        "allowable_stress_mpa": {"type": "number", "exclusiveMinimum": 0}
+      }
+    },
+    "loading": {
+      "type": "object", "additionalProperties": false,
+      "required": ["control", "base_traction_vector_mpa", "base_loaded_area_mm2", "base_resultant_force_n", "load_scale", "controlling_constraint", "target_resultant_force_n", "predicted_reference_traction_vector_mpa"],
+      "properties": {
+        "control": {"const": "fixed_resultant_force"},
+        "base_traction_vector_mpa": {"$ref": "#/$defs/vector"},
+        "base_loaded_area_mm2": {"type": "number", "exclusiveMinimum": 0},
+        "base_resultant_force_n": {"$ref": "#/$defs/vector"},
+        "load_scale": {"type": "number", "exclusiveMinimum": 0},
+        "controlling_constraint": {"enum": ["stress_utilization", "normalized_displacement", "maximum_traction", "maximum_load_scale"]},
+        "target_resultant_force_n": {"$ref": "#/$defs/vector"},
+        "predicted_reference_traction_vector_mpa": {"$ref": "#/$defs/vector"}
+      }
+    },
+    "reference_base": {
+      "type": "object", "additionalProperties": false,
+      "required": ["metrics", "predicted_scaled_metrics"],
+      "properties": {
+        "metrics": {"$ref": "#/$defs/metrics"},
+        "predicted_scaled_metrics": {"$ref": "#/$defs/metrics"}
+      }
+    },
+    "fidelity": {
+      "type": "object", "additionalProperties": false,
+      "required": ["metrics", "base_maximum_symmetric_log_error", "mesh_symmetric_log_uncertainty", "effective_maximum_symmetric_log_error", "component_score", "aggregate"],
+      "properties": {
+        "metrics": {"type": "array", "items": {"type": "string"}, "minItems": 3, "maxItems": 3, "uniqueItems": true},
+        "base_maximum_symmetric_log_error": {"$ref": "#/$defs/metricMap"},
+        "mesh_symmetric_log_uncertainty": {"$ref": "#/$defs/metricMap"},
+        "effective_maximum_symmetric_log_error": {"$ref": "#/$defs/metricMap"},
+        "component_score": {"const": "exp_negative_normalized_log_error"},
+        "aggregate": {"const": "geometric_mean"}
+      }
+    },
+    "engineering_requirements": {
+      "type": "object", "additionalProperties": false,
+      "required": ["maximum_stress_utilization", "maximum_regularized_von_mises_p95_mpa", "maximum_normalized_displacement", "maximum_candidate_reference_displacement_ratio", "maximum_candidate_reference_compliance_ratio"],
+      "properties": {
+        "maximum_stress_utilization": {"type": "number", "exclusiveMinimum": 0},
+        "maximum_regularized_von_mises_p95_mpa": {"type": "number", "exclusiveMinimum": 0},
+        "maximum_normalized_displacement": {"type": "number", "exclusiveMinimum": 0},
+        "maximum_candidate_reference_displacement_ratio": {"type": "number", "minimum": 1},
+        "maximum_candidate_reference_compliance_ratio": {"type": "number", "minimum": 1}
+      }
+    },
+    "numerical": {
+      "type": "object", "additionalProperties": false,
+      "required": ["maximum_force_control_relative_error", "maximum_equilibrium_relative_error", "maximum_linearity_relative_error", "ratio_epsilon"],
+      "properties": {
+        "maximum_force_control_relative_error": {"type": "number", "exclusiveMinimum": 0},
+        "maximum_equilibrium_relative_error": {"type": "number", "exclusiveMinimum": 0},
+        "maximum_linearity_relative_error": {"type": "number", "exclusiveMinimum": 0},
+        "ratio_epsilon": {"type": "number", "exclusiveMinimum": 0}
+      }
+    },
+    "evaluator": {
+      "type": "object", "additionalProperties": false,
+      "required": ["name", "version", "build_hash"],
+      "properties": {
+        "name": {"const": "cadengbench-p-l3-response"},
+        "version": {"type": "string"},
+        "build_hash": {"$ref": "#/$defs/sha"}
+      }
+    }
+  },
+  "$defs": {
+    "sha": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "vector": {"type": "array", "minItems": 3, "maxItems": 3, "items": {"type": "number"}},
+    "metrics": {
+      "type": "object", "additionalProperties": false,
+      "required": ["regularized_von_mises_p95_mpa", "normalized_max_displacement", "normalized_compliance", "force_equilibrium_relative_error"],
+      "properties": {
+        "regularized_von_mises_p95_mpa": {"type": "number", "minimum": 0},
+        "normalized_max_displacement": {"type": "number", "minimum": 0},
+        "normalized_compliance": {"type": "number", "minimum": 0},
+        "force_equilibrium_relative_error": {"type": "number", "minimum": 0}
+      }
+    },
+    "metricMap": {
+      "type": "object", "additionalProperties": false,
+      "required": ["regularized_von_mises_p95_mpa", "normalized_max_displacement", "normalized_compliance"],
+      "properties": {
+        "regularized_von_mises_p95_mpa": {"type": "number", "minimum": 0},
+        "normalized_max_displacement": {"type": "number", "minimum": 0},
+        "normalized_compliance": {"type": "number", "minimum": 0}
+      }
+    }
+  }
+}

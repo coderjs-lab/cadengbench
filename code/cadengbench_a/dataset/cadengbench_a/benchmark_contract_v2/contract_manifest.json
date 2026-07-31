@@ -1,0 +1,21 @@
+{
+  "schema": "cadengbench_a_benchmark_contract_manifest_v2",
+  "benchmark_contract": "cadengbench_a_benchmark_contract_v2",
+  "dataset_manifest": {
+    "path": "dataset/cadengbench_a/releases/core150_public_v1_manifest.json",
+    "sha256": "0e5ae4b4a630406ddb244657ac7b36b0e3261363eb01bf6972c884853e362bee"
+  },
+  "prompts": {
+    "A1": {
+      "output_schema.json": "0cb1defdb58b354570e2af3a55cac91b28fb8474e769ca77e563da352d20ef0f",
+      "system.txt": "12d5b17ce7f3f2e2921e2ca1b8bef68c142afc0daceaceee75b47c8756a1f458",
+      "user_template.txt": "dd30f8dd6b915af473c253bad846d6f3318ac9eab94239712537322e6e4f2a35"
+    },
+    "A2": {
+      "output_schema.json": "7503f1ce7aa1d84e2faa4e1c63fbe1122a4de6715ec3c24ccf15052c4ae91abd",
+      "scoring_policy.json": "35a6da36406b9cbca220ae0a3aefed4e5eea02f8cae6e73656308f1df08c35f9",
+      "system_prompt.txt": "87f27d1176967c433a37bbbf91ccb159c02161a52be7daee991fb09d7b087af1",
+      "user_template.txt": "31b024f0eb9087631fc9d0ea68a9804b2c0a4d54b841409609a2fada4fdca516"
+    }
+  }
+}

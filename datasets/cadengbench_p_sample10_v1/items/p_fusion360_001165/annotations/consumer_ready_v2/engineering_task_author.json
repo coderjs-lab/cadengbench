@@ -1,0 +1,52 @@
+{
+  "item_id": "p_fusion360_001165",
+  "output_status": "complete",
+  "payload": {
+    "design": {
+      "application_context": "precision assembly interface",
+      "design_freedom": [
+        "maintain location tolerances"
+      ],
+      "goal": "provide precise axial spacing"
+    },
+    "function": {
+      "functional_interpretation": "maintain axial separation between mating components",
+      "interfaces": [
+        {
+          "description": "cylindrical surface interface",
+          "interface_id": "interface_1",
+          "interface_kind": "mounting"
+        }
+      ],
+      "non_requirements": [
+        "maintain location tolerances"
+      ]
+    },
+    "functional_edit": {
+      "engineering_objective": "increase axial spacing by a specified amount",
+      "operating_condition": "static axial load"
+    },
+    "load_case": {
+      "application_region": "not applicable",
+      "constraint_region": "not applicable",
+      "direction": "not_applicable",
+      "duty": "not_applicable",
+      "load_type": "not_applicable",
+      "magnitude": null,
+      "unit": "not_applicable"
+    },
+    "material_process": {
+      "material_family": "unspecified",
+      "material_specification": "unspecified",
+      "process_family": "unspecified",
+      "process_variant": "unspecified"
+    },
+    "part_identity": {
+      "category": "mechanical spacer",
+      "title": "cylindrical spacer"
+    },
+    "standards": []
+  },
+  "role_id": "engineering_task_author",
+  "schema_version": "cadengbench-p.engineering-task-annotation.v3"
+}

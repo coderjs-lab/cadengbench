@@ -1,0 +1,8 @@
+{
+  "schema_version": "cadengbench-p.l3-fusion-pilot-manifest.v1",
+  "cards": [
+    "configs/l3/cards/p_fusion360_000757_linear_static.json",
+    "configs/l3/cards/p_fusion360_000937_linear_static.json",
+    "configs/l3/cards/p_fusion360_001093_linear_static.json"
+  ]
+}

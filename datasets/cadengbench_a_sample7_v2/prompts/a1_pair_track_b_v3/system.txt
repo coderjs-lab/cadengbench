@@ -1,0 +1,25 @@
+You are ranking plausible parametric joint hypotheses between two isolated CAD bodies for CADEngBench-A.
+
+The source dataset consolidates alternative joints observed for identical pairs of parts across different assemblies. These are known positive configurations, not simultaneous constraints and not an exhaustive list of every mechanically possible joint. Do not predict how many source records exist.
+
+Use only the supplied standardized views, public geometry, and candidate registry. Candidate atlases color-highlight face candidates and mark edge candidates with an X at their key point. The legend prints the exact candidate ID accepted by the output schema.
+
+Apply this decision procedure internally:
+1. Identify likely functional mating features on both bodies from the clean views and highlighted atlases.
+2. Verify candidate IDs and analytic geometry in the registry. Compare surface/curve type, direction, radius when applicable, scale, and adjacency.
+3. For axis-based joints, prefer a cylindrical face or circular/arc edge that directly represents the intended axis over a nearby planar end cap. For planar motion, prefer the functional planar face rather than an incidental small cap.
+4. Infer the permitted relative degrees of freedom, then assign the joint family.
+5. Use the three ranks to cover meaningful uncertainty in both entity selection and joint family. Do not repeat the same entity pair at every rank unless the pair is substantially more certain than its joint type.
+
+Return up to three distinct hypotheses in descending order of plausibility. Each hypothesis must use exactly one candidate ID from body_a and one from body_b. Rank 1 must be your best hypothesis. Never invent candidate IDs, body IDs, geometry, or hidden source facts.
+
+Allowed joint types:
+- RigidJointType: no relative translation or rotation.
+- RevoluteJointType: rotation about one axis.
+- SliderJointType: translation along one axis.
+- CylindricalJointType: translation and rotation along/about one shared axis.
+- PlanarJointType: two translations in a plane and rotation normal to it.
+- BallJointType: rotation about a shared point in three rotational directions.
+- PinSlotJointType: translation along a slot direction plus rotation about the pin axis.
+
+Return one JSON object matching the supplied output schema. Do not include prose or hidden reasoning.

@@ -1,0 +1,202 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cadengbench.org/schemas/cadengbench_p_critic_output_v1.schema.json",
+  "title": "CADEngBench-P v1 Critic Output",
+  "description": "Advisory visual-grounding or adversarial review. Critics identify evidence issues and deterministic checks but cannot merge or promote claims.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "bundle_id",
+    "item_id",
+    "role_id",
+    "findings",
+    "abstentions",
+    "output_status"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "cadengbench-p-critic-output-v1"
+    },
+    "bundle_id": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$"
+    },
+    "item_id": {
+      "$ref": "#/$defs/itemId"
+    },
+    "role_id": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^[a-z0-9][a-z0-9._-]*$"
+    },
+    "findings": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/finding"
+      }
+    },
+    "abstentions": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/abstention"
+      }
+    },
+    "output_status": {
+      "enum": [
+        "complete",
+        "partial",
+        "abstained"
+      ]
+    }
+  },
+  "$defs": {
+    "itemId": {
+      "type": "string",
+      "pattern": "^p_(benchcad|fusion360|futurecad)_[0-9]{3,}$"
+    },
+    "evidenceRef": {
+      "type": "object",
+      "additionalProperties": false,
+      "minProperties": 1,
+      "properties": {
+        "artifact_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_pointer": {
+          "type": "string",
+          "minLength": 1
+        },
+        "view_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "feature_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "face_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "edge_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "retrieval_record_id": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "finding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "finding_id",
+        "claim_id",
+        "review_scope",
+        "assessment",
+        "issue_codes",
+        "evidence_refs",
+        "recommended_deterministic_check",
+        "concise_rationale"
+      ],
+      "properties": {
+        "finding_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+        },
+        "claim_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "review_scope": {
+          "enum": [
+            "visual_grounding",
+            "adversarial_evidence"
+          ]
+        },
+        "assessment": {
+          "enum": [
+            "supported_by_views",
+            "contradicted_by_views",
+            "ambiguous",
+            "not_visible",
+            "requires_geometry_tool",
+            "unsupported_specificity",
+            "numeric_mismatch",
+            "source_proxy_conflation",
+            "insufficient_evidence"
+          ]
+        },
+        "issue_codes": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^[A-Z0-9_]+$"
+          },
+          "uniqueItems": true
+        },
+        "evidence_refs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/evidenceRef"
+          }
+        },
+        "recommended_deterministic_check": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "concise_rationale": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "abstention": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "claim_id",
+        "reason",
+        "concise_rationale"
+      ],
+      "properties": {
+        "claim_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "reason": {
+          "enum": [
+            "insufficient_evidence",
+            "ambiguous",
+            "not_visible",
+            "outside_review_scope"
+          ]
+        },
+        "concise_rationale": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    }
+  }
+}

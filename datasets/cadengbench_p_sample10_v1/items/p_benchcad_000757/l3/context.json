@@ -1,0 +1,193 @@
+{
+  "authority": {
+    "llm_output_authority": "candidate_only",
+    "promotion_requires_deterministic_and_solver_validation": true,
+    "source_intent_claimed": false
+  },
+  "geometry": {
+    "all_opposed_region_pairs": [
+      {
+        "axis": "z",
+        "eligible": true,
+        "maximum_region": {
+          "area_fraction": 0.3344922044,
+          "area_mm2": 2566.373872,
+          "axis": "z",
+          "region_id": "axis:z:max",
+          "side": "max",
+          "surface_count": 1,
+          "surfaces": [
+            {
+              "area_mm2": 2566.373872,
+              "centroid_mm": [
+                0.0,
+                -0.0,
+                7.92
+              ],
+              "face_index_diagnostic_only": 9,
+              "normal": [
+                0.0,
+                0.0,
+                1.0
+              ]
+            }
+          ]
+        },
+        "minimum_region": {
+          "area_fraction": 0.3344922044,
+          "area_mm2": 2566.373872,
+          "axis": "z",
+          "region_id": "axis:z:min",
+          "side": "min",
+          "surface_count": 1,
+          "surfaces": [
+            {
+              "area_mm2": 2566.373872,
+              "centroid_mm": [
+                0.0,
+                -0.0,
+                0.0
+              ],
+              "face_index_diagnostic_only": 8,
+              "normal": [
+                -0.0,
+                -0.0,
+                -1.0
+              ]
+            }
+          ]
+        },
+        "pair_id": "opposed:z",
+        "span_length_mm": 7.92
+      }
+    ],
+    "bbox_mm": {
+      "diagonal": 143.59155685,
+      "lengths": [
+        101.38,
+        101.38,
+        7.92
+      ],
+      "maximum": [
+        50.69,
+        50.69,
+        7.92
+      ],
+      "minimum": [
+        -50.69,
+        -50.69,
+        0.0
+      ]
+    },
+    "deterministic_eligibility": {
+      "eligible": true,
+      "policy": {
+        "expected_solid_count": 1,
+        "maximum_region_surface_count": 64,
+        "minimum_region_area_fraction": 0.002,
+        "normal_alignment_min": 0.98,
+        "plane_tolerance_relative": 1e-06
+      },
+      "reason_codes": []
+    },
+    "eligible_opposed_region_pairs": [
+      {
+        "axis": "z",
+        "eligible": true,
+        "maximum_region": {
+          "area_fraction": 0.3344922044,
+          "area_mm2": 2566.373872,
+          "axis": "z",
+          "region_id": "axis:z:max",
+          "side": "max",
+          "surface_count": 1,
+          "surfaces": [
+            {
+              "area_mm2": 2566.373872,
+              "centroid_mm": [
+                0.0,
+                -0.0,
+                7.92
+              ],
+              "face_index_diagnostic_only": 9,
+              "normal": [
+                0.0,
+                0.0,
+                1.0
+              ]
+            }
+          ]
+        },
+        "minimum_region": {
+          "area_fraction": 0.3344922044,
+          "area_mm2": 2566.373872,
+          "axis": "z",
+          "region_id": "axis:z:min",
+          "side": "min",
+          "surface_count": 1,
+          "surfaces": [
+            {
+              "area_mm2": 2566.373872,
+              "centroid_mm": [
+                0.0,
+                -0.0,
+                0.0
+              ],
+              "face_index_diagnostic_only": 8,
+              "normal": [
+                -0.0,
+                -0.0,
+                -1.0
+              ]
+            }
+          ]
+        },
+        "pair_id": "opposed:z",
+        "span_length_mm": 7.92
+      }
+    ],
+    "face_count": 10,
+    "solid_count": 1,
+    "step_sha256": "261dd9eca438a802edc9421b2723d6fdc413d8dc466a54b7600ff87f18983ee0",
+    "total_surface_area_mm2": 7672.44748424
+  },
+  "item_id": "p_benchcad_000757",
+  "schema_version": "cadengbench-p.l3-annotation-context.v1",
+  "selection": {
+    "complexity": {
+      "aggregate_for_stratification_only": 0.26872476227693104,
+      "axes": {
+        "construction_topology": 0.2899570144587729,
+        "history": 0.06714862576527289,
+        "parametric": 0.26553341148886284,
+        "sketch": 0.45225999739481565
+      },
+      "method": "source_explicit_benchcad_difficulty",
+      "single_scalar_is_not_benchmark_truth": true,
+      "tier": "easy"
+    },
+    "selection_stratum": "family:star_blank",
+    "source_key": "benchcad",
+    "split": "development"
+  },
+  "semantic_context": {
+    "application_context": "industrial equipment mounting bracket",
+    "authority_warning": "LLM/VLM-authored context may be semantically wrong and is not selector or source-intent authority.",
+    "category": "structural mounting plate",
+    "global_form": "Thin four-pointed star plate with uniform thickness and sharp angular vertices.",
+    "interfaces": [
+      {
+        "description": "flat surface for bolt attachment",
+        "kind": "mounting"
+      }
+    ],
+    "status": "candidate_context_only",
+    "title": "Star-shaped mounting plate"
+  },
+  "source_family": "benchcad",
+  "visual": {
+    "bytes": 42130,
+    "path": "data/derived/cadengbench_p_300_l3_probe_v1/items/p_benchcad_000757/input_image.png",
+    "sha256": "145df3a28fd5e54b702096c01b6914f6ab86ad011c5ae29ee31b68abb3a220a5"
+  }
+}

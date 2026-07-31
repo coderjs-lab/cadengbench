@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cadengbench.org/schemas/cadengbench_p_split_v2.schema.json",
+  "title": "CADEngBench-P v2 family-level split manifest",
+  "type": "object", "additionalProperties": false,
+  "required": ["schema_version", "record_type", "dataset_version", "split_seed", "groups", "leakage_policy", "validation_status"],
+  "properties": {
+    "schema_version": {"const": "cadengbench-p.split.v2"}, "record_type": {"const": "split_manifest"}, "dataset_version": {"type": "string", "minLength": 1}, "split_seed": {"type": "string", "minLength": 1},
+    "groups": {"type": "array", "minItems": 1, "items": {"type": "object", "additionalProperties": false, "required": ["group_id", "family_id", "source_datasets", "split", "item_ids", "geometry_fingerprint_sha256s", "code_fingerprint_sha256s"], "properties": {"group_id": {"type": "string", "minLength": 1}, "family_id": {"type": "string", "minLength": 1}, "source_datasets": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"enum": ["benchcad", "fusion360_reconstruction", "futurecad", "other"]}}, "split": {"enum": ["train", "dev", "validation", "test", "heldout"]}, "item_ids": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "minLength": 1}}, "geometry_fingerprint_sha256s": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "pattern": "^[A-Fa-f0-9]{64}$"}}, "code_fingerprint_sha256s": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "pattern": "^[A-Fa-f0-9]{64}$"}}}}},
+    "leakage_policy": {"type": "object", "additionalProperties": false, "required": ["split_unit", "near_duplicate_detection", "near_duplicate_status", "validation_scope", "cross_split_validation", "geometry_fingerprint", "code_fingerprint", "cross_split_duplicates", "validated_by"], "properties": {"split_unit": {"const": "exact_duplicate_family"}, "near_duplicate_detection": {"const": false}, "near_duplicate_status": {"const": "unavailable"}, "validation_scope": {"enum": ["selected_set_only", "train_test_boundary"]}, "cross_split_validation": {"enum": ["validated", "not_applicable", "unavailable"]}, "geometry_fingerprint": {"const": true}, "code_fingerprint": {"const": true}, "cross_split_duplicates": {"type": "boolean"}, "validated_by": {"type": "string", "minLength": 1}}},
+    "validation_status": {"enum": ["validated", "needs_validation", "rejected"]}, "validation_errors": {"type": "array", "items": {"type": "string", "minLength": 1}}
+  },
+  "allOf": [{"if": {"properties": {"validation_status": {"const": "validated"}}}, "then": {"properties": {"leakage_policy": {"properties": {"cross_split_duplicates": {"const": false}}}}}}]
+}

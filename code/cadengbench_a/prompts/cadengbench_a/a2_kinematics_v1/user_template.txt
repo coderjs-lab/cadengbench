@@ -1,0 +1,15 @@
+Joint set: {{assembly_id}}
+Selected A1 rank: {{selected_rank}}
+Selected joint type: {{joint_type}}
+Body A candidate: {{body_a_candidate_id}}
+Body B candidate: {{body_b_candidate_id}}
+
+Using the attached clean views, candidate atlases, public geometry, and candidate
+registry, predict:
+
+1. the joint origin in body A local coordinates, in centimeters;
+2. the family-required motion directions in body A local coordinates;
+3. the rigid transform placing body B local coordinates into body A coordinates,
+   represented by translation in centimeters and quaternion [x, y, z, w].
+
+Return JSON only.

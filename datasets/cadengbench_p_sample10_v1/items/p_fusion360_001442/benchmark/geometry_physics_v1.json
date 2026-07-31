@@ -1,0 +1,64 @@
+{
+  "bbox_fill_ratio": 0.8841699,
+  "bbox_volume_mm3": 67907.993216,
+  "center_of_mass_interpretation": "volume_centroid_uniform_density_only",
+  "characteristic_length_mm": 39.157853,
+  "failure_code": null,
+  "geometric_inertia_tensor_mm5": [
+    [
+      3509031.7800672,
+      -2743455.4116881,
+      -0.0
+    ],
+    [
+      -2743455.4116881,
+      174817132.8917074,
+      -0.0
+    ],
+    [
+      -0.0,
+      -0.0,
+      174194236.419794
+    ]
+  ],
+  "method": "occ_volume_properties_v1",
+  "physical_mass_status": "requires_verified_material_density",
+  "principal_axes": [
+    [
+      -0.016008587,
+      0.999871854,
+      -0.0
+    ],
+    [
+      -0.0,
+      0.0,
+      1.0
+    ],
+    [
+      0.999871854,
+      0.016008587,
+      0.0
+    ]
+  ],
+  "principal_geometric_moments_mm5": [
+    174861057.3657263,
+    174194236.419794,
+    3465107.3060483
+  ],
+  "schema_version": "cadengbench-p.geometry-physics.v1",
+  "status": "complete",
+  "surface_area_mm2": 14477.3904,
+  "surface_area_to_volume_per_mm": 0.2411202,
+  "units": {
+    "area": "mm2",
+    "geometric_inertia": "mm5",
+    "length": "mm",
+    "volume": "mm3"
+  },
+  "volume_centroid_mm": [
+    95.8434061,
+    8.4463319,
+    10.16
+  ],
+  "volume_mm3": 60042.202496
+}

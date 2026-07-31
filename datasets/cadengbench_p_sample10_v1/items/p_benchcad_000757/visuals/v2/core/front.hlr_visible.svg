@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+  <g id="hlr-root" transform="scale(8.585519826395739,-8.585519826395739) translate(59.63529411764706,-63.59529411764706)" stroke-width="0.09900390625" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <g id="visible-sharp" stroke="#17212b">
+      <path d="M0.0,0.0 L0.0,7.92 " />
+      <path d="M0.0,7.92 L12.657199999980309,7.92 " />
+      <path d="M12.6572,0.0 L12.6572,7.92 " />
+      <path d="M0.0,0.0 L12.657199999980309,0.0 " />
+      <path d="M12.6572,7.92 L50.69000000000655,7.92 " />
+      <path d="M50.69,0.0 L50.69,7.92 " />
+      <path d="M12.6572,0.0 L50.69000000000655,0.0 " />
+      <path d="M-50.69,0.0 L-50.69,7.92 " />
+      <path d="M-50.69,7.92 L-12.657199999993445,7.92 " />
+      <path d="M-12.6572,0.0 L-12.6572,7.92 " />
+      <path d="M-50.69,0.0 L-12.657199999993445,0.0 " />
+      <path d="M-12.6572,7.92 L-1.9690915564751776e-11,7.92 " />
+      <path d="M-12.6572,0.0 L-1.9690915564751776e-11,0.0 " />
+    </g>
+    <g id="visible-smooth" stroke="#17212b">
+
+    </g>
+    <g id="visible-sewn" stroke="#17212b">
+
+    </g>
+    <g id="visible-outline" stroke="#17212b">
+
+    </g>
+  </g>
+</svg>

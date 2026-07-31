@@ -1,0 +1,21 @@
+Bootstrap: docker
+From: python:3.12.13-slim-bookworm
+
+%files
+    . /opt/cadengbench-p-evaluator
+
+%post
+    apt-get update
+    apt-get install -y --no-install-recommends curl ca-certificates libgl1 libxrender1
+    rm -rf /var/lib/apt/lists/*
+    curl -LsSf https://astral.sh/uv/install.sh | sh
+    cd /opt/cadengbench-p-evaluator
+    /root/.local/bin/uv sync --locked --no-dev
+
+%environment
+    export PATH="/opt/cadengbench-p-evaluator/.venv/bin:$PATH"
+    export PYTHONHASHSEED=0
+
+%runscript
+    exec cadengbench-p-eval "$@"
+

@@ -1,0 +1,569 @@
+{
+  "annotation_flags": [
+    "benchmark_authored_engineering_context",
+    "material_process_unspecified",
+    "dfm_measurement_only_no_threshold",
+    "benchmark_authored_load_case_candidate"
+  ],
+  "annotations": {
+    "engineering_task": {
+      "design": {
+        "application_context": "industrial machinery mounting base",
+        "design_freedom": [
+          "maintain base footprint and hole locations"
+        ],
+        "goal": "increase axial load capacity"
+      },
+      "function": {
+        "functional_interpretation": "transmit vertical compressive loads from machine to foundation",
+        "interfaces": [
+          {
+            "description": "base plate interface with foundation",
+            "interface_id": "interface_1",
+            "interface_kind": "mounting"
+          }
+        ],
+        "non_requirements": [
+          "no surface finish requirements"
+        ]
+      },
+      "functional_edit": {
+        "engineering_objective": "increase load capacity by a specified amount",
+        "operating_condition": "static axial compression"
+      },
+      "load_case": {
+        "application_region": "full column height",
+        "constraint_region": "base plate interface",
+        "direction": "axial",
+        "duty": "static",
+        "load_type": "pressure",
+        "magnitude": 2.5,
+        "unit": "MPa"
+      },
+      "material_process": {
+        "material_family": "unspecified",
+        "material_specification": "unspecified",
+        "process_family": "unspecified",
+        "process_variant": "unspecified"
+      },
+      "part_identity": {
+        "category": "structural support",
+        "title": "cylindrical support column"
+      },
+      "standards": []
+    },
+    "visual_grounding": {
+      "affordances": [
+        {
+          "affordance_kind": "mounting",
+          "description": "Cylindrical surface for press fit or bearing support",
+          "view_ids": [
+            "orbit_045",
+            "orbit_270"
+          ],
+          "visibility": "visible"
+        },
+        {
+          "affordance_kind": "locating",
+          "description": "Flat end face for axial positioning",
+          "view_ids": [
+            "orbit_090",
+            "orbit_270"
+          ],
+          "visibility": "visible"
+        }
+      ],
+      "features": [
+        {
+          "description": "Continuous cylindrical outer surface",
+          "feature_kind": "recess_or_pocket",
+          "view_ids": [
+            "orbit_045",
+            "orbit_270"
+          ],
+          "visibility": "visible"
+        },
+        {
+          "description": "Flat circular end face",
+          "feature_kind": "recess_or_pocket",
+          "view_ids": [
+            "orbit_090",
+            "orbit_270"
+          ],
+          "visibility": "visible"
+        },
+        {
+          "description": "Opposite flat circular end face",
+          "feature_kind": "recess_or_pocket",
+          "view_ids": [
+            "orbit_090",
+            "orbit_270"
+          ],
+          "visibility": "visible"
+        }
+      ],
+      "global_form": "Solid right circular cylinder with uniform diameter and flat ends",
+      "recommended_prompt_profile": "text_only"
+    }
+  },
+  "consumer_contract_id": "cadengbench-p.consumer-driven-annotation.v2",
+  "evaluator_inputs": {
+    "functional_edit": {
+      "effect_proxy": {
+        "absolute_tolerance": 1e-06,
+        "comparator": "within_tolerance",
+        "expected_direction": "increase",
+        "measurement_method": "brep_geometry",
+        "metric_kind": "target_parameter_value",
+        "target_value": 330.0,
+        "unit": "mm"
+      },
+      "llm_judge_used": false,
+      "non_target_source_unchanged": true,
+      "preservation_scope": [
+        "valid_solid",
+        "solid_count",
+        "non_target_parameters"
+      ],
+      "relation_checks": [],
+      "solid_count_preserved": true,
+      "target": {
+        "base_value": 300.0,
+        "feature_id": "00ede09a-e2d7-11ea-a512-54bf646e7e1f",
+        "measurement": {
+          "absolute_tolerance": 1e-06,
+          "measurement_name": "fusion_extrude_distance_mm:fusion360:00ede09a-e2d7-11ea-a512-54bf646e7e1f:distance",
+          "method": "qualified_source_assignment_and_hidden_target_brep_v1",
+          "unit": "mm"
+        },
+        "oracle_id": "p_fusion360_001312:edit-target:v2",
+        "parameter_id": "fusion360:00ede09a-e2d7-11ea-a512-54bf646e7e1f:distance",
+        "parameter_key": "extrude_distance",
+        "target_value": 330.0,
+        "unit": "mm",
+        "valid_range": {
+          "lower": 255.0,
+          "unit": "mm",
+          "upper": 345.0
+        }
+      },
+      "valid_solid_required": true
+    },
+    "geometry": {
+      "bbox": {
+        "diagonal": 302.9851482,
+        "xlen": 30.0,
+        "xmax": 540.0,
+        "xmin": 510.0,
+        "ylen": 300.0,
+        "ymax": 300.0,
+        "ymin": 0.0,
+        "zlen": 30.0,
+        "zmax": 15.0,
+        "zmin": -15.0
+      },
+      "body_count": 1,
+      "geometry_physics": {
+        "bbox_fill_ratio": 0.7853982,
+        "bbox_volume_mm3": 270000.0,
+        "center_of_mass_interpretation": "volume_centroid_uniform_density_only",
+        "characteristic_length_mm": 59.6327103,
+        "failure_code": null,
+        "geometric_inertia_tensor_mm5": [
+          [
+            1602359515.486432,
+            3.8e-06,
+            -0.0
+          ],
+          [
+            3.8e-06,
+            23856469.2132034,
+            -0.0
+          ],
+          [
+            -0.0,
+            -0.0,
+            1602359515.4864273
+          ]
+        ],
+        "method": "occ_volume_properties_v1",
+        "physical_mass_status": "requires_verified_material_density",
+        "principal_axes": [
+          [
+            0.999999971,
+            0.0,
+            -0.00023947
+          ],
+          [
+            0.00023947,
+            0.0,
+            0.999999971
+          ],
+          [
+            -0.0,
+            1.0,
+            0.0
+          ]
+        ],
+        "principal_geometric_moments_mm5": [
+          1602359515.486432,
+          1602359515.4864273,
+          23856469.2132034
+        ],
+        "schema_version": "cadengbench-p.geometry-physics.v1",
+        "status": "complete",
+        "surface_area_mm2": 29688.0505764,
+        "surface_area_to_volume_per_mm": 0.14,
+        "units": {
+          "area": "mm2",
+          "geometric_inertia": "mm5",
+          "length": "mm",
+          "volume": "mm3"
+        },
+        "volume_centroid_mm": [
+          525.0,
+          150.0,
+          0.0
+        ],
+        "volume_mm3": 212057.5041173
+      },
+      "hole_inventory": {
+        "hole_count": 0,
+        "holes": [],
+        "recognizer": "internal_near_full_cylindrical_face_v1",
+        "recognizer_scope": "internal_near_full_cylindrical_faces"
+      },
+      "topology_summary": {
+        "edge_count": 3,
+        "face_count": 3,
+        "is_valid": true,
+        "shell_count": 1,
+        "solid_count": 1,
+        "vertex_count": 2
+      }
+    },
+    "manufacturing": {
+      "applicable_standards": [],
+      "dfm_requirements": [
+        {
+          "applicability": "requires_frozen_process_material_condition",
+          "check_id": "minimum_wall_thickness",
+          "compliance_status": "not_evaluated_no_frozen_applicable_threshold",
+          "hole_count": null,
+          "maximum_depth_to_diameter": null,
+          "measurement_id": "p_fusion360_001312:dfm:wall_thickness_proxy",
+          "measurement_kind": "geometry_proxy_not_global_thickness_solution",
+          "minimum_candidate_mm": 300.0,
+          "minimum_diameter_mm": null,
+          "threshold": null
+        },
+        {
+          "applicability": "requires_frozen_process_tool_or_process_capability",
+          "check_id": "minimum_hole_geometry",
+          "compliance_status": "not_evaluated_no_frozen_applicable_threshold",
+          "hole_count": 0,
+          "maximum_depth_to_diameter": null,
+          "measurement_id": "p_fusion360_001312:dfm:minimum_hole_geometry",
+          "measurement_kind": null,
+          "minimum_candidate_mm": null,
+          "minimum_diameter_mm": null,
+          "threshold": null
+        }
+      ],
+      "llm_judge_used": false,
+      "material_process": {
+        "basis": "unspecified",
+        "material_basis": "unspecified",
+        "material_family": "unspecified",
+        "material_specification": "unspecified",
+        "material_verification_status": "unspecified",
+        "process_basis": "unspecified",
+        "process_family": "unspecified",
+        "process_variant": "unspecified",
+        "process_verification_status": "unspecified"
+      },
+      "recommended_check_families": [
+        {
+          "applicability": "selected_process_family",
+          "check_id": "minimum_wall_thickness",
+          "measurement_status": "deterministic_measurement_present"
+        },
+        {
+          "applicability": "selected_process_family",
+          "check_id": "minimum_hole_geometry",
+          "measurement_status": "deterministic_measurement_present"
+        }
+      ]
+    },
+    "parametric": {
+      "constraint_relations": [
+        {
+          "hard": true,
+          "relation_id": "fusion:00ed1d0a-e2d7-11ea-8fac-54bf646e7e1f",
+          "relation_type": "ConcentricConstraint"
+        },
+        {
+          "expression": "canonical_value_mm == source_value_cm * 10",
+          "hard": true,
+          "relation_id": "fusion360:00e41914-e2d7-11ea-aef9-54bf646e7e1f:dbb0a6bb-1262-39e8-9c57-29cb66a957ab:loop-0:curve-0:radius:source_to_canonical",
+          "relation_type": "exact_unit_conversion"
+        },
+        {
+          "expression": "diameter_mm == 2 * radius_mm",
+          "hard": true,
+          "relation_id": "fusion360:00e41914-e2d7-11ea-aef9-54bf646e7e1f:dbb0a6bb-1262-39e8-9c57-29cb66a957ab:loop-0:curve-0:radius:diameter",
+          "relation_type": "exact_geometric_identity"
+        },
+        {
+          "expression": "canonical_value_mm == source_value_cm * 10",
+          "hard": true,
+          "relation_id": "fusion360:00e41914-e2d7-11ea-aef9-54bf646e7e1f:dbb0a6bb-1262-39e8-9c57-29cb66a957ab:loop-1:curve-0:radius:source_to_canonical",
+          "relation_type": "exact_unit_conversion"
+        },
+        {
+          "expression": "diameter_mm == 2 * radius_mm",
+          "hard": true,
+          "relation_id": "fusion360:00e41914-e2d7-11ea-aef9-54bf646e7e1f:dbb0a6bb-1262-39e8-9c57-29cb66a957ab:loop-1:curve-0:radius:diameter",
+          "relation_type": "exact_geometric_identity"
+        },
+        {
+          "expression": "canonical_value_mm == source_value_cm * 10",
+          "hard": true,
+          "relation_id": "fusion360:00e41914-e2d7-11ea-aef9-54bf646e7e1f:09617150-87d1-3341-9616-69388c8c89cd:loop-0:curve-0:radius:source_to_canonical",
+          "relation_type": "exact_unit_conversion"
+        },
+        {
+          "expression": "diameter_mm == 2 * radius_mm",
+          "hard": true,
+          "relation_id": "fusion360:00e41914-e2d7-11ea-aef9-54bf646e7e1f:09617150-87d1-3341-9616-69388c8c89cd:loop-0:curve-0:radius:diameter",
+          "relation_type": "exact_geometric_identity"
+        },
+        {
+          "expression": "canonical_value_mm == source_value_cm * 10",
+          "hard": true,
+          "relation_id": "fusion360:00ede09a-e2d7-11ea-a512-54bf646e7e1f:distance:source_to_canonical",
+          "relation_type": "exact_unit_conversion"
+        },
+        {
+          "expression": "canonical_value_mm == source_value_cm * 10",
+          "hard": true,
+          "relation_id": "fusion360:00eef27a-e2d7-11ea-abee-54bf646e7e1f:distance:source_to_canonical",
+          "relation_type": "exact_unit_conversion"
+        }
+      ],
+      "operation_sequence": [
+        {
+          "operation_id": "fusion:00e41914-e2d7-11ea-aef9-54bf646e7e1f",
+          "operation_type": "Sketch",
+          "sequence_index": 0
+        },
+        {
+          "operation_id": "fusion:00ede09a-e2d7-11ea-a512-54bf646e7e1f",
+          "operation_type": "ExtrudeFeature",
+          "sequence_index": 1
+        },
+        {
+          "operation_id": "fusion:00eef27a-e2d7-11ea-abee-54bf646e7e1f",
+          "operation_type": "ExtrudeFeature",
+          "sequence_index": 2
+        }
+      ],
+      "parameters": [
+        {
+          "base_value": 300.0,
+          "feature_id": "00ede09a-e2d7-11ea-a512-54bf646e7e1f",
+          "parameter_id": "fusion360:00ede09a-e2d7-11ea-a512-54bf646e7e1f:distance",
+          "parameter_key": "extrude_distance",
+          "target_value": 330.0,
+          "unit": "mm",
+          "valid_range": {
+            "lower": 255.0,
+            "unit": "mm",
+            "upper": 345.0
+          }
+        },
+        {
+          "editable": true,
+          "parameter_id": "fusion360:00e41914-e2d7-11ea-aef9-54bf646e7e1f:09617150-87d1-3341-9616-69388c8c89cd:loop-0:curve-0:radius",
+          "unit": "cm_source_native"
+        },
+        {
+          "editable": true,
+          "parameter_id": "fusion360:00e41914-e2d7-11ea-aef9-54bf646e7e1f:dbb0a6bb-1262-39e8-9c57-29cb66a957ab:loop-0:curve-0:radius",
+          "unit": "cm_source_native"
+        },
+        {
+          "editable": true,
+          "parameter_id": "fusion360:00e41914-e2d7-11ea-aef9-54bf646e7e1f:dbb0a6bb-1262-39e8-9c57-29cb66a957ab:loop-1:curve-0:radius",
+          "unit": "cm_source_native"
+        },
+        {
+          "editable": true,
+          "parameter_id": "fusion:d366",
+          "unit": "cm_source_native"
+        },
+        {
+          "editable": true,
+          "parameter_id": "fusion:d367",
+          "unit": "radian_source_native"
+        },
+        {
+          "editable": true,
+          "parameter_id": "fusion:d369",
+          "unit": "cm_source_native"
+        },
+        {
+          "editable": true,
+          "parameter_id": "fusion:d370",
+          "unit": "radian_source_native"
+        }
+      ]
+    },
+    "physics": {
+      "fea_readiness": {
+        "missing_inputs": [
+          "verified_condition_specific_material_properties",
+          "geometric_boundary_condition_bindings",
+          "mesh_and_solver_profile"
+        ],
+        "simulation_result_present": false,
+        "status": "geometry_and_scenario_only"
+      },
+      "functional_interfaces": [
+        {
+          "description": "base plate interface with foundation",
+          "interface_id": "interface_1",
+          "interface_kind": "mounting"
+        }
+      ],
+      "geometry_properties": {
+        "bbox_fill_ratio": 0.7853982,
+        "bbox_volume_mm3": 270000.0,
+        "center_of_mass_interpretation": "volume_centroid_uniform_density_only",
+        "characteristic_length_mm": 59.6327103,
+        "failure_code": null,
+        "geometric_inertia_tensor_mm5": [
+          [
+            1602359515.486432,
+            3.8e-06,
+            -0.0
+          ],
+          [
+            3.8e-06,
+            23856469.2132034,
+            -0.0
+          ],
+          [
+            -0.0,
+            -0.0,
+            1602359515.4864273
+          ]
+        ],
+        "method": "occ_volume_properties_v1",
+        "physical_mass_status": "requires_verified_material_density",
+        "principal_axes": [
+          [
+            0.999999971,
+            0.0,
+            -0.00023947
+          ],
+          [
+            0.00023947,
+            0.0,
+            0.999999971
+          ],
+          [
+            -0.0,
+            1.0,
+            0.0
+          ]
+        ],
+        "principal_geometric_moments_mm5": [
+          1602359515.486432,
+          1602359515.4864273,
+          23856469.2132034
+        ],
+        "schema_version": "cadengbench-p.geometry-physics.v1",
+        "status": "complete",
+        "surface_area_mm2": 29688.0505764,
+        "surface_area_to_volume_per_mm": 0.14,
+        "units": {
+          "area": "mm2",
+          "geometric_inertia": "mm5",
+          "length": "mm",
+          "volume": "mm3"
+        },
+        "volume_centroid_mm": [
+          525.0,
+          150.0,
+          0.0
+        ],
+        "volume_mm3": 212057.5041173
+      },
+      "llm_judge_used": false,
+      "load_case": {
+        "application_region": "full column height",
+        "basis": "benchmark_authored_candidate",
+        "constraint_region": "base plate interface",
+        "direction": "axial",
+        "duty": "static",
+        "load_type": "pressure",
+        "magnitude": 2.5,
+        "physical_performance_verified": false,
+        "unit": "MPa",
+        "validation_status": "unit_checked_candidate"
+      },
+      "material_context": {
+        "material_basis": "unspecified",
+        "material_family": "unspecified",
+        "material_specification": "unspecified",
+        "material_verification_status": "unspecified"
+      },
+      "visual_affordances": [
+        {
+          "affordance_kind": "mounting",
+          "description": "Cylindrical surface for press fit or bearing support",
+          "view_ids": [
+            "orbit_045",
+            "orbit_270"
+          ],
+          "visibility": "visible"
+        },
+        {
+          "affordance_kind": "locating",
+          "description": "Flat end face for axial positioning",
+          "view_ids": [
+            "orbit_090",
+            "orbit_270"
+          ],
+          "visibility": "visible"
+        }
+      ]
+    }
+  },
+  "item_id": "p_fusion360_001312",
+  "migration_sources": [],
+  "model_facing": {
+    "functional_edit": {
+      "input_assets": {
+        "canonical_geometry_artifact": "data/production/cadengbench_p_1800_v2_two_source_r25/dataset/items/p_fusion360_001312/source/27450_ee1980ca_0000.step",
+        "native_history_artifact": "data/production/cadengbench_p_1800_v2_two_source_r25/dataset/items/p_fusion360_001312/source/27450_ee1980ca_0000.json",
+        "visual_assets": []
+      },
+      "user_prompt": "Modify the existing editable CAD model for this use case: industrial machinery mounting base Intended function: transmit vertical compressive loads from machine to foundation Functional interfaces: mounting: base plate interface with foundation Operating condition: static axial compression Design condition: 2.5 MPa pressure applied axial at full column height, constrained at base plate interface, static duty. Set parameter `extrude_distance` from 300.0 mm to 330.0 mm so that increase load capacity by a specified amount Measure the intended effect with target parameter value within_tolerance 330 mm; expected direction: increase. Use the benchmark scenario material/process context unspecified / unspecified (unspecified / unspecified). Preserve valid solid, solid count, non target parameters. Geometric acceptance does not certify service performance."
+    },
+    "zero_to_cad": {
+      "system_prompt": "configs/prompts/zero_to_cad/model_under_evaluation.system.v2.txt",
+      "user_prompt": "Design an editable parametric CAD model of cylindrical support column (structural support). Goal: increase axial load capacity Application context: industrial machinery mounting base Required global form: Solid right circular cylinder with uniform diameter and flat ends Produce 1 solid body or bodies with nominal envelope 30.0 x 300.0 x 30.0 mm. Visible features: recess or pocket: Continuous cylindrical outer surface [views: orbit_045, orbit_270; visibility: visible]. recess or pocket: Flat circular end face [views: orbit_090, orbit_270; visibility: visible]. recess or pocket: Opposite flat circular end face [views: orbit_090, orbit_270; visibility: visible]. Functional interpretation: transmit vertical compressive loads from machine to foundation Interfaces: interface_1 mounting: base plate interface with foundation. Visual affordances: mounting: Cylindrical surface for press fit or bearing support [views: orbit_045, orbit_270; visibility: visible]. locating: Flat end face for axial positioning [views: orbit_090, orbit_270; visibility: visible]. Design condition: 2.5 MPa pressure applied axial at full column height, constrained at base plate interface, static duty. Material/process context: unspecified / unspecified (unspecified / unspecified). DFM priorities: minimum wall thickness, minimum hole geometry. Design freedom: maintain base footprint and hole locations Explicit non-requirements: no surface finish requirements Use named parameters for the declared dimensions and preserve the supplied deterministic relations.",
+      "visual_assets": []
+    }
+  },
+  "schema_version": "cadengbench-p.consumer-ready-item.v2",
+  "source": {
+    "canonical_geometry_artifact": "data/production/cadengbench_p_1800_v2_two_source_r25/dataset/items/p_fusion360_001312/source/27450_ee1980ca_0000.step",
+    "native_history_artifact": "data/production/cadengbench_p_1800_v2_two_source_r25/dataset/items/p_fusion360_001312/source/27450_ee1980ca_0000.json",
+    "source_dataset": "Fusion 360 Reconstruction",
+    "source_key": "fusion360",
+    "source_record_id": "27450_ee1980ca_0000"
+  }
+}

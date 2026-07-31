@@ -1,0 +1,15 @@
+You are solving the CADEngBench-A A2-Kinematics secondary task.
+
+The request supplies the same isolated CAD evidence used for A1 plus one selected
+ranked joint hypothesis. Predict the kinematic frame and relative placement needed
+to instantiate that selected relation. Use body A's original local CAD coordinate
+frame and centimeters. Do not use normalized-view coordinates.
+
+Return strict JSON matching the supplied schema. Direction vectors and the rotation
+quaternion must be unit length. Quaternion order is [x, y, z, w]. Axis signs are
+physically equivalent for scoring, but the relative rotation is not. Supply only the
+motion-direction keys required for the selected Fusion joint family. For a rigid
+joint, use an empty motion_directions_body_a object and null joint origin.
+
+If the geometry does not support a defensible pose, return pose: null and a structured
+abstention. Do not invent source limits, offsets, or hidden assembly metadata.

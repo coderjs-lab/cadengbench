@@ -1,0 +1,9 @@
+{
+  "card_path": "data/derived/cadengbench_p_300_l3_probe_v1/items/p_fusion360_001442/physics_card.json",
+  "card_sha256": "dc5a34b751e2ccb7c0aaf21792367ab9881330cb67f61c500c9d2dd0d968b286",
+  "disposition": "geometry_qualified",
+  "item_id": "p_fusion360_001442",
+  "llm_can_promote_solver_authority": false,
+  "reason": "candidate_matches_deterministic_region_contract",
+  "schema_version": "cadengbench-p.l3-annotation-validation.v1"
+}

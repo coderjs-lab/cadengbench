@@ -1,0 +1,119 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cadengbench.org/schemas/cadengbench-p.canonical-model-request.v2.json",
+  "title": "CADEngBench-P CanonicalModelRequestV2",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "request_id",
+    "item_id",
+    "task_kind",
+    "input_profile",
+    "dataset",
+    "messages",
+    "response_contract",
+    "request_hash"
+  ],
+  "properties": {
+    "schema_version": {"const": "cadengbench-p.canonical-model-request.v2"},
+    "request_id": {"type": "string", "minLength": 1},
+    "item_id": {"type": "string", "pattern": "^p_(benchcad|fusion360)_[0-9]{6}$"},
+    "task_kind": {"enum": ["zero_to_cad", "functional_edit"]},
+    "input_profile": {
+      "enum": ["text", "text_iso", "text_engineering_views"]
+    },
+    "dataset": {
+      "type": "object",
+      "required": ["release_id", "item_manifest_sha256", "design_spec_sha256"],
+      "properties": {
+        "release_id": {"type": "string", "minLength": 1},
+        "item_manifest_sha256": {"$ref": "#/$defs/sha256"},
+        "design_spec_sha256": {"$ref": "#/$defs/sha256"}
+      },
+      "additionalProperties": false
+    },
+    "messages": {
+      "type": "array",
+      "prefixItems": [
+        {"$ref": "#/$defs/system_message"},
+        {"$ref": "#/$defs/user_message"}
+      ],
+      "items": false,
+      "minItems": 2,
+      "maxItems": 2
+    },
+    "response_contract": {
+      "oneOf": [
+        {
+          "type": "object",
+          "required": ["artifact_kind", "filename", "media_type", "interface_version", "extraction_policy"],
+          "properties": {
+            "artifact_kind": {"const": "python_source"},
+            "filename": {"const": "submission.py"},
+            "media_type": {"const": "text/x-python"},
+            "interface_version": {"enum": ["cadengbench-p.cadquery-submission.v1", "cadengbench-p.benchcad-source-edit.v1"]},
+            "extraction_policy": {"const": "single_python_artifact_no_repair.v1"}
+          },
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "required": ["artifact_kind", "filename", "media_type", "interface_version", "extraction_policy"],
+          "properties": {
+            "artifact_kind": {"const": "json_document"},
+            "filename": {"const": "submission.json"},
+            "media_type": {"const": "application/json"},
+            "interface_version": {"const": "cadengbench-p.fusion360-patch-submission.v1"},
+            "extraction_policy": {"const": "single_json_artifact_no_repair.v1"}
+          },
+          "additionalProperties": false
+        }
+      ]
+    },
+    "request_hash": {"$ref": "#/$defs/sha256"}
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "text_part": {
+      "type": "object",
+      "required": ["type", "text", "sha256"],
+      "properties": {
+        "type": {"const": "text"},
+        "text": {"type": "string", "minLength": 1},
+        "sha256": {"$ref": "#/$defs/sha256"}
+      },
+      "additionalProperties": false
+    },
+    "image_part": {
+      "type": "object",
+      "required": ["type", "asset_path", "media_type", "sha256", "view_role"],
+      "properties": {
+        "type": {"const": "image"},
+        "asset_path": {"type": "string", "pattern": "^request_assets/[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+$"},
+        "media_type": {"enum": ["image/png", "image/jpeg"]},
+        "sha256": {"$ref": "#/$defs/sha256"},
+        "view_role": {"type": "string", "minLength": 1}
+      },
+      "additionalProperties": false
+    },
+    "system_message": {
+      "type": "object",
+      "required": ["role", "parts"],
+      "properties": {
+        "role": {"const": "system"},
+        "parts": {"type": "array", "prefixItems": [{"$ref": "#/$defs/text_part"}], "items": false, "minItems": 1, "maxItems": 1}
+      },
+      "additionalProperties": false
+    },
+    "user_message": {
+      "type": "object",
+      "required": ["role", "parts"],
+      "properties": {
+        "role": {"const": "user"},
+        "parts": {"type": "array", "minItems": 1, "items": {"oneOf": [{"$ref": "#/$defs/text_part"}, {"$ref": "#/$defs/image_part"}]}}
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

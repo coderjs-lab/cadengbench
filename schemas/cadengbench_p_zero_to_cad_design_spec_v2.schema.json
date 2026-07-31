@@ -1,0 +1,248 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cadengbench.org/schemas/cadengbench_p_zero_to_cad_design_spec_v2.schema.json",
+  "title": "CADEngBench-P canonical zero-to-CAD design specification v2",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version", "spec_id", "item_id", "spec_version", "task_kind", "primary_profile_id",
+    "canonical_public_spec", "public_requirement_ledger", "public_input_profiles",
+    "public_visual_manifest", "frozen_prompt_rendering", "model_environment_contract",
+    "annotation_provenance", "hidden_acceptance", "spec_quality"
+  ],
+  "properties": {
+    "schema_version": {"const": "cadengbench-p.zero-to-cad-design-spec.v2"},
+    "spec_id": {"type": "string", "minLength": 1},
+    "item_id": {"type": "string", "minLength": 1},
+    "spec_version": {"const": "2.0.0"},
+    "task_kind": {"const": "zero_to_cad"},
+    "primary_profile_id": {"const": "zero_to_cad.text_iso.v2"},
+    "canonical_public_spec": {
+      "type": "object", "additionalProperties": false,
+      "required": [
+        "title", "object_category", "design_goal", "application_context", "units", "reference_frame",
+        "solid_contract", "overall_envelope", "required_features", "functional_interfaces",
+        "public_parameters", "public_constraint_relations", "engineering_scenario",
+        "parametric_submission_contract", "material_process_context", "allowed_design_freedom",
+        "explicit_non_requirements"
+      ],
+      "properties": {
+        "title": {"type": "string", "minLength": 1},
+        "object_category": {"type": "string", "minLength": 1},
+        "design_goal": {"type": "string", "minLength": 1},
+        "application_context": {"type": "string", "minLength": 1},
+        "units": {"const": "mm"},
+        "reference_frame": {"$ref": "#/$defs/referenceFrame"},
+        "solid_contract": {"$ref": "#/$defs/solidContract"},
+        "overall_envelope": {
+          "type": "object", "additionalProperties": false, "required": ["x", "y", "z"],
+          "properties": {"x": {"$ref": "#/$defs/measure"}, "y": {"$ref": "#/$defs/measure"}, "z": {"$ref": "#/$defs/measure"}}
+        },
+        "required_features": {"type": "array", "items": {"type": "object"}},
+        "functional_interfaces": {"type": "array", "items": {"type": "object"}},
+        "public_parameters": {"type": "array", "minItems": 3, "items": {"$ref": "#/$defs/publicParameter"}},
+        "public_constraint_relations": {"type": "array", "items": {"$ref": "#/$defs/publicRelation"}},
+        "engineering_scenario": {"$ref": "#/$defs/engineeringScenario"},
+        "parametric_submission_contract": {"$ref": "#/$defs/parametricSubmissionContract"},
+        "material_process_context": {"type": "object"},
+        "allowed_design_freedom": {"type": "object"},
+        "explicit_non_requirements": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "public_requirement_ledger": {"type": "array", "minItems": 2, "items": {"$ref": "#/$defs/requirement"}},
+    "public_input_profiles": {
+      "type": "array", "minItems": 3, "maxItems": 3,
+      "prefixItems": [
+        {"$ref": "#/$defs/textProfile"},
+        {"$ref": "#/$defs/isometricProfile"},
+        {"$ref": "#/$defs/engineeringViewsProfile"}
+      ],
+      "items": false
+    },
+    "public_visual_manifest": {"type": "array", "minItems": 3, "items": {"$ref": "#/$defs/visualAsset"}},
+    "frozen_prompt_rendering": {"$ref": "#/$defs/frozenPromptRendering"},
+    "model_environment_contract": {"$ref": "#/$defs/modelEnvironmentContract"},
+    "annotation_provenance": {
+      "type": "object",
+      "required": ["fact_packet_sha256", "source_artifact_refs", "prompt_policy_sha256", "annotation_run_refs", "deterministic_validation_refs", "review_status"]
+    },
+    "hidden_acceptance": {
+      "type": "object",
+      "required": ["visibility", "requirement_to_check_refs", "reference_geometry_refs", "reference_history_refs", "source_parameter_binding_refs", "tolerance_implementation_refs", "leakage_sensitive_literals"]
+    },
+    "spec_quality": {
+      "type": "object",
+      "required": ["deterministic_checks", "critic_advisory", "llm_judge_used", "known_underdetermination"]
+    }
+  },
+  "$defs": {
+    "referenceFrame": {
+      "type": "object", "additionalProperties": false,
+      "required": ["origin_description", "axes_description", "datum_refs"],
+      "properties": {
+        "origin_description": {"type": "string", "minLength": 1},
+        "axes_description": {"type": "string", "minLength": 1},
+        "datum_refs": {"type": "array", "minItems": 1, "items": {"type": "string"}, "uniqueItems": true}
+      }
+    },
+    "solidContract": {
+      "type": "object", "additionalProperties": false,
+      "required": ["required_body_count", "connectivity"],
+      "properties": {
+        "required_body_count": {"type": "integer", "minimum": 1},
+        "connectivity": {"enum": ["one_connected_solid", "multiple_solids"]}
+      }
+    },
+    "measure": {
+      "type": "object", "additionalProperties": false,
+      "required": ["value", "unit", "tolerance", "requirement_id", "tolerance_status"],
+      "properties": {
+        "value": {"type": "number"},
+        "unit": {"const": "mm"},
+        "tolerance": {"type": "number", "exclusiveMinimum": 0},
+        "requirement_id": {"type": "string", "pattern": "^R-[0-9]{3}$"},
+        "tolerance_status": {"const": "benchmark_measurement_tolerance_not_manufacturing_tolerance"}
+      }
+    },
+    "publicParameter": {
+      "type": "object", "additionalProperties": false,
+      "required": ["parameter_id", "engineering_name", "nominal", "unit", "public_relation_refs", "parameter_role"],
+      "properties": {
+        "parameter_id": {"type": "string", "pattern": "^P-[0-9]{3}$"},
+        "engineering_name": {"type": "string", "pattern": "^[a-z][a-z0-9_]*$"},
+        "nominal": {"type": "number"},
+        "unit": {"const": "mm"},
+        "public_relation_refs": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "pattern": "^R-[0-9]{3}$"}},
+        "parameter_role": {"enum": ["principal_dimension", "feature_dimension"]}
+      }
+    },
+    "publicRelation": {
+      "type": "object", "additionalProperties": false,
+      "required": ["relation_id", "statement", "expression", "relation_type", "parameter_ids"],
+      "properties": {
+        "relation_id": {"type": "string", "pattern": "^R-[0-9]{3}$"},
+        "statement": {"type": "string", "minLength": 1},
+        "expression": {"const": "semantic_shared_parameter_requirement"},
+        "relation_type": {"const": "equal_dimension_pattern"},
+        "parameter_ids": {"type": "array", "minItems": 2, "uniqueItems": true, "items": {"type": "string", "pattern": "^P-[0-9]{3}$"}}
+      }
+    },
+    "engineeringScenario": {
+      "type": "object", "additionalProperties": false,
+      "required": ["status", "source_author_intent_claimed", "rationale"],
+      "properties": {
+        "status": {"enum": ["source_explicit", "benchmark_scenario", "unavailable"]},
+        "source_author_intent_claimed": {"type": "boolean"},
+        "rationale": {"type": "string", "minLength": 1}
+      }
+    },
+    "parametricSubmissionContract": {
+      "type": "object", "additionalProperties": false,
+      "required": ["interface_version", "required_symbols", "principal_parameter_ids", "dependent_geometry_policy"],
+      "properties": {
+        "interface_version": {"const": "cadengbench-p.cadquery-submission.v1"},
+        "required_symbols": {"type": "array", "minItems": 4, "uniqueItems": true, "items": {"type": "string"}},
+        "principal_parameter_ids": {"type": "array", "minItems": 3, "uniqueItems": true, "items": {"type": "string", "pattern": "^P-[0-9]{3}$"}},
+        "dependent_geometry_policy": {"type": "string", "minLength": 1}
+      }
+    },
+    "requirement": {
+      "type": "object", "additionalProperties": false,
+      "required": ["requirement_id", "category", "model_visible_statement", "criticality", "value_and_tolerance", "provenance_class", "evidence_refs"],
+      "properties": {
+        "requirement_id": {"type": "string", "pattern": "^R-[0-9]{3}$"},
+        "category": {"enum": ["geometry", "topology", "dimension", "relation", "parametricity", "function", "material", "process", "dfm", "standard"]},
+        "model_visible_statement": {"type": "string", "minLength": 1},
+        "criticality": {"enum": ["required", "conditional"]},
+        "value_and_tolerance": {},
+        "provenance_class": {"enum": ["source_explicit", "deterministic_geometry", "verified_replay", "authoritative_external", "benchmark_authored_scenario"]},
+        "evidence_refs": {"type": "array", "minItems": 1, "items": {"type": "string"}}
+      }
+    },
+    "textProfile": {
+      "type": "object", "additionalProperties": false,
+      "required": ["profile_id", "exposed_artifact_ids"],
+      "properties": {"profile_id": {"const": "zero_to_cad.text.v2"}, "exposed_artifact_ids": {"const": []}}
+    },
+    "isometricProfile": {
+      "type": "object", "additionalProperties": false,
+      "required": ["profile_id", "exposed_artifact_ids"],
+      "properties": {
+        "profile_id": {"const": "zero_to_cad.text_iso.v2"},
+        "exposed_artifact_ids": {"type": "array", "minItems": 2, "maxItems": 2, "uniqueItems": true, "items": {"type": "string", "minLength": 1}}
+      }
+    },
+    "engineeringViewsProfile": {
+      "type": "object", "additionalProperties": false,
+      "required": ["profile_id", "exposed_artifact_ids"],
+      "properties": {
+        "profile_id": {"const": "zero_to_cad.text_engineering_views.v2"},
+        "exposed_artifact_ids": {"type": "array", "minItems": 1, "maxItems": 1, "uniqueItems": true, "items": {"type": "string", "minLength": 1}}
+      }
+    },
+    "visualAsset": {
+      "type": "object", "additionalProperties": false,
+      "required": ["artifact_id", "asset_role", "path", "sha256", "geometry_sha256", "projection", "view_ids", "camera_profile_id", "dimensions_visible", "hidden_lines_visible", "caption"],
+      "properties": {
+        "artifact_id": {"type": "string", "minLength": 1},
+        "asset_role": {"enum": ["isometric_overview", "engineering_view_sheet"]},
+        "path": {"type": "string", "minLength": 1},
+        "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+        "geometry_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+        "projection": {"const": "orthographic"},
+        "view_ids": {"type": "array", "minItems": 1, "maxItems": 1, "items": {"type": "string"}},
+        "camera_profile_id": {"type": "string", "minLength": 1},
+        "dimensions_visible": {"const": false},
+        "hidden_lines_visible": {"type": "boolean"},
+        "caption": {"type": "string", "minLength": 1}
+      }
+    },
+    "promptRendering": {
+      "type": "object", "additionalProperties": false,
+      "required": ["system_prompt_path", "user_prompt_path", "system_prompt_sha256", "user_prompt_sha256"],
+      "properties": {
+        "system_prompt_path": {"type": "string", "minLength": 1},
+        "user_prompt_path": {"type": "string", "minLength": 1},
+        "system_prompt_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+        "user_prompt_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+      }
+    },
+    "frozenPromptRendering": {
+      "type": "object", "additionalProperties": false,
+      "required": ["renderer_id", "profile_renderings"],
+      "properties": {
+        "renderer_id": {"const": "cadengbench-p.zero-to-cad-prompt-renderer.v2"},
+        "profile_renderings": {
+          "type": "object", "additionalProperties": false,
+          "required": ["zero_to_cad.text.v2", "zero_to_cad.text_iso.v2", "zero_to_cad.text_engineering_views.v2"],
+          "properties": {
+            "zero_to_cad.text.v2": {"$ref": "#/$defs/promptRendering"},
+            "zero_to_cad.text_iso.v2": {"$ref": "#/$defs/promptRendering"},
+            "zero_to_cad.text_engineering_views.v2": {"$ref": "#/$defs/promptRendering"}
+          }
+        }
+      }
+    },
+    "modelEnvironmentContract": {
+      "type": "object", "additionalProperties": false,
+      "required": ["execution_division", "permitted_languages_and_libraries", "network_access", "deliverables", "response_instructions", "code_submission_contract"],
+      "properties": {
+        "execution_division": {"const": "agentic_python_cad"},
+        "permitted_languages_and_libraries": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+        "network_access": {"const": false},
+        "deliverables": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+        "response_instructions": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+        "code_submission_contract": {
+          "type": "object", "additionalProperties": false,
+          "required": ["interface_version", "required_top_level_symbols", "build_signature", "step_output_path"],
+          "properties": {
+            "interface_version": {"const": "cadengbench-p.cadquery-submission.v1"},
+            "required_top_level_symbols": {"type": "array", "minItems": 4, "uniqueItems": true, "items": {"type": "string"}},
+            "build_signature": {"const": "build(params=None)"},
+            "step_output_path": {"const": "model.step"}
+          }
+        }
+      }
+    }
+  }
+}

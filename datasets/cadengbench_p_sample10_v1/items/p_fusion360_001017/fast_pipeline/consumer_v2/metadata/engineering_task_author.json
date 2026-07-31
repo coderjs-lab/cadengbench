@@ -1,0 +1,57 @@
+{
+  "annotation_system": "engineering_task",
+  "attempt_count": 1,
+  "attempts": [
+    {
+      "attempt": 1,
+      "finish_reason": "stop",
+      "http_status": 200,
+      "native_schema_guidance_used": true,
+      "outcome": "accepted",
+      "parse_recovery": "exact",
+      "raw_content_characters": 1491,
+      "usage": {
+        "input_tokens": 990,
+        "output_tokens": 385,
+        "total_tokens": 1375
+      }
+    }
+  ],
+  "created_at": "2026-07-21T08:04:23Z",
+  "deterministic_plain_text_normalization": "plain-language-v1",
+  "endpoint": "text",
+  "finish_reason": "stop",
+  "image_count": 0,
+  "item_id": "p_fusion360_001017",
+  "latency_seconds": 17.25,
+  "model_id": "QuantTrio/GLM-4.7-Flash-AWQ",
+  "model_revision": "88e3d3d913c0d97c8f505cdc03433c48226bedc3",
+  "native_schema_guidance_used": true,
+  "normalized_at": "2026-07-21T13:48:43Z",
+  "parse_recovery": "exact",
+  "provider_attempt_paths": [
+    "./data/production/cadengbench_p_1800_v2_two_source_r25/dataset/items/p_fusion360_001017/fast_pipeline/consumer_v2/provider_attempts/engineering_task_author/attempt_01.json"
+  ],
+  "queue_seconds": 355.352,
+  "role_id": "engineering_task_author",
+  "schema_version": "cadengbench-p.fast-dataset.v3-engineering-physics",
+  "token_preflight": {
+    "context_compacted": false,
+    "context_limit": 24576,
+    "observations": [
+      {
+        "http_status": 200,
+        "input_byte_limit": null,
+        "status": "available"
+      }
+    ],
+    "prompt_tokens": 990,
+    "reserved_output_tokens": 900,
+    "status": "fit"
+  },
+  "usage": {
+    "input_tokens": 990,
+    "output_tokens": 385,
+    "total_tokens": 1375
+  }
+}

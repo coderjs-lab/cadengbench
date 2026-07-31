@@ -1,0 +1,12 @@
+cff-version: 1.2.0
+message: "If you use this evaluator, cite the CADEngBench V2 paper and software release."
+title: "CADEngBench-P Evaluator"
+type: software
+version: 0.1.0
+date-released: 2026-07-21
+license: Apache-2.0
+authors:
+  - family-names: Singh
+    given-names: Harmanjot
+repository-code: "https://github.com/PLACEHOLDER/cadengbench-v2"
+

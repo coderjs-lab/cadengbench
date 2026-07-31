@@ -1,0 +1,110 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cadengbench.org/schemas/l3_annotation_candidate.v1.schema.json",
+  "title": "CADEngBench-P L3 structural-probe annotation candidate",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "bundle_id",
+    "item_id",
+    "role_id",
+    "output_status",
+    "applicability",
+    "scenario_family",
+    "fixed_region_id",
+    "loaded_region_id",
+    "load_direction",
+    "reason_code",
+    "risk_flags",
+    "confidence",
+    "concise_rationale",
+    "source_intent_claimed"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "cadengbench-p.l3-annotation-candidate.v1"
+    },
+    "bundle_id": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "item_id": {
+      "type": "string",
+      "pattern": "^p_(benchcad|fusion360)_[0-9]{6}$"
+    },
+    "role_id": {
+      "const": "l3_physics_probe_annotator"
+    },
+    "output_status": {
+      "enum": ["complete", "abstain"]
+    },
+    "applicability": {
+      "enum": ["proposed", "abstain"]
+    },
+    "scenario_family": {
+      "type": ["string", "null"],
+      "enum": ["axial_tension", "cantilever_transverse", null]
+    },
+    "fixed_region_id": {
+      "type": ["string", "null"],
+      "pattern": "^axis:[xyz]:(min|max)$"
+    },
+    "loaded_region_id": {
+      "type": ["string", "null"],
+      "pattern": "^axis:[xyz]:(min|max)$"
+    },
+    "load_direction": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["axis", "sign"],
+          "properties": {
+            "axis": {"enum": ["x", "y", "z"]},
+            "sign": {"enum": [-1, 1]}
+          }
+        },
+        {"type": "null"}
+      ]
+    },
+    "reason_code": {
+      "enum": [
+        "clear_axial_load_path",
+        "clear_cantilever_load_path",
+        "deterministically_ineligible",
+        "ambiguous_support_or_load_region",
+        "thin_shell_or_mechanism",
+        "insufficient_visual_evidence"
+      ]
+    },
+    "risk_flags": {
+      "type": "array",
+      "maxItems": 4,
+      "uniqueItems": true,
+      "items": {
+        "enum": [
+          "thin_shell_like",
+          "curved_end_regions",
+          "multiple_solids",
+          "ambiguous_load_path",
+          "small_boundary_region",
+          "likely_mechanism"
+        ]
+      }
+    },
+    "confidence": {
+      "type": "number",
+      "minimum": 0.0,
+      "maximum": 1.0
+    },
+    "concise_rationale": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 240
+    },
+    "source_intent_claimed": {
+      "const": false
+    }
+  }
+}

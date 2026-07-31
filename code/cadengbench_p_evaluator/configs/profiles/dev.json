@@ -1,0 +1,34 @@
+{
+  "schema_version": "cadengbench-p.evaluator-profile.v1",
+  "profile_id": "cadengbench-p.dev.requirements-l1-complete-l2.v1",
+  "execution": {
+    "timeout_seconds": 45,
+    "worker_startup_grace_seconds": 45,
+    "max_source_bytes": 1000000,
+    "max_step_bytes": 134217728,
+    "allowed_import_roots": ["cadquery", "math", "typing", "collections", "itertools", "functools"]
+  },
+  "geometry": {
+    "evaluation_timeout_seconds": 180,
+    "linear_tessellation_tolerance_mm": 0.15,
+    "surface_sample_count": 2048,
+    "surface_tolerance_mm": 0.2,
+    "voxel_resolution": 24,
+    "voxel_margin_fraction": 0.05,
+    "seed": 20260721
+  },
+  "dfm": {
+    "wall_sample_count": 1024,
+    "wall_neighbor_count": 32,
+    "opposed_normal_cosine_min": 0.9,
+    "hole_axis_tolerance_degrees": 1.0
+  },
+  "l2": {
+    "max_variants": 12,
+    "directed_points_per_parameter": 2,
+    "morris_levels": 4,
+    "morris_trajectories": 2,
+    "z3_timeout_ms": 1000,
+    "seed": 20260721
+  }
+}

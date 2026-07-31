@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cadengbench.org/schemas/cadengbench_p_license_v2.schema.json",
+  "title": "CADEngBench-P v2 source license decision",
+  "type": "object", "additionalProperties": false,
+  "required": ["schema_version", "record_type", "license_decision_id", "source_snapshot_id", "source_license", "redistribution_allowed", "derived_artifact_allowed", "benchmark_use_allowed", "training_use_allowed", "citation_required", "restrictions", "decision_status", "decision_basis", "decision_sha256"],
+  "properties": {
+    "schema_version": {"const": "cadengbench-p.license.v2"}, "record_type": {"const": "license_decision"}, "license_decision_id": {"type": "string", "minLength": 1}, "source_snapshot_id": {"type": "string", "minLength": 1}, "source_license": {"type": "string", "minLength": 1}, "redistribution_allowed": {"type": "boolean"}, "derived_artifact_allowed": {"type": "boolean"}, "benchmark_use_allowed": {"type": "boolean"}, "training_use_allowed": {"type": "boolean"}, "citation_required": {"type": "boolean"}, "restrictions": {"type": "array", "items": {"type": "string", "minLength": 1}}, "decision_status": {"enum": ["approved", "sealed_eval_only", "rejected", "needs_legal_review"]}, "decision_basis": {"type": "array", "minItems": 1, "items": {"type": "object", "additionalProperties": false, "required": ["basis_type", "reference"], "properties": {"basis_type": {"enum": ["license_text", "source_terms", "human_review", "legal_review"]}, "reference": {"type": "string", "minLength": 1}}}}, "decision_sha256": {"type": "string", "pattern": "^[A-Fa-f0-9]{64}$"}, "notes": {"type": "string"}
+  },
+  "allOf": [{"if": {"properties": {"decision_status": {"const": "approved"}}}, "then": {"properties": {"benchmark_use_allowed": {"const": true}}}}, {"if": {"properties": {"decision_status": {"const": "rejected"}}}, "then": {"properties": {"benchmark_use_allowed": {"const": false}}}}]
+}

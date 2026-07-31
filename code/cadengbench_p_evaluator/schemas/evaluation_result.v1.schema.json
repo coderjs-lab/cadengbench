@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cadengbench.org/schemas/cadengbench-p.evaluation-result.v1.json",
+  "title": "CADEngBench-P evaluation result v1",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "evaluator_version",
+    "item_id",
+    "protocol",
+    "identity",
+    "layers",
+    "overall_status",
+    "passed",
+    "environment",
+    "runtime_seconds",
+    "llm_judge_used"
+  ],
+  "properties": {
+    "schema_version": {"const": "cadengbench-p.evaluation-result.v1"},
+    "evaluator_version": {"type": "string"},
+    "item_id": {"type": "string", "minLength": 1},
+    "protocol": {"enum": ["zero_to_cad", "functional_edit"]},
+    "identity": {"type": "object"},
+    "layers": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/layer"}
+    },
+    "overall_status": {"$ref": "#/$defs/status"},
+    "passed": {"type": ["boolean", "null"]},
+    "environment": {"type": "object"},
+    "runtime_seconds": {"type": "number", "minimum": 0},
+    "llm_judge_used": {"const": false}
+  },
+  "$defs": {
+    "status": {
+      "enum": ["passed", "failed", "not_applicable", "not_scoreable", "evaluator_error", "not_reached"]
+    },
+    "check": {
+      "type": "object",
+      "required": ["check_id", "status", "required", "failure_code", "passed"],
+      "properties": {
+        "check_id": {"type": "string"},
+        "status": {"$ref": "#/$defs/status"},
+        "required": {"type": "boolean"},
+        "failure_code": {"type": ["string", "null"]},
+        "passed": {"type": ["boolean", "null"]}
+      }
+    },
+    "layer": {
+      "type": "object",
+      "required": ["layer", "status", "passed", "checks", "metrics", "artifacts"],
+      "properties": {
+        "layer": {"enum": ["L0", "L1", "L2"]},
+        "status": {"$ref": "#/$defs/status"},
+        "passed": {"type": ["boolean", "null"]},
+        "checks": {"type": "array", "items": {"$ref": "#/$defs/check"}},
+        "metrics": {"type": "object"},
+        "artifacts": {"type": "object"},
+        "runtime_seconds": {"type": ["number", "null"], "minimum": 0}
+      }
+    }
+  }
+}
+

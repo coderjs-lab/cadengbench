@@ -1,0 +1,113 @@
+{
+  "bindings": {
+    "base_card_sha256": "c32e234334217371b6017122283c7b12e72b5ac64ef48d345416c01c7a141a47",
+    "l3_evaluator_build_hash": "eb0ffb44f0b47c1fcfaa598e95a1a6ffdae963dd37ab0b64f988794c3398bb92",
+    "l3_runtime_lock_sha256": "5cd587bf0f862ab1bc60c988f151d4424c217ad236f8845c49bd488d5bd21820",
+    "mesh_study_sha256": null,
+    "nominal_reference_step_sha256": "202466e705b29a10cef03dfab33b4877b0ec16eea2553b87ea4fefca521217e2",
+    "reference_base_result_sha256": "5c6fb5d471e93f86107fb29815064f3c365ae04fe5062298c6df9dfa5bf6c3da"
+  },
+  "contract_id": "p_fusion360_001442:l3-response:v1",
+  "contract_sha256": "96455bf6c9d08c322aa107e98cf016a2a2260c0699966a29ed7eb5d0769dc946",
+  "engineering_requirements": {
+    "maximum_candidate_reference_compliance_ratio": 1.25,
+    "maximum_candidate_reference_displacement_ratio": 1.25,
+    "maximum_normalized_displacement": 0.02,
+    "maximum_regularized_von_mises_p95_mpa": 125.0,
+    "maximum_stress_utilization": 1.0
+  },
+  "evaluator": {
+    "build_hash": "58bc486b6f38458a6a68951c1ec66625c91d774b7eca1acc7a4b837030f500d8",
+    "name": "cadengbench-p-l3-response",
+    "version": "0.1.0"
+  },
+  "fidelity": {
+    "aggregate": "geometric_mean",
+    "base_maximum_symmetric_log_error": {
+      "normalized_compliance": 0.22314355131420976,
+      "normalized_max_displacement": 0.22314355131420976,
+      "regularized_von_mises_p95_mpa": 0.22314355131420976
+    },
+    "component_score": "exp_negative_normalized_log_error",
+    "effective_maximum_symmetric_log_error": {
+      "normalized_compliance": 0.22314355131420976,
+      "normalized_max_displacement": 0.22314355131420976,
+      "regularized_von_mises_p95_mpa": 0.22314355131420976
+    },
+    "mesh_symmetric_log_uncertainty": {
+      "normalized_compliance": 0.0,
+      "normalized_max_displacement": 0.0,
+      "regularized_von_mises_p95_mpa": 0.0
+    },
+    "metrics": [
+      "regularized_von_mises_p95_mpa",
+      "normalized_max_displacement",
+      "normalized_compliance"
+    ]
+  },
+  "item_id": "p_fusion360_001442",
+  "loading": {
+    "base_loaded_area_mm2": 258.06399999999996,
+    "base_resultant_force_n": [
+      25.806399999999996,
+      0.0,
+      0.0
+    ],
+    "base_traction_vector_mpa": [
+      0.1,
+      0.0,
+      0.0
+    ],
+    "control": "fixed_resultant_force",
+    "controlling_constraint": "stress_utilization",
+    "load_scale": 220.25502028197187,
+    "predicted_reference_traction_vector_mpa": [
+      22.025502028197188,
+      0.0,
+      0.0
+    ],
+    "target_resultant_force_n": [
+      5683.989155404678,
+      0.0,
+      0.0
+    ]
+  },
+  "material": {
+    "allowable_stress_mpa": 125.0,
+    "model": "linear_elastic_isotropic",
+    "poisson_ratio": 0.33,
+    "safety_factor": 2.0,
+    "yield_strength_mpa": 250.0,
+    "youngs_modulus_mpa": 70000.0
+  },
+  "numerical": {
+    "maximum_equilibrium_relative_error": 5e-05,
+    "maximum_force_control_relative_error": 1e-05,
+    "maximum_linearity_relative_error": 0.02,
+    "ratio_epsilon": 1e-12
+  },
+  "profile": {
+    "profile_id": "cadengbench-p-l3-response-v1",
+    "profile_sha256": "0b0a1e0e7338c0836b45f76622bf144e7bfd658ac80237c0fa68861bbd274d11",
+    "status": "calibrated"
+  },
+  "reference_base": {
+    "metrics": {
+      "force_equilibrium_relative_error": 7.306793569097653e-08,
+      "normalized_compliance": 219.51029871666793,
+      "normalized_max_displacement": 3.064498964372215e-05,
+      "regularized_von_mises_p95_mpa": 0.28376197700278116
+    },
+    "predicted_scaled_metrics": {
+      "force_equilibrium_relative_error": 7.306793569097653e-08,
+      "normalized_compliance": 219.51029871666793,
+      "normalized_max_displacement": 0.00674971281551884,
+      "regularized_von_mises_p95_mpa": 62.5
+    }
+  },
+  "scenario": "axial_tension",
+  "schema_version": "cadengbench-p.l3-response-contract.v1",
+  "source_intent_claimed": false,
+  "status": "calibrated",
+  "threshold_authority": "benchmark_assigned_reference_relative_calibrated_v1"
+}

@@ -1,0 +1,136 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cadengbench.org/schemas/cadengbench_p_visual_manifest_v1.schema.json",
+  "title": "CADEngBench-P v1 canonical visual asset manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "manifest_version", "item_id", "renderer_version", "geometry_artifact",
+    "canonical_frame_ref", "render_policy", "core_views", "vlm_view_bundle",
+    "engineering_sheet", "quality_summary"
+  ],
+  "properties": {
+    "manifest_version": {"const": "cadengbench-p.visual-manifest.v1"},
+    "item_id": {"$ref": "#/$defs/itemId"},
+    "renderer_version": {"type": "string", "minLength": 1},
+    "geometry_artifact": {"$ref": "#/$defs/artifact"},
+    "canonical_frame_ref": {"const": "/multimodal_annotation_package/canonical_frame"},
+    "render_policy": {
+      "type": "object", "additionalProperties": false,
+      "required": ["projection", "background", "texture", "lighting", "tessellation_tolerance", "exact_line_method", "source_axes_preserved"],
+      "properties": {
+        "projection": {"const": "orthographic"}, "background": {"const": "white"},
+        "texture": {"const": "none"}, "lighting": {"type": "string"},
+        "tessellation_tolerance": {"type": "number", "exclusiveMinimum": 0},
+        "exact_line_method": {"type": "string"}, "source_axes_preserved": {"const": true}
+      }
+    },
+    "core_views": {"type": "array", "minItems": 8, "maxItems": 8, "items": {"$ref": "#/$defs/coreView"}},
+    "vlm_view_bundle": {
+      "type": "object", "additionalProperties": false,
+      "required": ["orbit_elevation_degrees", "views", "contact_sheet"],
+      "properties": {
+        "orbit_elevation_degrees": {"type": "number"},
+        "views": {"type": "array", "minItems": 10, "maxItems": 10, "items": {"$ref": "#/$defs/orbitView"}},
+        "contact_sheet": {"$ref": "#/$defs/artifact"}
+      }
+    },
+    "engineering_sheet": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["raster", "vector", "view_ids", "line_semantics"],
+      "properties": {
+        "raster": {"$ref": "#/$defs/artifact"},
+        "vector": {"$ref": "#/$defs/artifact"},
+        "view_ids": {
+          "type": "array",
+          "prefixItems": [
+            {"const": "iso_front_right_top"}, {"const": "top"},
+            {"const": "front"}, {"const": "right"}
+          ],
+          "items": false
+        },
+        "line_semantics": {"const": "exact_occt_visible_and_hidden"}
+      }
+    },
+    "quality_summary": {
+      "type": "object", "additionalProperties": false,
+      "required": ["all_core_nonblank", "all_core_uncropped", "geometry_hash_consistent"],
+      "properties": {"all_core_nonblank": {"const": true}, "all_core_uncropped": {"type": "boolean"}, "geometry_hash_consistent": {"const": true}}
+    }
+  },
+  "$defs": {
+    "itemId": {"type": "string", "pattern": "^p_(benchcad|fusion360|futurecad)_[0-9]{3,}$"},
+    "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "relativePath": {"type": "string", "pattern": "^[^/].+"},
+    "vector3": {"type": "array", "minItems": 3, "maxItems": 3, "items": {"type": "number"}},
+    "matrix4": {"type": "array", "minItems": 4, "maxItems": 4, "items": {"type": "array", "minItems": 4, "maxItems": 4, "items": {"type": "number"}}},
+    "artifact": {
+      "type": "object", "additionalProperties": false,
+      "required": ["path", "sha256", "bytes"],
+      "properties": {
+        "path": {"$ref": "#/$defs/relativePath"}, "sha256": {"$ref": "#/$defs/sha256"},
+        "bytes": {"type": "integer", "minimum": 1}, "width_px": {"type": "integer", "minimum": 1},
+        "height_px": {"type": "integer", "minimum": 1}
+      }
+    },
+    "optionalMode": {
+      "oneOf": [
+        {"$ref": "#/$defs/artifact"},
+        {"type": "object", "additionalProperties": false, "required": ["availability"], "properties": {"availability": {"const": "unsupported"}}}
+      ]
+    },
+    "coreView": {
+      "type": "object", "additionalProperties": false,
+      "required": [
+        "view_id", "view_role", "projection", "camera_position_direction", "look_direction",
+        "up_vector", "right_vector", "world_to_camera", "orthographic_scale", "near_far",
+        "canvas_size", "target_occupancy_fraction", "render_modes", "visible_face_ids",
+        "visible_feature_ids", "visibility_metadata", "geometry_artifact_hash", "quality_checks"
+      ],
+      "properties": {
+        "view_id": {"enum": ["front", "rear", "right", "left", "top", "bottom", "iso_front_right_top", "iso_rear_left_top"]},
+        "view_role": {"const": "core"}, "projection": {"const": "orthographic"},
+        "camera_position_direction": {"$ref": "#/$defs/vector3"}, "look_direction": {"$ref": "#/$defs/vector3"},
+        "up_vector": {"$ref": "#/$defs/vector3"}, "right_vector": {"$ref": "#/$defs/vector3"},
+        "world_to_camera": {"$ref": "#/$defs/matrix4"}, "orthographic_scale": {"type": "number", "exclusiveMinimum": 0},
+        "near_far": {"type": "array", "minItems": 2, "maxItems": 2, "items": {"type": "number"}},
+        "canvas_size": {"type": "array", "prefixItems": [{"const": 1024}, {"const": 1024}], "items": false},
+        "target_occupancy_fraction": {"type": "number", "exclusiveMinimum": 0, "maximum": 1},
+        "render_modes": {
+          "type": "object", "additionalProperties": false,
+          "required": ["shaded", "silhouette_mask", "face_id_mask", "feature_id_mask", "exact_visible_lines_svg", "exact_visible_lines_png", "exact_visible_hidden_lines_svg", "exact_visible_hidden_lines_png", "depth", "surface_normals"],
+          "properties": {
+            "shaded": {"$ref": "#/$defs/artifact"}, "silhouette_mask": {"$ref": "#/$defs/artifact"},
+            "face_id_mask": {"$ref": "#/$defs/artifact"}, "feature_id_mask": {"$ref": "#/$defs/artifact"},
+            "exact_visible_lines_svg": {"$ref": "#/$defs/artifact"}, "exact_visible_lines_png": {"$ref": "#/$defs/artifact"},
+            "exact_visible_hidden_lines_svg": {"$ref": "#/$defs/artifact"}, "exact_visible_hidden_lines_png": {"$ref": "#/$defs/artifact"},
+            "depth": {"$ref": "#/$defs/optionalMode"}, "surface_normals": {"$ref": "#/$defs/optionalMode"}
+          }
+        },
+        "visible_face_ids": {"type": "array", "items": {"type": "string", "pattern": "^face_"}, "uniqueItems": true},
+        "visible_feature_ids": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+        "visibility_metadata": {"type": "object"}, "geometry_artifact_hash": {"$ref": "#/$defs/sha256"},
+        "quality_checks": {"$ref": "#/$defs/quality"}
+      }
+    },
+    "orbitView": {
+      "type": "object", "additionalProperties": false,
+      "required": ["view_id", "projection", "camera_position_direction", "up_vector", "world_to_camera", "shaded", "quality_checks"],
+      "properties": {
+        "view_id": {"type": "string", "pattern": "^orbit_"}, "projection": {"const": "orthographic"},
+        "camera_position_direction": {"$ref": "#/$defs/vector3"}, "up_vector": {"$ref": "#/$defs/vector3"},
+        "world_to_camera": {"$ref": "#/$defs/matrix4"}, "shaded": {"$ref": "#/$defs/artifact"},
+        "quality_checks": {"type": "object"}
+      }
+    },
+    "quality": {
+      "type": "object", "additionalProperties": false,
+      "required": ["nonblank", "occupied_pixel_fraction", "cropped", "raster_backend"],
+      "properties": {
+        "nonblank": {"const": true}, "occupied_pixel_fraction": {"type": "number", "exclusiveMinimum": 0, "maximum": 1},
+        "cropped": {"type": "boolean"}, "raster_backend": {"const": "VTK_z_buffer_cell_scalar_masks"}
+      }
+    }
+  }
+}

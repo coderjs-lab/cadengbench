@@ -1,0 +1,36 @@
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "annotations": null,
+        "audio": null,
+        "content": "{\"schema_version\": \"cadengbench-p.l3-annotation-candidate.v1\", \"bundle_id\": \"sha256:277304e3b11da24b7204348ffae42bbf1c575c3d2d25d387b7bb4602a0387678\", \"item_id\": \"p_benchcad_000757\", \"role_id\": \"l3_physics_probe_annotator\", \"output_status\": \"complete\", \"applicability\": \"proposed\", \"scenario_family\": \"axial_tension\", \"fixed_region_id\": \"axis:z:min\", \"loaded_region_id\": \"axis:z:max\", \"load_direction\": {\"axis\": \"z\", \"sign\": 1}, \"reason_code\": \"clear_axial_load_path\", \"risk_flags\": [\"thin_shell_like\"], \"confidence\": 0.9, \"concise_rationale\": \"The geometry is a thin, uniform-thickness star plate. The only eligible opposed regions are the top and bottom faces (Z-axis). This configuration supports a clear axial tension/compression probe along the thickness.\", \"source_intent_claimed\": false}",
+        "function_call": null,
+        "reasoning": null,
+        "refusal": null,
+        "role": "assistant",
+        "tool_calls": []
+      },
+      "stop_reason": null,
+      "token_ids": null
+    }
+  ],
+  "created": 1784685206,
+  "id": "chatcmpl-859c76a49c05c447",
+  "kv_transfer_params": null,
+  "model": "cadengbench-qwen3.6-27b-vlm",
+  "object": "chat.completion",
+  "prompt_logprobs": null,
+  "prompt_token_ids": null,
+  "service_tier": null,
+  "system_fingerprint": null,
+  "usage": {
+    "completion_tokens": 268,
+    "prompt_tokens": 1989,
+    "prompt_tokens_details": null,
+    "total_tokens": 2257
+  }
+}

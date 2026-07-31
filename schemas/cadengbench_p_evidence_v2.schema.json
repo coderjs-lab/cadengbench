@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cadengbench.org/schemas/cadengbench_p_evidence_v2.schema.json",
+  "title": "CADEngBench-P v2 evidence registry",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "record_type", "registry_id", "records"],
+  "properties": {
+    "schema_version": {"const": "cadengbench-p.evidence.v2"},
+    "record_type": {"const": "evidence_registry"},
+    "registry_id": {"type": "string", "minLength": 1},
+    "records": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/evidence"}}
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[A-Fa-f0-9]{64}$"},
+    "evidence": {
+      "type": "object", "additionalProperties": false,
+      "required": ["evidence_id", "field_path", "claim", "source_type", "source_uri_or_path", "source_hash", "retrieved_at", "authority", "confidence", "status", "promotion_check", "scorer_allowed"],
+      "properties": {
+        "evidence_id": {"type": "string", "minLength": 1},
+        "field_path": {"type": "string", "minLength": 1},
+        "claim": {"type": "string", "minLength": 1},
+        "source_type": {"enum": ["source_file", "deterministic_extractor", "paper", "vendor_guide", "public_standard_summary", "llm_candidate", "human_review"]},
+        "source_uri_or_path": {"type": "string", "minLength": 1},
+        "source_hash": {"anyOf": [{"$ref": "#/$defs/sha256"}, {"type": "null"}]},
+        "retrieved_at": {"type": "string", "format": "date-time"},
+        "authority": {"enum": ["source_explicit", "deterministic_geometry", "verified_replay", "authoritative_external", "generated_proxy", "llm_candidate", "retrieval_supported", "human_review", "needs_validation", "unavailable", "rejected"]},
+        "confidence": {"enum": ["low", "medium", "high"]},
+        "status": {"enum": ["candidate_only", "promoted", "rejected", "superseded", "needs_validation", "unavailable"]},
+        "promotion_check": {
+          "type": "object", "additionalProperties": false, "required": ["check_id", "method", "result"],
+          "properties": {"check_id": {"type": "string", "minLength": 1}, "method": {"type": "string", "minLength": 1}, "result": {"enum": ["promoted", "rejected", "candidate_only", "not_run"]}, "notes": {"type": "string"}}
+        },
+        "scorer_allowed": {"type": "boolean"},
+        "limitations": {"type": "array", "items": {"type": "string", "minLength": 1}}
+      },
+      "allOf": [
+        {
+          "if": {"properties": {"status": {"const": "promoted"}}},
+          "then": {
+            "properties": {
+              "authority": {"enum": ["source_explicit", "deterministic_geometry", "verified_replay", "authoritative_external"]},
+              "promotion_check": {"properties": {"result": {"const": "promoted"}}},
+              "scorer_allowed": {"const": true}
+            }
+          }
+        },
+        {
+          "if": {"properties": {"source_type": {"const": "llm_candidate"}}},
+          "then": {"properties": {"status": {"not": {"const": "promoted"}}, "scorer_allowed": {"const": false}}}
+        },
+        {
+          "if": {"properties": {"authority": {"enum": ["generated_proxy", "llm_candidate", "retrieval_supported", "needs_validation", "unavailable", "rejected"]}}},
+          "then": {"properties": {"status": {"not": {"const": "promoted"}}, "scorer_allowed": {"const": false}}}
+        },
+        {
+          "if": {"properties": {"status": {"enum": ["candidate_only", "rejected", "superseded", "needs_validation", "unavailable"]}}},
+          "then": {"properties": {"scorer_allowed": {"const": false}}}
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "attempt": 1,
+  "finish_reason": "stop",
+  "http_status": 200,
+  "native_schema_guidance_used": true,
+  "outcome": "accepted",
+  "parse_recovery": "exact",
+  "raw_content": "{\"schema_version\": \"cadengbench-p.engineering-task-annotation.v3\", \"item_id\": \"p_fusion360_001442\", \"role_id\": \"engineering_task_author\", \"output_status\": \"complete\", \"payload\": {\"part_identity\": {\"title\": \"cylindrical spacer\", \"category\": \"mechanical spacer\"}, \"design\": {\"goal\": \"increase axial clearance\", \"application_context\": \"precision assembly interface\", \"design_freedom\": [\"maintain radial location\"]}, \"function\": {\"functional_interpretation\": \"axial spacing and load transfer\", \"interfaces\": [{\"interface_id\": \"interface_1\", \"interface_kind\": \"mounting\", \"description\": \"cylindrical surface interface\"}], \"non_requirements\": [\"no sealing required\"]}, \"material_process\": {\"material_family\": \"aluminum_alloy\", \"material_specification\": \"6061_T6\", \"process_family\": \"casting\", \"process_variant\": \"sand_casting\"}, \"standards\": [{\"standard_id\": \"ASTM_B209\", \"requirement_category\": \"material\"}, {\"standard_id\": \"ISO_2768-1\", \"requirement_category\": \"general_tolerance\"}], \"load_case\": {\"load_type\": \"pressure\", \"magnitude\": 0.5, \"unit\": \"MPa\", \"direction\": \"axial\", \"application_region\": \"full_cylindrical_face\", \"constraint_region\": \"mounting_flange\", \"duty\": \"static\"}, \"functional_edit\": {\"operating_condition\": \"axial clearance increase\", \"engineering_objective\": \"accommodate thermal expansion and assembly tolerance stack-up\"}}}",
+  "usage": {
+    "input_tokens": 990,
+    "output_tokens": 370,
+    "total_tokens": 1360
+  }
+}

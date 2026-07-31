@@ -1,0 +1,248 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cadengbench.org/schemas/cadengbench_p_functional_edit_candidate_output_v1.schema.json",
+  "title": "CADEngBench-P quarantined functional engineering-edit candidate output v1",
+  "description": "Model-authored candidate task records. They are never benchmark truth or scoring inputs.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "bundle_id",
+    "item_id",
+    "role_id",
+    "functional_edit_candidates",
+    "abstentions",
+    "output_status"
+  ],
+  "properties": {
+    "schema_version": {"const": "cadengbench-p-functional-edit-candidate-output-v1"},
+    "bundle_id": {"type": "string", "pattern": "^sha256:[a-f0-9]{64}$"},
+    "item_id": {"$ref": "#/$defs/itemId"},
+    "role_id": {"const": "functional_edit_author"},
+    "functional_edit_candidates": {
+      "type": "array",
+      "maxItems": 5,
+      "items": {"$ref": "#/$defs/candidate"}
+    },
+    "abstentions": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/abstention"}
+    },
+    "output_status": {"enum": ["complete", "partial", "abstained"]}
+  },
+  "anyOf": [
+    {"properties": {"functional_edit_candidates": {"minItems": 1}}},
+    {"properties": {"abstentions": {"minItems": 1}}}
+  ],
+  "$defs": {
+    "itemId": {"type": "string", "pattern": "^p_(benchcad|fusion360|futurecad)_[0-9]{3,}$"},
+    "nonEmpty": {"type": "string", "minLength": 1},
+    "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "evidenceBoundText": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["text", "evidence_refs"],
+      "properties": {
+        "text": {"$ref": "#/$defs/nonEmpty"},
+        "evidence_refs": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {"$ref": "#/$defs/nonEmpty"}
+        }
+      }
+    },
+    "targetBinding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["binding_refs", "change_kind", "change_description"],
+      "properties": {
+        "binding_refs": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {"$ref": "#/$defs/nonEmpty"}
+        },
+        "change_kind": {
+          "enum": [
+            "dimension_change",
+            "feature_addition",
+            "feature_removal",
+            "feature_pattern_change",
+            "profile_change",
+            "material_thickness_change",
+            "other_bound_change"
+          ]
+        },
+        "change_description": {"$ref": "#/$defs/nonEmpty"}
+      }
+    },
+    "preservationRequirement": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["description", "binding_refs"],
+      "properties": {
+        "description": {"$ref": "#/$defs/nonEmpty"},
+        "binding_refs": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {"$ref": "#/$defs/nonEmpty"}
+        }
+      }
+    },
+    "acceptanceCheck": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["check_id", "check_kind", "check_description", "binding_refs"],
+      "properties": {
+        "check_id": {"$ref": "#/$defs/nonEmpty"},
+        "check_kind": {
+          "enum": [
+            "native_replay",
+            "geometry_measurement",
+            "relation_check",
+            "smt_solver",
+            "solid_validity",
+            "feature_identity"
+          ]
+        },
+        "check_description": {"$ref": "#/$defs/nonEmpty"},
+        "binding_refs": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {"$ref": "#/$defs/nonEmpty"}
+        }
+      }
+    },
+    "candidate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "candidate_id",
+        "candidate_class",
+        "candidate_status",
+        "intent_evidence_status",
+        "source_intent_evidence_refs",
+        "application_context",
+        "engineering_requirement",
+        "engineering_rationale",
+        "candidate_instruction",
+        "target_bindings",
+        "expected_model_changes",
+        "preservation_requirements",
+        "deterministic_acceptance",
+        "missing_evidence",
+        "requires_human_review",
+        "must_be_deterministically_promoted",
+        "evaluator_uses_llm_judge",
+        "concise_rationale"
+      ],
+      "properties": {
+        "candidate_id": {"type": "string", "pattern": "^fe_[A-Za-z0-9][A-Za-z0-9._-]*$"},
+        "candidate_class": {
+          "enum": [
+            "source_backed_functional_edit",
+            "benchmark_assigned_constrained_edit",
+            "llm_hypothesis_for_human_review"
+          ]
+        },
+        "candidate_status": {"const": "candidate_only"},
+        "intent_evidence_status": {
+          "enum": [
+            "source_explicit",
+            "partner_annotation",
+            "benchmark_assigned",
+            "llm_hypothesis"
+          ]
+        },
+        "source_intent_evidence_refs": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {"$ref": "#/$defs/nonEmpty"}
+        },
+        "application_context": {"$ref": "#/$defs/evidenceBoundText"},
+        "engineering_requirement": {"$ref": "#/$defs/evidenceBoundText"},
+        "engineering_rationale": {"$ref": "#/$defs/evidenceBoundText"},
+        "candidate_instruction": {"$ref": "#/$defs/nonEmpty"},
+        "target_bindings": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"$ref": "#/$defs/targetBinding"}
+        },
+        "expected_model_changes": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"$ref": "#/$defs/evidenceBoundText"}
+        },
+        "preservation_requirements": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"$ref": "#/$defs/preservationRequirement"}
+        },
+        "deterministic_acceptance": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"$ref": "#/$defs/acceptanceCheck"}
+        },
+        "missing_evidence": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {"$ref": "#/$defs/nonEmpty"}
+        },
+        "requires_human_review": {"const": true},
+        "must_be_deterministically_promoted": {"const": true},
+        "evaluator_uses_llm_judge": {"const": false},
+        "concise_rationale": {"$ref": "#/$defs/nonEmpty"}
+      },
+      "allOf": [
+        {
+          "if": {"properties": {"candidate_class": {"const": "source_backed_functional_edit"}}},
+          "then": {
+            "properties": {
+              "intent_evidence_status": {"enum": ["source_explicit", "partner_annotation"]},
+              "source_intent_evidence_refs": {"minItems": 1}
+            }
+          }
+        },
+        {
+          "if": {"properties": {"candidate_class": {"const": "benchmark_assigned_constrained_edit"}}},
+          "then": {"properties": {"intent_evidence_status": {"const": "benchmark_assigned"}}}
+        },
+        {
+          "if": {"properties": {"candidate_class": {"const": "llm_hypothesis_for_human_review"}}},
+          "then": {
+            "properties": {
+              "intent_evidence_status": {"const": "llm_hypothesis"},
+              "missing_evidence": {"minItems": 1}
+            }
+          }
+        }
+      ]
+    },
+    "abstention": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["scope", "reason", "evidence_refs", "concise_rationale"],
+      "properties": {
+        "scope": {"$ref": "#/$defs/nonEmpty"},
+        "reason": {
+          "enum": [
+            "insufficient_evidence",
+            "ambiguous",
+            "no_stable_target_binding",
+            "no_deterministic_acceptance_path",
+            "prohibited_inference"
+          ]
+        },
+        "evidence_refs": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {"$ref": "#/$defs/nonEmpty"}
+        },
+        "concise_rationale": {"$ref": "#/$defs/nonEmpty"}
+      }
+    }
+  }
+}

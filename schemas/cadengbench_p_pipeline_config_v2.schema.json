@@ -1,0 +1,174 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cadengbench.org/schemas/cadengbench_p_pipeline_config_v2.schema.json",
+  "title": "CADEngBench-P v2 completion pipeline configuration",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version", "dataset_version", "run_id", "output_root", "stages", "items",
+    "rendering", "annotation", "manufacturing", "completion"
+  ],
+  "properties": {
+    "schema_version": {"const": "cadengbench-p.multimodal-annotation.v2"},
+    "profile_kind": {"enum": ["master", "shard"]},
+    "parent_config_sha256": {"$ref": "#/$defs/sha256"},
+    "shard_index": {"type": "integer", "minimum": 0},
+    "dataset_version": {"type": "string", "minLength": 1},
+    "run_id": {"type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]*$"},
+    "output_root": {"$ref": "#/$defs/relativePath"},
+    "stages": {
+      "type": "array",
+      "minItems": 10,
+      "maxItems": 10,
+      "prefixItems": [
+        {"const": "ingest"}, {"const": "facts"}, {"const": "render"},
+        {"const": "edits"}, {"const": "manufacturing"}, {"const": "complete"},
+        {"const": "bundle"}, {"const": "promote"}, {"const": "validate"},
+        {"const": "freeze"}
+      ],
+      "items": false
+    },
+    "items": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/sourceItem"}},
+    "rendering": {"type": "object", "minProperties": 5},
+    "annotation": {
+      "type": "object",
+      "required": [
+        "generator_roles", "critic_roles", "independence_class", "candidate_schema",
+        "critic_schema", "model_outputs_are_candidates_only", "strict_execution_provenance"
+      ],
+      "properties": {
+        "generator_roles": {"type": "array", "minItems": 4, "uniqueItems": true},
+        "critic_roles": {"type": "array", "minItems": 1, "uniqueItems": true},
+        "role_set_version": {
+          "enum": ["candidate_claims.v1", "functional_edit_intent.v1", "functional_edit_intent.v2"]
+        },
+        "role_output_schemas": {
+          "type": "object",
+          "additionalProperties": {"$ref": "#/$defs/relativePath"}
+        },
+        "critic_role_output_schemas": {
+          "type": "object",
+          "additionalProperties": {"$ref": "#/$defs/relativePath"}
+        },
+        "functional_edit_authoring_policy": {"$ref": "#/$defs/relativePath"},
+        "independence_class": {"type": "string", "minLength": 1},
+        "candidate_schema": {"$ref": "#/$defs/relativePath"},
+        "critic_schema": {"$ref": "#/$defs/relativePath"},
+        "model_outputs_are_candidates_only": {"const": true},
+        "strict_execution_provenance": {"const": true}
+      },
+      "additionalProperties": true
+    },
+    "manufacturing": {"type": "object", "minProperties": 4},
+    "completion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "catalog", "native_replay_fail_closed", "proxy_scoring_allowed",
+        "llm_judge_allowed", "cam_included"
+      ],
+      "properties": {
+        "catalog": {"$ref": "#/$defs/relativePath"},
+        "native_replay_fail_closed": {"const": true},
+        "proxy_scoring_allowed": {"const": false},
+        "llm_judge_allowed": {"const": false},
+        "cam_included": {"const": false},
+        "functional_edit_intent_contract_required": {"type": "boolean"}
+        ,
+        "zero_to_cad_design_spec_required": {"type": "boolean"},
+        "preannotation_selection_required": {"type": "boolean"},
+        "engineering_scenario_catalog": {"type": "string", "pattern": "^[^/].+"},
+        "task_prompt_template": {"type": "string", "pattern": "^[^/].+"}
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"profile_kind": {"const": "shard"}}, "required": ["profile_kind"]},
+      "then": {
+        "required": ["parent_config_sha256", "shard_index"],
+        "properties": {"items": {"minItems": 1, "maxItems": 1}}
+      }
+    }
+  ],
+  "$defs": {
+    "relativePath": {"type": "string", "minLength": 1, "pattern": "^(?!/).+"},
+    "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "functionalEditIntentSeed": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["records"],
+      "properties": {
+        "records": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"$ref": "#/$defs/functionalEditIntentSeedRecord"}
+        }
+      }
+    },
+    "functionalEditIntentSeedRecord": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "record_id",
+        "intent_evidence_status",
+        "application_context",
+        "engineering_requirement",
+        "engineering_rationale",
+        "expected_model_changes",
+        "preservation_requirements",
+        "evidence_refs"
+      ],
+      "properties": {
+        "record_id": {"type": "string", "minLength": 1},
+        "intent_evidence_status": {
+          "enum": ["source_explicit", "partner_annotation", "benchmark_assigned"]
+        },
+        "application_context": {"type": "string", "minLength": 1},
+        "engineering_requirement": {"type": "string", "minLength": 1},
+        "engineering_rationale": {"type": "string", "minLength": 1},
+        "expected_model_changes": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"type": "string", "minLength": 1}
+        },
+        "preservation_requirements": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"type": "string", "minLength": 1}
+        },
+        "evidence_refs": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {"type": "string", "minLength": 1}
+        }
+      }
+    },
+    "sourceItem": {
+      "type": "object",
+      "required": [
+        "item_id", "source_key", "source_dataset", "source_record_id", "input_dir",
+        "canonical_step", "native_history", "source_license", "redistribution_status",
+        "source_snapshot", "artifact_hashes", "edit_spec", "manufacturing_scenario_id"
+      ],
+      "properties": {
+        "item_id": {"type": "string", "pattern": "^p_(benchcad|fusion360|futurecad)_[0-9]{3,}$"},
+        "source_key": {"enum": ["benchcad", "fusion360", "futurecad"]},
+        "source_dataset": {"type": "string", "minLength": 1},
+        "source_record_id": {"type": "string", "minLength": 1},
+        "input_dir": {"$ref": "#/$defs/relativePath"},
+        "canonical_step": {"type": "string", "minLength": 1},
+        "native_history": {"type": "string", "minLength": 1},
+        "source_license": {"type": "string", "minLength": 1},
+        "redistribution_status": {"type": "string", "minLength": 1},
+        "source_snapshot": {"type": "string", "minLength": 1},
+        "artifact_hashes": {"type": "object", "minProperties": 2, "additionalProperties": {"$ref": "#/$defs/sha256"}},
+        "edit_spec": {"type": "object", "minProperties": 8},
+        "manufacturing_scenario_id": {"type": "string", "minLength": 1},
+        "functional_edit_intent_seed": {"$ref": "#/$defs/functionalEditIntentSeed"}
+      },
+      "additionalProperties": true
+    }
+  }
+}

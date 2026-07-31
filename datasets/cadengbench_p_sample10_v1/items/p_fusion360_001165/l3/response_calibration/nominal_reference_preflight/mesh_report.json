@@ -1,0 +1,86 @@
+{
+  "applied_force_n": [
+    0.0,
+    0.0,
+    0.9999999999999994
+  ],
+  "characteristic_length_mm": 0.40000003999999995,
+  "connectivity_mapping": "gmsh_tetra10_to_calculix_c3d10_swap_nodes_9_10_v1",
+  "element_count": 156624,
+  "element_type": "C3D10",
+  "fixed_node_count": 377,
+  "fixed_selector": [
+    {
+      "area_fraction": 0.0036575536539083476,
+      "area_mm2": 9.999999999999998,
+      "axis_intercept_mm": -35.369256237269994,
+      "bbox_mm": [
+        -1e-07,
+        20.593858777056,
+        -35.36925633727,
+        2.0000001,
+        25.593858977056,
+        -35.36925613727
+      ],
+      "normal": [
+        -0.0,
+        0.0,
+        -1.0
+      ],
+      "normal_source": "gmsh_parametric_surface_normal",
+      "selection_method": "extreme_axis_intercept_of_aligned_planar_surfaces_v1",
+      "surface_tag": 19,
+      "surface_type": "Plane",
+      "target_coordinate_mm": -35.369256237269994
+    }
+  ],
+  "geometry_bbox_mm": [
+    -1e-07,
+    -2.839579026484,
+    -35.36925633727,
+    2.0000001,
+    25.827061940151083,
+    35.50602968085601
+  ],
+  "gmsh_threads": 1,
+  "gmsh_version": "4.15.2",
+  "high_order_optimization": "none",
+  "loaded_area_mm2": 9.999999999999998,
+  "loaded_area_relative_discrepancy": 5.329070518200752e-16,
+  "loaded_boundary_triangle_area_mm2": 10.000000000000004,
+  "loaded_node_count": 273,
+  "loaded_selector": [
+    {
+      "area_fraction": 0.0036575536539083476,
+      "area_mm2": 9.999999999999998,
+      "axis_intercept_mm": 35.506029580855994,
+      "bbox_mm": [
+        -1e-07,
+        20.755338805492,
+        35.506029480856,
+        2.0000001,
+        25.755339005492,
+        35.50602968085601
+      ],
+      "normal": [
+        0.0,
+        -1.42108547152e-15,
+        1.0
+      ],
+      "normal_source": "gmsh_parametric_surface_normal",
+      "selection_method": "extreme_axis_intercept_of_aligned_planar_surfaces_v1",
+      "surface_tag": 18,
+      "surface_type": "Plane",
+      "target_coordinate_mm": 35.506029580855994
+    }
+  ],
+  "mean_quality": 0.8017945862624746,
+  "mesh_path": "./output/cadengbench_p_l3_response_contracts_v4/items/p_fusion360_001165/nominal_reference_preflight/mesh.msh",
+  "mesh_runtime_seconds": 2.155829494993668,
+  "mesh_sha256": "f4061b4472f67ceceacadcd23ebed5dfeb9f9a5bd57436ba47e37e010148f109",
+  "minimum_quality": 0.3416012755231804,
+  "node_count": 249899,
+  "quality_metric": "minSICN",
+  "traction_force_area_normalization": "exact_occ_planar_region_area_v1",
+  "volume_entity_count": 1
+}

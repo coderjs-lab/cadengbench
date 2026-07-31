@@ -1,0 +1,14 @@
+{
+  "attempt": 1,
+  "finish_reason": "stop",
+  "http_status": 200,
+  "native_schema_guidance_used": true,
+  "outcome": "accepted",
+  "parse_recovery": "exact",
+  "raw_content": "{\"schema_version\": \"cadengbench-p.visual-grounding-annotation.v2\", \"item_id\": \"p_fusion360_001165\", \"role_id\": \"visual_geometry_grounder\", \"output_status\": \"complete\", \"payload\": {\"global_form\": \"Thin vertical plate with central trapezoidal cutout and stepped end flanges\", \"features\": [{\"feature_kind\": \"thin_wall_or_rib\", \"description\": \"Narrow vertical plate body with uniform thickness\", \"view_ids\": [\"orbit_090\", \"orbit_270\"], \"visibility\": \"visible\"}, {\"feature_kind\": \"opening\", \"description\": \"Large central trapezoidal cutout spanning the plate height\", \"view_ids\": [\"orbit_000\", \"orbit_180\"], \"visibility\": \"visible\"}, {\"feature_kind\": \"boss_or_protrusion\", \"description\": \"Stepped flanges at top and bottom ends\", \"view_ids\": [\"orbit_000\", \"orbit_180\"], \"visibility\": \"visible\"}, {\"feature_kind\": \"fillet_or_chamfer\", \"description\": \"Chamfered edges on the flange corners\", \"view_ids\": [\"orbit_045\", \"orbit_315\"], \"visibility\": \"visible\"}, {\"feature_kind\": \"pattern\", \"description\": \"Symmetric geometry mirrored across the vertical axis\", \"view_ids\": [\"orbit_000\", \"orbit_180\"], \"visibility\": \"visible\"}, {\"feature_kind\": \"recess_or_pocket\", \"description\": \"Recessed inner faces defining the trapezoidal void\", \"view_ids\": [\"orbit_045\", \"orbit_135\"], \"visibility\": \"visible\"}], \"affordances\": [{\"affordance_kind\": \"mounting\", \"description\": \"Flanges provide surface area for attachment or clamping\", \"view_ids\": [\"orbit_000\", \"orbit_180\"], \"visibility\": \"visible\"}, {\"affordance_kind\": \"locating\", \"description\": \"Central cutout allows alignment with mating components\", \"view_ids\": [\"orbit_000\", \"orbit_180\"], \"visibility\": \"visible\"}, {\"affordance_kind\": \"load_transfer\", \"description\": \"Vertical plate structure supports shear loads\", \"view_ids\": [\"orbit_090\", \"orbit_270\"], \"visibility\": \"visible\"}], \"recommended_prompt_profile\": \"text_only\"}}",
+  "usage": {
+    "input_tokens": 2273,
+    "output_tokens": 549,
+    "total_tokens": 2822
+  }
+}

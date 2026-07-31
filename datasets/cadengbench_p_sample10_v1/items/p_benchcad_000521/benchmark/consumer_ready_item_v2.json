@@ -1,0 +1,575 @@
+{
+  "annotation_flags": [
+    "benchmark_authored_engineering_context",
+    "material_process_unspecified",
+    "source_standard_unverified",
+    "dfm_measurement_only_no_threshold",
+    "benchmark_authored_load_case_candidate"
+  ],
+  "annotations": {
+    "engineering_task": {
+      "design": {
+        "application_context": "transmission shaft coupling",
+        "design_freedom": [
+          "length adjustment"
+        ],
+        "goal": "increase key length for torque capacity"
+      },
+      "function": {
+        "functional_interpretation": "transmit torque between shaft and hub",
+        "interfaces": [
+          {
+            "description": "interlock with shaft groove",
+            "interface_id": "interface_1",
+            "interface_kind": "mating"
+          },
+          {
+            "description": "interlock with hub groove",
+            "interface_id": "interface_2",
+            "interface_kind": "mating"
+          }
+        ],
+        "non_requirements": [
+          "no surface finish requirement"
+        ]
+      },
+      "functional_edit": {
+        "engineering_objective": "increase key length for torque capacity",
+        "operating_condition": "static torque transmission"
+      },
+      "load_case": {
+        "application_region": "key interface",
+        "constraint_region": "full length",
+        "direction": "tangential",
+        "duty": "static",
+        "load_type": "torque",
+        "magnitude": 50.0,
+        "unit": "N_mm"
+      },
+      "material_process": {
+        "material_family": "unspecified",
+        "material_specification": "unspecified",
+        "process_family": "unspecified",
+        "process_variant": "unspecified"
+      },
+      "part_identity": {
+        "category": "transmission component",
+        "title": "parallel key"
+      },
+      "standards": [
+        {
+          "requirement_category": "material",
+          "standard_id": "DIN 6885"
+        },
+        {
+          "requirement_category": "fit",
+          "standard_id": "ISO 14"
+        }
+      ]
+    },
+    "visual_grounding": {
+      "affordances": [
+        {
+          "affordance_kind": "load_transfer",
+          "description": "Structural support via flat top and bottom surfaces.",
+          "view_ids": [
+            "iso_front_right_top",
+            "iso_rear_left_top"
+          ],
+          "visibility": "visible"
+        },
+        {
+          "affordance_kind": "load_transfer",
+          "description": "Lateral bracing via flat side surfaces.",
+          "view_ids": [
+            "iso_front_right_top",
+            "iso_rear_left_top"
+          ],
+          "visibility": "visible"
+        },
+        {
+          "affordance_kind": "load_transfer",
+          "description": "End-bearing support via flat square ends.",
+          "view_ids": [
+            "iso_front_right_top",
+            "iso_rear_left_top"
+          ],
+          "visibility": "visible"
+        }
+      ],
+      "features": [
+        {
+          "description": "Elongated rectangular solid with high length-to-width ratio.",
+          "feature_kind": "base_form",
+          "view_ids": [
+            "iso_front_right_top",
+            "iso_rear_left_top"
+          ],
+          "visibility": "visible"
+        },
+        {
+          "description": "Uniform square cross-section along the entire length.",
+          "feature_kind": "base_form",
+          "view_ids": [
+            "iso_front_right_top",
+            "iso_rear_left_top"
+          ],
+          "visibility": "visible"
+        },
+        {
+          "description": "Flat top and bottom faces parallel to each other.",
+          "feature_kind": "base_form",
+          "view_ids": [
+            "iso_front_right_top",
+            "iso_rear_left_top"
+          ],
+          "visibility": "visible"
+        },
+        {
+          "description": "Flat side faces perpendicular to top and bottom.",
+          "feature_kind": "base_form",
+          "view_ids": [
+            "iso_front_right_top",
+            "iso_rear_left_top"
+          ],
+          "visibility": "visible"
+        },
+        {
+          "description": "Sharp required-angle edges at all corners.",
+          "feature_kind": "base_form",
+          "view_ids": [
+            "iso_front_right_top",
+            "iso_rear_left_top"
+          ],
+          "visibility": "visible"
+        },
+        {
+          "description": "Flat square end faces perpendicular to length.",
+          "feature_kind": "base_form",
+          "view_ids": [
+            "iso_front_right_top",
+            "iso_rear_left_top"
+          ],
+          "visibility": "visible"
+        }
+      ],
+      "global_form": "Long rectangular prism with uniform cross-section and sharp edges.",
+      "recommended_prompt_profile": "text_only"
+    }
+  },
+  "consumer_contract_id": "cadengbench-p.consumer-driven-annotation.v2",
+  "evaluator_inputs": {
+    "functional_edit": {
+      "effect_proxy": {
+        "absolute_tolerance": 1e-06,
+        "comparator": "within_tolerance",
+        "expected_direction": "increase",
+        "measurement_method": "native_parameter_replay",
+        "metric_kind": "target_parameter_value",
+        "target_value": 33.033,
+        "unit": "mm"
+      },
+      "llm_judge_used": false,
+      "non_target_source_unchanged": true,
+      "preservation_scope": [
+        "valid_solid",
+        "solid_count",
+        "non_target_parameters"
+      ],
+      "relation_checks": [],
+      "solid_count_preserved": true,
+      "target": {
+        "base_value": 30.03,
+        "feature_id": "cadquery:box:0",
+        "measurement": {
+          "absolute_tolerance": 1e-06,
+          "measurement_name": "cadquery_parameter_mm:box_arg_0",
+          "method": "cadquery_ast_bound_literal_verified_replay_v1",
+          "unit": "mm"
+        },
+        "oracle_id": "p_benchcad_000521:edit-target:v2",
+        "parameter_id": "cadquery:line:5:col:9",
+        "parameter_key": "box_arg_0",
+        "target_value": 33.033,
+        "unit": "mm",
+        "valid_range": {
+          "lower": 25.5255,
+          "unit": "mm",
+          "upper": 34.5345
+        }
+      },
+      "valid_solid_required": true
+    },
+    "geometry": {
+      "bbox": {
+        "diagonal": 30.3733057,
+        "xlen": 3.22,
+        "xmax": 1.61,
+        "xmin": -1.61,
+        "ylen": 30.03,
+        "ymax": 15.015,
+        "ymin": -15.015,
+        "zlen": 3.22,
+        "zmax": 1.61,
+        "zmin": -1.61
+      },
+      "body_count": 1,
+      "geometry_physics": {
+        "bbox_fill_ratio": 1.0,
+        "bbox_volume_mm3": 311.363052,
+        "center_of_mass_interpretation": "volume_centroid_uniform_density_only",
+        "characteristic_length_mm": 6.7778043,
+        "failure_code": null,
+        "geometric_inertia_tensor_mm5": [
+          [
+            23667.9847657,
+            0.0,
+            -0.0
+          ],
+          [
+            0.0,
+            538.0561114,
+            0.0
+          ],
+          [
+            -0.0,
+            0.0,
+            23667.9847657
+          ]
+        ],
+        "method": "occ_volume_properties_v1",
+        "physical_mass_status": "requires_verified_material_density",
+        "principal_axes": [
+          [
+            0.707106781,
+            -0.0,
+            -0.707106781
+          ],
+          [
+            -0.707106781,
+            -0.0,
+            -0.707106781
+          ],
+          [
+            -0.0,
+            1.0,
+            -0.0
+          ]
+        ],
+        "principal_geometric_moments_mm5": [
+          23667.9847657,
+          23667.9847657,
+          538.0561114
+        ],
+        "schema_version": "cadengbench-p.geometry-physics.v1",
+        "status": "complete",
+        "surface_area_mm2": 407.5232,
+        "surface_area_to_volume_per_mm": 1.3088361,
+        "units": {
+          "area": "mm2",
+          "geometric_inertia": "mm5",
+          "length": "mm",
+          "volume": "mm3"
+        },
+        "volume_centroid_mm": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "volume_mm3": 311.363052
+      },
+      "hole_inventory": {
+        "hole_count": 0,
+        "holes": [],
+        "recognizer": "internal_near_full_cylindrical_face_v1",
+        "recognizer_scope": "internal_near_full_cylindrical_faces"
+      },
+      "topology_summary": {
+        "edge_count": 12,
+        "face_count": 6,
+        "is_valid": true,
+        "shell_count": 1,
+        "solid_count": 1,
+        "vertex_count": 8
+      }
+    },
+    "manufacturing": {
+      "applicable_standards": [
+        {
+          "basis": "source_explicit_label",
+          "compliance_claimed": false,
+          "requirement_category": "material",
+          "standard_id": "DIN 6885",
+          "verification_status": "source_explicit_unverified"
+        },
+        {
+          "basis": "benchmark_authored_candidate",
+          "compliance_claimed": false,
+          "requirement_category": "fit",
+          "standard_id": "ISO 14",
+          "verification_status": "candidate"
+        }
+      ],
+      "dfm_requirements": [
+        {
+          "applicability": "requires_frozen_process_material_condition",
+          "check_id": "minimum_wall_thickness",
+          "compliance_status": "not_evaluated_no_frozen_applicable_threshold",
+          "hole_count": null,
+          "maximum_depth_to_diameter": null,
+          "measurement_id": "p_benchcad_000521:dfm:wall_thickness_proxy",
+          "measurement_kind": "geometry_proxy_not_global_thickness_solution",
+          "minimum_candidate_mm": 3.22,
+          "minimum_diameter_mm": null,
+          "threshold": null
+        },
+        {
+          "applicability": "requires_frozen_process_tool_or_process_capability",
+          "check_id": "minimum_hole_geometry",
+          "compliance_status": "not_evaluated_no_frozen_applicable_threshold",
+          "hole_count": 0,
+          "maximum_depth_to_diameter": null,
+          "measurement_id": "p_benchcad_000521:dfm:minimum_hole_geometry",
+          "measurement_kind": null,
+          "minimum_candidate_mm": null,
+          "minimum_diameter_mm": null,
+          "threshold": null
+        }
+      ],
+      "llm_judge_used": false,
+      "material_process": {
+        "basis": "unspecified",
+        "material_basis": "unspecified",
+        "material_family": "unspecified",
+        "material_specification": "unspecified",
+        "material_verification_status": "unspecified",
+        "process_basis": "unspecified",
+        "process_family": "unspecified",
+        "process_variant": "unspecified",
+        "process_verification_status": "unspecified"
+      },
+      "recommended_check_families": [
+        {
+          "applicability": "selected_process_family",
+          "check_id": "minimum_wall_thickness",
+          "measurement_status": "deterministic_measurement_present"
+        },
+        {
+          "applicability": "selected_process_family",
+          "check_id": "minimum_hole_geometry",
+          "measurement_status": "deterministic_measurement_present"
+        }
+      ]
+    },
+    "parametric": {
+      "constraint_relations": [],
+      "operation_sequence": [
+        {
+          "operation_id": "op:line_4:Workplane",
+          "operation_type": "Workplane",
+          "sequence_index": 0
+        },
+        {
+          "operation_id": "op:line_5:box",
+          "operation_type": "box",
+          "sequence_index": 1
+        },
+        {
+          "operation_id": "op:line_9:show_object",
+          "operation_type": "show_object",
+          "sequence_index": 2
+        }
+      ],
+      "parameters": [
+        {
+          "base_value": 30.03,
+          "feature_id": "cadquery:box:0",
+          "parameter_id": "cadquery:line:5:col:9",
+          "parameter_key": "box_arg_0",
+          "target_value": 33.033,
+          "unit": "mm",
+          "valid_range": {
+            "lower": 25.5255,
+            "unit": "mm",
+            "upper": 34.5345
+          }
+        },
+        {
+          "editable": true,
+          "parameter_id": "op:line_5:box:arg_0",
+          "unit": "mm_or_count_needs_semantic_binding"
+        },
+        {
+          "editable": true,
+          "parameter_id": "op:line_5:box:arg_1",
+          "unit": "mm_or_count_needs_semantic_binding"
+        },
+        {
+          "editable": true,
+          "parameter_id": "op:line_5:box:arg_2",
+          "unit": "mm_or_count_needs_semantic_binding"
+        }
+      ]
+    },
+    "physics": {
+      "fea_readiness": {
+        "missing_inputs": [
+          "verified_condition_specific_material_properties",
+          "geometric_boundary_condition_bindings",
+          "mesh_and_solver_profile"
+        ],
+        "simulation_result_present": false,
+        "status": "geometry_and_scenario_only"
+      },
+      "functional_interfaces": [
+        {
+          "description": "interlock with shaft groove",
+          "interface_id": "interface_1",
+          "interface_kind": "mating"
+        },
+        {
+          "description": "interlock with hub groove",
+          "interface_id": "interface_2",
+          "interface_kind": "mating"
+        }
+      ],
+      "geometry_properties": {
+        "bbox_fill_ratio": 1.0,
+        "bbox_volume_mm3": 311.363052,
+        "center_of_mass_interpretation": "volume_centroid_uniform_density_only",
+        "characteristic_length_mm": 6.7778043,
+        "failure_code": null,
+        "geometric_inertia_tensor_mm5": [
+          [
+            23667.9847657,
+            0.0,
+            -0.0
+          ],
+          [
+            0.0,
+            538.0561114,
+            0.0
+          ],
+          [
+            -0.0,
+            0.0,
+            23667.9847657
+          ]
+        ],
+        "method": "occ_volume_properties_v1",
+        "physical_mass_status": "requires_verified_material_density",
+        "principal_axes": [
+          [
+            0.707106781,
+            -0.0,
+            -0.707106781
+          ],
+          [
+            -0.707106781,
+            -0.0,
+            -0.707106781
+          ],
+          [
+            -0.0,
+            1.0,
+            -0.0
+          ]
+        ],
+        "principal_geometric_moments_mm5": [
+          23667.9847657,
+          23667.9847657,
+          538.0561114
+        ],
+        "schema_version": "cadengbench-p.geometry-physics.v1",
+        "status": "complete",
+        "surface_area_mm2": 407.5232,
+        "surface_area_to_volume_per_mm": 1.3088361,
+        "units": {
+          "area": "mm2",
+          "geometric_inertia": "mm5",
+          "length": "mm",
+          "volume": "mm3"
+        },
+        "volume_centroid_mm": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "volume_mm3": 311.363052
+      },
+      "llm_judge_used": false,
+      "load_case": {
+        "application_region": "key interface",
+        "basis": "benchmark_authored_candidate",
+        "constraint_region": "full length",
+        "direction": "tangential",
+        "duty": "static",
+        "load_type": "torque",
+        "magnitude": 50.0,
+        "physical_performance_verified": false,
+        "unit": "N_mm",
+        "validation_status": "unit_checked_candidate"
+      },
+      "material_context": {
+        "material_basis": "unspecified",
+        "material_family": "unspecified",
+        "material_specification": "unspecified",
+        "material_verification_status": "unspecified"
+      },
+      "visual_affordances": [
+        {
+          "affordance_kind": "load_transfer",
+          "description": "Structural support via flat top and bottom surfaces.",
+          "view_ids": [
+            "iso_front_right_top",
+            "iso_rear_left_top"
+          ],
+          "visibility": "visible"
+        },
+        {
+          "affordance_kind": "load_transfer",
+          "description": "Lateral bracing via flat side surfaces.",
+          "view_ids": [
+            "iso_front_right_top",
+            "iso_rear_left_top"
+          ],
+          "visibility": "visible"
+        },
+        {
+          "affordance_kind": "load_transfer",
+          "description": "End-bearing support via flat square ends.",
+          "view_ids": [
+            "iso_front_right_top",
+            "iso_rear_left_top"
+          ],
+          "visibility": "visible"
+        }
+      ]
+    }
+  },
+  "item_id": "p_benchcad_000521",
+  "migration_sources": [],
+  "model_facing": {
+    "functional_edit": {
+      "input_assets": {
+        "canonical_geometry_artifact": "data/production/cadengbench_p_1800_v2_two_source_r25/dataset/items/p_benchcad_000521/source/generated_from_cadquery.step",
+        "native_history_artifact": "data/production/cadengbench_p_1800_v2_two_source_r25/dataset/items/p_benchcad_000521/source/cadquery.py",
+        "visual_assets": []
+      },
+      "user_prompt": "Modify the existing editable CAD model for this use case: transmission shaft coupling Intended function: transmit torque between shaft and hub Functional interfaces: mating: interlock with shaft groove; mating: interlock with hub groove Operating condition: static torque transmission Design condition: 50 N_mm torque applied tangential at key interface, constrained at full length, static duty. Set parameter `box_arg_0` from 30.03 mm to 33.033 mm so that increase key length for torque capacity Measure the intended effect with target parameter value within_tolerance 33.033 mm; expected direction: increase. Use the benchmark scenario material/process context unspecified / unspecified (unspecified / unspecified). Preserve valid solid, solid count, non target parameters. Geometric acceptance does not certify service performance."
+    },
+    "zero_to_cad": {
+      "system_prompt": "configs/prompts/zero_to_cad/model_under_evaluation.system.v2.txt",
+      "user_prompt": "Design an editable parametric CAD model of parallel key (transmission component). Goal: increase key length for torque capacity Application context: transmission shaft coupling Required global form: Long rectangular prism with uniform cross-section and sharp edges. Produce 1 solid body or bodies with nominal envelope 3.22 x 30.03 x 3.22 mm. Visible features: base form: Elongated rectangular solid with high length-to-width ratio. [views: iso_front_right_top, iso_rear_left_top; visibility: visible]. base form: Uniform square cross-section along the entire length. [views: iso_front_right_top, iso_rear_left_top; visibility: visible]. base form: Flat top and bottom faces parallel to each other. [views: iso_front_right_top, iso_rear_left_top; visibility: visible]. base form: Flat side faces perpendicular to top and bottom. [views: iso_front_right_top, iso_rear_left_top; visibility: visible]. base form: Sharp required-angle edges at all corners. [views: iso_front_right_top, iso_rear_left_top; visibility: visible]. base form: Flat square end faces perpendicular to length. [views: iso_front_right_top, iso_rear_left_top; visibility: visible]. Functional interpretation: transmit torque between shaft and hub Interfaces: interface_1 mating: interlock with shaft groove interface_2 mating: interlock with hub groove. Visual affordances: load transfer: Structural support via flat top and bottom surfaces. [views: iso_front_right_top, iso_rear_left_top; visibility: visible]. load transfer: Lateral bracing via flat side surfaces. [views: iso_front_right_top, iso_rear_left_top; visibility: visible]. load transfer: End-bearing support via flat square ends. [views: iso_front_right_top, iso_rear_left_top; visibility: visible]. Design condition: 50 N_mm torque applied tangential at key interface, constrained at full length, static duty. Material/process context: unspecified / unspecified (unspecified / unspecified). DFM priorities: minimum wall thickness, minimum hole geometry. Design freedom: length adjustment Explicit non-requirements: no surface finish requirement Use named parameters for the declared dimensions and preserve the supplied deterministic relations.",
+      "visual_assets": []
+    }
+  },
+  "schema_version": "cadengbench-p.consumer-ready-item.v2",
+  "source": {
+    "canonical_geometry_artifact": "data/production/cadengbench_p_1800_v2_two_source_r25/dataset/items/p_benchcad_000521/source/generated_from_cadquery.step",
+    "native_history_artifact": "data/production/cadengbench_p_1800_v2_two_source_r25/dataset/items/p_benchcad_000521/source/cadquery.py",
+    "source_dataset": "BenchCAD",
+    "source_key": "benchcad",
+    "source_record_id": "parallel_key_011960_s20260505"
+  }
+}

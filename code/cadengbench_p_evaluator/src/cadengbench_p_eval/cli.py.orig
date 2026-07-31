@@ -1,0 +1,486 @@
+"""Command-line interface for case preparation, evaluation, and aggregation."""
+
+from __future__ import annotations
+
+import argparse
+import json
+import platform
+import sys
+from collections.abc import Sequence
+from pathlib import Path
+
+from .aggregation import aggregate_run
+from .case import compile_case, compile_evalset, compile_functional_case, load_case
+from .profile import load_profile
+from .provenance import environment_record
+
+
+def _path(value: str) -> Path:
+    return Path(value).expanduser().resolve()
+
+
+def _parser() -> argparse.ArgumentParser:
+    parser = argparse.ArgumentParser(
+        prog="cadengbench-p-eval",
+        description="Deterministic CADEngBench-P L0/L1/L2/L3 evaluator",
+    )
+    subparsers = parser.add_subparsers(dest="command", required=True)
+
+    subparsers.add_parser("doctor", help="report the local evaluator environment")
+
+    prepare = subparsers.add_parser(
+        "prepare-case", help="compile one dataset item into an evaluator case"
+    )
+    prepare.add_argument("--item-root", required=True, type=_path)
+    prepare.add_argument("--profile", required=True, type=_path)
+    prepare.add_argument("--output", required=True, type=_path)
+    prepare.add_argument(
+        "--protocol",
+        choices=("zero_to_cad", "functional_edit"),
+        default="zero_to_cad",
+    )
+
+    prepare_set = subparsers.add_parser(
+        "prepare-evalset", help="compile every item directory under one root"
+    )
+    prepare_set.add_argument("--items-root", required=True, type=_path)
+    prepare_set.add_argument("--profile", required=True, type=_path)
+    prepare_set.add_argument("--output", required=True, type=_path)
+    prepare_set.add_argument(
+        "--protocol",
+        choices=("zero_to_cad", "functional_edit"),
+        default="zero_to_cad",
+    )
+
+    develop = subparsers.add_parser(
+        "build-dev-slice",
+        help="build qualified positive and mutation controls for real items",
+    )
+    develop.add_argument("--items-root", required=True, type=_path)
+    develop.add_argument("--plan", required=True, type=_path)
+    develop.add_argument("--output", required=True, type=_path)
+
+    check_development = subparsers.add_parser(
+        "check-dev-slice",
+        help="verify expected positive and semantic-mutant outcomes",
+    )
+    check_development.add_argument("--manifest", required=True, type=_path)
+    check_development.add_argument("--positive-run", required=True, type=_path)
+    check_development.add_argument("--mutant-run", required=True, type=_path)
+    check_development.add_argument("--output", required=True, type=_path)
+
+    validate = subparsers.add_parser(
+        "validate-case", help="verify one case and every hash-bound artifact"
+    )
+    validate.add_argument("--case", required=True, type=_path)
+
+    evaluate = subparsers.add_parser(
+        "evaluate-item", help="evaluate one CadQuery model submission"
+    )
+    evaluate.add_argument("--case", required=True, type=_path)
+    evaluate.add_argument("--submission", required=True, type=_path)
+    evaluate.add_argument("--output", required=True, type=_path)
+    evaluate.add_argument("--force", action="store_true")
+
+    evaluate_edit = subparsers.add_parser(
+        "evaluate-functional-item",
+        help="evaluate one source-native functional-edit submission",
+    )
+    evaluate_edit.add_argument("--repo-root", required=True, type=_path)
+    evaluate_edit.add_argument("--case", required=True, type=_path)
+    evaluate_edit.add_argument("--submission", required=True, type=_path)
+    evaluate_edit.add_argument("--output", required=True, type=_path)
+    evaluate_edit.add_argument("--force", action="store_true")
+
+    evaluate_set = subparsers.add_parser(
+        "evaluate", help="evaluate a prepared evalset and submission directory"
+    )
+    evaluate_set.add_argument("--evalset", required=True, type=_path)
+    evaluate_set.add_argument("--submissions", required=True, type=_path)
+    evaluate_set.add_argument("--output", required=True, type=_path)
+    evaluate_set.add_argument(
+        "--repo-root",
+        type=_path,
+        help="repository root required by source-native functional-edit evalsets",
+    )
+    evaluate_set.add_argument(
+        "--model-id",
+        required=True,
+        help="immutable model/configuration identifier recorded in the run manifest",
+    )
+    evaluate_set.add_argument("--workers", type=int, default=1)
+    evaluate_set.add_argument("--resume", action="store_true")
+
+    aggregate = subparsers.add_parser(
+        "aggregate", help="aggregate completed per-item results"
+    )
+    aggregate.add_argument("--run", required=True, type=_path)
+
+    l3_prepare = subparsers.add_parser(
+        "l3-prepare-annotations",
+        help="prepare compact L3 annotation contexts for the 300-item corpus",
+    )
+    l3_prepare.add_argument("--repo-root", required=True, type=_path)
+    l3_prepare.add_argument("--profile", required=True, type=_path)
+    l3_prepare.add_argument("--output", type=_path)
+
+    l3_annotate = subparsers.add_parser(
+        "l3-annotate",
+        help="run one frozen local multimodal model over all L3 contexts",
+    )
+    l3_annotate.add_argument("--repo-root", required=True, type=_path)
+    l3_annotate.add_argument("--profile", required=True, type=_path)
+    l3_annotate.add_argument("--output", type=_path)
+    l3_annotate.add_argument(
+        "--item-id",
+        action="append",
+        help="optional canary item ID; repeat to run a bounded subset",
+    )
+
+    l3_compile = subparsers.add_parser(
+        "l3-compile-cards",
+        help="compile valid L3 model proposals into deterministic physics cards",
+    )
+    l3_compile.add_argument("--repo-root", required=True, type=_path)
+    l3_compile.add_argument("--profile", required=True, type=_path)
+    l3_compile.add_argument("--output", type=_path)
+    l3_compile.add_argument(
+        "--item-id",
+        action="append",
+        help="optional item ID; repeat to compile a bounded completed subset",
+    )
+
+    l3_item = subparsers.add_parser(
+        "l3-run-item", help="run one STEP and physics card through Gmsh and CalculiX"
+    )
+    l3_item.add_argument("--card", required=True, type=_path)
+    l3_item.add_argument("--step", required=True, type=_path)
+    l3_item.add_argument("--ccx", required=True, type=_path)
+    l3_item.add_argument("--output", required=True, type=_path)
+    l3_item.add_argument("--timeout-seconds", type=int, default=300)
+    l3_item.add_argument("--render", action="store_true")
+    l3_item.add_argument("--force", action="store_true")
+
+    l3_qualify = subparsers.add_parser(
+        "l3-qualify-card",
+        help="qualify a geometry-qualified card on its source STEP",
+    )
+    l3_qualify.add_argument("--card", required=True, type=_path)
+    l3_qualify.add_argument("--reference-step", required=True, type=_path)
+    l3_qualify.add_argument("--promoted-card", required=True, type=_path)
+    l3_qualify.add_argument("--ccx", required=True, type=_path)
+    l3_qualify.add_argument("--output", required=True, type=_path)
+    l3_qualify.add_argument("--timeout-seconds", type=int, default=300)
+    l3_qualify.add_argument("--render", action="store_true")
+    l3_qualify.add_argument("--force", action="store_true")
+
+    l3_qualify_corpus = subparsers.add_parser(
+        "l3-qualify-corpus",
+        help="source-qualify every compiled L3 card in the 300-item sidecar",
+    )
+    l3_qualify_corpus.add_argument("--repo-root", required=True, type=_path)
+    l3_qualify_corpus.add_argument("--profile", required=True, type=_path)
+    l3_qualify_corpus.add_argument("--output", required=True, type=_path)
+    l3_qualify_corpus.add_argument("--ccx", required=True, type=_path)
+    l3_qualify_corpus.add_argument("--workers", type=int, default=1)
+    l3_qualify_corpus.add_argument("--timeout-seconds", type=int, default=300)
+    l3_qualify_corpus.add_argument("--render", action="store_true")
+    l3_qualify_corpus.add_argument("--force", action="store_true")
+
+    l3_mesh_study = subparsers.add_parser(
+        "l3-mesh-study",
+        help="run an offline three-level source mesh-sensitivity study",
+    )
+    l3_mesh_study.add_argument("--card", required=True, type=_path)
+    l3_mesh_study.add_argument("--reference-step", required=True, type=_path)
+    l3_mesh_study.add_argument("--ccx", required=True, type=_path)
+    l3_mesh_study.add_argument("--output", required=True, type=_path)
+    l3_mesh_study.add_argument("--timeout-seconds", type=int, default=600)
+    l3_mesh_study.add_argument("--force", action="store_true")
+
+    l3_build_family = subparsers.add_parser(
+        "l3-build-family",
+        help="bind an L3 card to nominal and L2 STEP artifacts",
+    )
+    l3_build_family.add_argument("--card", required=True, type=_path)
+    l3_build_family.add_argument("--evaluator-item", required=True, type=_path)
+    l3_build_family.add_argument("--output", required=True, type=_path)
+
+    l3_family = subparsers.add_parser(
+        "l3-run-family",
+        help="run L3 over every L2-passing variant in a bound family manifest",
+    )
+    l3_family.add_argument("--manifest", required=True, type=_path)
+    l3_family.add_argument("--ccx", required=True, type=_path)
+    l3_family.add_argument("--output", required=True, type=_path)
+    l3_family.add_argument("--workers", type=int, default=1)
+    l3_family.add_argument("--timeout-seconds", type=int, default=300)
+    l3_family.add_argument("--render", action="store_true")
+    l3_family.add_argument("--force", action="store_true")
+    return parser
+
+
+def _print(value: object) -> None:
+    print(json.dumps(value, indent=2, sort_keys=True))
+
+
+def main(argv: Sequence[str] | None = None) -> int:
+    arguments = _parser().parse_args(argv)
+    try:
+        if arguments.command == "doctor":
+            record = environment_record()
+            packages = record["packages"]
+            l3_packages = {"gmsh", "httpx", "matplotlib", "vtk"}
+            core_packages = tuple(name for name in packages if name not in l3_packages)
+            record["ready"] = all(packages[name] for name in core_packages)
+            record["l3_python_ready"] = record["ready"] and all(
+                packages[name] for name in sorted(l3_packages)
+            )
+            if platform.system() == "Darwin":
+                record["execution_warning"] = (
+                    "The macOS local subprocess backend is for development and is not "
+                    "an adversarial security boundary. Use the frozen Linux "
+                    "container/cluster backend for official untrusted submissions."
+                )
+            else:
+                record["execution_warning"] = (
+                    "Package readiness does not prove scheduler isolation. Official "
+                    "untrusted submissions still require the frozen cluster runtime."
+                )
+            _print(record)
+            return 0 if record["ready"] else 1
+        if arguments.command == "prepare-case":
+            profile = load_profile(arguments.profile)
+            compiler = (
+                compile_functional_case
+                if arguments.protocol == "functional_edit"
+                else compile_case
+            )
+            case = compiler(
+                arguments.item_root,
+                profile=profile,
+                output_path=arguments.output,
+            )
+            _print(
+                {
+                    "item_id": case["item_id"],
+                    "case_hash": case["case_hash"],
+                    "output": str(arguments.output),
+                }
+            )
+            return 0
+        if arguments.command == "prepare-evalset":
+            manifest = compile_evalset(
+                arguments.items_root,
+                profile=load_profile(arguments.profile),
+                output_root=arguments.output,
+                protocol=arguments.protocol,
+            )
+            _print(manifest)
+            return 0
+        if arguments.command == "build-dev-slice":
+            from .development import build_development_slice
+
+            manifest = build_development_slice(
+                items_root=arguments.items_root,
+                plan_path=arguments.plan,
+                output_root=arguments.output,
+            )
+            _print(manifest)
+            return 0
+        if arguments.command == "check-dev-slice":
+            from .development import summarize_development_slice
+
+            report = summarize_development_slice(
+                manifest_path=arguments.manifest,
+                positive_run=arguments.positive_run,
+                mutant_run=arguments.mutant_run,
+                output_path=arguments.output,
+            )
+            _print(report)
+            return 0 if report["valid"] else 2
+        if arguments.command == "validate-case":
+            case = load_case(arguments.case, verify_artifacts=True)
+            _print(
+                {
+                    "valid": True,
+                    "item_id": case.item_id,
+                    "case_hash": case.data["case_hash"],
+                }
+            )
+            return 0
+        if arguments.command == "evaluate-item":
+            from .runner import evaluate_item
+
+            result = evaluate_item(
+                case_path=arguments.case,
+                submission_path=arguments.submission,
+                output_root=arguments.output,
+                force=arguments.force,
+            )
+            _print(result.as_dict())
+            return 0 if result.overall_status.value != "evaluator_error" else 2
+        if arguments.command == "evaluate-functional-item":
+            from .functional_runner import evaluate_functional_item
+
+            result = evaluate_functional_item(
+                repo_root=arguments.repo_root,
+                case_path=arguments.case,
+                submission_path=arguments.submission,
+                output_root=arguments.output,
+                force=arguments.force,
+            )
+            _print(result.as_dict())
+            return 0 if result.overall_status.value != "evaluator_error" else 2
+        if arguments.command == "evaluate":
+            from .runner import evaluate_evalset
+
+            summary = evaluate_evalset(
+                evalset_root=arguments.evalset,
+                submissions_root=arguments.submissions,
+                output_root=arguments.output,
+                model_id=arguments.model_id,
+                workers=arguments.workers,
+                resume=arguments.resume,
+                repo_root=arguments.repo_root,
+            )
+            _print(summary)
+            return 0 if summary["valid_complete_run"] else 2
+        if arguments.command == "aggregate":
+            _print(aggregate_run(arguments.run))
+            return 0
+        if arguments.command == "l3-prepare-annotations":
+            from .physics.annotation import prepare_annotation_corpus
+
+            _print(
+                prepare_annotation_corpus(
+                    repo_root=arguments.repo_root,
+                    profile_path=arguments.profile,
+                    output_root=arguments.output,
+                )
+            )
+            return 0
+        if arguments.command == "l3-annotate":
+            from .physics.annotation import run_annotation_corpus
+
+            _print(
+                run_annotation_corpus(
+                    repo_root=arguments.repo_root,
+                    profile_path=arguments.profile,
+                    output_root=arguments.output,
+                    item_ids=arguments.item_id,
+                )
+            )
+            return 0
+        if arguments.command == "l3-compile-cards":
+            from .physics.annotation import compile_physics_cards
+
+            _print(
+                compile_physics_cards(
+                    repo_root=arguments.repo_root,
+                    profile_path=arguments.profile,
+                    output_root=arguments.output,
+                    item_ids=arguments.item_id,
+                )
+            )
+            return 0
+        if arguments.command == "l3-run-item":
+            from .physics.calculix import load_physics_card, run_probe_card
+            from .physics.runner import (
+                _commit_l3_output,
+                _prepare_output,
+                _safe_replaceable_output,
+            )
+
+            _safe_replaceable_output(
+                arguments.output,
+                (arguments.card, arguments.step, arguments.ccx),
+            )
+            _prepare_output(arguments.output, force=arguments.force)
+            result = run_probe_card(
+                load_physics_card(arguments.card),
+                step_path=arguments.step,
+                output_dir=arguments.output,
+                ccx_path=arguments.ccx,
+                timeout_seconds=arguments.timeout_seconds,
+                render=arguments.render,
+            )
+            _commit_l3_output(arguments.output, arguments.output / "result.json")
+            _print(result)
+            return 0 if result["final_status"] == "probe_pass" else 2
+        if arguments.command == "l3-qualify-card":
+            from .physics.runner import qualify_physics_card
+
+            result = qualify_physics_card(
+                card_path=arguments.card,
+                reference_step=arguments.reference_step,
+                output_dir=arguments.output,
+                promoted_card_path=arguments.promoted_card,
+                ccx_path=arguments.ccx,
+                timeout_seconds=arguments.timeout_seconds,
+                render=arguments.render,
+                force=arguments.force,
+            )
+            _print(result)
+            return 0 if result["promoted"] else 2
+        if arguments.command == "l3-qualify-corpus":
+            from .physics.runner import qualify_annotation_corpus
+
+            result = qualify_annotation_corpus(
+                repo_root=arguments.repo_root,
+                profile_path=arguments.profile,
+                output_root=arguments.output,
+                ccx_path=arguments.ccx,
+                workers=arguments.workers,
+                timeout_seconds=arguments.timeout_seconds,
+                render=arguments.render,
+                force=arguments.force,
+            )
+            _print(result)
+            return 0 if not result["status_counts"].get("evaluator_error") else 2
+        if arguments.command == "l3-mesh-study":
+            from .physics.runner import run_mesh_sensitivity_study
+
+            result = run_mesh_sensitivity_study(
+                card_path=arguments.card,
+                reference_step=arguments.reference_step,
+                output_root=arguments.output,
+                ccx_path=arguments.ccx,
+                timeout_seconds=arguments.timeout_seconds,
+                force=arguments.force,
+            )
+            _print(result)
+            return 0 if result["all_levels_passed"] else 2
+        if arguments.command == "l3-build-family":
+            from .physics.runner import build_family_manifest_from_evaluator_run
+
+            _print(
+                build_family_manifest_from_evaluator_run(
+                    card_path=arguments.card,
+                    evaluator_item_root=arguments.evaluator_item,
+                    output_path=arguments.output,
+                )
+            )
+            return 0
+        if arguments.command == "l3-run-family":
+            from .physics.runner import run_family
+
+            result = run_family(
+                manifest_path=arguments.manifest,
+                output_root=arguments.output,
+                ccx_path=arguments.ccx,
+                workers=arguments.workers,
+                timeout_seconds=arguments.timeout_seconds,
+                render=arguments.render,
+                force=arguments.force,
+            )
+            _print(result)
+            return 0 if result["evaluator_error_count"] == 0 else 2
+    except (OSError, ValueError, RuntimeError) as exc:
+        print(f"error: {exc}", file=sys.stderr)
+        return 2
+    raise AssertionError(f"unhandled command: {arguments.command}")
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

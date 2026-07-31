@@ -1,0 +1,92 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cadengbench.org/schemas/cadengbench_p_functional_edit_prompt_policy_v1.schema.json",
+  "title": "CADEngBench-P functional engineering-edit authoring policy v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "policy_id",
+    "max_candidates_per_item",
+    "candidate_classes",
+    "required_causal_chain",
+    "prohibited_inferences",
+    "hypothesis_policy",
+    "promotion_boundary"
+  ],
+  "properties": {
+    "schema_version": {"const": "cadengbench-p.functional-edit-authoring-policy.v1"},
+    "policy_id": {"type": "string", "minLength": 1},
+    "max_candidates_per_item": {"type": "integer", "minimum": 1, "maximum": 5},
+    "candidate_classes": {
+      "type": "array",
+      "uniqueItems": true,
+      "minItems": 3,
+      "items": {
+        "enum": [
+          "source_backed_functional_edit",
+          "benchmark_assigned_constrained_edit",
+          "llm_hypothesis_for_human_review"
+        ]
+      }
+    },
+    "required_causal_chain": {
+      "type": "array",
+      "minItems": 7,
+      "uniqueItems": true,
+      "items": {
+        "enum": [
+          "application_context",
+          "engineering_requirement",
+          "engineering_rationale",
+          "candidate_instruction",
+          "target_bindings",
+          "expected_model_changes",
+          "preservation_requirements",
+          "deterministic_acceptance"
+        ]
+      }
+    },
+    "prohibited_inferences": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {"type": "string", "minLength": 1}
+    },
+    "hypothesis_policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "allow_llm_hypothesis_for_human_review",
+        "requires_explicit_missing_evidence",
+        "must_not_assert_source_intent"
+      ],
+      "properties": {
+        "allow_llm_hypothesis_for_human_review": {"type": "boolean"},
+        "requires_explicit_missing_evidence": {"const": true},
+        "must_not_assert_source_intent": {"const": true}
+      }
+    },
+    "promotion_boundary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "candidate_outputs_are_scoreable",
+        "requires_human_review",
+        "requires_deterministic_acceptance",
+        "evaluator_uses_llm_judge"
+      ],
+      "properties": {
+        "candidate_outputs_are_scoreable": {"const": false},
+        "requires_human_review": {"const": true},
+        "requires_deterministic_acceptance": {"const": true},
+        "evaluator_uses_llm_judge": {"const": false}
+      }
+    }
+  },
+  "allOf": [
+    {"properties": {"candidate_classes": {"contains": {"const": "source_backed_functional_edit"}}}},
+    {"properties": {"candidate_classes": {"contains": {"const": "benchmark_assigned_constrained_edit"}}}},
+    {"properties": {"candidate_classes": {"contains": {"const": "llm_hypothesis_for_human_review"}}}}
+  ]
+}

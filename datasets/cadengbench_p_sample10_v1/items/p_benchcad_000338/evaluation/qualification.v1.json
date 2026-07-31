@@ -1,0 +1,235 @@
+{
+  "dfm": {
+    "families": [
+      {
+        "applicability": "development_capability_profile",
+        "expected_minimum_feature_count": 1,
+        "extractor_certified": true,
+        "family": "minimum_hole_geometry",
+        "required": true,
+        "scoreable": true,
+        "threshold_evidence_ref": {
+          "profile_id": "cadengbench-p.dev-machining-capability.v1",
+          "scope": "evaluator development only; not a universal standard",
+          "source": "evaluation/qualification.v1.json#/dfm/families/0"
+        },
+        "thresholds": {
+          "maximum_depth_to_diameter": 8.0,
+          "minimum_diameter_mm": 2.0
+        },
+        "unscoreable_reason": null
+      }
+    ],
+    "material_card": null,
+    "process_profile": "cadengbench-p.dev-machining-capability.v1",
+    "profile_origin": "evaluator_development_qualification",
+    "scoreable_family_count": 1
+  },
+  "item_id": "p_benchcad_000338",
+  "parameter_system": {
+    "complete_domains": true,
+    "complete_measurement_bindings": true,
+    "feasibility_relations": [
+      {
+        "authority": "qualified_positive_dimension_domain",
+        "evidence_ref": "evaluation/qualification.v1.json#/parameter_system/parameters/0",
+        "predicate": {
+          "left": {
+            "key": "P-001",
+            "source": "parameter",
+            "type": "variable"
+          },
+          "op": "gt",
+          "right": {
+            "type": "constant",
+            "value": 0.0
+          },
+          "tolerance": 0.0,
+          "type": "comparison"
+        },
+        "relation_id": "FEASIBILITY-P-001-POSITIVE",
+        "required": true
+      }
+    ],
+    "interface_version": "cadengbench-p.cadquery-submission.v1",
+    "measurement_bound_parameter_count": 1,
+    "normalized_source_relation_count": 1,
+    "parameters": [
+      {
+        "domain": {
+          "authority": "source_two_sided_replay_qualification",
+          "evidence_ref": "benchmark/consumer_ready_item_v2.json#/evaluator_inputs/functional_edit/target/valid_range",
+          "kind": "continuous",
+          "maximum": 9.441500000000001,
+          "maximum_inclusive": true,
+          "minimum": 6.9785,
+          "minimum_inclusive": true
+        },
+        "engineering_name": "opening_group_001_diameter",
+        "measurement_binding": {
+          "measurement_key": "P-001",
+          "measurement_kind": "cylindrical_opening_diameter",
+          "opening_group": 1,
+          "requirement_id": "R-HOLE-001",
+          "requirement_value_path": [
+            "value_and_tolerance",
+            "diameter"
+          ]
+        },
+        "nominal": 8.21,
+        "parameter_id": "P-001",
+        "requirement_refs": [
+          "R-HOLE-001"
+        ],
+        "role": "principal_dimension",
+        "unit": "mm",
+        "variant_requirement_contract": {
+          "authority": "real_item_geometry_qualification",
+          "evidence_ref": "evaluation/qualification.v1.json#/parameter_system/parameters/0",
+          "kind": "direct_measurement_only"
+        }
+      }
+    ],
+    "qualified_parameter_count": 1,
+    "qualified_variant_parameter_count": 1,
+    "relations": [
+      {
+        "authority": "real_item_geometry_qualification",
+        "evidence_ref": "evaluation/qualification.v1.json#/parameter_system/parameters/0",
+        "predicate": {
+          "left": {
+            "key": "P-001",
+            "source": "measurement",
+            "type": "variable"
+          },
+          "op": "eq",
+          "right": {
+            "key": "P-001",
+            "source": "parameter",
+            "type": "variable"
+          },
+          "tolerance": 0.05,
+          "type": "comparison"
+        },
+        "relation_id": "REL-P-001-MEASUREMENT",
+        "required": true
+      }
+    ],
+    "solver_obligations": [
+      {
+        "assumptions": [],
+        "authority": "qualified_positive_dimension_domain",
+        "conclusion": {
+          "left": {
+            "key": "P-001",
+            "source": "parameter",
+            "type": "variable"
+          },
+          "op": "gt",
+          "right": {
+            "type": "constant",
+            "value": 0.0
+          },
+          "tolerance": 0.0,
+          "type": "comparison"
+        },
+        "evidence_ref": "evaluation/qualification.v1.json#/parameter_system/parameters/0",
+        "obligation_id": "SOLVER-P-001-POSITIVE",
+        "required": true
+      }
+    ],
+    "source_relations": []
+  },
+  "purpose": "real-item evaluator development and mutation calibration",
+  "qualification_hash": "b7341139469d29440315fa3d6a5a31fe42ea6682cf3af0ea52ed0b7ed2378e09",
+  "requirements": [
+    {
+      "category": "solid_contract",
+      "check_ids": [
+        "hidden.check.solid_count.v1"
+      ],
+      "criticality": "required",
+      "requirement_id": "R-SOLID",
+      "value_and_tolerance": {
+        "body_count": 1
+      }
+    },
+    {
+      "category": "global_envelope",
+      "check_ids": [
+        "hidden.check.bbox_dimensions.v1"
+      ],
+      "criticality": "required",
+      "requirement_id": "R-BBOX",
+      "value_and_tolerance": {
+        "x": {
+          "tolerance": 0.05,
+          "value": 18.476
+        },
+        "y": {
+          "tolerance": 0.05,
+          "value": 16.0006854
+        },
+        "z": {
+          "tolerance": 0.05213,
+          "value": 52.13
+        }
+      }
+    },
+    {
+      "category": "cylindrical_opening_group",
+      "check_ids": [
+        "hidden.check.cylindrical_opening_group.v1"
+      ],
+      "criticality": "required",
+      "requirement_id": "R-HOLE-001",
+      "value_and_tolerance": {
+        "axis_direction": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "centers": [],
+        "depth": 5.79,
+        "depth_tolerance": 0.05,
+        "diameter": 8.21,
+        "diameter_tolerance": 0.05,
+        "position_tolerance": 0.05,
+        "quantity": 1
+      }
+    }
+  ],
+  "schema_version": "cadengbench-p.evaluator-qualification.v1",
+  "selection": {
+    "difficulty": "medium",
+    "item_id": "p_benchcad_000338",
+    "measurement_kind": "hole_diameter"
+  },
+  "source_evidence": {
+    "consumer_item": "benchmark/consumer_ready_item_v2.json",
+    "source_oracle_id": "p_benchcad_000338:edit-target:v2",
+    "source_parameter_id": "cadquery:line:11:col:10",
+    "source_parameter_key": "hole_arg_0"
+  },
+  "task_contract": {
+    "fidelity_profile": "exact_reference",
+    "reference_frame": "source_canonical_frame",
+    "solid_contract": {
+      "required_body_count": 1
+    },
+    "submission": {
+      "code_submission_contract": {
+        "build_signature": "build(params=None)",
+        "interface_version": "cadengbench-p.cadquery-submission.v1",
+        "required_top_level_symbols": [
+          "DEFAULT_PARAMS",
+          "PARAMETER_MANIFEST",
+          "build",
+          "result"
+        ],
+        "step_output_path": "model.step"
+      }
+    },
+    "task_kind": "zero_to_cad"
+  }
+}

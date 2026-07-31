@@ -1,0 +1,20 @@
+{
+  "applicability": "proposed",
+  "bundle_id": "sha256:f74268bea26fc601eb1e5f90a506bde53d951ab3951275d5a80922b85b14343c",
+  "concise_rationale": "The part is an elongated prismatic block (span 188mm vs 18mm/20mm). The dominant structural load path is axial along the X-axis. The end faces (axis:x:min and axis:x:max) are flat, planar, and opposite, making them ideal for a conservative ",
+  "confidence": 0.95,
+  "fixed_region_id": "axis:x:min",
+  "item_id": "p_fusion360_001442",
+  "load_direction": {
+    "axis": "x",
+    "sign": 1
+  },
+  "loaded_region_id": "axis:x:max",
+  "output_status": "complete",
+  "reason_code": "clear_axial_load_path",
+  "risk_flags": [],
+  "role_id": "l3_physics_probe_annotator",
+  "scenario_family": "axial_tension",
+  "schema_version": "cadengbench-p.l3-annotation-candidate.v1",
+  "source_intent_claimed": false
+}

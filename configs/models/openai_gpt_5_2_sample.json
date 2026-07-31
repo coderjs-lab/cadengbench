@@ -1,0 +1,22 @@
+{
+  "schema_version": "cadengbench-p.model-spec.v1",
+  "model_label": "GPT-5.2 OpenAI API sample",
+  "provider": "openai_compatible",
+  "protocol": "openai_chat",
+  "model_id": "gpt-5.2-2025-12-11",
+  "base_url": "https://api.openai.com/v1",
+  "api_key_env": "OPENAI_API_KEY",
+  "api_key_required": true,
+  "capabilities": {
+    "text": true,
+    "images": true
+  },
+  "request_defaults": {
+    "max_completion_tokens": 16384,
+    "reasoning_effort": "none"
+  },
+  "rate_limits": {
+    "max_concurrency": 2,
+    "requests_per_minute": 30
+  }
+}

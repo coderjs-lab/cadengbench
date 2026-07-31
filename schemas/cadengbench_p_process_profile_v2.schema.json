@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cadengbench.org/schemas/cadengbench_p_process_profile_v2.schema.json",
+  "title": "CADEngBench-P v2 manufacturing process profile",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "record_type", "process_profile"],
+  "properties": {
+    "schema_version": {"const": "cadengbench-p.process-profile.v2"},
+    "record_type": {"const": "process_profile"},
+    "process_profile": {"$ref": "#/$defs/profile"}
+  },
+  "$defs": {
+    "nonEmpty": {"type": "string", "minLength": 1},
+    "profile": {
+      "type": "object", "additionalProperties": false,
+      "required": ["process_profile_id", "process_family", "capability_scope", "supported_material_card_ids", "geometric_constraints", "tolerance_context", "finish_context", "dfm_check_catalog", "evidence_records", "origin", "source_intent_claimed", "scoring_status"],
+      "properties": {
+        "process_profile_id": {"$ref": "#/$defs/nonEmpty"},
+        "process_family": {"enum": ["cnc_milling", "cnc_turning", "sheet_metal", "laser_cutting", "waterjet", "injection_molding", "casting", "additive_fdm", "additive_sla", "unspecified"]},
+        "capability_scope": {"$ref": "#/$defs/nonEmpty"},
+        "supported_material_card_ids": {"type": "array", "uniqueItems": true, "items": {"$ref": "#/$defs/nonEmpty"}},
+        "geometric_constraints": {"type": "array", "items": {"type": "object", "additionalProperties": false, "required": ["constraint_id", "description", "status"], "properties": {"constraint_id": {"$ref": "#/$defs/nonEmpty"}, "description": {"$ref": "#/$defs/nonEmpty"}, "status": {"enum": ["hard", "advisory", "unknown"]}, "evidence_ref": {"anyOf": [{"$ref": "#/$defs/nonEmpty"}, {"type": "null"}]}}}},
+        "tolerance_context": {"type": "object", "additionalProperties": false, "required": ["status", "description"], "properties": {"status": {"enum": ["specified", "unavailable", "not_applicable"]}, "description": {"$ref": "#/$defs/nonEmpty"}, "evidence_ref": {"anyOf": [{"$ref": "#/$defs/nonEmpty"}, {"type": "null"}]}}},
+        "finish_context": {"type": "object", "additionalProperties": false, "required": ["status", "description"], "properties": {"status": {"enum": ["specified", "unavailable", "not_applicable"]}, "description": {"$ref": "#/$defs/nonEmpty"}, "evidence_ref": {"anyOf": [{"$ref": "#/$defs/nonEmpty"}, {"type": "null"}]}}},
+        "dfm_check_catalog": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"$ref": "#/$defs/nonEmpty"}},
+        "evidence_records": {"type": "array", "uniqueItems": true, "items": {"$ref": "#/$defs/nonEmpty"}},
+        "origin": {"enum": ["source_explicit", "benchmark_assigned", "inferred_candidate", "unavailable"]},
+        "source_intent_claimed": {"type": "boolean"},
+        "scoring_status": {"enum": ["context_only", "eligible", "not_eligible"]},
+        "unavailable_reason": {"anyOf": [{"$ref": "#/$defs/nonEmpty"}, {"type": "null"}]}
+      },
+      "allOf": [
+        {"if": {"properties": {"origin": {"enum": ["benchmark_assigned", "inferred_candidate"]}}}, "then": {"properties": {"source_intent_claimed": {"const": false}}}},
+        {"if": {"properties": {"origin": {"const": "unavailable"}}}, "then": {"required": ["unavailable_reason"], "properties": {"scoring_status": {"const": "not_eligible"}, "source_intent_claimed": {"const": false}}}},
+        {"if": {"properties": {"scoring_status": {"const": "eligible"}}}, "then": {"properties": {"origin": {"enum": ["source_explicit", "benchmark_assigned"]}, "evidence_records": {"minItems": 1}}}}
+      ]
+    }
+  }
+}

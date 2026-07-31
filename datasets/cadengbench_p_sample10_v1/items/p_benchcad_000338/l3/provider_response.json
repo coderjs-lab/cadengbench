@@ -1,0 +1,36 @@
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "annotations": null,
+        "audio": null,
+        "content": "{\"schema_version\": \"cadengbench-p.l3-annotation-candidate.v1\", \"bundle_id\": \"sha256:f0c4cec6312efc447753d46f7865638190b0f3107b658036768be6e151956da4\", \"item_id\": \"p_benchcad_000338\", \"role_id\": \"l3_physics_probe_annotator\", \"output_status\": \"complete\", \"applicability\": \"proposed\", \"scenario_family\": \"axial_tension\", \"fixed_region_id\": \"axis:z:min\", \"loaded_region_id\": \"axis:z:max\", \"load_direction\": {\"axis\": \"z\", \"sign\": 1}, \"reason_code\": \"clear_axial_load_path\", \"risk_flags\": [], \"confidence\": 0.95, \"concise_rationale\": \"The object is a hexagonal standoff with a clear vertical prismatic body. The Z-axis represents the primary structural span between the base and the top boss, forming a direct axial load path suitable for tension/compression analysis.\", \"source_intent_claimed\": false}",
+        "function_call": null,
+        "reasoning": null,
+        "refusal": null,
+        "role": "assistant",
+        "tool_calls": []
+      },
+      "stop_reason": null,
+      "token_ids": null
+    }
+  ],
+  "created": 1784684033,
+  "id": "chatcmpl-89b844c8dd1954df",
+  "kv_transfer_params": null,
+  "model": "cadengbench-qwen3.6-27b-vlm",
+  "object": "chat.completion",
+  "prompt_logprobs": null,
+  "prompt_token_ids": null,
+  "service_tier": null,
+  "system_fingerprint": null,
+  "usage": {
+    "completion_tokens": 267,
+    "prompt_tokens": 2120,
+    "prompt_tokens_details": null,
+    "total_tokens": 2387
+  }
+}

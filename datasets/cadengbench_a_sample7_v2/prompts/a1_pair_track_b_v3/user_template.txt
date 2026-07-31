@@ -1,0 +1,7 @@
+Joint set: {{assembly_id}}
+Body A: {{body_a_id}}
+Body B: {{body_b_id}}
+
+Inspect the attached standardized clean views, color-highlighted candidate atlases, public geometry, and candidate registry. Rank up to three distinct plausible joint hypotheses. These hypotheses are alternatives; they are not a prediction of simultaneous constraints or source-record count.
+
+Ground each hypothesis in the exact highlighted candidate IDs and their analytic geometry. Use the available ranks to represent genuine entity-pair uncertainty as well as joint-family uncertainty. If no defensible hypothesis can be formed, return an abstention reason. Return JSON only.

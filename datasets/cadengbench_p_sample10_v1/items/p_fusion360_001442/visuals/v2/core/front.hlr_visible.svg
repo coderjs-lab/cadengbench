@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+  <g id="hlr-root" transform="scale(4.630772504788253,-4.630772504788253) translate(16.584705882352935,-120.72470588235292)" stroke-width="0.18355468749999998" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <g id="visible-sharp" stroke="#17212b">
+      <path d="M187.95999999999998,0.0 L187.95999999999998,20.32 " />
+      <path d="M170.18,0.0 L187.95999999999998,0.0 " />
+      <path d="M170.18,20.32 L187.95999999999998,20.32 " />
+      <path d="M170.18,0.0 L170.18,20.32 " />
+      <path d="M0.0,0.0 L170.18,0.0 " />
+      <path d="M0.0,20.32 L170.18,20.32 " />
+      <path d="M0.0,0.0 L0.0,20.32 " />
+    </g>
+    <g id="visible-smooth" stroke="#17212b">
+
+    </g>
+    <g id="visible-sewn" stroke="#17212b">
+
+    </g>
+    <g id="visible-outline" stroke="#17212b">
+
+    </g>
+  </g>
+</svg>

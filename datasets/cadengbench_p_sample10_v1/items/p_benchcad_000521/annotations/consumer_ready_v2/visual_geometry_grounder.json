@@ -1,0 +1,95 @@
+{
+  "item_id": "p_benchcad_000521",
+  "output_status": "complete",
+  "payload": {
+    "affordances": [
+      {
+        "affordance_kind": "load_transfer",
+        "description": "Structural support via flat top and bottom surfaces.",
+        "view_ids": [
+          "iso_front_right_top",
+          "iso_rear_left_top"
+        ],
+        "visibility": "visible"
+      },
+      {
+        "affordance_kind": "load_transfer",
+        "description": "Lateral bracing via flat side surfaces.",
+        "view_ids": [
+          "iso_front_right_top",
+          "iso_rear_left_top"
+        ],
+        "visibility": "visible"
+      },
+      {
+        "affordance_kind": "load_transfer",
+        "description": "End-bearing support via flat square ends.",
+        "view_ids": [
+          "iso_front_right_top",
+          "iso_rear_left_top"
+        ],
+        "visibility": "visible"
+      }
+    ],
+    "features": [
+      {
+        "description": "Elongated rectangular solid with high length-to-width ratio.",
+        "feature_kind": "base_form",
+        "view_ids": [
+          "iso_front_right_top",
+          "iso_rear_left_top"
+        ],
+        "visibility": "visible"
+      },
+      {
+        "description": "Uniform square cross-section along the entire length.",
+        "feature_kind": "base_form",
+        "view_ids": [
+          "iso_front_right_top",
+          "iso_rear_left_top"
+        ],
+        "visibility": "visible"
+      },
+      {
+        "description": "Flat top and bottom faces parallel to each other.",
+        "feature_kind": "base_form",
+        "view_ids": [
+          "iso_front_right_top",
+          "iso_rear_left_top"
+        ],
+        "visibility": "visible"
+      },
+      {
+        "description": "Flat side faces perpendicular to top and bottom.",
+        "feature_kind": "base_form",
+        "view_ids": [
+          "iso_front_right_top",
+          "iso_rear_left_top"
+        ],
+        "visibility": "visible"
+      },
+      {
+        "description": "Sharp required-angle edges at all corners.",
+        "feature_kind": "base_form",
+        "view_ids": [
+          "iso_front_right_top",
+          "iso_rear_left_top"
+        ],
+        "visibility": "visible"
+      },
+      {
+        "description": "Flat square end faces perpendicular to length.",
+        "feature_kind": "base_form",
+        "view_ids": [
+          "iso_front_right_top",
+          "iso_rear_left_top"
+        ],
+        "visibility": "visible"
+      }
+    ],
+    "global_form": "Long rectangular prism with uniform cross-section and sharp edges.",
+    "recommended_prompt_profile": "text_only"
+  },
+  "role_id": "visual_geometry_grounder",
+  "schema_version": "cadengbench-p.visual-grounding-annotation.v2"
+}

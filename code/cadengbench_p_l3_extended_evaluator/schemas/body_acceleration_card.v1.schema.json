@@ -1,0 +1,237 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cadengbench.org/schemas/body_acceleration_card.v1.schema.json",
+  "title": "CADEngBench-P L3 single-support body-acceleration card",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "card_id",
+    "item_id",
+    "status",
+    "source_intent_claimed",
+    "scenario_family",
+    "geometry",
+    "selector",
+    "material",
+    "load",
+    "mesh",
+    "analysis",
+    "scale_laws",
+    "provenance"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "cadengbench-p.l3-body-acceleration-card.v1"
+    },
+    "card_id": {"type": "string", "minLength": 1, "maxLength": 180},
+    "item_id": {
+      "type": "string",
+      "pattern": "^p_(benchcad|fusion360)_[0-9]{6}$"
+    },
+    "status": {
+      "enum": ["geometry_qualified", "solver_qualified"]
+    },
+    "source_intent_claimed": {"const": false},
+    "scenario_family": {"const": "single_support_body_acceleration"},
+    "geometry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["units", "expected_solid_count"],
+      "properties": {
+        "units": {"const": "mm"},
+        "expected_solid_count": {"const": 1}
+      }
+    },
+    "selector": {"$ref": "#/$defs/selector"},
+    "material": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "profile_id",
+        "model",
+        "youngs_modulus_mpa",
+        "poisson_ratio",
+        "density_tonne_per_mm3"
+      ],
+      "properties": {
+        "profile_id": {"type": "string", "minLength": 1},
+        "model": {"const": "linear_elastic_isotropic"},
+        "youngs_modulus_mpa": {"type": "number", "exclusiveMinimum": 0},
+        "poisson_ratio": {
+          "type": "number",
+          "exclusiveMinimum": -1,
+          "exclusiveMaximum": 0.5
+        },
+        "density_tonne_per_mm3": {"type": "number", "exclusiveMinimum": 0}
+      }
+    },
+    "load": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kind",
+        "acceleration_vector_mm_s2",
+        "distribution",
+        "control"
+      ],
+      "properties": {
+        "kind": {"const": "body_acceleration_probe"},
+        "acceleration_vector_mm_s2": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 3,
+          "items": {"type": "number"}
+        },
+        "distribution": {
+          "const": "c3d10_consistent_nodal_body_force_v1"
+        },
+        "control": {"const": "fixed_acceleration"}
+      }
+    },
+    "mesh": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "element_type",
+        "algorithm_3d",
+        "second_order_linear",
+        "target_long_axis_divisions",
+        "target_short_axis_divisions",
+        "minimum_sicn",
+        "maximum_elements"
+      ],
+      "properties": {
+        "element_type": {"const": "C3D10"},
+        "algorithm_3d": {"type": "integer", "minimum": 1},
+        "second_order_linear": {"const": true},
+        "target_long_axis_divisions": {"type": "integer", "minimum": 4},
+        "target_short_axis_divisions": {"type": "integer", "minimum": 2},
+        "minimum_sicn": {"type": "number", "minimum": 0, "maximum": 1},
+        "maximum_elements": {"type": "integer", "minimum": 1}
+      }
+    },
+    "analysis": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "type",
+        "small_deformation",
+        "max_equilibrium_relative_error",
+        "max_normalized_displacement",
+        "stress_exclusion_mesh_lengths",
+        "regularized_stress_percentiles"
+      ],
+      "properties": {
+        "type": {"const": "linear_static"},
+        "small_deformation": {"const": true},
+        "max_equilibrium_relative_error": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "max_normalized_displacement": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "stress_exclusion_mesh_lengths": {"type": "number", "minimum": 0},
+        "regularized_stress_percentiles": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "number",
+            "exclusiveMinimum": 0,
+            "maximum": 100
+          }
+        }
+      }
+    },
+    "scale_laws": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "resultant_force_exponent",
+        "regularized_stress_exponent",
+        "max_displacement_exponent",
+        "normalized_displacement_exponent"
+      ],
+      "properties": {
+        "resultant_force_exponent": {"const": 3.0},
+        "regularized_stress_exponent": {"const": 1.0},
+        "max_displacement_exponent": {"const": 2.0},
+        "normalized_displacement_exponent": {"const": 1.0}
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["audit_sha256", "profile_sha256", "annotation_method"],
+      "properties": {
+        "audit_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "profile_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "annotation_method": {
+          "const": "deterministic_largest_axis_extreme_planar_support_v1"
+        }
+      }
+    },
+    "qualification": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": [
+        "promoted",
+        "reference_step_sha256",
+        "result_sha256",
+        "source_probe_metrics"
+      ],
+      "properties": {
+        "promoted": {"const": true},
+        "reference_step_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "result_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "source_probe_metrics": {"type": "object"}
+      }
+    }
+  },
+  "$defs": {
+    "selector": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kind",
+        "region_id",
+        "axis",
+        "side",
+        "normal_alignment_min",
+        "plane_tolerance_relative",
+        "minimum_count",
+        "maximum_count",
+        "minimum_area_fraction"
+      ],
+      "properties": {
+        "kind": {"const": "axis_extreme_planar_surfaces_v2"},
+        "region_id": {
+          "type": "string",
+          "pattern": "^axis:[xyz]:(min|max)$"
+        },
+        "axis": {"enum": ["x", "y", "z"]},
+        "side": {"enum": ["min", "max"]},
+        "normal_alignment_min": {"type": "number", "minimum": 0, "maximum": 1},
+        "plane_tolerance_relative": {"type": "number", "exclusiveMinimum": 0},
+        "minimum_count": {"type": "integer", "minimum": 1},
+        "maximum_count": {"type": "integer", "minimum": 1},
+        "minimum_area_fraction": {"type": "number", "minimum": 0, "maximum": 1}
+      }
+    }
+  }
+}

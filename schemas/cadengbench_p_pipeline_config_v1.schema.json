@@ -1,0 +1,162 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cadengbench.org/schemas/cadengbench_p_pipeline_config_v1.schema.json",
+  "title": "CADEngBench-P v1 pipeline configuration",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version", "dataset_version", "run_id", "output_root", "stages", "items",
+    "rendering", "annotation", "manufacturing"
+  ],
+  "properties": {
+    "schema_version": {"const": "cadengbench-p.multimodal-annotation.v1"},
+    "profile_kind": {"enum": ["master", "shard"]},
+    "parent_config_sha256": {"$ref": "#/$defs/sha256"},
+    "shard_index": {"type": "integer", "minimum": 0},
+    "dataset_version": {"type": "string", "minLength": 1},
+    "run_id": {"type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]*$"},
+    "output_root": {"$ref": "#/$defs/relativePath"},
+    "stages": {
+      "type": "array",
+      "minItems": 9,
+      "maxItems": 9,
+      "prefixItems": [
+        {"const": "ingest"},
+        {"const": "facts"},
+        {"const": "render"},
+        {"const": "edits"},
+        {"const": "manufacturing"},
+        {"const": "bundle"},
+        {"const": "promote"},
+        {"const": "validate"},
+        {"const": "freeze"}
+      ],
+      "items": false
+    },
+    "items": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"$ref": "#/$defs/sourceItem"}
+    },
+    "rendering": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "image_size", "target_occupancy_fraction", "orbit_elevation_degrees",
+        "projection", "exact_line_method"
+      ],
+      "properties": {
+        "image_size": {"type": "integer", "minimum": 256},
+        "target_occupancy_fraction": {"type": "number", "exclusiveMinimum": 0, "maximum": 1},
+        "orbit_elevation_degrees": {"type": "number", "minimum": -89, "maximum": 89},
+        "projection": {"const": "orthographic"},
+        "exact_line_method": {"const": "occt_brep_hlr"}
+      }
+    },
+    "annotation": {
+      "type": "object",
+      "required": [
+        "generator_roles", "critic_roles", "independence_class", "candidate_schema",
+        "critic_schema", "model_outputs_are_candidates_only"
+      ],
+      "properties": {
+        "generator_roles": {
+          "type": "array", "minItems": 5, "uniqueItems": true,
+          "items": {"type": "string", "minLength": 1}
+        },
+        "critic_roles": {
+          "type": "array", "minItems": 2, "uniqueItems": true,
+          "items": {"type": "string", "minLength": 1}
+        },
+        "independence_class": {"type": "string", "minLength": 1},
+        "candidate_schema": {"$ref": "#/$defs/relativePath"},
+        "critic_schema": {"$ref": "#/$defs/relativePath"},
+        "model_outputs_are_candidates_only": {"const": true}
+      }
+    },
+    "manufacturing": {
+      "type": "object",
+      "required": [
+        "profile_catalog", "scenario_origin", "missing_threshold_policy",
+        "standards_compliance_claimed"
+      ],
+      "properties": {
+        "profile_catalog": {"$ref": "#/$defs/relativePath"},
+        "scenario_origin": {"const": "benchmark_assigned"},
+        "missing_threshold_policy": {"type": "string", "minLength": 1},
+        "standards_compliance_claimed": {"const": false}
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {"profile_kind": {"const": "shard"}},
+        "required": ["profile_kind"]
+      },
+      "then": {
+        "required": ["parent_config_sha256", "shard_index"],
+        "properties": {"items": {"minItems": 1, "maxItems": 1}}
+      }
+    }
+  ],
+  "$defs": {
+    "relativePath": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^(?!/).+"
+    },
+    "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "sourceItem": {
+      "type": "object",
+      "required": [
+        "item_id", "source_key", "source_dataset", "source_record_id", "input_dir",
+        "canonical_step", "native_history", "source_license", "redistribution_status",
+        "source_snapshot", "artifact_hashes", "edit_spec", "manufacturing_scenario_id"
+      ],
+      "properties": {
+        "item_id": {"type": "string", "pattern": "^p_(benchcad|fusion360|futurecad)_[0-9]{3,}$"},
+        "source_key": {"enum": ["benchcad", "fusion360", "futurecad"]},
+        "source_dataset": {"type": "string", "minLength": 1},
+        "source_record_id": {"type": "string", "minLength": 1},
+        "input_dir": {"$ref": "#/$defs/relativePath"},
+        "canonical_step": {"type": "string", "minLength": 1},
+        "native_history": {"type": "string", "minLength": 1},
+        "source_license": {"type": "string", "minLength": 1},
+        "redistribution_status": {"type": "string", "minLength": 1},
+        "source_snapshot": {"type": "string", "minLength": 1},
+        "artifact_hashes": {
+          "type": "object", "minProperties": 2,
+          "additionalProperties": {"$ref": "#/$defs/sha256"}
+        },
+        "edit_spec": {
+          "type": "object",
+          "required": [
+            "adapter", "task_style", "intent_description", "intent_origin",
+            "scoring_truth_source", "proxy_allowed_for_scoring", "expected_geometry_effects",
+            "non_target_predicates", "topology_change_policy", "target_measurements",
+            "geometry_invariants"
+          ],
+          "properties": {
+            "adapter": {
+              "enum": [
+                "benchcad_cadquery_literal", "fusion360_source_parameter", "futurecad_json_proxy"
+              ]
+            },
+            "task_style": {"enum": ["numeric_perturbation", "functional_edit"]},
+            "intent_description": {"type": "string", "minLength": 1},
+            "intent_origin": {"type": "string", "minLength": 1},
+            "scoring_truth_source": {"type": "string", "minLength": 1},
+            "proxy_allowed_for_scoring": {"const": false},
+            "expected_geometry_effects": {"type": "array", "minItems": 1},
+            "non_target_predicates": {"type": "array", "minItems": 1},
+            "topology_change_policy": {"type": "string", "minLength": 1},
+            "target_measurements": {"type": "array", "minItems": 1},
+            "geometry_invariants": {"type": "array", "minItems": 1}
+          }
+        },
+        "manufacturing_scenario_id": {"type": "string", "minLength": 1}
+      }
+    }
+  }
+}

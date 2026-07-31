@@ -1,0 +1,194 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cadengbench.org/schemas/cadengbench_p_l3_physics_card_v1.schema.json",
+  "title": "CADEngBench-P L3 Physics Card V1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "card_id",
+    "item_id",
+    "variant_id",
+    "status",
+    "geometry",
+    "analysis",
+    "material",
+    "selectors",
+    "load",
+    "mesh",
+    "requirements",
+    "provenance"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "cadengbench-p.l3-physics-card.v1"
+    },
+    "card_id": {"type": "string", "minLength": 1},
+    "item_id": {"type": "string", "minLength": 1},
+    "variant_id": {"type": "string", "minLength": 1},
+    "status": {"const": "pilot_candidate"},
+    "geometry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["step_path", "authority", "units", "expected_solid_count"],
+      "properties": {
+        "step_path": {"type": "string", "minLength": 1},
+        "authority": {
+          "enum": ["source_step", "source_bound_occ_variant"]
+        },
+        "units": {"const": "mm"},
+        "expected_solid_count": {"const": 1}
+      }
+    },
+    "analysis": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "type",
+        "small_deformation",
+        "max_equilibrium_relative_error"
+      ],
+      "properties": {
+        "type": {"const": "linear_static"},
+        "small_deformation": {"const": true},
+        "max_equilibrium_relative_error": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        }
+      }
+    },
+    "material": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "model",
+        "youngs_modulus_mpa",
+        "poisson_ratio",
+        "yield_strength_mpa",
+        "authority",
+        "source"
+      ],
+      "properties": {
+        "name": {"type": "string", "minLength": 1},
+        "model": {"const": "linear_elastic_isotropic"},
+        "youngs_modulus_mpa": {"type": "number", "exclusiveMinimum": 0},
+        "poisson_ratio": {
+          "type": "number",
+          "exclusiveMinimum": -1,
+          "exclusiveMaximum": 0.5
+        },
+        "yield_strength_mpa": {"type": "number", "exclusiveMinimum": 0},
+        "authority": {"const": "benchmark_assigned_candidate"},
+        "source": {"type": "string", "minLength": 1}
+      }
+    },
+    "selectors": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["fixed", "loaded"],
+      "properties": {
+        "fixed": {"$ref": "#/$defs/selector"},
+        "loaded": {"$ref": "#/$defs/selector"}
+      }
+    },
+    "load": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "vector_n", "authority"],
+      "properties": {
+        "kind": {"const": "total_force_equal_nodal_pilot"},
+        "vector_n": {
+          "type": "array",
+          "prefixItems": [
+            {"type": "number"},
+            {"type": "number"},
+            {"type": "number"}
+          ],
+          "items": false
+        },
+        "authority": {"const": "benchmark_assigned_candidate"}
+      }
+    },
+    "mesh": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "element_type",
+        "characteristic_length_mm",
+        "algorithm_3d",
+        "minimum_sicn"
+      ],
+      "properties": {
+        "element_type": {"const": "C3D4"},
+        "characteristic_length_mm": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "algorithm_3d": {"type": "integer", "minimum": 1},
+        "minimum_sicn": {"type": "number", "minimum": 0, "maximum": 1}
+      }
+    },
+    "requirements": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"$ref": "#/$defs/requirement"}
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["scenario_authority", "source_intent_claimed", "notes"],
+      "properties": {
+        "scenario_authority": {"const": "benchmark_authored_pilot"},
+        "source_intent_claimed": {"const": false},
+        "notes": {"type": "array", "items": {"type": "string"}}
+      }
+    }
+  },
+  "$defs": {
+    "selector": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kind",
+        "axis",
+        "side",
+        "minimum_count",
+        "maximum_count",
+        "plane_tolerance_mm"
+      ],
+      "properties": {
+        "kind": {"const": "axis_extreme_planar_surfaces"},
+        "axis": {"enum": ["x", "y", "z"]},
+        "side": {"enum": ["min", "max"]},
+        "minimum_count": {"type": "integer", "minimum": 1},
+        "maximum_count": {"type": "integer", "minimum": 1},
+        "plane_tolerance_mm": {"type": "number", "exclusiveMinimum": 0}
+      }
+    },
+    "requirement": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "requirement_id",
+        "metric",
+        "operator",
+        "limit",
+        "unit",
+        "evidence_status"
+      ],
+      "properties": {
+        "requirement_id": {"type": "string", "minLength": 1},
+        "metric": {
+          "enum": ["max_displacement_mm", "max_nodal_von_mises_mpa"]
+        },
+        "operator": {"enum": ["<=", ">="]},
+        "limit": {"type": "number"},
+        "unit": {"enum": ["mm", "MPa"]},
+        "evidence_status": {
+          "enum": ["pilot_candidate", "diagnostic_only"]
+        }
+      }
+    }
+  }
+}

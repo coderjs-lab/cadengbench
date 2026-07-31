@@ -1,0 +1,79 @@
+{
+  "assembly_id": "joint_set_17859",
+  "authority": {
+    "body_graph": "S0_SOURCE",
+    "candidates": "D1_DERIVED"
+  },
+  "bodies": [
+    {
+      "body_id": "52039_ba12c3ac_0002_1",
+      "body_role": "body_a",
+      "packaged_files": {
+        "obj": {
+          "path": "geometry/body_a.obj",
+          "sha256": "9666b0cc9a5f6142598f2efb4477f2627a71852516101d34d92e8bd760c33ed4"
+        },
+        "step": {
+          "path": "geometry/body_a.step",
+          "sha256": "2b9313fbc39a1bd18c0d479f2a0adc7ccdea552249015fb9793b452441b92039"
+        }
+      },
+      "source_files": {
+        "graph_json": {
+          "filename": "52039_ba12c3ac_0002_1.json",
+          "sha256": "43b3ef2474e7b18e84190335099555db83a44dda0617de9e9eae50b6192c799f"
+        },
+        "obj": {
+          "filename": "52039_ba12c3ac_0002_1.obj",
+          "sha256": "9666b0cc9a5f6142598f2efb4477f2627a71852516101d34d92e8bd760c33ed4"
+        },
+        "step": {
+          "filename": "52039_ba12c3ac_0002_1.step",
+          "sha256": "2b9313fbc39a1bd18c0d479f2a0adc7ccdea552249015fb9793b452441b92039"
+        }
+      }
+    },
+    {
+      "body_id": "52039_ba12c3ac_0003_2",
+      "body_role": "body_b",
+      "packaged_files": {
+        "obj": {
+          "path": "geometry/body_b.obj",
+          "sha256": "0d7654dbe2578163971b4604307a04840eb3391b922b359515c2aeadfdddce4a"
+        },
+        "step": {
+          "path": "geometry/body_b.step",
+          "sha256": "55007bca8619bed16624f9af29e13d453697d0d699faeedf3a93c1562e7fe1d0"
+        }
+      },
+      "source_files": {
+        "graph_json": {
+          "filename": "52039_ba12c3ac_0003_2.json",
+          "sha256": "0f749b5fbe6ffc472a9472a6eb4ee64a5ebfdbf79474b0901446bda445ee9eb0"
+        },
+        "obj": {
+          "filename": "52039_ba12c3ac_0003_2.obj",
+          "sha256": "0d7654dbe2578163971b4604307a04840eb3391b922b359515c2aeadfdddce4a"
+        },
+        "step": {
+          "filename": "52039_ba12c3ac_0003_2.step",
+          "sha256": "55007bca8619bed16624f9af29e13d453697d0d699faeedf3a93c1562e7fe1d0"
+        }
+      }
+    }
+  ],
+  "generated_views": {
+    "views/body_a_entity_atlas_01.png": "2d21fc7ffd0f756197078788781a1f1ac0e99447fce656fc4e7877a8154830de",
+    "views/body_a_front.png": "30328e292d9ca4e59a0d79535531e573c601cc1f99ac03119f6324ea95fe16dd",
+    "views/body_a_iso.png": "b5498fe5118340c5cbdd73e81b9cc52df5e7a145fdf4d52efadea0661c06a6e1",
+    "views/body_a_side.png": "237562eaa77c53e7efef63223d97223370f728b404085b65e867cb981c27e33e",
+    "views/body_a_top.png": "d4412c2b399481eee066883c9af8da2c56a139d164095c9dd6b14cf72d35ea3b",
+    "views/body_b_entity_atlas_01.png": "38a874a416e1416e01d0dec8793da648f99b0382f0890fdd9d3055c2054e04b4",
+    "views/body_b_front.png": "0e3c19ac0dd64912b796b49293824c5917bbe89e6bab5332f60f275650a46fe2",
+    "views/body_b_iso.png": "d440359d578a37341950d05fa8223222d617aa5802a6c1b0fb22cd719a6e4dac",
+    "views/body_b_side.png": "75b203789f53c9bbecfe0dd462c5a8b5f206769f96455ff310b70e78664d8e3c",
+    "views/body_b_top.png": "0dcd507d092310a46b42012c63ef6f2a972c0890b634de4c23c59cf5898a7f15"
+  },
+  "schema": "cadengbench_a_public_package_provenance_v1",
+  "view_renderer_version": "candidate_face_highlight_v2"
+}

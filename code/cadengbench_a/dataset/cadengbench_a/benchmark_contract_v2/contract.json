@@ -1,0 +1,25 @@
+{
+  "schema": "cadengbench_a_benchmark_contract_v2",
+  "benchmark": "CADEngBench-A",
+  "active_layers": [
+    {
+      "id": "A0",
+      "name": "integrity",
+      "model_scored": false
+    },
+    {
+      "id": "A1",
+      "name": "grounded_joint_retrieval",
+      "model_scored": true,
+      "prompt": "prompts/cadengbench_a/pair_track_b_v3"
+    },
+    {
+      "id": "A2",
+      "name": "conditional_kinematic_verification",
+      "model_scored": true,
+      "conditional_on": "valid_non_abstaining_A1_rank_1",
+      "prompt": "prompts/cadengbench_a/a2_kinematics_v1",
+      "simulation_backend": "PyBullet"
+    }
+  ]
+}

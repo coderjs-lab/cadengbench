@@ -1,0 +1,153 @@
+Info:  - Label 'Shapes/Open CASCADE STEP translator 7.8 1' (3D)
+Info: Meshing 1D...
+Info: Meshing curve 1 (Line)
+Progress: Meshing 1D...
+Info: Meshing curve 2 (Line)
+Info: Meshing curve 3 (Line)
+Progress: Meshing 1D...
+Info: Meshing curve 4 (Line)
+Info: Meshing curve 5 (Line)
+Progress: Meshing 1D...
+Info: Meshing curve 6 (Line)
+Info: Meshing curve 7 (Line)
+Info: Meshing curve 8 (Line)
+Progress: Meshing 1D...
+Info: Meshing curve 9 (Line)
+Info: Meshing curve 10 (Line)
+Progress: Meshing 1D...
+Info: Meshing curve 11 (Line)
+Info: Meshing curve 12 (Line)
+Progress: Meshing 1D...
+Info: Meshing curve 13 (Line)
+Info: Meshing curve 14 (Line)
+Info: Meshing curve 15 (Line)
+Progress: Meshing 1D...
+Info: Meshing curve 16 (Line)
+Info: Meshing curve 17 (Line)
+Progress: Meshing 1D...
+Info: Meshing curve 18 (Line)
+Info: Meshing curve 19 (Line)
+Info: Meshing curve 20 (Line)
+Progress: Meshing 1D...
+Info: Meshing curve 21 (Line)
+Info: Meshing curve 22 (Line)
+Progress: Meshing 1D...
+Info: Meshing curve 23 (Line)
+Info: Meshing curve 24 (Line)
+Progress: Meshing 1D...
+Info: Done meshing 1D (Wall 0.00833621s, CPU 0.008337s)
+Info: Meshing 2D...
+Info: Meshing surface 1 (Plane, Frontal-Delaunay)
+Progress: Meshing 2D...
+Info: Meshing surface 2 (Plane, Frontal-Delaunay)
+Progress: Meshing 2D...
+Info: Meshing surface 3 (Plane, Frontal-Delaunay)
+Progress: Meshing 2D...
+Info: Meshing surface 4 (Plane, Frontal-Delaunay)
+Progress: Meshing 2D...
+Info: Meshing surface 5 (Plane, Frontal-Delaunay)
+Progress: Meshing 2D...
+Info: Meshing surface 6 (Plane, Frontal-Delaunay)
+Progress: Meshing 2D...
+Info: Meshing surface 7 (Plane, Frontal-Delaunay)
+Progress: Meshing 2D...
+Info: Meshing surface 8 (Plane, Frontal-Delaunay)
+Progress: Meshing 2D...
+Info: Meshing surface 9 (Plane, Frontal-Delaunay)
+Progress: Meshing 2D...
+Info: Meshing surface 10 (Plane, Frontal-Delaunay)
+Progress: Meshing 2D...
+Info: Done meshing 2D (Wall 0.0503111s, CPU 0.050311s)
+Info: Meshing 3D...
+Progress: Meshing 3D...
+Info: 3D Meshing 1 volume with 1 connected component
+Info: Input mesh hash 9e211f6e43ad6dd0
+Info: Creating an empty mesh with 1047 vertices
+Info: Initialization of tet. mesh
+Info: Delaunay of       1043 points on   1 threads - mesh.nvert: 4         
+Info: All volumes of the BRep were found and colorized accordingly
+Info: Computing interpolated mesh sizes...
+Info: Done computing interpolated mesh sizes
+Info: Delaunay of       1080 points on   1 threads - mesh.nvert: 1047      
+Info:           -        902 points filtered
+Info:           =        178 points added
+Info: Computing interpolated mesh sizes...
+Info: Done computing interpolated mesh sizes
+Info: Delaunay of        455 points on   1 threads - mesh.nvert: 1225      
+Info:           -        313 points filtered
+Info:           =        142 points added
+Info: Computing interpolated mesh sizes...
+Info: Done computing interpolated mesh sizes
+Info: Delaunay of         68 points on   1 threads - mesh.nvert: 1367      
+Info:           -         26 points filtered
+Info:           =         42 points added
+Info: Computing interpolated mesh sizes...
+Info: Done computing interpolated mesh sizes
+Info: Delaunay of          1 points on   1 threads - mesh.nvert: 1409      
+Info: Computing interpolated mesh sizes...
+Info: Done computing interpolated mesh sizes
+Info: Improving        172 tet. on   1 thrd (S & ER)
+Info: Improving          2 tet. on   1 thrd (S & ER)
+Info:  	Final tet. mesh contains 7477 tetrahedra
+Info:  	Final tet. mesh contains 1410 vertices
+Info: tEmptyMesh  	 = 	    0.008
+Info: tVerifyBnd  	 = 	    0.001
+Info: tBndRecovery	 = 	    0.000 (boundary not altered)
+Info: tConvertMesh	 = 	    0.000 (nothing to convert)
+Info: tRefine     	 = 	    0.005
+Info: tOptimize   	 = 	    0.000
+Progress: Meshing 3D...
+Info: Done meshing 3D (Wall 0.0143022s, CPU 0.014245s)
+Info: 1410 nodes 7673 elements
+Info: Meshing order 2 (curvilinear on)...
+Info: Meshing curve 1 order 2
+Progress: Meshing order 2 (curvilinear on)...
+Info: Meshing curve 2 order 2
+Info: Meshing curve 3 order 2
+Info: Meshing curve 4 order 2
+Progress: Meshing order 2 (curvilinear on)...
+Info: Meshing curve 5 order 2
+Info: Meshing curve 6 order 2
+Info: Meshing curve 7 order 2
+Progress: Meshing order 2 (curvilinear on)...
+Info: Meshing curve 8 order 2
+Info: Meshing curve 9 order 2
+Info: Meshing curve 10 order 2
+Info: Meshing curve 11 order 2
+Progress: Meshing order 2 (curvilinear on)...
+Info: Meshing curve 12 order 2
+Info: Meshing curve 13 order 2
+Info: Meshing curve 14 order 2
+Progress: Meshing order 2 (curvilinear on)...
+Info: Meshing curve 15 order 2
+Info: Meshing curve 16 order 2
+Info: Meshing curve 17 order 2
+Info: Meshing curve 18 order 2
+Progress: Meshing order 2 (curvilinear on)...
+Info: Meshing curve 19 order 2
+Info: Meshing curve 20 order 2
+Info: Meshing curve 21 order 2
+Progress: Meshing order 2 (curvilinear on)...
+Info: Meshing curve 22 order 2
+Info: Meshing curve 23 order 2
+Info: Meshing curve 24 order 2
+Info: Meshing surface 1 order 2
+Progress: Meshing order 2 (curvilinear on)...
+Info: Meshing surface 2 order 2
+Info: Meshing surface 3 order 2
+Info: Meshing surface 4 order 2
+Progress: Meshing order 2 (curvilinear on)...
+Info: Meshing surface 5 order 2
+Info: Meshing surface 6 order 2
+Info: Meshing surface 7 order 2
+Info: Meshing surface 8 order 2
+Progress: Meshing order 2 (curvilinear on)...
+Info: Meshing surface 9 order 2
+Info: Meshing surface 10 order 2
+Info: Meshing volume 1 order 2
+Progress: Meshing order 2 (curvilinear on)...
+Info: Surface mesh: worst distortion = 1 (0 elements in ]0, 0.2]); worst gamma = 0.610808
+Info: Volume mesh: worst distortion = 1 (0 elements in ]0, 0.2])
+Info: Done meshing order 2 (Wall 0.0221215s, CPU 0.022121s)
+Info: Writing './output/cadengbench_p_l3_response_contracts_v4/items/p_benchcad_000518/nominal_reference_preflight/mesh.msh'...
+Info: Done writing './output/cadengbench_p_l3_response_contracts_v4/items/p_benchcad_000518/nominal_reference_preflight/mesh.msh'

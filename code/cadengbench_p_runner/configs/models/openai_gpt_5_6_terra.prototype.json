@@ -1,0 +1,22 @@
+{
+  "schema_version": "cadengbench-p.model-spec.v1",
+  "model_label": "openai-gpt-5.6-terra-prototype",
+  "provider": "openai_compatible",
+  "protocol": "openai_chat",
+  "model_id": "gpt-5.6-terra",
+  "base_url": "https://api.openai.com",
+  "api_key_env": "OPENAI_API_KEY",
+  "api_key_required": true,
+  "capabilities": {
+    "text": true,
+    "images": true
+  },
+  "request_defaults": {
+    "max_completion_tokens": 16384,
+    "reasoning_effort": "medium"
+  },
+  "rate_limits": {
+    "max_concurrency": 2,
+    "requests_per_minute": 30
+  }
+}

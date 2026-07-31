@@ -1,0 +1,94 @@
+{
+  "item_id": "p_benchcad_000522",
+  "output_status": "complete",
+  "payload": {
+    "affordances": [
+      {
+        "affordance_kind": "locating",
+        "description": "Groove allows alignment or sliding fit with a mating pin or rail.",
+        "view_ids": [
+          "orbit_045",
+          "orbit_135"
+        ],
+        "visibility": "visible"
+      },
+      {
+        "affordance_kind": "mounting",
+        "description": "Flat faces provide surfaces for adhesion or clamping.",
+        "view_ids": [
+          "orbit_top",
+          "orbit_bottom"
+        ],
+        "visibility": "visible"
+      },
+      {
+        "affordance_kind": "load_transfer",
+        "description": "Rigid prismatic shape supports compressive or bending loads.",
+        "view_ids": [
+          "orbit_000",
+          "orbit_045"
+        ],
+        "visibility": "visible"
+      }
+    ],
+    "features": [
+      {
+        "description": "Elongated rectangular prism with chamfered ends.",
+        "feature_kind": "base_form",
+        "view_ids": [
+          "orbit_000",
+          "orbit_045"
+        ],
+        "visibility": "visible"
+      },
+      {
+        "description": "Longitudinal groove running along the top face.",
+        "feature_kind": "recess_or_pocket",
+        "view_ids": [
+          "orbit_045",
+          "orbit_135"
+        ],
+        "visibility": "visible"
+      },
+      {
+        "description": "Chamfered edges at both ends of the prism.",
+        "feature_kind": "fillet_or_chamfer",
+        "view_ids": [
+          "orbit_000",
+          "orbit_180"
+        ],
+        "visibility": "visible"
+      },
+      {
+        "description": "Flat bottom face for stable placement.",
+        "feature_kind": "base_form",
+        "view_ids": [
+          "orbit_bottom"
+        ],
+        "visibility": "visible"
+      },
+      {
+        "description": "Flat side faces perpendicular to the groove.",
+        "feature_kind": "base_form",
+        "view_ids": [
+          "orbit_090",
+          "orbit_270"
+        ],
+        "visibility": "visible"
+      },
+      {
+        "description": "Uniform cross-section along the length.",
+        "feature_kind": "base_form",
+        "view_ids": [
+          "orbit_000",
+          "orbit_180"
+        ],
+        "visibility": "visible"
+      }
+    ],
+    "global_form": "Elongated rectangular prism with chamfered ends and a longitudinal groove on one face.",
+    "recommended_prompt_profile": "text_only"
+  },
+  "role_id": "visual_geometry_grounder",
+  "schema_version": "cadengbench-p.visual-grounding-annotation.v2"
+}

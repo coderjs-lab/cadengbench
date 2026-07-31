@@ -1,0 +1,152 @@
+{
+  "authority_boundary": {
+    "authority_scope": "bounded_frozen_parameter_edit_only",
+    "edit_oracle_authority": "verified_replay",
+    "generated_cadquery_proxy_used": false,
+    "independent_occ_reconstruction_used": false,
+    "nominal_geometry_authority": "native_cadquery_execution",
+    "source_native_execution_used": true
+  },
+  "candidate_declared_checks": [],
+  "candidate_effect_contracts": [],
+  "candidate_id": null,
+  "candidate_preservation_contracts": [],
+  "contract_hash": "74842d585b624228c63f2dfd72c5e592e962771a95770e5ac9dc294f07c5a6b8",
+  "contract_id": "p_benchcad_000757:functional-edit-acceptance:v2",
+  "core_checks": [
+    {
+      "check_id": "core.target_parameter_assignment",
+      "expected_value": 8.712,
+      "method": "source_bound_exact_parameter_assignment_v1",
+      "unit": "mm"
+    },
+    {
+      "check_id": "core.parameter_domain",
+      "expected_value": true,
+      "method": "canonical_parameter_domain_membership_v1",
+      "unit": null
+    },
+    {
+      "check_id": "core.valid_solid",
+      "expected_value": true,
+      "method": "occt_brep_validity",
+      "unit": null
+    },
+    {
+      "check_id": "core.solid_count_preserved",
+      "expected_value": 0,
+      "method": "canonical_step_solid_count_comparison",
+      "unit": "delta_count"
+    },
+    {
+      "check_id": "core.non_target_source_preserved",
+      "expected_value": true,
+      "method": "cadquery_exact_source_single_literal_masked_digest_v2",
+      "unit": null
+    },
+    {
+      "check_id": "core.target_brep_similarity",
+      "expected_value": "hidden_target_step",
+      "method": "canonical_step_solid_set_comparison_v1",
+      "unit": null
+    }
+  ],
+  "edit_oracle_id": "p_benchcad_000757:edit-target:v2",
+  "engineering_effect_scope": "The benchmark scores the deterministic geometry-mediated edit contract; it does not infer unmodeled service performance from prose.",
+  "hidden_reference_artifacts": {
+    "base_history": {
+      "bytes": 279,
+      "path": "data/production/cadengbench_p_1800_v2_two_source_r25/dataset/items/p_benchcad_000757/source/cadquery.py",
+      "sha256": "2c532fa14bfe65531ed2d1c86691903f88238f95679dea0868fdf78c1b0c096e"
+    },
+    "base_step": {
+      "bytes": 30593,
+      "path": "data/production/cadengbench_p_1800_v2_two_source_r25/dataset/items/p_benchcad_000757/source/generated_from_cadquery.step",
+      "sha256": "261dd9eca438a802edc9421b2723d6fdc413d8dc466a54b7600ff87f18983ee0"
+    },
+    "edit_binding_qualification": {
+      "bytes": 3485,
+      "path": "data/production/cadengbench_p_1800_v2_two_source_r25/dataset/items/p_benchcad_000757/source/edit_binding_qualification.json",
+      "sha256": "cafdb2f685759b07484f4aa1f994f566c55708e723fefcd633158ebf5432257c"
+    },
+    "target_history": {
+      "bytes": 280,
+      "path": "data/production/cadengbench_p_1800_v2_two_source_r25/dataset/items/p_benchcad_000757/domain/parametric_edits/v2/replay/probe_01_8p712/model.cadquery.py",
+      "sha256": "43e651080e32230ad9832370cf5e6312f20065fc4624511e16708a6ba4aa34cd"
+    },
+    "target_replay_report": {
+      "bytes": 790,
+      "path": "data/production/cadengbench_p_1800_v2_two_source_r25/dataset/items/p_benchcad_000757/domain/parametric_edits/v2/replay/probe_01_8p712/execution.json",
+      "sha256": "324d3bd42fabab120ce4d523112b66f10f53f1a4fd4127c73db97678e761842b"
+    },
+    "target_step": {
+      "bytes": 30618,
+      "path": "data/production/cadengbench_p_1800_v2_two_source_r25/dataset/items/p_benchcad_000757/domain/parametric_edits/v2/replay/probe_01_8p712/model.step",
+      "sha256": "092bc9285044fa9dbbe175aef4ba59dd218cc752d517f10d2d6bc47966b1f53c"
+    }
+  },
+  "item_id": "p_benchcad_000757",
+  "llm_judge_used": false,
+  "parameter_contract": {
+    "base_value": 7.92,
+    "canonical_unit": "mm",
+    "domain": {
+      "domain_id": "p_benchcad_000757:domain:bootstrap",
+      "lower": {
+        "unit": "mm",
+        "value": 6.732
+      },
+      "upper": {
+        "unit": "mm",
+        "value": 9.108
+      },
+      "variable": {
+        "key": "extrude_arg_0",
+        "node_type": "variable",
+        "source": "parameter",
+        "state": "current",
+        "unit": "mm"
+      }
+    },
+    "feature_id": "cadquery:extrude:0",
+    "measurement": {
+      "absolute_error": 0.0,
+      "absolute_tolerance": 1e-06,
+      "authority": "D2_verified_replay",
+      "expected_entity_count": 1,
+      "expected_value": 8.712,
+      "measured_value": 8.712,
+      "measured_values": [
+        8.712
+      ],
+      "measurement_name": "cadquery_parameter_mm:extrude_arg_0",
+      "measurement_status": "measured",
+      "method": "cadquery_ast_bound_literal_verified_replay_v1",
+      "observed_entity_count": 1,
+      "reason": "The frozen source binding was assigned exactly and consumed by the successful deterministic replay that produced the edited STEP oracle.",
+      "step_artifact": "data/production/cadengbench_p_1800_v2_two_source_r25/dataset/items/p_benchcad_000757/domain/parametric_edits/v2/replay/probe_01_8p712/model.step",
+      "tolerance_agreement": true,
+      "unit": "mm"
+    },
+    "parameter_id": "cadquery:line:7:col:13",
+    "parameter_key": "extrude_arg_0",
+    "scale_to_canonical": 1.0,
+    "source_pointer": "line:7:col:13",
+    "source_unit": "mm",
+    "target_value": 8.712,
+    "verified_probe_values": [
+      7.128,
+      8.712
+    ]
+  },
+  "publication_projection": {
+    "candidate_declared_checks_are_scoring_authority": false,
+    "critic_findings_are_scoring_authority": false,
+    "projection_version": "consumer_ready_functional_edit.v1"
+  },
+  "record_type": "deterministic_functional_edit_acceptance",
+  "schema_version": "cadengbench-p.functional-edit-acceptance.v2",
+  "scoring_scope": "bounded_geometry_mediated_functional_edit",
+  "source_key": "benchcad",
+  "status": "verified_compiled"
+}

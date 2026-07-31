@@ -1,0 +1,202 @@
+{
+  "dfm": {
+    "families": [],
+    "material_card": null,
+    "process_profile": null,
+    "profile_origin": "evaluator_development_qualification",
+    "scoreable_family_count": 0
+  },
+  "item_id": "p_fusion360_001442",
+  "parameter_system": {
+    "complete_domains": true,
+    "complete_measurement_bindings": true,
+    "feasibility_relations": [
+      {
+        "authority": "qualified_positive_dimension_domain",
+        "evidence_ref": "evaluation/qualification.v1.json#/parameter_system/parameters/0",
+        "predicate": {
+          "left": {
+            "key": "P-001",
+            "source": "parameter",
+            "type": "variable"
+          },
+          "op": "gt",
+          "right": {
+            "type": "constant",
+            "value": 0.0
+          },
+          "tolerance": 0.0,
+          "type": "comparison"
+        },
+        "relation_id": "FEASIBILITY-P-001-POSITIVE",
+        "required": true
+      }
+    ],
+    "interface_version": "cadengbench-p.cadquery-submission.v1",
+    "measurement_bound_parameter_count": 1,
+    "normalized_source_relation_count": 1,
+    "parameters": [
+      {
+        "domain": {
+          "authority": "source_two_sided_replay_qualification",
+          "evidence_ref": "benchmark/consumer_ready_item_v2.json#/evaluator_inputs/functional_edit/target/valid_range",
+          "kind": "continuous",
+          "maximum": 23.368000000000002,
+          "maximum_inclusive": true,
+          "minimum": 17.272,
+          "minimum_inclusive": true
+        },
+        "engineering_name": "overall_height",
+        "measurement_binding": {
+          "axis": "z",
+          "measurement_key": "P-001",
+          "measurement_kind": "bounding_box_axis",
+          "requirement_id": "R-BBOX",
+          "requirement_value_path": [
+            "value_and_tolerance",
+            "z",
+            "value"
+          ]
+        },
+        "nominal": 20.32,
+        "parameter_id": "P-001",
+        "requirement_refs": [
+          "R-BBOX"
+        ],
+        "role": "principal_dimension",
+        "unit": "mm",
+        "variant_requirement_contract": {
+          "authority": "real_item_geometry_qualification",
+          "evidence_ref": "evaluation/qualification.v1.json#/parameter_system/parameters/0",
+          "kind": "direct_measurement_only"
+        }
+      }
+    ],
+    "qualified_parameter_count": 1,
+    "qualified_variant_parameter_count": 1,
+    "relations": [
+      {
+        "authority": "real_item_geometry_qualification",
+        "evidence_ref": "evaluation/qualification.v1.json#/parameter_system/parameters/0",
+        "predicate": {
+          "left": {
+            "key": "P-001",
+            "source": "measurement",
+            "type": "variable"
+          },
+          "op": "eq",
+          "right": {
+            "key": "P-001",
+            "source": "parameter",
+            "type": "variable"
+          },
+          "tolerance": 0.05,
+          "type": "comparison"
+        },
+        "relation_id": "REL-P-001-MEASUREMENT",
+        "required": true
+      }
+    ],
+    "solver_obligations": [
+      {
+        "assumptions": [],
+        "authority": "qualified_positive_dimension_domain",
+        "conclusion": {
+          "left": {
+            "key": "P-001",
+            "source": "parameter",
+            "type": "variable"
+          },
+          "op": "gt",
+          "right": {
+            "type": "constant",
+            "value": 0.0
+          },
+          "tolerance": 0.0,
+          "type": "comparison"
+        },
+        "evidence_ref": "evaluation/qualification.v1.json#/parameter_system/parameters/0",
+        "obligation_id": "SOLVER-P-001-POSITIVE",
+        "required": true
+      }
+    ],
+    "source_relations": []
+  },
+  "purpose": "real-item evaluator development and mutation calibration",
+  "qualification_hash": "82761a6f13f5bf8e30f0765aec5ccacdcfb1a952f501c10ba90838866ae38d90",
+  "requirements": [
+    {
+      "category": "solid_contract",
+      "check_ids": [
+        "hidden.check.solid_count.v1"
+      ],
+      "criticality": "required",
+      "requirement_id": "R-SOLID",
+      "value_and_tolerance": {
+        "body_count": 1
+      }
+    },
+    {
+      "category": "global_envelope",
+      "check_ids": [
+        "hidden.check.bbox_dimensions.v1"
+      ],
+      "criticality": "required",
+      "requirement_id": "R-BBOX",
+      "value_and_tolerance": {
+        "x": {
+          "tolerance": 0.18796000000000002,
+          "value": 187.96
+        },
+        "y": {
+          "tolerance": 0.05,
+          "value": 17.78
+        },
+        "z": {
+          "tolerance": 0.05,
+          "value": 20.32
+        }
+      }
+    }
+  ],
+  "schema_version": "cadengbench-p.evaluator-qualification.v1",
+  "selection": {
+    "axis": "z",
+    "difficulty": "easy",
+    "fusion_distance_expressions": {
+      "6407f82c-e2a4-11ea-977d-54bf646e7e1f": {
+        "offset_mm": 0.0,
+        "scale": 1.0
+      }
+    },
+    "item_id": "p_fusion360_001442",
+    "measurement_kind": "bbox_axis"
+  },
+  "source_evidence": {
+    "consumer_item": "benchmark/consumer_ready_item_v2.json",
+    "source_oracle_id": "p_fusion360_001442:edit-target:v2",
+    "source_parameter_id": "fusion360:6407f82c-e2a4-11ea-977d-54bf646e7e1f:distance",
+    "source_parameter_key": "extrude_distance"
+  },
+  "task_contract": {
+    "fidelity_profile": "exact_reference",
+    "reference_frame": "source_canonical_frame",
+    "solid_contract": {
+      "required_body_count": 1
+    },
+    "submission": {
+      "code_submission_contract": {
+        "build_signature": "build(params=None)",
+        "interface_version": "cadengbench-p.cadquery-submission.v1",
+        "required_top_level_symbols": [
+          "DEFAULT_PARAMS",
+          "PARAMETER_MANIFEST",
+          "build",
+          "result"
+        ],
+        "step_output_path": "model.step"
+      }
+    },
+    "task_kind": "zero_to_cad"
+  }
+}

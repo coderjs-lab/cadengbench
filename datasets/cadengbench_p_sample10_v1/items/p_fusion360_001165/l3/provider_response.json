@@ -1,0 +1,36 @@
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "annotations": null,
+        "audio": null,
+        "content": "{\"schema_version\": \"cadengbench-p.l3-annotation-candidate.v1\", \"bundle_id\": \"sha256:d180b08afeda8921ba364eb22f56961691f44482cd12319670fbc9e51bd9d1a5\", \"item_id\": \"p_fusion360_001165\", \"role_id\": \"l3_physics_probe_annotator\", \"output_status\": \"complete\", \"applicability\": \"proposed\", \"scenario_family\": \"axial_tension\", \"fixed_region_id\": \"axis:z:min\", \"loaded_region_id\": \"axis:z:max\", \"load_direction\": {\"axis\": \"z\", \"sign\": 1}, \"reason_code\": \"clear_axial_load_path\", \"risk_flags\": [\"thin_shell_like\"], \"confidence\": 0.9, \"concise_rationale\": \"The part is a tall, thin vertical plate (span ~71mm) with a clear axial load path along the Z-axis. The Z-axis regions are small but deterministic and opposite. The X-axis regions are large but the span is only 2mm, making it unsuitable for\", \"source_intent_claimed\": false}",
+        "function_call": null,
+        "reasoning": null,
+        "refusal": null,
+        "role": "assistant",
+        "tool_calls": []
+      },
+      "stop_reason": null,
+      "token_ids": null
+    }
+  ],
+  "created": 1784686907,
+  "id": "chatcmpl-bb50ec285088e375",
+  "kv_transfer_params": null,
+  "model": "cadengbench-qwen3.6-27b-vlm",
+  "object": "chat.completion",
+  "prompt_logprobs": null,
+  "prompt_token_ids": null,
+  "service_tier": null,
+  "system_fingerprint": null,
+  "usage": {
+    "completion_tokens": 284,
+    "prompt_tokens": 2127,
+    "prompt_tokens_details": null,
+    "total_tokens": 2411
+  }
+}

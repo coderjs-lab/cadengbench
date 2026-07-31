@@ -1,0 +1,60 @@
+{
+  "allowed_joint_types": [
+    "RigidJointType",
+    "RevoluteJointType",
+    "SliderJointType",
+    "CylindricalJointType",
+    "PlanarJointType",
+    "BallJointType",
+    "PinSlotJointType"
+  ],
+  "assembly_id": "joint_set_17859",
+  "assets": {
+    "body_a_obj": "geometry/body_a.obj",
+    "body_a_step": "geometry/body_a.step",
+    "body_b_obj": "geometry/body_b.obj",
+    "body_b_step": "geometry/body_b.step",
+    "candidates": "candidates.json",
+    "public_geometry": "public_geometry.json",
+    "views": {
+      "body_a": [
+        "views/body_a_iso.png",
+        "views/body_a_front.png",
+        "views/body_a_side.png",
+        "views/body_a_top.png",
+        "views/body_a_entity_atlas_01.png"
+      ],
+      "body_b": [
+        "views/body_b_iso.png",
+        "views/body_b_front.png",
+        "views/body_b_side.png",
+        "views/body_b_top.png",
+        "views/body_b_entity_atlas_01.png"
+      ]
+    }
+  },
+  "atlas_rendering": {
+    "edge_candidates": "X marker shows the candidate key point; OBJ edge groups are unavailable",
+    "face_candidates": "matching legend color highlights the OBJ face group",
+    "version": "candidate_face_highlight_v2"
+  },
+  "benchmark": "CADEngBench-A",
+  "bodies": [
+    {
+      "body_id": "52039_ba12c3ac_0002_1",
+      "body_role": "body_a"
+    },
+    {
+      "body_id": "52039_ba12c3ac_0003_2",
+      "body_role": "body_b"
+    }
+  ],
+  "candidate_registry_schema": "cadengbench_a_compact_candidate_registry_v1",
+  "coordinate_frame": "body-local source coordinates; no assembly transform is provided",
+  "output_schema": "../../prompts/pair_track_b_v3/output_schema.json",
+  "package_profile": "a1_portable_128k_v1",
+  "private_labels_in_package": false,
+  "schema": "cadengbench_a_a1_core150_portable_task_v1",
+  "units": "source_cad_units",
+  "views_status": "generated"
+}

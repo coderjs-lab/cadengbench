@@ -1,0 +1,11 @@
+name: cadengbench-l3
+channels:
+  - conda-forge
+  - nodefaults
+dependencies:
+  - python=3.12
+  - calculix=2.23
+  - numpy=2.3
+  - pip
+  - pip:
+      - gmsh==4.15.2

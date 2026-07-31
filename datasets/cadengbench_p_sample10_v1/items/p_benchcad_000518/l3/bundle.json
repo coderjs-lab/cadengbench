@@ -1,0 +1,131 @@
+{
+  "bundle_id": "sha256:da818232d3624935c1429c1dd2c9455c71c627b09fd42ddad97667e3b0443b2a",
+  "inputs": {
+    "authority": {
+      "llm_output_authority": "candidate_only",
+      "promotion_requires_deterministic_and_solver_validation": true,
+      "source_intent_claimed": false
+    },
+    "geometry": {
+      "bbox_lengths_mm": [
+        43.47,
+        6.52,
+        6.52
+      ],
+      "deterministic_eligibility": {
+        "eligible": true,
+        "policy": {
+          "expected_solid_count": 1,
+          "maximum_region_surface_count": 64,
+          "minimum_region_area_fraction": 0.002,
+          "normal_alignment_min": 0.98,
+          "plane_tolerance_relative": 1e-06
+        },
+        "reason_codes": []
+      },
+      "eligible_opposed_region_pairs": [
+        {
+          "axis": "x",
+          "maximum_region": {
+            "area_fraction": 0.0362049151,
+            "area_mm2": 41.6654,
+            "axis": "x",
+            "region_id": "axis:x:max",
+            "side": "max",
+            "surface_count": 1
+          },
+          "minimum_region": {
+            "area_fraction": 0.0362049151,
+            "area_mm2": 41.6654,
+            "axis": "x",
+            "region_id": "axis:x:min",
+            "side": "min",
+            "surface_count": 1
+          },
+          "pair_id": "opposed:x",
+          "span_length_mm": 43.47
+        },
+        {
+          "axis": "y",
+          "maximum_region": {
+            "area_fraction": 0.1971751235,
+            "area_mm2": 226.9134,
+            "axis": "y",
+            "region_id": "axis:y:max",
+            "side": "max",
+            "surface_count": 1
+          },
+          "minimum_region": {
+            "area_fraction": 0.1971751235,
+            "area_mm2": 226.9134,
+            "axis": "y",
+            "region_id": "axis:y:min",
+            "side": "min",
+            "surface_count": 1
+          },
+          "pair_id": "opposed:y",
+          "span_length_mm": 6.52
+        },
+        {
+          "axis": "z",
+          "maximum_region": {
+            "area_fraction": 0.1971751235,
+            "area_mm2": 226.9134,
+            "axis": "z",
+            "region_id": "axis:z:max",
+            "side": "max",
+            "surface_count": 1
+          },
+          "minimum_region": {
+            "area_fraction": 0.1971751235,
+            "area_mm2": 226.9134,
+            "axis": "z",
+            "region_id": "axis:z:min",
+            "side": "min",
+            "surface_count": 1
+          },
+          "pair_id": "opposed:z",
+          "span_length_mm": 6.52
+        }
+      ],
+      "face_count": 10,
+      "solid_count": 1
+    },
+    "item_id": "p_benchcad_000518",
+    "selection": {
+      "complexity": {
+        "aggregate_for_stratification_only": 0.21211085059267942,
+        "axes": {
+          "construction_topology": 0.2899570144587729,
+          "history": 0.20548391298684385,
+          "parametric": 0.03985932004689332,
+          "sketch": 0.3131431548782076
+        },
+        "method": "source_explicit_benchcad_difficulty",
+        "single_scalar_is_not_benchmark_truth": true,
+        "tier": "medium"
+      },
+      "selection_stratum": "family:parallel_key",
+      "source_key": "benchcad",
+      "split": "development"
+    },
+    "semantic_context": {
+      "application_context": "mechanical power transmission assembly",
+      "authority_warning": "LLM/VLM-authored context may be semantically wrong and is not selector or source-intent authority.",
+      "category": "transmission component",
+      "global_form": "Elongated rectangular prism with uniform cross-section and sharp edges.",
+      "interfaces": [
+        {
+          "description": "fits into keyway in shaft and hub",
+          "kind": "mounting"
+        }
+      ],
+      "status": "candidate_context_only",
+      "title": "Parallel key"
+    },
+    "source_family": "benchcad"
+  },
+  "item_id": "p_benchcad_000518",
+  "role_id": "l3_physics_probe_annotator",
+  "schema_version": "cadengbench-p.l3-annotation-bundle.v1"
+}

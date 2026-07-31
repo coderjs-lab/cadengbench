@@ -1,0 +1,437 @@
+{
+  "authority": {
+    "llm_output_authority": "candidate_only",
+    "promotion_requires_deterministic_and_solver_validation": true,
+    "source_intent_claimed": false
+  },
+  "geometry": {
+    "all_opposed_region_pairs": [
+      {
+        "axis": "x",
+        "eligible": true,
+        "maximum_region": {
+          "area_fraction": 0.0178253119,
+          "area_mm2": 258.064,
+          "axis": "x",
+          "region_id": "axis:x:max",
+          "side": "max",
+          "surface_count": 1,
+          "surfaces": [
+            {
+              "area_mm2": 258.064,
+              "centroid_mm": [
+                187.96,
+                11.43,
+                10.16
+              ],
+              "face_index_diagnostic_only": 4,
+              "normal": [
+                1.0,
+                -0.0,
+                -0.0
+              ]
+            }
+          ]
+        },
+        "minimum_region": {
+          "area_fraction": 0.0249554367,
+          "area_mm2": 361.2896,
+          "axis": "x",
+          "region_id": "axis:x:min",
+          "side": "min",
+          "surface_count": 1,
+          "surfaces": [
+            {
+              "area_mm2": 361.2896,
+              "centroid_mm": [
+                0.0,
+                8.89,
+                10.16
+              ],
+              "face_index_diagnostic_only": 0,
+              "normal": [
+                -1.0,
+                -0.0,
+                -0.0
+              ]
+            }
+          ]
+        },
+        "pair_id": "opposed:x",
+        "span_length_mm": 187.96
+      },
+      {
+        "axis": "y",
+        "eligible": true,
+        "maximum_region": {
+          "area_fraction": 0.1818181818,
+          "area_mm2": 2632.2528,
+          "axis": "y",
+          "region_id": "axis:y:max",
+          "side": "max",
+          "surface_count": 2,
+          "surfaces": [
+            {
+              "area_mm2": 2219.3504,
+              "centroid_mm": [
+                133.35,
+                17.78,
+                10.16
+              ],
+              "face_index_diagnostic_only": 5,
+              "normal": [
+                -0.0,
+                1.0,
+                -0.0
+              ]
+            },
+            {
+              "area_mm2": 412.9024,
+              "centroid_mm": [
+                10.16,
+                17.78,
+                10.16
+              ],
+              "face_index_diagnostic_only": 9,
+              "normal": [
+                -0.0,
+                1.0,
+                -0.0
+              ]
+            }
+          ]
+        },
+        "minimum_region": {
+          "area_fraction": 0.23885918,
+          "area_mm2": 3458.0576,
+          "axis": "y",
+          "region_id": "axis:y:min",
+          "side": "min",
+          "surface_count": 1,
+          "surfaces": [
+            {
+              "area_mm2": 3458.0576,
+              "centroid_mm": [
+                85.09,
+                0.0,
+                10.16
+              ],
+              "face_index_diagnostic_only": 1,
+              "normal": [
+                0.0,
+                -1.0,
+                -0.0
+              ]
+            }
+          ]
+        },
+        "pair_id": "opposed:y",
+        "span_length_mm": 17.78
+      },
+      {
+        "axis": "z",
+        "eligible": true,
+        "maximum_region": {
+          "area_fraction": 0.2040998217,
+          "area_mm2": 2954.8328,
+          "axis": "z",
+          "region_id": "axis:z:max",
+          "side": "max",
+          "surface_count": 1,
+          "surfaces": [
+            {
+              "area_mm2": 2954.8328,
+              "centroid_mm": [
+                95.84340611,
+                8.44633188,
+                20.32
+              ],
+              "face_index_diagnostic_only": 11,
+              "normal": [
+                0.0,
+                0.0,
+                1.0
+              ]
+            }
+          ]
+        },
+        "minimum_region": {
+          "area_fraction": 0.2040998217,
+          "area_mm2": 2954.8328,
+          "axis": "z",
+          "region_id": "axis:z:min",
+          "side": "min",
+          "surface_count": 1,
+          "surfaces": [
+            {
+              "area_mm2": 2954.8328,
+              "centroid_mm": [
+                95.84340611,
+                8.44633188,
+                0.0
+              ],
+              "face_index_diagnostic_only": 10,
+              "normal": [
+                -0.0,
+                -0.0,
+                -1.0
+              ]
+            }
+          ]
+        },
+        "pair_id": "opposed:z",
+        "span_length_mm": 20.32
+      }
+    ],
+    "bbox_mm": {
+      "diagonal": 189.88942151,
+      "lengths": [
+        187.96,
+        17.78,
+        20.32
+      ],
+      "maximum": [
+        187.96,
+        17.78,
+        20.32
+      ],
+      "minimum": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "deterministic_eligibility": {
+      "eligible": true,
+      "policy": {
+        "expected_solid_count": 1,
+        "maximum_region_surface_count": 64,
+        "minimum_region_area_fraction": 0.002,
+        "normal_alignment_min": 0.98,
+        "plane_tolerance_relative": 1e-06
+      },
+      "reason_codes": []
+    },
+    "eligible_opposed_region_pairs": [
+      {
+        "axis": "x",
+        "eligible": true,
+        "maximum_region": {
+          "area_fraction": 0.0178253119,
+          "area_mm2": 258.064,
+          "axis": "x",
+          "region_id": "axis:x:max",
+          "side": "max",
+          "surface_count": 1,
+          "surfaces": [
+            {
+              "area_mm2": 258.064,
+              "centroid_mm": [
+                187.96,
+                11.43,
+                10.16
+              ],
+              "face_index_diagnostic_only": 4,
+              "normal": [
+                1.0,
+                -0.0,
+                -0.0
+              ]
+            }
+          ]
+        },
+        "minimum_region": {
+          "area_fraction": 0.0249554367,
+          "area_mm2": 361.2896,
+          "axis": "x",
+          "region_id": "axis:x:min",
+          "side": "min",
+          "surface_count": 1,
+          "surfaces": [
+            {
+              "area_mm2": 361.2896,
+              "centroid_mm": [
+                0.0,
+                8.89,
+                10.16
+              ],
+              "face_index_diagnostic_only": 0,
+              "normal": [
+                -1.0,
+                -0.0,
+                -0.0
+              ]
+            }
+          ]
+        },
+        "pair_id": "opposed:x",
+        "span_length_mm": 187.96
+      },
+      {
+        "axis": "y",
+        "eligible": true,
+        "maximum_region": {
+          "area_fraction": 0.1818181818,
+          "area_mm2": 2632.2528,
+          "axis": "y",
+          "region_id": "axis:y:max",
+          "side": "max",
+          "surface_count": 2,
+          "surfaces": [
+            {
+              "area_mm2": 2219.3504,
+              "centroid_mm": [
+                133.35,
+                17.78,
+                10.16
+              ],
+              "face_index_diagnostic_only": 5,
+              "normal": [
+                -0.0,
+                1.0,
+                -0.0
+              ]
+            },
+            {
+              "area_mm2": 412.9024,
+              "centroid_mm": [
+                10.16,
+                17.78,
+                10.16
+              ],
+              "face_index_diagnostic_only": 9,
+              "normal": [
+                -0.0,
+                1.0,
+                -0.0
+              ]
+            }
+          ]
+        },
+        "minimum_region": {
+          "area_fraction": 0.23885918,
+          "area_mm2": 3458.0576,
+          "axis": "y",
+          "region_id": "axis:y:min",
+          "side": "min",
+          "surface_count": 1,
+          "surfaces": [
+            {
+              "area_mm2": 3458.0576,
+              "centroid_mm": [
+                85.09,
+                0.0,
+                10.16
+              ],
+              "face_index_diagnostic_only": 1,
+              "normal": [
+                0.0,
+                -1.0,
+                -0.0
+              ]
+            }
+          ]
+        },
+        "pair_id": "opposed:y",
+        "span_length_mm": 17.78
+      },
+      {
+        "axis": "z",
+        "eligible": true,
+        "maximum_region": {
+          "area_fraction": 0.2040998217,
+          "area_mm2": 2954.8328,
+          "axis": "z",
+          "region_id": "axis:z:max",
+          "side": "max",
+          "surface_count": 1,
+          "surfaces": [
+            {
+              "area_mm2": 2954.8328,
+              "centroid_mm": [
+                95.84340611,
+                8.44633188,
+                20.32
+              ],
+              "face_index_diagnostic_only": 11,
+              "normal": [
+                0.0,
+                0.0,
+                1.0
+              ]
+            }
+          ]
+        },
+        "minimum_region": {
+          "area_fraction": 0.2040998217,
+          "area_mm2": 2954.8328,
+          "axis": "z",
+          "region_id": "axis:z:min",
+          "side": "min",
+          "surface_count": 1,
+          "surfaces": [
+            {
+              "area_mm2": 2954.8328,
+              "centroid_mm": [
+                95.84340611,
+                8.44633188,
+                0.0
+              ],
+              "face_index_diagnostic_only": 10,
+              "normal": [
+                -0.0,
+                -0.0,
+                -1.0
+              ]
+            }
+          ]
+        },
+        "pair_id": "opposed:z",
+        "span_length_mm": 20.32
+      }
+    ],
+    "face_count": 12,
+    "solid_count": 1,
+    "step_sha256": "202466e705b29a10cef03dfab33b4877b0ec16eea2553b87ea4fefca521217e2",
+    "total_surface_area_mm2": 14477.3904
+  },
+  "item_id": "p_fusion360_001442",
+  "schema_version": "cadengbench-p.l3-annotation-context.v1",
+  "selection": {
+    "complexity": {
+      "aggregate_for_stratification_only": 0.3253783102143758,
+      "axes": {
+        "construction_topology": 0.2601933585540143,
+        "history": 0.2831862126944094,
+        "parametric": 0.6163934426229508,
+        "sketch": 0.14174022698612865
+      },
+      "method": "within_source_multiaxis_percentile_v1",
+      "single_scalar_is_not_benchmark_truth": true,
+      "tier": "easy"
+    },
+    "selection_stratum": "single_new_body",
+    "source_key": "fusion360",
+    "split": "development"
+  },
+  "semantic_context": {
+    "application_context": "precision assembly interface",
+    "authority_warning": "LLM/VLM-authored context may be semantically wrong and is not selector or source-intent authority.",
+    "category": "mechanical spacer",
+    "global_form": "Elongated rectangular block with stepped profile and end extensions",
+    "interfaces": [
+      {
+        "description": "cylindrical surface interface",
+        "kind": "mounting"
+      }
+    ],
+    "status": "candidate_context_only",
+    "title": "cylindrical spacer"
+  },
+  "source_family": "fusion360_reconstruction",
+  "visual": {
+    "bytes": 36713,
+    "path": "data/derived/cadengbench_p_300_l3_probe_v1/items/p_fusion360_001442/input_image.png",
+    "sha256": "19e1d50fdef9764f5df95a198dd64ad421644e36634ee9dbb2ce4c2125865d2e"
+  }
+}

@@ -1,0 +1,107 @@
+{
+  "analysis": {
+    "max_equilibrium_relative_error": 1e-05,
+    "max_normalized_displacement": 0.02,
+    "regularized_stress_percentiles": [
+      95.0,
+      99.0
+    ],
+    "small_deformation": true,
+    "stress_exclusion_mesh_lengths": 2.0,
+    "type": "linear_static"
+  },
+  "card_id": "p_fusion360_001312:linear-static-probe:v1",
+  "checks": [
+    "mesh_quality",
+    "selector_stability",
+    "solver_completion",
+    "force_equilibrium",
+    "finite_response",
+    "small_deformation",
+    "regularized_von_mises",
+    "normalized_compliance"
+  ],
+  "geometry": {
+    "expected_solid_count": 1,
+    "units": "mm"
+  },
+  "item_id": "p_fusion360_001312",
+  "load": {
+    "distribution": "boundary_triangle_consistent_nodal_v1",
+    "kind": "surface_traction_probe",
+    "traction_vector_mpa": [
+      0.0,
+      0.1,
+      0.0
+    ]
+  },
+  "material": {
+    "model": "linear_elastic_isotropic",
+    "poisson_ratio": 0.33,
+    "profile_id": "probe-isotropic-70gpa-v1",
+    "youngs_modulus_mpa": 70000.0
+  },
+  "mesh": {
+    "algorithm_3d": 10,
+    "element_type": "C3D10",
+    "high_order_optimization": "none",
+    "maximum_elements": 250000,
+    "minimum_sicn": 0.02,
+    "target_long_axis_divisions": 24,
+    "target_short_axis_divisions": 5
+  },
+  "provenance": {
+    "annotation_candidate_sha256": "836a97d3925bc661312a7ac8aa8bdfba211f19bcafcb0a74688d57068a814b21",
+    "annotator_model": "Qwen/Qwen3.6-27B-FP8",
+    "annotator_revision": "e89b16ebf1988b3d6befa7de50abc2d76f26eb09",
+    "context_sha256": "228365c37a2bc57a661067a810fb962e1f82fbad2fb677528cc68f57c682d036",
+    "profile_sha256": "c45dd1b7bfa6d47d38d92e16e7898ce7573805d5969a91741c02cbc924290f88"
+  },
+  "qualification": {
+    "card_sha256": "f81a318a72741f86f50e93f3edbd80c0e5bf042fc5eee8d81632b5daecba44c9",
+    "evaluator_build_hash": "70f240931ada307aa2f99e03cbd11a2a68b1d5f23cbb0a14b54752e655b106c4",
+    "item_id": "p_fusion360_001312",
+    "promoted": true,
+    "reference_step_sha256": "c660bf472a9532f98099dce063f0c62968f6a2f89349d2e4aaa2fe5c048fb88b",
+    "result_sha256": "29175311e229a48e6ce2e7e5465b7b5506ffdd3d4574b63ecbac68912b73b218",
+    "result_status": "probe_pass",
+    "runtime_lock_sha256": "233a960dbf73c99b63642ca4d89aba0438b8428494f5f6b74a271893aeb34efd",
+    "schema_version": "cadengbench-p.l3-card-qualification.v1",
+    "source_probe_metrics": {
+      "force_equilibrium_relative_error": 4.975440019255087e-08,
+      "normalized_compliance": 126.8896999369812,
+      "normalized_max_displacement": 1.425178604276239e-06,
+      "regularized_von_mises_p95_mpa": 0.1000497257124104,
+      "regularized_von_mises_p99_mpa": 0.10149279018779747,
+      "stress_concentration_p95": 1.000497257124104
+    }
+  },
+  "scenario_family": "axial_tension",
+  "schema_version": "cadengbench-p.l3-physics-card.v2",
+  "selectors": {
+    "fixed": {
+      "axis": "y",
+      "kind": "axis_extreme_planar_surfaces_v2",
+      "maximum_count": 64,
+      "minimum_area_fraction": 0.002,
+      "minimum_count": 1,
+      "normal_alignment_min": 0.98,
+      "plane_tolerance_relative": 1e-06,
+      "region_id": "axis:y:min",
+      "side": "min"
+    },
+    "loaded": {
+      "axis": "y",
+      "kind": "axis_extreme_planar_surfaces_v2",
+      "maximum_count": 64,
+      "minimum_area_fraction": 0.002,
+      "minimum_count": 1,
+      "normal_alignment_min": 0.98,
+      "plane_tolerance_relative": 1e-06,
+      "region_id": "axis:y:max",
+      "side": "max"
+    }
+  },
+  "source_intent_claimed": false,
+  "status": "solver_qualified"
+}

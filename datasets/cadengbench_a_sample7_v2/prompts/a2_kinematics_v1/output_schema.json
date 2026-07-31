@@ -1,0 +1,91 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "cadengbench_a_a2_kinematics_prediction_v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["assembly_id", "selected_rank", "pose", "abstention"],
+  "properties": {
+    "assembly_id": {"type": "string", "pattern": "^joint_set_[0-9]{5}$"},
+    "selected_rank": {"type": "integer", "minimum": 1, "maximum": 3},
+    "pose": {
+      "oneOf": [
+        {"type": "null"},
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "joint_origin_body_a_cm",
+            "motion_directions_body_a",
+            "body_b_to_body_a",
+            "confidence"
+          ],
+          "properties": {
+            "joint_origin_body_a_cm": {
+              "oneOf": [
+                {"type": "null"},
+                {"$ref": "#/$defs/vector3"}
+              ]
+            },
+            "motion_directions_body_a": {
+              "type": "object",
+              "additionalProperties": {"$ref": "#/$defs/vector3"}
+            },
+            "body_b_to_body_a": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["translation_cm", "rotation_quaternion_xyzw"],
+              "properties": {
+                "translation_cm": {"$ref": "#/$defs/vector3"},
+                "rotation_quaternion_xyzw": {
+                  "type": "array",
+                  "prefixItems": [
+                    {"type": "number"},
+                    {"type": "number"},
+                    {"type": "number"},
+                    {"type": "number"}
+                  ],
+                  "items": false,
+                  "minItems": 4,
+                  "maxItems": 4
+                }
+              }
+            },
+            "confidence": {"type": "number", "minimum": 0.0, "maximum": 1.0}
+          }
+        }
+      ]
+    },
+    "abstention": {
+      "oneOf": [
+        {"type": "null"},
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["reason_code"],
+          "properties": {
+            "reason_code": {
+              "enum": [
+                "insufficient_pose_evidence",
+                "ambiguous_pose",
+                "unsupported_joint_frame"
+              ]
+            }
+          }
+        }
+      ]
+    }
+  },
+  "$defs": {
+    "vector3": {
+      "type": "array",
+      "prefixItems": [
+        {"type": "number"},
+        {"type": "number"},
+        {"type": "number"}
+      ],
+      "items": false,
+      "minItems": 3,
+      "maxItems": 3
+    }
+  }
+}

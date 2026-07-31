@@ -1,0 +1,78 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cadengbench.org/schemas/cadengbench_p_functional_edit_candidate_ledger_v1.schema.json",
+  "title": "CADEngBench-P quarantined functional engineering-edit candidate ledger v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "item_id", "records", "summary"],
+  "properties": {
+    "schema_version": {"const": "cadengbench-p.functional-edit-candidate-ledger.v1"},
+    "item_id": {"type": "string", "pattern": "^p_(benchcad|fusion360|futurecad)_[0-9]{3,}$"},
+    "records": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/record"}
+    },
+    "summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "candidate_count",
+        "source_backed_count",
+        "benchmark_assigned_count",
+        "llm_hypothesis_count",
+        "evaluator_uses_llm_judge"
+      ],
+      "properties": {
+        "candidate_count": {"type": "integer", "minimum": 0},
+        "source_backed_count": {"type": "integer", "minimum": 0},
+        "benchmark_assigned_count": {"type": "integer", "minimum": 0},
+        "llm_hypothesis_count": {"type": "integer", "minimum": 0},
+        "evaluator_uses_llm_judge": {"const": false}
+      }
+    }
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "record": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "candidate_id",
+        "candidate_class",
+        "candidate_status",
+        "role_id",
+        "generated_by_run_id",
+        "source_output",
+        "requires_human_review",
+        "must_be_deterministically_promoted",
+        "evaluator_uses_llm_judge"
+      ],
+      "properties": {
+        "candidate_id": {"type": "string", "pattern": "^fe_[A-Za-z0-9][A-Za-z0-9._-]*$"},
+        "candidate_class": {
+          "enum": [
+            "source_backed_functional_edit",
+            "benchmark_assigned_constrained_edit",
+            "llm_hypothesis_for_human_review"
+          ]
+        },
+        "candidate_status": {"const": "candidate_only"},
+        "role_id": {"const": "functional_edit_author"},
+        "generated_by_run_id": {"type": "string", "minLength": 1},
+        "source_output": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["path", "sha256", "json_pointer"],
+          "properties": {
+            "path": {"type": "string", "pattern": "^[^/].+"},
+            "sha256": {"$ref": "#/$defs/sha256"},
+            "json_pointer": {"type": "string", "pattern": "^/functional_edit_candidates/[0-9]+$"}
+          }
+        },
+        "requires_human_review": {"const": true},
+        "must_be_deterministically_promoted": {"const": true},
+        "evaluator_uses_llm_judge": {"const": false}
+      }
+    }
+  }
+}

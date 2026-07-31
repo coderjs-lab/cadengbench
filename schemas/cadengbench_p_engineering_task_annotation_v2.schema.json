@@ -1,0 +1,159 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "cadengbench_p_engineering_task_annotation_v2.schema.json",
+  "title": "CADEngBench-P minimal engineering semantics annotation",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "item_id", "role_id", "output_status", "payload"],
+  "properties": {
+    "schema_version": {
+      "const": "cadengbench-p.engineering-task-annotation.v2"
+    },
+    "item_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 128
+    },
+    "role_id": {
+      "const": "engineering_task_author"
+    },
+    "output_status": {
+      "const": "complete"
+    },
+    "payload": {
+      "$ref": "#/$defs/payload"
+    }
+  },
+  "$defs": {
+    "shortText": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 140
+    },
+    "label": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 64
+    },
+    "interface": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["interface_kind", "description"],
+      "properties": {
+        "interface_kind": {
+          "enum": [
+            "mounting",
+            "mating",
+            "locating",
+            "fastening",
+            "load_transfer",
+            "fluid_or_airflow",
+            "grip_or_handling",
+            "protective_enclosure",
+            "other"
+          ]
+        },
+        "description": {
+          "$ref": "#/$defs/shortText"
+        }
+      }
+    },
+    "payload": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "part_identity",
+        "design",
+        "function",
+        "material_process",
+        "functional_edit"
+      ],
+      "properties": {
+        "part_identity": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["title", "category"],
+          "properties": {
+            "title": {"$ref": "#/$defs/label"},
+            "category": {"$ref": "#/$defs/label"}
+          }
+        },
+        "design": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["goal", "application_context", "design_freedom"],
+          "properties": {
+            "goal": {"$ref": "#/$defs/shortText"},
+            "application_context": {"$ref": "#/$defs/shortText"},
+            "design_freedom": {
+              "type": "array",
+              "minItems": 1,
+              "maxItems": 1,
+              "items": {"$ref": "#/$defs/shortText"}
+            }
+          }
+        },
+        "function": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["functional_interpretation", "interfaces", "non_requirements"],
+          "properties": {
+            "functional_interpretation": {"$ref": "#/$defs/shortText"},
+            "interfaces": {
+              "type": "array",
+              "minItems": 1,
+              "maxItems": 2,
+              "items": {"$ref": "#/$defs/interface"}
+            },
+            "non_requirements": {
+              "type": "array",
+              "maxItems": 1,
+              "items": {"$ref": "#/$defs/shortText"}
+            }
+          }
+        },
+        "material_process": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["material_family", "process_family"],
+          "properties": {
+            "material_family": {
+              "enum": [
+                "steel",
+                "stainless_steel",
+                "aluminum_alloy",
+                "copper_alloy",
+                "titanium_alloy",
+                "cast_iron",
+                "engineering_polymer",
+                "elastomer",
+                "unspecified"
+              ]
+            },
+            "process_family": {
+              "enum": [
+                "subtractive_machining",
+                "additive_manufacturing",
+                "injection_molding",
+                "casting",
+                "sheet_metal",
+                "forming",
+                "fabrication",
+                "unspecified"
+              ]
+            }
+          }
+        },
+        "functional_edit": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["operating_condition", "engineering_objective"],
+          "properties": {
+            "operating_condition": {"$ref": "#/$defs/shortText"},
+            "engineering_objective": {"$ref": "#/$defs/shortText"}
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,113 @@
+{
+  "bindings": {
+    "base_card_sha256": "fcbec0f0ffb77e1b773954d3e3ca953e412be55147525d710f61e102a064ce09",
+    "l3_evaluator_build_hash": "eb0ffb44f0b47c1fcfaa598e95a1a6ffdae963dd37ab0b64f988794c3398bb92",
+    "l3_runtime_lock_sha256": "5cd587bf0f862ab1bc60c988f151d4424c217ad236f8845c49bd488d5bd21820",
+    "mesh_study_sha256": null,
+    "nominal_reference_step_sha256": "5966396bba993c5aaff23d5ebfccacb3ad0cf359fed38e93c721dfeac85e4e0a",
+    "reference_base_result_sha256": "856ff3c3c618f783559e947fe34e2bc8e80cb0ef734fe8f5bc2ca6f48ceb8cc9"
+  },
+  "contract_id": "p_benchcad_000338:l3-response:v1",
+  "contract_sha256": "ba5ab75eda6ee2614844143669aac083ff584b1c183ec0ba0569622256066025",
+  "engineering_requirements": {
+    "maximum_candidate_reference_compliance_ratio": 1.25,
+    "maximum_candidate_reference_displacement_ratio": 1.25,
+    "maximum_normalized_displacement": 0.02,
+    "maximum_regularized_von_mises_p95_mpa": 125.0,
+    "maximum_stress_utilization": 1.0
+  },
+  "evaluator": {
+    "build_hash": "58bc486b6f38458a6a68951c1ec66625c91d774b7eca1acc7a4b837030f500d8",
+    "name": "cadengbench-p-l3-response",
+    "version": "0.1.0"
+  },
+  "fidelity": {
+    "aggregate": "geometric_mean",
+    "base_maximum_symmetric_log_error": {
+      "normalized_compliance": 0.22314355131420976,
+      "normalized_max_displacement": 0.22314355131420976,
+      "regularized_von_mises_p95_mpa": 0.22314355131420976
+    },
+    "component_score": "exp_negative_normalized_log_error",
+    "effective_maximum_symmetric_log_error": {
+      "normalized_compliance": 0.22314355131420976,
+      "normalized_max_displacement": 0.22314355131420976,
+      "regularized_von_mises_p95_mpa": 0.22314355131420976
+    },
+    "mesh_symmetric_log_uncertainty": {
+      "normalized_compliance": 0.0,
+      "normalized_max_displacement": 0.0,
+      "regularized_von_mises_p95_mpa": 0.0
+    },
+    "metrics": [
+      "regularized_von_mises_p95_mpa",
+      "normalized_max_displacement",
+      "normalized_compliance"
+    ]
+  },
+  "item_id": "p_benchcad_000338",
+  "loading": {
+    "base_loaded_area_mm2": 73.13824047097889,
+    "base_resultant_force_n": [
+      0.0,
+      0.0,
+      7.313824047097889
+    ],
+    "base_traction_vector_mpa": [
+      0.0,
+      0.0,
+      0.1
+    ],
+    "control": "fixed_resultant_force",
+    "controlling_constraint": "maximum_traction",
+    "load_scale": 1000.0,
+    "predicted_reference_traction_vector_mpa": [
+      0.0,
+      0.0,
+      100.0
+    ],
+    "target_resultant_force_n": [
+      0.0,
+      0.0,
+      7313.824047097889
+    ]
+  },
+  "material": {
+    "allowable_stress_mpa": 125.0,
+    "model": "linear_elastic_isotropic",
+    "poisson_ratio": 0.33,
+    "safety_factor": 2.0,
+    "yield_strength_mpa": 250.0,
+    "youngs_modulus_mpa": 70000.0
+  },
+  "numerical": {
+    "maximum_equilibrium_relative_error": 5e-05,
+    "maximum_force_control_relative_error": 1e-05,
+    "maximum_linearity_relative_error": 0.02,
+    "ratio_epsilon": 1e-12
+  },
+  "profile": {
+    "profile_id": "cadengbench-p-l3-response-v1",
+    "profile_sha256": "0b0a1e0e7338c0836b45f76622bf144e7bfd658ac80237c0fa68861bbd274d11",
+    "status": "calibrated"
+  },
+  "reference_base": {
+    "metrics": {
+      "force_equilibrium_relative_error": 1.1862856045736661e-07,
+      "normalized_compliance": 15.712715980384594,
+      "normalized_max_displacement": 6.090954865840982e-07,
+      "regularized_von_mises_p95_mpa": 0.048042572495674486
+    },
+    "predicted_scaled_metrics": {
+      "force_equilibrium_relative_error": 1.1862856045736661e-07,
+      "normalized_compliance": 15.712715980384594,
+      "normalized_max_displacement": 0.0006090954865840982,
+      "regularized_von_mises_p95_mpa": 48.042572495674484
+    }
+  },
+  "scenario": "axial_tension",
+  "schema_version": "cadengbench-p.l3-response-contract.v1",
+  "source_intent_claimed": false,
+  "status": "calibrated",
+  "threshold_authority": "benchmark_assigned_reference_relative_calibrated_v1"
+}

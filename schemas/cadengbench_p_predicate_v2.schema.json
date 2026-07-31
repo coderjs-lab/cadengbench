@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cadengbench.org/schemas/cadengbench_p_predicate_v2.schema.json",
+  "title": "CADEngBench-P v2 typed deterministic predicate",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "record_type", "predicate"],
+  "properties": {
+    "schema_version": {"const": "cadengbench-p.predicate.v2"},
+    "record_type": {"const": "typed_predicate"},
+    "predicate": {"$ref": "#/$defs/predicate"}
+  },
+  "$defs": {
+    "nonEmpty": {"type": "string", "minLength": 1},
+    "predicate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["predicate_id", "kind", "relation_id", "value_type", "reference_states", "authority", "status", "scorer_allowed", "evaluator_uses_llm_judge"],
+      "properties": {
+        "predicate_id": {"$ref": "#/$defs/nonEmpty"},
+        "kind": {"enum": ["target", "non_target"]},
+        "relation_id": {"$ref": "#/$defs/nonEmpty"},
+        "description": {"type": "string"},
+        "value_type": {"enum": ["numeric", "boolean", "feature_identity", "topology", "interface"]},
+        "reference_states": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"enum": ["current", "baseline"]}},
+        "baseline_reference_required": {"type": "boolean"},
+        "authority": {"enum": ["source_explicit", "deterministic_geometry", "verified_replay", "authoritative_external", "generated_proxy", "llm_candidate", "retrieval_supported", "needs_validation", "unavailable", "rejected"]},
+        "status": {"enum": ["candidate_only", "promoted", "needs_validation", "rejected", "unavailable"]},
+        "evidence_refs": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"$ref": "#/$defs/nonEmpty"}},
+        "scorer_allowed": {"type": "boolean"},
+        "evaluator_uses_llm_judge": {"const": false}
+      },
+      "allOf": [
+        {
+          "if": {"properties": {"kind": {"const": "target"}}},
+          "then": {
+            "required": ["baseline_reference_required"],
+            "properties": {
+              "reference_states": {"contains": {"const": "current"}},
+              "baseline_reference_required": {"const": false}
+            }
+          }
+        },
+        {
+          "if": {"properties": {"kind": {"const": "non_target"}}},
+          "then": {
+            "required": ["baseline_reference_required"],
+            "properties": {
+              "reference_states": {"allOf": [{"contains": {"const": "current"}}, {"contains": {"const": "baseline"}}]},
+              "baseline_reference_required": {"const": true}
+            }
+          }
+        },
+        {
+          "if": {"properties": {"status": {"const": "promoted"}}},
+          "then": {
+            "properties": {
+              "authority": {"enum": ["source_explicit", "deterministic_geometry", "verified_replay", "authoritative_external"]},
+              "scorer_allowed": {"const": true}
+            }
+          }
+        },
+        {
+          "if": {"properties": {"status": {"enum": ["candidate_only", "needs_validation", "rejected", "unavailable"]}}},
+          "then": {"properties": {"scorer_allowed": {"const": false}}}
+        }
+      ]
+    }
+  }
+}

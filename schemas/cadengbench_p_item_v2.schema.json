@@ -1,0 +1,91 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cadengbench.org/schemas/cadengbench_p_item_v2.schema.json",
+  "title": "CADEngBench-P v2 synchronized item package",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version", "dataset_version", "run_id", "created_at", "updated_at",
+    "multimodal_annotation_package"
+  ],
+  "properties": {
+    "schema_version": {"const": "cadengbench-p.multimodal-annotation.v2"},
+    "dataset_version": {"type": "string", "minLength": 1},
+    "run_id": {"type": "string", "minLength": 1},
+    "created_at": {"type": "string", "format": "date-time"},
+    "updated_at": {"type": "string", "format": "date-time"},
+    "multimodal_annotation_package": {"$ref": "#/$defs/package"}
+  },
+  "$defs": {
+    "availability": {
+      "enum": [
+        "available", "source_absent", "unsupported", "not_applicable", "ambiguous",
+        "license_blocked", "generation_failed", "needs_verification"
+      ]
+    },
+    "authority": {
+      "type": ["string", "null"],
+      "enum": [
+        "S0_source_explicit", "D1_deterministic_geometry", "D2_verified_replay",
+        "E3_authoritative_external", "M4_multi_model_candidate", "M5_model_candidate",
+        "R6_rejected", null
+      ]
+    },
+    "artifact": {
+      "type": "object", "additionalProperties": false,
+      "required": ["path", "sha256", "bytes"],
+      "properties": {
+        "path": {"type": "string", "pattern": "^[^/].+"},
+        "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+        "bytes": {"type": "integer", "minimum": 0}
+      }
+    },
+    "block": {
+      "type": "object", "additionalProperties": false,
+      "required": ["availability", "authority", "value"],
+      "properties": {
+        "availability": {"$ref": "#/$defs/availability"},
+        "authority": {"$ref": "#/$defs/authority"},
+        "value": {},
+        "note": {"type": ["string", "null"]},
+        "evidence_refs": {"type": "array", "items": {"type": "string"}},
+        "artifact": {"$ref": "#/$defs/artifact"}
+      }
+    },
+    "package": {
+      "type": "object", "additionalProperties": false,
+      "required": [
+        "contract_version", "item_id", "source_identity", "canonical_frame",
+        "deterministic_fact_packet", "visual_asset_manifest", "feature_grounding",
+        "text_annotations", "parametric_edit_annotations", "material_process_annotations",
+        "functional_edit_contract", "edit_target_oracle", "manufacturing_contract", "feature_lineage",
+        "completion_record", "claim_ledger", "annotation_runs", "conflict_records",
+        "quality_report"
+      ],
+      "properties": {
+        "contract_version": {"const": "cadengbench-p.multimodal-annotation.v2"},
+        "item_id": {"type": "string", "pattern": "^p_(benchcad|fusion360)_[0-9]{3,}$"},
+        "source_identity": {"type": "object", "minProperties": 10},
+        "canonical_frame": {"type": "object", "minProperties": 8},
+        "deterministic_fact_packet": {"$ref": "#/$defs/block"},
+        "visual_asset_manifest": {"$ref": "#/$defs/block"},
+        "feature_grounding": {"$ref": "#/$defs/block"},
+        "text_annotations": {"$ref": "#/$defs/block"},
+        "parametric_edit_annotations": {"$ref": "#/$defs/block"},
+        "material_process_annotations": {"$ref": "#/$defs/block"},
+        "functional_edit_contract": {"$ref": "#/$defs/block"},
+        "edit_target_oracle": {"$ref": "#/$defs/block"},
+        "functional_edit_candidates": {"$ref": "#/$defs/block"},
+        "manufacturing_contract": {"$ref": "#/$defs/block"},
+        "feature_lineage": {"$ref": "#/$defs/block"},
+        "completion_record": {"$ref": "#/$defs/block"},
+        "engineering_scenario": {"$ref": "#/$defs/block"},
+        "zero_to_cad_design_spec": {"$ref": "#/$defs/block"},
+        "claim_ledger": {"$ref": "#/$defs/block"},
+        "annotation_runs": {"type": "array"},
+        "conflict_records": {"type": "array"},
+        "quality_report": {"$ref": "#/$defs/block"}
+      }
+    }
+  }
+}

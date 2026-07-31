@@ -1,0 +1,87 @@
+Info:  - Label 'Shapes/Open CASCADE STEP translator 7.8 1' (3D)
+Info: Meshing 1D...
+Info: Meshing curve 1 (Circle)
+Progress: Meshing 1D...
+Info: Meshing curve 2 (Line)
+Progress: Meshing 1D...
+Info: Meshing curve 3 (Circle)
+Progress: Meshing 1D...
+Info: Done meshing 1D (Wall 0.000940665s, CPU 0.000941s)
+Info: Meshing 2D...
+Info: Meshing surface 1 (Cylinder, Frontal-Delaunay)
+Progress: Meshing 2D...
+Info: Meshing surface 2 (Plane, Frontal-Delaunay)
+Progress: Meshing 2D...
+Info: Meshing surface 3 (Plane, Frontal-Delaunay)
+Progress: Meshing 2D...
+Info: Done meshing 2D (Wall 0.0262768s, CPU 0.025791s)
+Info: Meshing 3D...
+Progress: Meshing 3D...
+Info: 3D Meshing 1 volume with 1 connected component
+Info: Input mesh hash 4bf259f55086ac3e
+Info: Creating an empty mesh with 697 vertices
+Info: Initialization of tet. mesh
+Info: Delaunay of        693 points on   1 threads - mesh.nvert: 4         
+Info: All volumes of the BRep were found and colorized accordingly
+Info: Computing interpolated mesh sizes...
+Info: Done computing interpolated mesh sizes
+Info: Delaunay of       1775 points on   1 threads - mesh.nvert: 697       
+Info:           -       1591 points filtered
+Info:           =        184 points added
+Info: Computing interpolated mesh sizes...
+Info: Done computing interpolated mesh sizes
+Info: Delaunay of        350 points on   1 threads - mesh.nvert: 881       
+Info:           -        242 points filtered
+Info:           =        108 points added
+Info: Computing interpolated mesh sizes...
+Info: Done computing interpolated mesh sizes
+Info: Delaunay of         44 points on   1 threads - mesh.nvert: 989       
+Info:           -         15 points filtered
+Info:           =         29 points added
+Info: Computing interpolated mesh sizes...
+Info: Done computing interpolated mesh sizes
+Info: Delaunay of          7 points on   1 threads - mesh.nvert: 1018      
+Info:           -          1 points filtered
+Info:           =          6 points added
+Info: Computing interpolated mesh sizes...
+Info: Done computing interpolated mesh sizes
+Info: Delaunay of          2 points on   1 threads - mesh.nvert: 1024      
+Info:           -          1 points filtered
+Info:           =          1 points added
+Info: Computing interpolated mesh sizes...
+Info: Done computing interpolated mesh sizes
+Info: Improving        149 tet. on   1 thrd (S & ER)
+Info: Improving          6 tet. on   1 thrd (S & ER)
+Info: Improving          1 tet. on   1 thrd (S & ER)
+Info: Improving          1 tet. on   1 thrd (GSC)
+Info:  	Final tet. mesh contains 8455 tetrahedra
+Info:  	Final tet. mesh contains 1025 vertices
+Info: tEmptyMesh  	 = 	    0.003
+Info: tVerifyBnd  	 = 	    0.001
+Info: tBndRecovery	 = 	    0.000 (boundary not altered)
+Info: tConvertMesh	 = 	    0.000 (nothing to convert)
+Info: tRefine     	 = 	    0.004
+Info: tOptimize   	 = 	    0.001
+Progress: Meshing 3D...
+Info: Done meshing 3D (Wall 0.00969047s, CPU 0.009556s)
+Info: 1025 nodes 5377 elements
+Info: Meshing order 2 (curvilinear on)...
+Info: Meshing curve 1 order 2
+Progress: Meshing order 2 (curvilinear on)...
+Info: Meshing curve 2 order 2
+Progress: Meshing order 2 (curvilinear on)...
+Info: Meshing curve 3 order 2
+Progress: Meshing order 2 (curvilinear on)...
+Info: Meshing surface 1 order 2
+Progress: Meshing order 2 (curvilinear on)...
+Info: Meshing surface 2 order 2
+Progress: Meshing order 2 (curvilinear on)...
+Info: Meshing surface 3 order 2
+Progress: Meshing order 2 (curvilinear on)...
+Info: Meshing volume 1 order 2
+Progress: Meshing order 2 (curvilinear on)...
+Info: Surface mesh: worst distortion = 0.994362 (0 elements in ]0, 0.2]); worst gamma = 0.839824
+Info: Volume mesh: worst distortion = 0.888077 (0 elements in ]0, 0.2])
+Info: Done meshing order 2 (Wall 0.0150838s, CPU 0.015084s)
+Info: Writing './output/cadengbench_p_l3_response_contracts_v4/items/p_fusion360_001017/nominal_reference_preflight/mesh.msh'...
+Info: Done writing './output/cadengbench_p_l3_response_contracts_v4/items/p_fusion360_001017/nominal_reference_preflight/mesh.msh'

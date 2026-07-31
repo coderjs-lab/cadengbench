@@ -1,0 +1,125 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "cadengbench_a_hypothesis_aggregate_report_v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "benchmark_contract",
+    "model",
+    "provider",
+    "model_snapshot",
+    "prompt_version",
+    "input_package_fingerprint",
+    "split",
+    "item_count",
+    "graph_group_count",
+    "metrics",
+    "by_joint_family",
+    "by_exact_unique_source_variant_count",
+    "usage",
+    "run_dir",
+    "positive_unlabeled_interpretation"
+  ],
+  "properties": {
+    "schema": {"const": "cadengbench_a_hypothesis_aggregate_report_v1"},
+    "benchmark_contract": {"const": "cadengbench_a_benchmark_contract_v1"},
+    "model": {"type": "string", "minLength": 1},
+    "provider": {"type": ["string", "null"]},
+    "model_snapshot": {"type": ["string", "null"]},
+    "prompt_version": {"const": "pair_track_b_v3"},
+    "input_package_fingerprint": {"type": "string", "minLength": 1},
+    "split": {"enum": ["validation", "test"]},
+    "item_count": {"type": "integer", "minimum": 1},
+    "graph_group_count": {"type": "integer", "minimum": 1},
+    "metrics": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "strict_l0_validity_rate",
+        "top1_known_positive_entity_hit_rate",
+        "top3_known_positive_entity_hit_rate",
+        "top1_known_positive_typed_entity_hit_rate",
+        "top3_known_positive_typed_entity_hit_rate",
+        "typed_entity_mrr",
+        "abstention_rate",
+        "hallucinated_candidate_id_rate"
+      ],
+      "properties": {
+        "strict_l0_validity_rate": {"$ref": "#/$defs/metric"},
+        "top1_known_positive_entity_hit_rate": {"$ref": "#/$defs/metric"},
+        "top3_known_positive_entity_hit_rate": {"$ref": "#/$defs/metric"},
+        "top1_known_positive_typed_entity_hit_rate": {"$ref": "#/$defs/metric"},
+        "top3_known_positive_typed_entity_hit_rate": {"$ref": "#/$defs/metric"},
+        "typed_entity_mrr": {"$ref": "#/$defs/metric"},
+        "abstention_rate": {"$ref": "#/$defs/metric"},
+        "hallucinated_candidate_id_rate": {"$ref": "#/$defs/hallucination_metric"}
+      }
+    },
+    "by_joint_family": {"type": "object"},
+    "by_exact_unique_source_variant_count": {"type": "object"},
+    "usage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["latency_seconds", "input_tokens", "output_tokens", "cost_usd"],
+      "properties": {
+        "latency_seconds": {"type": "number", "minimum": 0},
+        "input_tokens": {"type": "integer", "minimum": 0},
+        "output_tokens": {"type": "integer", "minimum": 0},
+        "cost_usd": {"type": "number", "minimum": 0}
+      }
+    },
+    "run_dir": {"type": "string", "minLength": 1},
+    "positive_unlabeled_interpretation": {"type": "string", "minLength": 1}
+  },
+  "$defs": {
+    "metric": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["value", "ci95", "bootstrap_unit", "bootstrap_repetitions", "seed"],
+      "properties": {
+        "value": {"type": "number", "minimum": 0, "maximum": 1},
+        "ci95": {
+          "type": "array",
+          "prefixItems": [
+            {"type": "number", "minimum": 0, "maximum": 1},
+            {"type": "number", "minimum": 0, "maximum": 1}
+          ],
+          "items": false
+        },
+        "bootstrap_unit": {"const": "reconstructed_graph_group"},
+        "bootstrap_repetitions": {"type": "integer", "minimum": 1},
+        "seed": {"type": "integer"}
+      }
+    },
+    "hallucination_metric": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "value",
+        "ci95",
+        "numerator",
+        "denominator",
+        "bootstrap_unit",
+        "bootstrap_repetitions",
+        "seed"
+      ],
+      "properties": {
+        "value": {"type": "number", "minimum": 0, "maximum": 1},
+        "ci95": {
+          "type": "array",
+          "prefixItems": [
+            {"type": "number", "minimum": 0, "maximum": 1},
+            {"type": "number", "minimum": 0, "maximum": 1}
+          ],
+          "items": false
+        },
+        "numerator": {"type": "integer", "minimum": 0},
+        "denominator": {"type": "integer", "minimum": 0},
+        "bootstrap_unit": {"const": "reconstructed_graph_group"},
+        "bootstrap_repetitions": {"type": "integer", "minimum": 1},
+        "seed": {"type": "integer"}
+      }
+    }
+  }
+}

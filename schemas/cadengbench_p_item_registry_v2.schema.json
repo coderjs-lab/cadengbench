@@ -1,0 +1,200 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cadengbench.org/schemas/cadengbench_p_item_registry_v2.schema.json",
+  "title": "CADEngBench-P v2 normalized item registry",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "items"],
+  "properties": {
+    "schema_version": {"const": "cadengbench-p.item-registry.v2"},
+    "items": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["item_id", "source_key", "source_dataset", "source_record_id", "input_dir", "canonical_step", "native_history", "source_license", "redistribution_status", "source_snapshot", "selection_evidence", "source_notes", "source_units", "unit_scale_to_mm", "artifact_hashes", "synchronized_artifact_contract", "edit_spec", "source_preview", "reconstruction_step", "reconstruction_report", "fusion360_reconstruction_evidence"],
+        "properties": {
+          "item_id": {"type": "string", "pattern": "^p_(benchcad|fusion360)_[0-9]{3,}$"},
+          "source_key": {"enum": ["benchcad", "fusion360"]},
+          "source_dataset": {"type": "string", "minLength": 1},
+          "source_record_id": {"type": "string", "minLength": 1},
+          "input_dir": {"type": "string", "minLength": 1},
+          "canonical_step": {"type": "string", "minLength": 1},
+          "native_history": {"type": "string", "minLength": 1},
+          "source_license": {"type": "string", "minLength": 1},
+          "redistribution_status": {"type": "string", "minLength": 1},
+          "source_snapshot": {"type": "string", "minLength": 1},
+          "selection_evidence": {"type": "object", "minProperties": 8},
+          "source_notes": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
+            "source_units": {"enum": ["mm", "cm"]},
+            "unit_scale_to_mm": {"type": "number", "exclusiveMinimum": 0},
+          "artifact_hashes": {"type": "object", "minProperties": 3},
+          "synchronized_artifact_contract": {"$ref": "#/$defs/synchronizedArtifactContract"},
+          "edit_spec": {"type": "object", "minProperties": 15},
+          "source_preview": {"type": ["string", "null"]},
+          "reconstruction_step": {"type": ["string", "null"]},
+          "reconstruction_report": {"type": ["string", "null"]},
+          "fusion360_reconstruction_evidence": {"type": "object", "minProperties": 2},
+          "functional_edit_intent_seed": {"$ref": "#/$defs/functionalEditIntentSeed"}
+        },
+        "additionalProperties": true,
+        "allOf": [
+          {
+            "if": {"properties": {"source_key": {"const": "benchcad"}}, "required": ["source_key"]},
+              "then": {
+                "properties": {
+                  "item_id": {"pattern": "^p_benchcad_[0-9]{3,}$"},
+                  "source_dataset": {"const": "BenchCAD"},
+                  "native_history": {"pattern": "\\.py$"},
+                  "source_units": {"const": "mm"},
+                  "unit_scale_to_mm": {"const": 1}
+                }
+            }
+          },
+          {
+            "if": {"properties": {"source_key": {"const": "fusion360"}}, "required": ["source_key"]},
+            "then": {
+              "properties": {
+                  "item_id": {"pattern": "^p_fusion360_[0-9]{3,}$"},
+                  "source_dataset": {"const": "Fusion 360 Reconstruction"},
+                  "native_history": {"pattern": "\\.json$"},
+                  "source_units": {"const": "cm"},
+                  "unit_scale_to_mm": {"const": 10},
+                  "reconstruction_step": {"type": "string"},
+                "reconstruction_report": {"type": "string"}
+              }
+            }
+          }
+        ]
+      }
+    }
+  },
+  "$defs": {
+    "artifactRole": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["availability", "path", "sha256", "authority", "reason"],
+      "properties": {
+        "availability": {
+          "enum": ["available", "source_absent", "unsupported", "not_applicable"]
+        },
+        "path": {"type": ["string", "null"]},
+        "sha256": {
+          "type": ["string", "null"],
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "authority": {"type": ["string", "null"]},
+        "reason": {"type": ["string", "null"]}
+      },
+      "oneOf": [
+        {
+          "properties": {
+            "availability": {"const": "available"},
+            "path": {"type": "string", "minLength": 1},
+            "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+            "authority": {"type": "string", "minLength": 1},
+            "reason": {"type": "null"}
+          }
+        },
+        {
+          "properties": {
+            "availability": {
+              "enum": ["source_absent", "unsupported", "not_applicable"]
+            },
+            "path": {"type": "null"},
+            "sha256": {"type": "null"},
+            "authority": {"type": "null"},
+            "reason": {"type": "string", "minLength": 1}
+          }
+        }
+      ]
+    },
+    "synchronizedArtifactContract": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schema_version", "roles"],
+      "properties": {
+        "schema_version": {
+          "const": "cadengbench-p.synchronized-artifact-contract.v1"
+        },
+        "roles": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "canonical_step",
+            "native_parametric_history",
+            "source_preview",
+            "source_metadata",
+            "cadquery_source",
+            "occ_reconstruction_step",
+            "occ_reconstruction_report",
+            "edit_binding_qualification",
+            "admission_qualification"
+          ],
+          "properties": {
+            "canonical_step": {"$ref": "#/$defs/artifactRole"},
+            "native_parametric_history": {"$ref": "#/$defs/artifactRole"},
+            "source_preview": {"$ref": "#/$defs/artifactRole"},
+            "source_metadata": {"$ref": "#/$defs/artifactRole"},
+            "cadquery_source": {"$ref": "#/$defs/artifactRole"},
+            "occ_reconstruction_step": {"$ref": "#/$defs/artifactRole"},
+            "occ_reconstruction_report": {"$ref": "#/$defs/artifactRole"},
+            "edit_binding_qualification": {"$ref": "#/$defs/artifactRole"},
+            "admission_qualification": {"$ref": "#/$defs/artifactRole"}
+          }
+        }
+      }
+    },
+    "functionalEditIntentSeed": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["records"],
+      "properties": {
+        "records": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"$ref": "#/$defs/functionalEditIntentSeedRecord"}
+        }
+      }
+    },
+    "functionalEditIntentSeedRecord": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "record_id",
+        "intent_evidence_status",
+        "application_context",
+        "engineering_requirement",
+        "engineering_rationale",
+        "expected_model_changes",
+        "preservation_requirements",
+        "evidence_refs"
+      ],
+      "properties": {
+        "record_id": {"type": "string", "minLength": 1},
+        "intent_evidence_status": {
+          "enum": ["source_explicit", "partner_annotation", "benchmark_assigned"]
+        },
+        "application_context": {"type": "string", "minLength": 1},
+        "engineering_requirement": {"type": "string", "minLength": 1},
+        "engineering_rationale": {"type": "string", "minLength": 1},
+        "expected_model_changes": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"type": "string", "minLength": 1}
+        },
+        "preservation_requirements": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"type": "string", "minLength": 1}
+        },
+        "evidence_refs": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {"type": "string", "minLength": 1}
+        }
+      }
+    }
+  }
+}

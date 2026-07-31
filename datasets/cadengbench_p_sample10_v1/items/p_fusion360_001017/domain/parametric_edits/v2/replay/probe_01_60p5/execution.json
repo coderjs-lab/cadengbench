@@ -1,0 +1,244 @@
+{
+  "artifact_authority": {
+    "fusion_history_json": "edited_source_assignment_evidence",
+    "reconstruction_step": "derived_non_scoring_proxy"
+  },
+  "artifact_sha256": {
+    "fusion_history_json": "54ec5186757f53daa5b096909827101c3725072c623b8b3bab94d74bf9471b2c",
+    "reconstruction_step": "096f673a6cce3c9125e45eb3528a6da9684923eb07c4d49ea5b7d565743b91be"
+  },
+  "autodesk_fusion_execution_used": false,
+  "bbox": {
+    "xmax": -92.5,
+    "xmin": -107.5,
+    "ymax": 37.5,
+    "ymin": 22.5,
+    "zmax": 105.5,
+    "zmin": 45.0
+  },
+  "cadquery_source_translation_used": false,
+  "edge_count": 3,
+  "edited_variant_evidence": {
+    "deterministic_feature_measurements_available": true,
+    "deterministic_named_target_measurement_present": false,
+    "edit_replay_contract": "qualified_source_bound_profile_or_extrusion_edit_replay_v4",
+    "native_fusion_execution_used": false,
+    "scoring_authority": false,
+    "source_assignment_verified_by_caller": null,
+    "state": "edited_variant_source_bound_occ_reconstructed"
+  },
+  "face_count": 3,
+  "fidelity": {
+    "geometry_qualified": null,
+    "meaning": "The edited variant is an independent OCC reconstruction. Solid validity is observed, but no target geometry equivalence is claimed.",
+    "qualification_status": "edited_variant_not_compared_to_source_step",
+    "solid_set_equivalent_within_tolerance": null
+  },
+  "history_path": "./data/production/cadengbench_p_1800_v2_two_source_r25/materialization/.materializing/p_fusion360_001017.2738163/native/edit_binding_qualification_artifacts/candidate_00/probe_01.json",
+  "isolation": {
+    "mode": "python_subprocess_resource_limits",
+    "purpose": "contain OpenCascade process crashes and item-local failures"
+  },
+  "operation_trace": [
+    {
+      "distance_mm": 60.5,
+      "effective_span_mm": 60.5,
+      "entity_id": "b7ef649b-e314-11ea-91fc-54bf646e7e1f",
+      "extent_type": "OneSideFeatureExtentType",
+      "face_count": 3,
+      "feature_name": "Extrude1",
+      "operation": "NewBodyFeatureOperation",
+      "profile_diagnostics": {
+        "distance_mm": 60.5,
+        "effective_span_mm": 60.5,
+        "extent_type": "OneSideFeatureExtentType",
+        "invalid_individual_profile_ids": [],
+        "invalid_individual_profile_solid_count": 0,
+        "profile_count": 1,
+        "source_distance_unit": "cm",
+        "source_distance_value": 6.05,
+        "tool_solid_count": 1,
+        "tool_valid": true,
+        "tool_volume_mm3": 10691.232499247762,
+        "validity_policy": "individual_profile_prisms_are_diagnostic;_the_aggregate_feature_solid_and_source_equivalence_gate_are_required"
+      },
+      "solid_count": 1,
+      "source_distance_unit": "cm",
+      "source_distance_value": 6.05,
+      "timeline_index": 1,
+      "tool_solid_count": 1,
+      "tool_valid": true,
+      "tool_volume_mm3": 10691.232499247762
+    }
+  ],
+  "output_units": "mm",
+  "reconstruction_contract": "independent_occ_reconstruction_proxy",
+  "reconstruction_engine": "deterministic_direct_fusion_history_json_to_occ_v1",
+  "reconstruction_step_path": "./data/production/cadengbench_p_1800_v2_two_source_r25/materialization/.materializing/p_fusion360_001017.2738163/native/edit_binding_qualification_artifacts/candidate_00/probe_01.step",
+  "returncode": 0,
+  "schema_version": "cadengbench-p.fusion360-occ-reconstruction-report.v7",
+  "scoring_readiness": {
+    "blocking_reasons": [
+      "deterministic_named_target_measurement_missing",
+      "native_fusion_execution_not_performed"
+    ],
+    "ready": false
+  },
+  "solid_count": 1,
+  "solid_valid": true,
+  "source_units": "cm",
+  "status": "success",
+  "stderr": "",
+  "stdout": "",
+  "support": {
+    "curve_types": {
+      "Circle3D": 3,
+      "Line3D": 8
+    },
+    "edit_scoring_reasons": [],
+    "edit_scoring_supported": true,
+    "editable_bindings": [
+      {
+        "base_value": 0.75,
+        "binding_id": "fusion360:b7ed1aae-e314-11ea-9bfb-54bf646e7e1f:d1144b1f-dfa2-30c3-99dd-9fc132f9e156:loop-0:curve-0:radius",
+        "canonical_unit": "mm",
+        "consumer_features": [
+          {
+            "extent_type": "OneSideFeatureExtentType",
+            "feature_id": "b7ef649b-e314-11ea-91fc-54bf646e7e1f",
+            "feature_name": "Extrude1",
+            "operation": "NewBodyFeatureOperation",
+            "timeline_index": 1
+          }
+        ],
+        "curve_type": "Circle3D",
+        "direct_brep_parameter_readback": false,
+        "edit_family": "evaluated_profile_radius",
+        "feature_id": "b7ed1aae-e314-11ea-9bfb-54bf646e7e1f",
+        "feature_name": "Sketch1",
+        "json_pointer": "/entities/b7ed1aae-e314-11ea-9bfb-54bf646e7e1f/profiles/d1144b1f-dfa2-30c3-99dd-9fc132f9e156/loops/0/profile_curves/0/radius",
+        "parameter_role": "sketch_circle_radius",
+        "profile_id": "d1144b1f-dfa2-30c3-99dd-9fc132f9e156",
+        "profile_role": "outer",
+        "reconstruction_support": "deterministic_consumed_single_curve_profile",
+        "scale_to_canonical": 10.0,
+        "source_unit": "cm",
+        "timeline_index": 0
+      },
+      {
+        "base_value": 6.05,
+        "binding_id": "fusion360:b7ef649b-e314-11ea-91fc-54bf646e7e1f:distance",
+        "canonical_unit": "mm",
+        "direct_brep_parameter_readback": true,
+        "edit_family": "extrusion_distance",
+        "extent_multiplier": 1.0,
+        "extent_type": "OneSideFeatureExtentType",
+        "extrusion_axis": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "feature_id": "b7ef649b-e314-11ea-91fc-54bf646e7e1f",
+        "feature_name": "Extrude1",
+        "json_pointer": "/entities/b7ef649b-e314-11ea-91fc-54bf646e7e1f/extent_one/distance/value",
+        "operation": "NewBodyFeatureOperation",
+        "parameter_role": "extrude_distance",
+        "reconstruction_support": "deterministic_evaluated_profile_extrusion",
+        "scale_to_canonical": 10.0,
+        "source_unit": "cm",
+        "timeline_index": 1
+      }
+    ],
+    "extent_types": {
+      "OneSideFeatureExtentType": 1
+    },
+    "interpretation_contract": "fusion360_evaluated_profile_extrusion_v5",
+    "operation_types": {
+      "NewBodyFeatureOperation": 1
+    },
+    "preferred_edit_binding": {
+      "base_value": 6.05,
+      "binding_id": "fusion360:b7ef649b-e314-11ea-91fc-54bf646e7e1f:distance",
+      "canonical_unit": "mm",
+      "direct_brep_parameter_readback": true,
+      "edit_family": "extrusion_distance",
+      "extent_multiplier": 1.0,
+      "extent_type": "OneSideFeatureExtentType",
+      "extrusion_axis": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "feature_id": "b7ef649b-e314-11ea-91fc-54bf646e7e1f",
+      "feature_name": "Extrude1",
+      "json_pointer": "/entities/b7ef649b-e314-11ea-91fc-54bf646e7e1f/extent_one/distance/value",
+      "operation": "NewBodyFeatureOperation",
+      "parameter_role": "extrude_distance",
+      "reconstruction_support": "deterministic_evaluated_profile_extrusion",
+      "scale_to_canonical": 10.0,
+      "source_unit": "cm",
+      "timeline_index": 1
+    },
+    "reasons": [],
+    "reconstruction_contract": "independent_occ_reconstruction_proxy",
+    "scoreable_edit_bindings": [
+      {
+        "base_value": 6.05,
+        "binding_id": "fusion360:b7ef649b-e314-11ea-91fc-54bf646e7e1f:distance",
+        "canonical_unit": "mm",
+        "direct_brep_parameter_readback": true,
+        "edit_family": "extrusion_distance",
+        "extent_multiplier": 1.0,
+        "extent_type": "OneSideFeatureExtentType",
+        "extrusion_axis": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "feature_id": "b7ef649b-e314-11ea-91fc-54bf646e7e1f",
+        "feature_name": "Extrude1",
+        "json_pointer": "/entities/b7ef649b-e314-11ea-91fc-54bf646e7e1f/extent_one/distance/value",
+        "operation": "NewBodyFeatureOperation",
+        "parameter_role": "extrude_distance",
+        "reconstruction_support": "deterministic_evaluated_profile_extrusion",
+        "scale_to_canonical": 10.0,
+        "source_unit": "cm",
+        "timeline_index": 1
+      },
+      {
+        "base_value": 0.75,
+        "binding_id": "fusion360:b7ed1aae-e314-11ea-9bfb-54bf646e7e1f:d1144b1f-dfa2-30c3-99dd-9fc132f9e156:loop-0:curve-0:radius",
+        "canonical_unit": "mm",
+        "consumer_features": [
+          {
+            "extent_type": "OneSideFeatureExtentType",
+            "feature_id": "b7ef649b-e314-11ea-91fc-54bf646e7e1f",
+            "feature_name": "Extrude1",
+            "operation": "NewBodyFeatureOperation",
+            "timeline_index": 1
+          }
+        ],
+        "curve_type": "Circle3D",
+        "direct_brep_parameter_readback": false,
+        "edit_family": "evaluated_profile_radius",
+        "feature_id": "b7ed1aae-e314-11ea-9bfb-54bf646e7e1f",
+        "feature_name": "Sketch1",
+        "json_pointer": "/entities/b7ed1aae-e314-11ea-9bfb-54bf646e7e1f/profiles/d1144b1f-dfa2-30c3-99dd-9fc132f9e156/loops/0/profile_curves/0/radius",
+        "parameter_role": "sketch_circle_radius",
+        "profile_id": "d1144b1f-dfa2-30c3-99dd-9fc132f9e156",
+        "profile_role": "outer",
+        "reconstruction_support": "deterministic_consumed_single_curve_profile",
+        "scale_to_canonical": 10.0,
+        "source_unit": "cm",
+        "timeline_index": 0
+      }
+    ],
+    "start_extent_types": {
+      "ProfilePlaneStartDefinition": 1
+    },
+    "supported": true
+  },
+  "surface_area": 3204.424506661589,
+  "volume": 10691.232499247762,
+  "worker_report_status": "success"
+}

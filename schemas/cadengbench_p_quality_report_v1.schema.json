@@ -1,0 +1,117 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cadengbench.org/schemas/cadengbench_p_quality_report_v1.schema.json",
+  "title": "CADEngBench-P v1 item construction quality report",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "report_version", "item_id", "generated_at", "status", "error_count",
+    "warning_count", "readiness", "gates"
+  ],
+  "properties": {
+    "report_version": {"const": "cadengbench-p.quality-report.v1"},
+    "item_id": {"type": "string", "pattern": "^p_(benchcad|fusion360|futurecad)_[0-9]{3,}$"},
+    "generated_at": {"type": "string", "format": "date-time"},
+    "status": {"enum": ["ready", "not_ready"]},
+    "error_count": {"type": "integer", "minimum": 0},
+    "warning_count": {"type": "integer", "minimum": 0},
+    "readiness": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "readiness_version", "construction", "task_publication", "task_scoring",
+        "source_evidence"
+      ],
+      "properties": {
+        "readiness_version": {"const": "cadengbench-p.readiness.v1"},
+        "construction": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["ready", "status", "blocking_error_count"],
+          "properties": {
+            "ready": {"type": "boolean"},
+            "status": {"enum": ["ready", "not_ready"]},
+            "blocking_error_count": {"type": "integer", "minimum": 0}
+          }
+        },
+        "task_publication": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["ready", "status", "task_scope", "evidence_state", "blocking_reasons"],
+          "properties": {
+            "ready": {"type": "boolean"},
+            "status": {"enum": ["ready", "not_ready"]},
+            "task_scope": {"const": "functional_edit"},
+            "evidence_state": {"type": "string", "minLength": 1},
+            "blocking_reasons": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {"type": "string", "minLength": 1}
+            }
+          }
+        },
+        "task_scoring": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["ready", "status", "task_scope", "evidence_state", "blocking_reasons"],
+          "properties": {
+            "ready": {"type": "boolean"},
+            "status": {"enum": ["ready", "not_ready"]},
+            "task_scope": {"const": "functional_edit"},
+            "evidence_state": {"type": "string", "minLength": 1},
+            "blocking_reasons": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {"type": "string", "minLength": 1}
+            }
+          }
+        },
+        "source_evidence": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "source_key", "canonical_geometry_authority", "reconstruction_contract",
+            "reconstruction_evidence_state", "reconstruction_report_sha256",
+            "frozen_preview_sha256", "topology_partition_status",
+            "native_fusion_execution_used", "reconstruction_is_scoring_authority",
+            "evidence_declared"
+          ],
+          "properties": {
+            "source_key": {"enum": ["benchcad", "fusion360", "futurecad"]},
+            "canonical_geometry_authority": {"type": "string", "minLength": 1},
+            "reconstruction_contract": {"type": "string", "minLength": 1},
+            "reconstruction_evidence_state": {"type": "string", "minLength": 1},
+            "reconstruction_report_sha256": {
+              "type": ["string", "null"],
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            "frozen_preview_sha256": {
+              "type": ["string", "null"],
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            "topology_partition_status": {"type": ["string", "null"]},
+            "native_fusion_execution_used": {"type": "boolean"},
+            "reconstruction_is_scoring_authority": {"type": "boolean"},
+            "evidence_declared": {"type": "boolean"}
+          }
+        }
+      }
+    },
+    "gates": {
+      "type": "array",
+      "minItems": 6,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["gate_id", "status", "errors", "warnings"],
+        "properties": {
+          "gate_id": {"type": "string", "minLength": 1},
+          "status": {"enum": ["ok", "warning", "error"]},
+          "errors": {"type": "array", "items": {"type": "string"}},
+          "warnings": {"type": "array", "items": {"type": "string"}},
+          "details": {"type": "object"}
+        }
+      }
+    }
+  }
+}

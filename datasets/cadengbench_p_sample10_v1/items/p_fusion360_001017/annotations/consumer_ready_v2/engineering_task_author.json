@@ -1,0 +1,57 @@
+{
+  "item_id": "p_fusion360_001017",
+  "output_status": "complete",
+  "payload": {
+    "design": {
+      "application_context": "industrial machinery mounting bracket",
+      "design_freedom": [
+        "maintain existing hole locations and face orientation"
+      ],
+      "goal": "increase structural depth for load bearing"
+    },
+    "function": {
+      "functional_interpretation": "provide rigid axial support and alignment for rotating shaft",
+      "interfaces": [
+        {
+          "description": "four threaded holes for bolt attachment",
+          "interface_id": "interface_1",
+          "interface_kind": "mounting"
+        }
+      ],
+      "non_requirements": [
+        "no surface finish or tolerance requirements"
+      ]
+    },
+    "functional_edit": {
+      "engineering_objective": "increase extrude distance for enhanced load capacity and stiffness",
+      "operating_condition": "static axial pressure"
+    },
+    "load_case": {
+      "application_region": "internal cylindrical surface",
+      "constraint_region": "mounting flange",
+      "direction": "axial",
+      "duty": "static",
+      "load_type": "pressure",
+      "magnitude": 2.5,
+      "unit": "MPa"
+    },
+    "material_process": {
+      "material_family": "aluminum_alloy",
+      "material_specification": "6061 T6",
+      "process_family": "casting",
+      "process_variant": "sand casting"
+    },
+    "part_identity": {
+      "category": "mechanical component",
+      "title": "cylindrical support housing"
+    },
+    "standards": [
+      {
+        "requirement_category": "material",
+        "standard_id": "ASTM B308"
+      }
+    ]
+  },
+  "role_id": "engineering_task_author",
+  "schema_version": "cadengbench-p.engineering-task-annotation.v3"
+}

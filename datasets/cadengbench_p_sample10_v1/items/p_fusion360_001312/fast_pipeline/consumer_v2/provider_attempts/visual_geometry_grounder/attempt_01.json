@@ -1,0 +1,14 @@
+{
+  "attempt": 1,
+  "finish_reason": "stop",
+  "http_status": 200,
+  "native_schema_guidance_used": true,
+  "outcome": "accepted",
+  "parse_recovery": "exact",
+  "raw_content": "{\"schema_version\": \"cadengbench-p.visual-grounding-annotation.v2\", \"item_id\": \"p_fusion360_001312\", \"role_id\": \"visual_geometry_grounder\", \"output_status\": \"complete\", \"payload\": {\"global_form\": \"Solid right circular cylinder with uniform diameter and flat ends\", \"features\": [{\"feature_kind\": \"recess_or_pocket\", \"description\": \"Continuous cylindrical outer surface\", \"view_ids\": [\"orbit_045\", \"orbit_270\"], \"visibility\": \"visible\"}, {\"feature_kind\": \"recess_or_pocket\", \"description\": \"Flat circular end face\", \"view_ids\": [\"orbit_090\", \"orbit_270\"], \"visibility\": \"visible\"}, {\"feature_kind\": \"recess_or_pocket\", \"description\": \"Opposite flat circular end face\", \"view_ids\": [\"orbit_090\", \"orbit_270\"], \"visibility\": \"visible\"}], \"affordances\": [{\"affordance_kind\": \"mounting\", \"description\": \"Cylindrical surface for press fit or bearing support\", \"view_ids\": [\"orbit_045\", \"orbit_270\"], \"visibility\": \"visible\"}, {\"affordance_kind\": \"locating\", \"description\": \"Flat end face for axial positioning\", \"view_ids\": [\"orbit_090\", \"orbit_270\"], \"visibility\": \"visible\"}], \"recommended_prompt_profile\": \"text_only\"}}",
+  "usage": {
+    "input_tokens": 2242,
+    "output_tokens": 335,
+    "total_tokens": 2577
+  }
+}

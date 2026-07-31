@@ -1,0 +1,86 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "cadengbench_a_pair_track_b_hypothesis_prediction_v3",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "assembly_id",
+    "ranked_hypotheses",
+    "abstention"
+  ],
+  "properties": {
+    "assembly_id": {
+      "type": "string",
+      "pattern": "^joint_set_[0-9]{5}$"
+    },
+    "ranked_hypotheses": {
+      "type": "array",
+      "maxItems": 3,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "rank",
+          "joint_type",
+          "body_a_candidate_id",
+          "body_b_candidate_id",
+          "confidence"
+        ],
+        "properties": {
+          "rank": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 3
+          },
+          "joint_type": {
+            "enum": [
+              "RigidJointType",
+              "RevoluteJointType",
+              "SliderJointType",
+              "CylindricalJointType",
+              "PlanarJointType",
+              "BallJointType",
+              "PinSlotJointType"
+            ]
+          },
+          "body_a_candidate_id": {
+            "type": "string",
+            "pattern": "^body_a_(face|edge)_[0-9]{4}$"
+          },
+          "body_b_candidate_id": {
+            "type": "string",
+            "pattern": "^body_b_(face|edge)_[0-9]{4}$"
+          },
+          "confidence": {
+            "type": "number",
+            "minimum": 0.0,
+            "maximum": 1.0
+          }
+        }
+      }
+    },
+    "abstention": {
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "reason_code"
+          ],
+          "properties": {
+            "reason_code": {
+              "enum": [
+                "insufficient_geometry",
+                "ambiguous_candidates",
+                "unsupported_evidence"
+              ]
+            }
+          }
+        }
+      ]
+    }
+  }
+}
